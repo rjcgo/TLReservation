@@ -26,6 +26,11 @@
     <%= form.text_field :team_name, id: :reservation_team_name %>
   </div>
 
+  <div class="field">
+    <%= form.label :tl_id %>
+    <%= form.number_field :tl_id, id: :reservation_tl_id %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

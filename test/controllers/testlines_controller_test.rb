@@ -17,7 +17,7 @@ class TestlinesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create testline" do
     assert_difference('Testline.count') do
-      post testlines_url, params: { testline: {  } }
+      post testlines_url, params: { testline: { name: @testline.name } }
     end
 
     assert_redirected_to testline_url(Testline.last)
@@ -34,7 +34,7 @@ class TestlinesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update testline" do
-    patch testline_url(@testline), params: { testline: {  } }
+    patch testline_url(@testline), params: { testline: { name: @testline.name } }
     assert_redirected_to testline_url(@testline)
   end
 

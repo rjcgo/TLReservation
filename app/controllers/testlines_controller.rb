@@ -69,6 +69,6 @@ class TestlinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def testline_params
-      params.fetch(:testline, {})
+      params.require(:testline).permit(:name)
     end
 end
