@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 	
 	root :to => 'home#index'
 	get 'home/index'
+  get '/index', to: 'home#index'
 	get '/schedule', to: 'home#schedule'
 	
 	resources :testlines 
