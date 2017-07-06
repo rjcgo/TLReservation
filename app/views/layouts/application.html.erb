@@ -1,39 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TLReservation</title>
-
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" type="text/css" href="assets/bubble.css">
     
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <header>
-        <div class="wrapper">
-            <h1 id="logo">Test Line Reservation</h1>
-            <nav>
-                <h2>Main Navigation</h2>
-                <ul>
-                    <li><a href="index">Home</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="schedule">Schedule</a></li>
-                    <li><a href="">Status</a></li>
-                    <li><a href="">Login</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
 
   </head>
 
   <body>
 
+    <header>
+        <div class="wrapper">
+            <button type="button" id="burger-nav">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <h1 id="logo">Test Line Reservation</h1>
+            <nav>
+                <h2>Main Navigation</h2>
+                <ul>
+                    <li><a href="index">Home</a></li>
+                    <li><a href="schedule">Schedule</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
     <% if user_signed_in? %>
     <p>Hello, <%= current_user.email %> - <%= link_to "Sign_out", destroy_user_session_path, :method => 'delete' %></p>
     <br>

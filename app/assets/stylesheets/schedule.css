@@ -32,14 +32,35 @@ header {
 }
 
 header h1 {
+    font-size: 28px;
+    text-align: center;
+}
+
+#burger-nav {
+    background: transparent;
+    border: 1px solid #BBDEFB;
+    border-radius: 0.25em;
+    cursor: pointer;
     float: left;
+}
+
+.bar {
+    display: block;
+    width: 24px;
+    height: 4px;
+    background: #fff;
+    margin: 4px;
 }
 
 
 /* ********************* Nav **********************/
 
 header nav {
-    float: right;
+    display: none;
+}
+
+header nav.open {
+    display: block;
 }
 
 header nav h2 {
@@ -55,20 +76,16 @@ header nav ul {
     margin: 0;
 }
 
-header nav li {
-    float: left;
-}
-
-header nav li+li::before {
-    display: inline-block;
-    content: "|";
-}
-
 header nav a {
     color: #fff;
     text-decoration: none;
-    display: inline-block;
+    display: block;
     padding: 10px 20px;
+    text-align: center;
+}
+
+header nav a:hover{
+    background: #42A5F5;
 }
 
 header::after {
@@ -91,4 +108,63 @@ main {
 button[type="button"]{
     background: #fff;
     /*border: 0;*/
+}
+
+/* ********************* Footer **********************/
+
+footer {
+    background: #333;
+    padding: 20px 0;
+}
+
+#copyright {
+    color: #fff;
+}
+
+/* ********************* Media Queries **********************/
+
+@media screen and (min-width: 420px) {}
+
+@media screen and (min-width: 576px) {
+    #burger-nav {
+        display: none;
+    }
+    header nav li {
+        float: left;
+        width: 25%;
+    }
+    header nav li+li::before {
+        display: inline-block;
+        content: "|";
+    }
+    header nav {
+        display: block;
+        width: 100%;
+    }
+    header nav a {
+        display: inline-block;
+        text-align: center;
+        width: 96%;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    header h1 {
+        text-align: left;
+        float: left;
+        font-size: 2em;
+    }
+    header nav li {
+        float: left;
+        width: auto;
+    }
+    header nav {
+        float: right;
+        width: auto;
+    }
+    header nav a {
+        display: inline-block;
+        width: auto;
+    }
 }
