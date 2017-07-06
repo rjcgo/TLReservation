@@ -24,10 +24,10 @@
             <nav>
                 <h2>Main Navigation</h2>
                 <ul>
-                    <li><a href="index">Home</a></li>
-                    <li><a href="schedule">Schedule</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Login</a></li>
+                    <li><%= link_to 'Home', root_path%></li>
+                    <li><%= link_to 'Schedule', schedule_path%></li>
+                    <li><%= link_to 'About', about_path%></li>
+                    <li><%= link_to 'Log in', new_user_session_path%></li>
                 </ul>
             </nav>
         </div>
