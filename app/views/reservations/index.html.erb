@@ -1,0 +1,12 @@
+<h1>Reservations</h1>
+
+<% @reservations.each do |res| %>
+	<h2> <%= res.team %> </h2>
+	<p> Testline <%= res.testline_id %> </p>
+	<p> Date:  <%= res.check_in.strftime("%D") %> </p>
+	<p> In:  <%= res.check_in.strftime("%H:%M %P") %> </p>
+	<p> Out: <%= res.check_out.strftime("%H:%M %P") %> </p>
+	<%= link_to "Edit reservation" %>
+	<br />
+
+<% end %>

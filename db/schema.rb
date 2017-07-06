@@ -25,8 +25,7 @@ ActiveRecord::Schema.define(version: 20170705093551) do
     t.boolean "isAvailable"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-
-ActiveRecord::Schema.define(version: 20170705083855) do
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"

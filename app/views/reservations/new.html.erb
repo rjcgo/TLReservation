@@ -1,0 +1,15 @@
+<h1>Reservations#new</h1>
+<p>Find me in app/views/reservations/new.html.erb</p>
+
+
+<h1>TLR Form</h1>
+
+<% form_for @reservation.each do |res| %>
+
+<p>
+  <%= res.label :team %> <br />
+  <%= res.text_field :team %> <br />
+</p>
+
+<% end %>
+

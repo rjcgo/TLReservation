@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  get 'reservations/new'
+
+  get 'reservations/edit'
+
+  get 'reservations/index'
+
+  get 'reservations/show'
+
+  get 'testlines/index'
+
+  get 'testlines/new'
+
+  get 'testlines/edit'
+
+  get 'testlines/show'
+
 	devise_for :users, controllers: { registrations: "registrations" }
 	match ':controller(/:action)', :via => :get
 
