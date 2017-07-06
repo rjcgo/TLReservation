@@ -4,7 +4,8 @@
     <title>index</title>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/bubble.css">
 </head>
 
 <body>
@@ -14,15 +15,15 @@
             <nav>
                 <h2>Main Navigation</h2>
                 <ul>
-                    <li><a href="">Home</a></li>
+                    <li><a href="">About</a></li>
                     <li><a href="schedule">Schedule</a></li>
+                    <li><a href="">Status</a></li>
                     <li><a href="">Login</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     <div id="main-banner">
-        <!-- <img src="/app/assets/images/minimalist-background.png" alt="test-line-reservation"> -->
         <%=image_tag("minimalist-background.png")%>
         <div class="banner-overlay">
             <div class="wrapper">
@@ -32,35 +33,60 @@
         </div>
     </div>
     <blockquote>
-        <h2>Don't know when to reserve? Look at our <a href="">Schedule</a>.</h2>
+        <div class="wrapper">
+            <h2>Don't know when to reserve? Look at our <a href="">Schedule</a>.</h2>
+        </div>
     </blockquote>
-    <main>
-        <section class="wrapper">
-            <h2>Test Lines</h2>
+    <main class="wrapper">
+        <section>
             <div class="card">
-                <!-- <img src="card-banner-1.jpg" alt="card-banner-1"> -->
-                <%=image_tag("card-banner-1.jpg")%>
+                <!--<img src="images/card-banner-1.jpg" alt="card-banner-1">-->
+                <div class="green">
+                    <div class="progress">
+                        <div class="inner">
+                            <div class="percent"><span class="percent-box">0</span>%</div>
+                            <div class="water"></div>
+                            <div class="glare"></div>
+                        </div>
+                    </div>
+                </div>
                 <div class="card-block">
                     <h4>Line #1</h4>
-                    <p>Nulla vitae libero, a pharetra augue.</p>
+                    <p>Time Remaning: 59mins</p>
                     <a href="" class="card-btn">Reserve Now!</a>
                 </div>
             </div>
             <div class="card">
-                <!-- <img src="images/card-banner-2.jpg" alt="card-banner-1"> -->
-                <%=image_tag("card-banner-2.jpg")%>
+                <!--<img src="images/card-banner-2.jpg" alt="card-banner-2">-->
+                <div class="green">
+                    <div class="progress">
+                        <div class="inner">
+                            <div class="percent"><span class="percent-box">50</span>%</div>
+                            <div class="water"></div>
+                            <div class="glare"></div>
+                        </div>
+                    </div>
+                </div>
                 <div class="card-block">
-                    <h4>Line #1</h4>
-                    <p>Nulla vitae libero, a pharetra augue.</p>
+                    <h4>Line #2</h4>
+                    <p>Time Remaning: 59mins</p>
                     <a href="" class="card-btn">Reserve Now!</a>
                 </div>
             </div>
             <div class="card">
-                <!-- <img src="images/card-banner-3.jpg" alt="card-banner-1"> -->
-                <%=image_tag("card-banner-3.jpg")%>
+                <!--<img src="images/card-banner-3.jpg" alt="card-banner-3">-->
+                <div class="green">
+                    <div class="progress">
+                        <div class="inner">
+                            <div class="percent"><span class="percent-box">80</span>%</div>
+                            <div class="water"></div>
+                            <div class="glare"></div>
+                        </div>
+                    </div>
+                </div>
                 <div class="card-block">
-                    <h4>Line #1</h4>
-                    <p>Nulla vitae libero, a pharetra augue.</p>
+                    <h4>Line #2</h4>
+                    <p>Time Remaning: 59mins</p>
                     <a href="" class="card-btn">Reserve Now!</a>
                 </div>
             </div>
@@ -71,16 +97,12 @@
             <div id="copyright">&copy; 2017 Nokia. All Rights reserved.</div>
         </div>
     </footer>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/bubble.js"></script>
 </body>
 
 </html>
 
 <!--Nulla vitae libero, a pharetra augue. Integer posuere erat a ante venenatis condimentum velit dapibus.-->
-
-<h1>Test Line Reservation</h1>
-
-<br />
-	
-<%= link_to("Reserve", 
-	{:controller => 'sessions',
-	 :action => 'new'})  %></li>
