@@ -1,2 +1,6 @@
-<h1>Testlines#edit</h1>
-<p>Find me in app/views/testlines/edit.html.erb</p>
+<h1>Editing Testline</h1>
+
+<%= render 'form', testline: @testline %>
+
+<%= link_to 'Show', @testline %> |
+<%= link_to 'Back', testlines_path %>

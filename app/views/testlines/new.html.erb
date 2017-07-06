@@ -1,2 +1,5 @@
-<h1>Testlines#new</h1>
-<p>Find me in app/views/testlines/new.html.erb</p>
+<h1>New Testline</h1>
+
+<%= render 'form', testline: @testline %>
+
+<%= link_to 'Back', testlines_path %>
