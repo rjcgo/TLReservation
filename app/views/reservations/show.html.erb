@@ -1,6 +1,19 @@
-<h1>Reservations#show</h1>
+<p id="notice"><%= notice %></p>
 
-<h2> <%= @reservations.team %> </h2>
-<p> Testline <%= @reservations.testline_id %> </p>
-<p> <%= @reservations.check_in %> </p>
-<p> <%= @reservations.check_out %> </p>
+<p>
+  <strong>From:</strong>
+  <%= @reservation.from %>
+</p>
+
+<p>
+  <strong>To:</strong>
+  <%= @reservation.to %>
+</p>
+
+<p>
+  <strong>Team name:</strong>
+  <%= @reservation.team_name %>
+</p>
+
+<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
+<%= link_to 'Back', reservations_path %>
