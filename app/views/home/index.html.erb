@@ -5,26 +5,32 @@
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" type="text/css" href="assets/bubble.css">
+    <link rel="stylesheet" href="assets/bubble.css">
 </head>
 
 <body>
-<!--     <header>
+    <header>
         <div class="wrapper">
+            <button type="button" id="burger-nav">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
             <h1 id="logo">Test Line Reservation</h1>
             <nav>
                 <h2>Main Navigation</h2>
                 <ul>
-                    <li><a href="">About</a></li>
+                    <li><a href="">Home</a></li>
                     <li><a href="schedule">Schedule</a></li>
-                    <li><a href="">Status</a></li>
+                    <li><a href="">About</a></li>
                     <li><a href="">Login</a></li>
                 </ul>
             </nav>
         </div>
-    </header> -->
+    </header>
     <div id="main-banner">
         <%=image_tag("minimalist-background.png")%>
+        <!--<img src="assets/images/minimalist-background.png" alt="minimalist-bg">-->
         <div class="banner-overlay">
             <div class="wrapper">
                 <h2>Lorem Ipsum</h2>
@@ -92,10 +98,16 @@
             </div>
         </section>
     </main>
-  
+    <footer>
+        <div class="wrapper">
+            <div id="copyright">&copy; 2017 Nokia. All Rights reserved.</div>
+        </div>
+    </footer>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/bubble.js"></script>
+    <script src="assets/menu.js"></script>
 </body>
 
 </html>
