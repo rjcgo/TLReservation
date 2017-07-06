@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TLReservation</title>
-
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" type="text/css" href="assets/bubble.css">
     
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+
+  </head>
+
+  <body>
 
     <header>
         <div class="wrapper">
@@ -24,7 +24,7 @@
             <nav>
                 <h2>Main Navigation</h2>
                 <ul>
-                    <li><a href="">Home</a></li>
+                    <li><a href="index">Home</a></li>
                     <li><a href="schedule">Schedule</a></li>
                     <li><a href="">About</a></li>
                     <li><a href="">Login</a></li>
@@ -32,12 +32,6 @@
             </nav>
         </div>
     </header>
-
-
-  </head>
-
-  <body>
-
     <% if user_signed_in? %>
     <p>Hello, <%= current_user.email %> - <%= link_to "Sign_out", destroy_user_session_path, :method => 'delete' %></p>
     <br>
