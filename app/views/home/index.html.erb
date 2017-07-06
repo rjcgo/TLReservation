@@ -21,7 +21,7 @@
     </div>
     <blockquote>
         <div class="wrapper">
-            <h2>Don't know when to reserve? Look at our <a href="">Schedule</a>.</h2>
+            <h2>Don't know when to reserve? Look at our <a><%= link_to "Schedule!", schedule_path%></a>.</h2>
         </div>
     </blockquote>
     <main class="wrapper">
@@ -40,7 +40,7 @@
                 <div class="card-block">
                     <h4>Line #1</h4>
                     <p>Time Remaning: 59mins</p>
-                    <a href="" class="card-btn">Reserve Now!</a>
+                    <a><%= link_to "Reserve Now!", new_reservation_path, class: "card-btn" %></a>
                 </div>
             </div>
             <div class="card">
@@ -57,7 +57,7 @@
                 <div class="card-block">
                     <h4>Line #2</h4>
                     <p>Time Remaning: 59mins</p>
-                    <a href="" class="card-btn">Reserve Now!</a>
+                    <a><%= link_to "Reserve Now!", new_reservation_path, class: "card-btn" %></a>
                 </div>
             </div>
             <div class="card">
@@ -74,7 +74,7 @@
                 <div class="card-block">
                     <h4>Line #2</h4>
                     <p>Time Remaning: 59mins</p>
-                    <a href="" class="card-btn">Reserve Now!</a>
+                    <a><%= link_to "Reserve Now!", new_reservation_path, class: "card-btn" %></a>
                 </div>
             </div>
         </section>

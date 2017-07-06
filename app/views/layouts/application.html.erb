@@ -24,18 +24,24 @@
             <nav>
                 <h2>Main Navigation</h2>
                 <ul>
+                    <% if user_signed_in? %>
+                      <li><a> Signed in as <%= current_user.email%> </a></li>
+                    <% end %>
                     <li><%= link_to 'Home', root_path%></li>
                     <li><%= link_to 'Schedule', schedule_path%></li>
                     <li><%= link_to 'About', about_path%></li>
-                    <li><%= link_to 'Log in', new_user_session_path%></li>
+                    <% if user_signed_in? %>
+                      <li><%= link_to "Sign_out", destroy_user_session_path, :method => 'delete' %></li>
+                    <br>
+                    <% else %>
+                      <li><%= link_to 'Log in', new_user_session_path%></li>
+                    <% end %>
+                    
                 </ul>
             </nav>
         </div>
     </header>
-    <% if user_signed_in? %>
-      <p>Hello, <%= current_user.email %> - <%= link_to "Sign_out", destroy_user_session_path, :method => 'delete' %></p>
-    <br>
-    <% end %>
+    
     <%= yield %>
       <footer>
         <div class="wrapper" style>
