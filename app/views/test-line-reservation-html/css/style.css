@@ -1,25 +1,29 @@
 /* ********************* Body **********************/
 
-body{
+body {
     /*background: #e4f1fe;*/
     font-family: Raleway, sans-serif;
     margin: 0;
 }
 
-h1, h2, h3, h4{
+h1,
+h2,
+h3,
+h4 {
     margin: 0;
 }
 
-.wrapper{
+.wrapper {
     width: 96%;
     max-width: 1199px;
     padding: 0 2%;
     margin: 0 auto;
 }
 
+
 /* ********************* Header **********************/
 
-header{
+header {
     background: #0275d8;
     color: #fff;
     padding: 10px 0;
@@ -27,78 +31,83 @@ header{
     border-bottom: 1px solid #777;
 }
 
-header h1{
+header h1 {
     float: left;
 }
 
+
 /* ********************* Nav **********************/
-header nav{
+
+header nav {
     float: right;
 }
 
-header nav h2{
+header nav h2 {
     display: none;
 }
 
+
 /* ********************* Nav Links **********************/
 
-header nav ul{
+header nav ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-header nav li{
+header nav li {
     float: left;
 }
 
-header nav li + li::before{
+header nav li+li::before {
     display: inline-block;
     content: "|";
 }
 
-header nav a{
+header nav a {
     color: #fff;
     text-decoration: none;
     display: inline-block;
     padding: 10px 20px;
 }
 
-header::after{
+header::after {
     content: "";
     display: block;
     clear: both;
 }
 
+
 /* ********************* Main Banner **********************/
 
-#main-banner{
+#main-banner {
     max-height: 240px;
     overflow: hidden;
     position: relative;
 }
 
-#main-banner img{
+#main-banner img {
     width: 100%;
 }
 
+
 /* ********************* Banner Overlay **********************/
 
-.banner-overlay{
+.banner-overlay {
     position: absolute;
     width: 100%;
     top: 10%;
     left: 0;
 }
 
-.banner-overlay h2{
+.banner-overlay h2 {
     font-size: 66px;
     font-weight: 200;
     text-align: right;
     /*text-transform: uppercase;*/
 }
 
-.banner-overlay p{
+.banner-overlay p {
     float: right;
     font-size: 22px;
     color: #4f4f4f;
@@ -108,64 +117,74 @@ header::after{
     text-align: right;
 }
 
-.banner-overlay::after{
+.banner-overlay::after {
     content: "";
     display: block;
     clear: both;
 }
 
+
 /* ********************* Blockquote **********************/
 
-blockquote{
+blockquote {
     margin: 0;
     padding: 1.6% 0;
     background: #e4e4e4;
 }
 
-blockquote h2{
+blockquote h2 {
     font-weight: 300;
 }
 
-blockquote a{
+blockquote a {
     color: #000;
     text-decoration: none;
     border-bottom: 1px dotted #000;
     font-weight: 900;
 }
 
+
 /* ********************* Section **********************/
 
-section{
+section {
     margin: 4%;
 }
 
-section::after{
+section::after {
     content: "";
     display: block;
     clear: both;
 }
 
+
 /* ********************* Card **********************/
 
-.card{
+.card {
     float: left;
     width: 32%;
     border-radius: 0.25em;
     box-shadow: 1px 1px 8px #aaa, -1px -1px 8px #aaa;
 }
 
-.card:nth-of-type(2){
+.card:nth-of-type(2) {
     margin: 0 2%;
 }
 
-.card img{
-    width: 100%;
+.card img {
+    /*background: #292B2D!important;*/
+    max-width: 100%;
     max-height: 200px;
     border-top-right-radius: 0.25em;
     border-top-left-radius: 0.25em;
 }
 
-.card-block{
+.card .green,
+.card .red,
+.card .orange {
+    background: #292B2D!important;
+}
+
+.card-block {
     background: #fff;
     border-bottom-right-radius: 0.25em;
     border-bottom-left-radius: 0.25em;
@@ -173,17 +192,17 @@ section::after{
     padding: 8px;
 }
 
-.card h4{
+.card h4 {
     font-size: 20px;
     margin: 4px 0;
 }
 
-.card p{
+.card p {
     font-size: 14px;
     color: #555;
 }
 
-.card .card-btn{
+.card .card-btn {
     display: block;
     text-decoration: none;
     color: #000;
@@ -197,17 +216,18 @@ section::after{
     margin: 0 auto;
 }
 
-.card .card-btn:hover{
+.card .card-btn:hover {
     background: #eee;
 }
 
+
 /* ********************* Footer **********************/
 
-footer{
+footer {
     background: #333;
     padding: 20px 0;
 }
 
-#copyright{
+#copyright {
     color: #fff;
 }
