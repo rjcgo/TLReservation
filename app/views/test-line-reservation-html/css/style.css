@@ -1,7 +1,7 @@
 /* ********************* Body **********************/
 
 body{
-    background: #e4f1fe;
+    /*background: #e4f1fe;*/
     font-family: Raleway, sans-serif;
     margin: 0;
 }
@@ -73,7 +73,7 @@ header::after{
 /* ********************* Main Banner **********************/
 
 #main-banner{
-    max-height: 300px;
+    max-height: 240px;
     overflow: hidden;
     position: relative;
 }
@@ -82,23 +82,132 @@ header::after{
     width: 100%;
 }
 
+/* ********************* Banner Overlay **********************/
+
 .banner-overlay{
     position: absolute;
     width: 100%;
-    top: 20%;
+    top: 10%;
     left: 0;
 }
 
 .banner-overlay h2{
-    font-size: 72px;
+    font-size: 66px;
     font-weight: 200;
+    text-align: right;
     /*text-transform: uppercase;*/
 }
 
 .banner-overlay p{
-    font-size: 24px;
-    color: #4e4e4e;
+    float: right;
+    font-size: 22px;
+    color: #4f4f4f;
     margin-top: 8px;
     line-height: 1.2em;
     width: 60%;
+    text-align: right;
+}
+
+.banner-overlay::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* ********************* Blockquote **********************/
+
+blockquote{
+    margin: 0;
+    padding: 1.6% 0;
+    background: #e4e4e4;
+}
+
+blockquote h2{
+    font-weight: 300;
+}
+
+blockquote a{
+    color: #000;
+    text-decoration: none;
+    border-bottom: 1px dotted #000;
+    font-weight: 900;
+}
+
+/* ********************* Section **********************/
+
+section{
+    margin: 4%;
+}
+
+section::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* ********************* Card **********************/
+
+.card{
+    float: left;
+    width: 32%;
+    border-radius: 0.25em;
+    box-shadow: 1px 1px 8px #aaa, -1px -1px 8px #aaa;
+}
+
+.card:nth-of-type(2){
+    margin: 0 2%;
+}
+
+.card img{
+    width: 100%;
+    max-height: 200px;
+    border-top-right-radius: 0.25em;
+    border-top-left-radius: 0.25em;
+}
+
+.card-block{
+    background: #fff;
+    border-bottom-right-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
+    box-sizing: border-box;
+    padding: 8px;
+}
+
+.card h4{
+    font-size: 20px;
+    margin: 4px 0;
+}
+
+.card p{
+    font-size: 14px;
+    color: #555;
+}
+
+.card .card-btn{
+    display: block;
+    text-decoration: none;
+    color: #000;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 0.25em;
+    padding: 8px 16px;
+    width: 200px;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.card .card-btn:hover{
+    background: #eee;
+}
+
+/* ********************* Footer **********************/
+
+footer{
+    background: #333;
+    padding: 20px 0;
+}
+
+#copyright{
+    color: #fff;
 }
