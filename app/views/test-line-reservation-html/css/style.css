@@ -1,0 +1,104 @@
+/* ********************* Body **********************/
+
+body{
+    background: #e4f1fe;
+    font-family: Raleway, sans-serif;
+    margin: 0;
+}
+
+h1, h2, h3, h4{
+    margin: 0;
+}
+
+.wrapper{
+    width: 96%;
+    max-width: 1199px;
+    padding: 0 2%;
+    margin: 0 auto;
+}
+
+/* ********************* Header **********************/
+
+header{
+    background: #0275d8;
+    color: #fff;
+    padding: 10px 0;
+    box-shadow: 0 4px 8px #777;
+    border-bottom: 1px solid #777;
+}
+
+header h1{
+    float: left;
+}
+
+/* ********************* Nav **********************/
+header nav{
+    float: right;
+}
+
+header nav h2{
+    display: none;
+}
+
+/* ********************* Nav Links **********************/
+
+header nav ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav li{
+    float: left;
+}
+
+header nav li + li::before{
+    display: inline-block;
+    content: "|";
+}
+
+header nav a{
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+}
+
+header::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* ********************* Main Banner **********************/
+
+#main-banner{
+    max-height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+#main-banner img{
+    width: 100%;
+}
+
+.banner-overlay{
+    position: absolute;
+    width: 100%;
+    top: 20%;
+    left: 0;
+}
+
+.banner-overlay h2{
+    font-size: 72px;
+    font-weight: 200;
+    /*text-transform: uppercase;*/
+}
+
+.banner-overlay p{
+    font-size: 24px;
+    color: #4e4e4e;
+    margin-top: 8px;
+    line-height: 1.2em;
+    width: 60%;
+}
