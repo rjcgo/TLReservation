@@ -1,4 +1,4 @@
 class Reservation < ApplicationRecord
-    belongs_to :testline
-    belongs_to :user
+     belongs_to :testline, :optional =>true
+    belongs_to :user, :optional =>true
 end

@@ -6,7 +6,6 @@ Rails.application.routes.draw do
    get '/users/sign_out' => 'devise/sessions#destroy'  
 	end
 	
-	match ':controller(/:action)', :via => :get
 	
 	root :to => 'home#index'
 	get 'home/index'
