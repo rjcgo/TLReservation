@@ -3,22 +3,19 @@
 <h1>Listing Testlines</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
   <tbody>
     <% @testlines.each do |testline| %>
-        <p><%= testline.name %></p>
-        <%= link_to 'Show', testline %>
+        <h2><%= testline.name %>
+        <%= link_to 'Reserve', testline %>
         <%= link_to 'Edit', edit_testline_path(testline) %>
-        <%= link_to 'Destroy', testline, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </h2>
         <% @reservations.each do |reserve| %>
           <% if testline.id == reserve.testline_id %>
-            <h2><%= reserve.testline_id %> - <%= reserve.name %></h2>
+            <p>Title: <%= reserve.name %></p>
+            <p>Team/Username: <%= reserve.team_name %></p>
+            <p>Description: <%= reserve.description %></p>
+            <br/>
           <% end %>
         <% end %>
     <% end %>

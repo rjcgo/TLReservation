@@ -1,11 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Testline Name:</strong>
   <%= @testline.name %>
 </p>
 <h2>
-  <%= @testline.reservations.count %>
   <%= render @testline.reservations %>
   <%= render 'reservations/form' %>
 </h2>
