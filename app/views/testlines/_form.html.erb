@@ -1,10 +1,10 @@
-<%= form_with(model: testline, local: true) do |form| %>
-  <% if testline.errors.any? %>
+<%= form_for(@testline) do |f| %>
+  <% if @testline.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(testline.errors.count, "error") %> prohibited this testline from being saved:</h2>
+      <h2><%= pluralize(@testline.errors.count, "error") %> prohibited this testline from being saved:</h2>
 
       <ul>
-      <% testline.errors.full_messages.each do |message| %>
+      <% @testline.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -12,11 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :testline_name %>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
   </div>
-
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
 <% end %>

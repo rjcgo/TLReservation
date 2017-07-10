@@ -1,53 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    
-    <%= csrf_meta_tags %>
+<head>
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
 
-    <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<%= yield %>
 
-
-
-  </head>
-
-  <body>
-
-    <header>
-        <div class="wrapper">
-            <button type="button" id="burger-nav">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-            <h1 id="logo">Test Line Reservation</h1>
-            <nav>
-                <h2>Main Navigation</h2>
-                <ul>
-                    <% if user_signed_in? %>
-                      <li><a> Signed in as <%= current_user.email%> </a></li>
-                    <% end %>
-                    <li><%= link_to 'Home', root_path%></li>
-                    <li><%= link_to 'Schedule', schedule_path%></li>
-                    <li><%= link_to 'About', about_path%></li>
-                    <% if user_signed_in? %>
-                      <li><%= link_to "Sign_out", destroy_user_session_path, :method => 'delete' %></li>
-                    <br>
-                    <% else %>
-                      <li><%= link_to 'Log in', new_user_session_path%></li>
-                    <% end %>
-                    
-                </ul>
-            </nav>
-        </div>
-    </header>
-    
-    <%= yield %>
-      <footer>
-        <div class="wrapper" style>
-            <div id="copyright">&copy; 2017 Nokia. All Rights reserved.</div>
-        </div>
-    </footer>
-
-  </body>
+</body>
 </html>

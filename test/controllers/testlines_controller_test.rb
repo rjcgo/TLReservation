@@ -1,48 +1,49 @@
 require 'test_helper'
 
-class TestlinesControllerTest < ActionDispatch::IntegrationTest
+class TestlinesControllerTest < ActionController::TestCase
   setup do
     @testline = testlines(:one)
   end
 
   test "should get index" do
-    get testlines_url
+    get :index
     assert_response :success
+    assert_not_nil assigns(:testlines)
   end
 
   test "should get new" do
-    get new_testline_url
+    get :new
     assert_response :success
   end
 
   test "should create testline" do
     assert_difference('Testline.count') do
-      post testlines_url, params: { testline: { name: @testline.name } }
+      post :create, testline: { name: @testline.name }
     end
 
-    assert_redirected_to testline_url(Testline.last)
+    assert_redirected_to testline_path(assigns(:testline))
   end
 
   test "should show testline" do
-    get testline_url(@testline)
+    get :show, id: @testline
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_testline_url(@testline)
+    get :edit, id: @testline
     assert_response :success
   end
 
   test "should update testline" do
-    patch testline_url(@testline), params: { testline: { name: @testline.name } }
-    assert_redirected_to testline_url(@testline)
+    patch :update, id: @testline, testline: { name: @testline.name }
+    assert_redirected_to testline_path(assigns(:testline))
   end
 
   test "should destroy testline" do
     assert_difference('Testline.count', -1) do
-      delete testline_url(@testline)
+      delete :destroy, id: @testline
     end
 
-    assert_redirected_to testlines_url
+    assert_redirected_to testlines_path
   end
 end

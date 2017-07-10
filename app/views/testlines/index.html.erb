@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Testlines</h1>
+<h1>Listing Testlines</h1>
 
 <table>
   <thead>
@@ -12,12 +12,15 @@
 
   <tbody>
     <% @testlines.each do |testline| %>
-      <tr>
-        <td><%= testline.name %></td>
-        <td><%= link_to 'Show', testline %></td>
-        <td><%= link_to 'Edit', edit_testline_path(testline) %></td>
-        <td><%= link_to 'Destroy', testline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <p><%= testline.name %></p>
+        <%= link_to 'Show', testline %>
+        <%= link_to 'Edit', edit_testline_path(testline) %>
+        <%= link_to 'Destroy', testline, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% @reservations.each do |reserve| %>
+          <% if testline.id == reserve.testline_id %>
+            <h2><%= reserve.testline_id %> - <%= reserve.name %></h2>
+          <% end %>
+        <% end %>
     <% end %>
   </tbody>
 </table>
@@ -25,4 +28,3 @@
 <br>
 
 <%= link_to 'New Testline', new_testline_path %>
-<%= link_to 'Reserve', reservations_path %>

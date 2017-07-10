@@ -1,5 +1,3 @@
-class Testline < ApplicationRecord
+class Testline < ActiveRecord::Base
     has_many :reservations
-    belongs_to :user, :optional =>true
-    
 end

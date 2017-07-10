@@ -4,6 +4,10 @@
   <strong>Name:</strong>
   <%= @testline.name %>
 </p>
-
+<h2>
+  <%= @testline.reservations.count %>
+  <%= render @testline.reservations %>
+  <%= render 'reservations/form' %>
+</h2>
 <%= link_to 'Edit', edit_testline_path(@testline) %> |
 <%= link_to 'Back', testlines_path %>

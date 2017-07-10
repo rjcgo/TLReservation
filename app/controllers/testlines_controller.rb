@@ -1,11 +1,11 @@
 class TestlinesController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_testline, only: [:show, :edit, :update, :destroy]
 
   # GET /testlines
   # GET /testlines.json
   def index
     @testlines = Testline.all
+    @reservations = Reservation.all
   end
 
   # GET /testlines/1
