@@ -1,0 +1,165 @@
+/* ********************* Body **********************/
+
+body {
+    /*background: #e4f1fe;*/
+    font-family: Raleway, sans-serif;
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+}
+
+.icon-lg{
+    font-size: 4.5em;
+}
+
+/* ********************* Burger Nav **********************/
+
+nav {
+    background: #0275d8;
+    padding: 2%;
+    z-index: 1;
+}
+
+
+/* ********************* Burger Nav **********************/
+
+#burger-nav {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    float: right;
+    margin: 8px;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+    display: block;
+    width: 35px;
+    height: 5px;
+    background: #fff;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+
+/* Fade out the second bar */
+.change .bar2 {
+    opacity: 0;
+}
+
+/* Rotate last bar */
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
+}
+
+
+/* ********************* Sidebar brand **********************/
+
+.sidebar-brand {
+    color: #fff;
+    text-decoration: none;
+    float: left;
+}
+
+#logo {
+    float: left;
+    margin-right: 10px;
+    line-height: 1.2em;
+    font-size: 3em;
+}
+
+.sidebar-brand h1 {
+    float: left;
+    width: 160px;
+}
+
+.sidebar-brand::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+/* ********************* Sidebar nav **********************/
+
+.sidebar-nav {
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.sidebar-nav.open{
+    height: 130px;
+}
+
+.sidebar-nav h2 {
+    display: none;
+}
+
+.sidebar-nav a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 20px 0 20px 40px;
+    font-size: 1.2em;
+}
+
+.sidebar .sidebar-nav a:hover {
+    background: #42A5F5;
+}
+
+
+/* ********************* Tab **********************/
+
+.card {
+    background: #777;
+}
+
+.card-header {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+
+/* ********************* Font awesome icons **********************/
+
+.fa-check-circle-o,
+.fa-times-circle-o {
+    color: #fff;
+}
+
+
+/* ********************* backgrounds **********************/
+
+.bg-green {
+    background: #5cb85c;
+}
+
+.bg-red {
+    background: #a94442;
+}
