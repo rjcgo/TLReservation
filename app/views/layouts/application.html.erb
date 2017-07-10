@@ -2,11 +2,32 @@
 <html>
 <head>
   <title>Workspace</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav>
+  <div class="wrapper">
+    <button type="button" id="burger-nav">
+      <span class="bar1"></span>
+      <span class="bar2"></span>
+      <span class="bar3"></span>
+    </button>
+    <a href="" class="navbar-brand">
+      <i class="fa fa-thermometer icon-lg" id="logo"></i>
+      <h1>Test Line Reservation</h1>
+    </a>
+    <div class="navbar-nav">
+      <h2>Main Navigation</h2>
+      <ul>
+
+          <li><%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path %></li>
+          <li><a href="login.html"><i class="fa fa-user"></i> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <%= yield %>
 

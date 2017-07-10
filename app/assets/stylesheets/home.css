@@ -1,0 +1,275 @@
+/* ********************* Body **********************/
+
+body {
+    background: #333;
+    font-family: Raleway, sans-serif;
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+}
+
+.icon-lg {
+    font-size: 4.5em;
+}
+
+.wrapper {
+    width: 96%;
+    max-width: 1199px;
+    padding: 0 2%;
+    margin: 0 auto;
+}
+
+
+/* ********************* Burger Nav **********************/
+
+nav {
+    background: #0275d8;
+    padding: 10px;
+    z-index: 1;
+}
+
+
+/* ********************* Burger Nav **********************/
+
+#burger-nav {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    float: right;
+    margin: 8px;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+    display: block;
+    width: 35px;
+    height: 5px;
+    background: #fff;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+
+/* Rotate first bar */
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+
+/* Fade out the second bar */
+
+.change .bar2 {
+    opacity: 0;
+}
+
+
+/* Rotate last bar */
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+}
+
+
+/* ********************* navbar brand **********************/
+
+.navbar-brand {
+    color: #fff;
+    text-decoration: none;
+    float: left;
+}
+
+#logo {
+    float: left;
+    margin-right: 10px;
+    line-height: 1.2em;
+    font-size: 3em;
+}
+
+.navbar-brand h1 {
+    float: left;
+    width: 160px;
+}
+
+.navbar-brand::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+/* ********************* navbar nav **********************/
+
+.navbar-nav {
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.navbar-nav.open {
+    height: 130px;
+}
+
+.navbar-nav h2 {
+    display: none;
+}
+
+.navbar-nav a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 20px 40px;
+    font-size: 1.2em;
+}
+
+.navbar-nav a:hover {
+    background: #42A5F5;
+}
+
+
+/* ********************* Card **********************/
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2%;
+}
+
+section:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+/* ********************* Card **********************/
+
+.card {
+    flex: 1 0 80%;
+    margin: 5% 5% 10px 5%;
+    border-radius: 0.25em;
+}
+
+.card-header {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    text-align: center;
+    border-top-left-radius: 0.25em;
+    border-top-right-radius: 0.25em;
+}
+
+.card-content {
+    background: #fff;
+    padding: 4%;
+    border-bottom-left-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+}
+
+.card-text {
+    color: #555;
+    font-style: italic;
+}
+
+.card-btn {
+    width: 100%;
+    color: #000;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 0.25em;
+    padding: 8px 16px;
+}
+
+.card .card-btn:hover {
+    background: #ccc;
+}
+
+
+/* ********************* Font awesome icons **********************/
+
+.fa-check-circle-o,
+.fa-times-circle-o {
+    color: #fff;
+}
+
+
+/* ********************* backgrounds **********************/
+
+.bg-green {
+    background: #5cb85c;
+}
+
+.bg-red {
+    background: #a94442;
+}
+
+
+/* ********************* Media Queries **********************/
+
+@media screen and (min-width: 320px) {}
+
+@media screen and (min-width: 576px) {
+    .card {
+        flex: 0 1 46%;
+        margin: 2%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .card {
+        flex: 0 1 31%;
+        margin: 1%;
+    }
+    #burger-nav {
+        display: none;
+    }
+    .navbar-nav,
+    .navbar-nav.open {
+        margin-top: 8px;
+        height: auto;
+        float: right;
+        clear: none;
+    }
+    .navbar-nav li {
+        float: left;
+        border-right: 1px solid #fff;
+    }
+    .navbar-nav a{
+        padding: 10px 40px;
+    }
+    .navbar-nav li:last-child {
+        border: 0;
+    }
+    nav::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+@media screen and (min-width: 992px) {
+}
+
+@media screen and (min-width: 1200px) {
+    .card {
+        flex: 0 1 23%;
+    }
+}
