@@ -16,7 +16,7 @@
 <main class="wrapper">
   <section>
     <% @testlines.each do |testline| %>
-        <% if ((testline.id%2)==0) %>
+        <% if ( testline.reservations.count ==0) %>
             <div class="card">
               <div class="card-header bg-green">
                 <i class="fa fa-check-circle-o icon-lg"></i>
@@ -35,8 +35,9 @@
               <!--<button type="button" class="card-btn">-->
               <!---->
               <!--</button>-->
-                <%= link_to 'Reserve Now!', testline , :class => 'card-btn', :type => 'button' %>
-
+                <%= link_to 'Reserve Now!', testline , :class => 'card-btn' %>
+                <%= link_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'Edit', edit_testline_path(testline) %>
 
 
               </div>
@@ -62,6 +63,8 @@
 
                 <!--<button type="button" class="card-btn">Reserve Now!</button>-->
                 <%= link_to 'Reserve Now!', testline , :class => 'card-btn' %>
+                <%= link_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'Edit', edit_testline_path(testline) %>
               </div>
             </div>
         <% end %>
