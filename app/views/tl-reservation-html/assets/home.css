@@ -1,7 +1,7 @@
 /* ********************* Body **********************/
 
 body {
-    /*background: #e4f1fe;*/
+    background: #333;
     font-family: Raleway, sans-serif;
     margin: 0;
 }
@@ -19,9 +19,10 @@ h4 {
     margin: 0;
 }
 
-.icon-lg{
+.icon-lg {
     font-size: 4.5em;
 }
+
 
 /* ********************* Burger Nav **********************/
 
@@ -53,21 +54,27 @@ nav {
     transition: 0.4s;
 }
 
+
 /* Rotate first bar */
+
 .change .bar1 {
-    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
-    transform: rotate(-45deg) translate(-9px, 6px) ;
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
 }
 
+
 /* Fade out the second bar */
+
 .change .bar2 {
     opacity: 0;
 }
 
+
 /* Rotate last bar */
+
 .change .bar3 {
-    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
-    transform: rotate(45deg) translate(-8px, -8px) ;
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
 }
 
 
@@ -101,15 +108,13 @@ nav {
 /* ********************* Sidebar nav **********************/
 
 .sidebar-nav {
-    content: "";
-    display: block;
     clear: both;
     height: 0;
     overflow: hidden;
     transition: 0.5s;
 }
 
-.sidebar-nav.open{
+.sidebar-nav.open {
     height: 130px;
 }
 
@@ -121,19 +126,31 @@ nav {
     display: block;
     color: #fff;
     text-decoration: none;
-    padding: 20px 0 20px 40px;
+    padding: 20px 40px;
     font-size: 1.2em;
 }
 
-.sidebar .sidebar-nav a:hover {
+.sidebar-nav a:hover {
     background: #42A5F5;
 }
 
 
-/* ********************* Tab **********************/
+/* ********************* Card **********************/
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2%;
+}
+
+
+/* ********************* Card **********************/
 
 .card {
-    background: #777;
+    flex: 1 0 80%;
+    margin: 5%;
+    border-radius: 0.25em;
 }
 
 .card-header {
@@ -143,6 +160,33 @@ nav {
     padding: 20px 10px;
     box-sizing: border-box;
     text-align: center;
+    border-top-left-radius: 0.25em;
+    border-top-right-radius: 0.25em;
+}
+
+.card-content {
+    background: #fff;
+    padding: 4%;
+    border-bottom-left-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+}
+
+.card-text {
+    color: #555;
+    font-style: italic;
+}
+
+.card-btn {
+    width: 100%;
+    color: #000;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 0.25em;
+    padding: 8px 16px;
+}
+
+.card .card-btn:hover {
+    background: #ccc;
 }
 
 
@@ -162,4 +206,55 @@ nav {
 
 .bg-red {
     background: #a94442;
+}
+
+
+/* ********************* Media Queries **********************/
+
+@media screen and (min-width: 320px) {}
+
+@media screen and (min-width: 576px) {
+    .card {
+        flex: 0 1 46%;
+        margin: 2%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .card {
+        flex: 0 1 31%;
+        margin: 1%;
+    }
+    #burger-nav {
+        display: none;
+    }
+    .sidebar-nav, .sidebar-nav.open {
+        height: auto;
+        float: right;
+        clear: none;
+    }
+    .sidebar-nav li {
+        float: left;
+        border-right: 1px solid #fff;
+    }
+    .sidebar-nav li:last-child{
+        border: 0;
+    }
+    nav::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .card {
+        flex: 0 1 23%;
+    }
+}
+
+@media screen and (min-width: 1199px) {
+    .card {
+        flex: 0 1 18%;
+    }
 }
