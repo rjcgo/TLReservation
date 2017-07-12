@@ -6,6 +6,7 @@ class TestlinesController < ApplicationController
   def index
     @testlines = Testline.all
     @reservations = Reservation.all
+    
   end
 
   # GET /testlines/1

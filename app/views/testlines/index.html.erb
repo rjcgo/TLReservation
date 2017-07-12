@@ -2,88 +2,81 @@
 
 <head>
   <title>index</title>
-  <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-  <!-- font-awesome CSS-->
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-        crossorigin="anonymous">
-  <link rel="stylesheet" href="assets/home.css">
+
+  
+
 </head>
 
 <body>
+  <% if current_user.isAdmin? %>
+    <%= link_to 'ADMIN STUFF', 'admin/home' %>
+  <% end %>
 
-
-<main class="wrapper">
-  <section>
-    <% @testlines.each do |testline| %>
-        <% if ( testline.reservations.count ==0) %>
+  <%= link_to 'New Testline', new_testline_path %>
+    <main class="wrapper">
+      <section>
+        <% @testlines.each do |testline| %>
+          <% if ( testline.reservations.count ==0) %>
             <div class="card">
               <div class="card-header bg-green">
                 <i class="fa fa-check-circle-o icon-lg"></i>
-                <h2><%= testline.name %></h2>
+                <h2>
+                  <%= testline.name %>
+                </h2>
                 <p>Available</p>
               </div>
               <div class="card-content">
-                <% @reservations.each do |reserve| %>
-                    <% if testline.id == reserve.testline_id %>
-                        <h3>Title: <%= reserve.name %></h3>
-                        <p>Team/Username: <%= reserve.team_name %></p>
-                        <p>Description: <%= reserve.description %></p>
-                        <br/>
-                    <% end %>
-                <% end %>
-              <!--<button type="button" class="card-btn">-->
-              <!---->
-              <!--</button>-->
-                <%= link_to 'Reserve Now!', testline , :class => 'card-btn' %>
-                <%= link_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' } %>
-                <%= link_to 'Edit', edit_testline_path(testline) %>
-
-
+                <%= button_to "Use now!", testline, :class => "card-btn", :method => :get %>
+                  <%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' },:class => "card-btn", :method => :get %>
+                    <%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %>
               </div>
             </div>
+            <% else %>
+              <div class="card">
+                <div class="card-header bg-red">
+                  <i class="fa fa-times-circle-o icon-lg"></i>
+                  <h2>
+                    <%= testline.name %>
+                  </h2>
+                  <p>In Use</p>
+                </div>
+                <div class="card-content">
+                  <% isFirst = true %>
+                    <% @reservations.each_with_index do |reserve, ind| %>
 
+                      <% if testline.id == reserve.testline_id  %>
+                        <% if isFirst %>
+                          <% isFirst = false %>
+                          <h1 style="color:red;">
+                          <%= reserve.team_name %></h1>
+                        <% else %>
+                        <h3><%= reserve.team_name %></h3>
+                        <% end %>
+                      <% end %>
 
-        <% else %>
-            <div class="card">
-              <div class="card-header bg-red">
-                <i class="fa fa-times-circle-o icon-lg"></i>
-                <h2><%= testline.name %></h2>
-                <p>In Use</p>
-              </div>
-              <div class="card-content">
-                <% @reservations.each do |reserve| %>
-                    <% if testline.id == reserve.testline_id %>
-                        <h3>Title: <%= reserve.name %></h3>
-                        <p>Team/Username: <%= reserve.team_name %></p>
-                        <p>Description: <%= reserve.description %></p>
-                        <br/>
                     <% end %>
-                <% end %>
+                      <br/>
+                      <%= button_to "Reserve Now!", testline, :class => "card-btn", :method => :get %>
+                      <%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' },:class => "card-btn", :method => :get %>
+                      <%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %>
 
-                <!--<button type="button" class="card-btn">Reserve Now!</button>-->
-                <%= link_to 'Reserve Now!', testline , :class => 'card-btn' %>
-                <%= link_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' } %>
-                <%= link_to 'Edit', edit_testline_path(testline) %>
+                </div>
               </div>
-            </div>
-        <% end %>
-    <% end %>
-    </div>
-  </section>
-</main>
+              <% end %>
+                <% end %>
+                  </div>
+      </section>
+    </main>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="assets/home.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/home.js"></script>
 </body>
 
 </html>
 
-
-
-<p id="notice"><%= notice %></p>
+<p id="notice">
+  <%= notice %>
+</p>
 
 <br>
-
-<%= link_to 'New Testline', new_testline_path %>

@@ -1,3 +1,23 @@
+<% teams = ["Team 1", "Team 2", "Team 3", "Team 4", "Team 5", "Team 6", "Team 7"] %>
+
+<h1>LENGTH <%= puts teams.length %> </h1>
+
+<% teams.each do |te| %>
+<h2> HAHA <%= te %> </h2>
+<% end %>
+
+
+
+<div align="right">
+    <select id="editable_pages">
+      <option selected disabled hidden >Sort by</option>
+      <option value="Likes" Likes</option>
+      <option value="Price" Price</option>
+      <option value="Name" Name</option>
+    </select>   
+</div>
+
+
 <br/><h2>Test title: <%= reservation.name %></h2>
 <h2>Team/User: <%= reservation.team_name %></h2>
 <h2>Description: <%= reservation.description %></h2>

@@ -115,6 +115,7 @@ nav {
 /* ********************* navbar nav **********************/
 
 .navbar-nav {
+    content: "";
     clear: both;
     height: 0;
     overflow: hidden;
@@ -143,82 +144,133 @@ nav {
 }
 
 
-/* ********************* Card **********************/
+/* ********************* Main **********************/
 
-section {
+main {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 2%;
 }
 
-section::after {
-    content: "";
-    display: block;
-    clear: both;
+section{
+    flex: 1 1 100%;
+    padding: 0 2%;
+}
+
+section h2{
+    font-size: 1.8em;
+    margin: 20px 0;
+    /* color: #000; */
+    color: #fff;
 }
 
 
-/* ********************* Card **********************/
+/* ********************* Sidenav **********************/
 
-.card {
-    flex: 1 0 80%;
-    margin: 5%;
-    border-radius: 0.25em;
+.sidenav {
+    /* background: #f5f5f5; */
+    background: #3c3c3c;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    padding-top: 60px;
+    overflow: hidden;
+    transition: 0.5s;
 }
 
-.card-header {
-    display: block;
+.sidenav.toggle {
+    width: 100%;
+}
+
+.sidenav a {
+    /* color: #000; */
     color: #fff;
     text-decoration: none;
-    padding: 20px 10px;
-    box-sizing: border-box;
+    padding: 1em 0;
+    display: block;
+    white-space: nowrap;
     text-align: center;
-    border-top-left-radius: 0.25em;
-    border-top-right-radius: 0.25em;
 }
 
-.card-content {
-    background: #fff;
-    padding: 4%;
-    border-bottom-left-radius: 0.25em;
-    border-bottom-right-radius: 0.25em;
+.sidenav a:hover {
+    /* background: #e5e5e5; */
+    background: #444;
 }
 
-.card-text {
-    color: #555;
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 36px;
+    padding: 4px 12px 6px 12px;
+    line-height: 1.2em;
+}
+
+
+/* ********************* background **********************/
+
+.text-danger {
+    background: #d9534f;
+    color: #fff !important;
+    border-color: #d9534f !important;
+}
+
+.text-danger:hover {
+    background: #a94442 !important;
+}
+
+
+/* ********************* list-group **********************/
+
+.list-item {
+    box-sizing: border-box;
+    padding: 5%;
+    background: #616161;
+}
+
+.list-item:nth-of-type(odd) {
+    /* background: #f1f1f1; */
+    background: #424242;
+}
+
+.list-item .title {
+    /* color: #555; */
+    color: #e1e1e1;
+    font-size: 1.5em;
+}
+
+.list-item .subtitle {
+    /* color: #555; */
+    color: #e1e1e1;
     font-style: italic;
 }
 
-.card-btn {
-    width: 100%;
-    color: #000;
-    background: #fff;
-    border: 1px solid #000;
-    border-radius: 0.25em;
-    padding: 8px 16px;
+.list-item .description {
+    /* color: #555; */
+    color: #e1e1e1;
+    font-size: 14px;
+    line-height: 1.6em;
 }
 
-.card .card-btn:hover {
-    background: #ccc;
-}
-
-
-/* ********************* Font awesome icons **********************/
-
-.fa-white {
+.list-item a {
+    display: inline-block;
+    /* color: #000; */
     color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    /* border: 1px solid #000; */
+    border: 1px solid #fff;
+    border-radius: 0.25em;
 }
 
-
-/* ********************* backgrounds **********************/
-
-.bg-green {
-    background: #5cb85c;
+.list-item a:hover {
+    /* background: #e1e1e1; */
+    background: #444;
 }
 
-.bg-red {
-    background: #a94442;
+.list-item:nth-of-type(odd) a:hover{
+    background: #616161;
 }
 
 
@@ -226,22 +278,13 @@ section::after {
 
 @media screen and (min-width: 320px) {}
 
-@media screen and (min-width: 576px) {
-    .card {
-        flex: 0 1 46%;
-        margin: 2%;
-    }
-}
+@media screen and (min-width: 576px) {}
 
 @media screen and (min-width: 768px) {
-    .card {
-        flex: 0 1 31%;
-        margin: 1%;
-    }
     #burger-nav {
         display: none;
     }
-    .navbar-brand {
+    .navbar-brand{
         float: left;
     }
     .navbar-nav,
@@ -266,12 +309,25 @@ section::after {
         display: block;
         clear: both;
     }
+    .sidenav,
+    .sidenav.toggle {
+        position: initial;
+    }
+    .sidenav{
+        width: 250px;
+    }
+    .sidenav.toggle{
+         width: 0; 
+    }
+    .sidenav .closebtn {
+        display: none;
+    }
+    section {
+        float: left;
+        width: auto !important;
+    }
 }
 
 @media screen and (min-width: 992px) {}
 
-@media screen and (min-width: 1200px) {
-    .card {
-        flex: 0 1 23%;
-    }
-}
+@media screen and (min-width: 1200px) {}

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'admin/home'
+
+  devise_for :users
+  resources :teams
   resources :testlines do
     resources :reservations
   end
@@ -9,7 +13,6 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   root 'testlines#index'
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
