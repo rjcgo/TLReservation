@@ -35,12 +35,10 @@
 
                      <li><%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path %></li>
                      <% if user_signed_in? %>
-                        <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => "fa fa-home") %>
+                        <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
                     <% else %>
                         <li><a href=""><i class="fa fa-user"></i> Login</a></li>
                     <% end %>
-
->>>>>>> 784cd35475dc2787534413947cb34262909c47a1
                 </ul>
             </div>
         </div>
