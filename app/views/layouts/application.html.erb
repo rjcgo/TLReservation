@@ -32,14 +32,15 @@
             <div class="navbar-nav">
                 <h2>Main Navigation</h2>
                 <ul>
-                    <li><%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path %></li>
-                    <li>
-                    <% if user_signed_in? %>
-                            <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+
+                     <li><%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path %></li>
+                     <% if user_signed_in? %>
+                        <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => "fa fa-home") %>
                     <% else %>
-                            <a href="login.html"><i class="fa fa-user"></i> Login</a>
+                        <li><a href=""><i class="fa fa-user"></i> Login</a></li>
                     <% end %>
-                    </li>
+
+>>>>>>> 784cd35475dc2787534413947cb34262909c47a1
                 </ul>
             </div>
         </div>
