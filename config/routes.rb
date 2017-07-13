@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :team_testlines
   get 'admin/home'
 
   devise_for :users
