@@ -1,4 +1,4 @@
-/* ********************* Body **********************/
+/* Body */
 
 body {
     background: #333;
@@ -31,7 +31,7 @@ h4 {
 }
 
 
-/* ********************* Nav **********************/
+/*  Nav */
 
 #main-nav {
     background: #0275d8;
@@ -40,7 +40,7 @@ h4 {
 }
 
 
-/* ********************* Burger Nav **********************/
+/* Burger Nav */
 
 #burger-nav {
     background: transparent;
@@ -60,6 +60,7 @@ h4 {
     margin: 6px 0;
     transition: 0.4s;
 }
+
 
 /* Rotate first bar */
 
@@ -84,7 +85,7 @@ h4 {
 }
 
 
-/* ********************* navbar brand **********************/
+/*  navbar brand */
 
 .navbar-brand {
     color: #fff;
@@ -111,7 +112,7 @@ h4 {
 }
 
 
-/* ********************* navbar nav **********************/
+/*  navbar nav */
 
 .navbar-nav {
     clear: both;
@@ -119,7 +120,6 @@ h4 {
     overflow: hidden;
     transition: 0.5s;
 }
-
 
 .navbar-nav.open {
     height: 80px;
@@ -140,4 +140,93 @@ h4 {
 
 .navbar-nav a:hover {
     background: #42A5F5;
+}
+
+
+/* ********************* Sub-nav **********************/
+
+#sub-nav {
+    position: relative;
+    top: 20px;
+}
+
+#sub-nav .dropbtn {
+    position: absolute;
+    right: 15px;
+    background: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 1.5em;
+    display: block;
+    margin: 0 auto;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+#sub-nav .dropdown-triangle {
+    display: none;
+    position: absolute;
+    top: 32px;
+    right: 114px;
+    border-color: transparent;
+    border-bottom-color: #fff;
+    border-width: 0 8.5px 8.5px;
+    border-style: dashed dashed solid;
+    height: 0;
+    width: 0;
+}
+
+#sub-nav .dropdown-content {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: absolute;
+    top: 40px;
+    right: 1px;
+    margin: auto;
+    width: 265px;
+    padding: 26px;
+    z-index: 1;
+    background: #f9f9f9;
+    max-height: 555px;
+    overflow-y: auto;
+}
+
+#sub-nav .dropdown-content.show {
+    display: flex;
+}
+
+#sub-nav .dropdown-triangle.show {
+    display: block;
+}
+
+#sub-nav .dropdown-content li {
+    width: 33%;
+    display: flex;
+}
+
+#sub-nav .dropdown-content a {
+    flex: 1 1 0;
+    display: block;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    margin: 8px 2px;
+    padding: 4px 0;
+    font-size: 14px;
+    overflow: hidden;
+    overflow-wrap: break-word;
+}
+
+#sub-nav .dropdown-content a:hover {
+    border: 1px solid #ccc;
+}
+
+#sub-nav .team-brand {
+    background: url(pokeballs.png) no-repeat center;
+    background-size: 250px 200px;
+    display: block;
+    margin: 5px auto;
+    width: 48px;
+    height: 50px;
 }
