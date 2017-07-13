@@ -20,7 +20,7 @@
 
 </head>
 <body>
-<nav>
+<nav id="main-nav">
         <div class="wrapper">
             <button type="button" id="burger-nav">
                 <span class="bar1"></span>
@@ -35,6 +35,7 @@
                 <h2>Main Navigation</h2>
                 <ul>
                     <li><%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path %></li>
+                    <li><a href="home.html"><i class="fa fa-"></i> Teams</a></li>
                     <% if user_signed_in? %>
                         <li><%= link_to '<i class="fa fa-user"></i> Logout'.html_safe, destroy_user_session_path, method: :delete %></li>
                     <% else %>
