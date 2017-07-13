@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
-  resources :team_testlines
+  
   get 'admin/home'
+  get 'admin/teams'
+  get 'admin/associations'
+  get 'admin/testlines'
+  get 'admin/home'
+  get 'admin/users'
 
+  resources :team_testlines, except: [:index]
   devise_for :users
-  resources :teams
-  resources :testlines do
+  resources :teams, except: [:index]
+  resources :testlines, except: [:index] do
     resources :reservations
   end
   # The priority is based upon order of creation: first created -> highest priority.

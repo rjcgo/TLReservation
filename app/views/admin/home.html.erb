@@ -6,23 +6,12 @@
 <h1>Welcome, admin!</h1>
 <br>
 
-<% if @teams.empty? %>
-	There are no teams yet.
-<% end %>
+<h2>
+<a href="/admin/teams">Manage teams</a><br>
+<a href="/admin/testlines">Manage testlines</a><br>
+<a href="/admin/associations">Manage associations</a><br>
+</h2>
 
-<% @teams.each do |team| %>
-
-    <%= team.name %>
-    <%= link_to 'Show', team %>
-    <%= link_to 'Edit', edit_team_path(team) %>
-    <%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %>
-
-    <!-- <% @testlines.each do |tl| %> -->
-    <!-- <% end %> -->
-
-<% end %>
-
-<%= link_to 'New Team', new_team_path %>
 
 <% else %>
 <h1>Sorry, you need to be an admin to view this page.</h1>

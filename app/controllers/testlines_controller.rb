@@ -31,7 +31,7 @@ class TestlinesController < ApplicationController
 
     respond_to do |format|
       if @testline.save
-        format.html { redirect_to @testline, notice: 'Testline was successfully created.' }
+        format.html { redirect_to admin_testlines_path, notice: 'Testline was successfully created.' }
         format.json { render :show, status: :created, location: @testline }
       else
         format.html { render :new }
@@ -59,7 +59,7 @@ class TestlinesController < ApplicationController
   def destroy
     @testline.destroy
     respond_to do |format|
-      format.html { redirect_to testlines_url, notice: 'Testline was successfully destroyed.' }
+      format.html { redirect_to admin_testlines_path, notice: 'Testline was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

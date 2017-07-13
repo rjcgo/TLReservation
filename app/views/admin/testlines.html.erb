@@ -1,0 +1,37 @@
+
+<% if user_signed_in? %>
+
+	<% if current_user.isAdmin? %>
+
+		<br>
+		<h1>Testlines</h1>
+		<br>
+
+		<% if @testlines.empty? %>
+			There are no testlines yet.
+		<% end %>
+
+		<% @testlines.each do |testline| %>
+
+		    <%= testline.name %>
+		    <%= link_to 'Show', testline %>
+		    <%= link_to 'Edit', edit_testline_path(testline) %>
+		    <%= link_to 'Destroy', testline, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+		<% end %>
+
+		<%= link_to 'New Testline', new_testline_path %>
+
+
+	<% else %>
+		
+		<h1>Sorry, you need to be an admin to view this page.</h1>
+		<p>Please contact the administrator if you want to be one.</p>
+
+	<% end %>
+
+<% else %>
+
+	<h1>Sorry, you need to be logged-in to view this page.</h1>
+
+<% end %>

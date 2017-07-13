@@ -1,0 +1,47 @@
+<% if user_signed_in? %>
+
+  <% if current_user.isAdmin? %>
+
+  <h1>Listing Team Testlines</h1>
+
+  <table>
+
+    <tbody>
+      <% @teams.each do |team| %>
+        <%=team.name%>
+        </br>
+        <% @team_testlines.each do |team_testline| %>
+          <% if team.id == team_testline.team_id %>
+            <%@testlines.each do |testline| %>
+              <% if team_testline.testline_id == testline.id %>
+                <%= testline.name %>
+                <%= link_to 'Show', team_testline %>
+                <%= link_to 'Edit', edit_team_testline_path(team_testline) %>
+                <%= link_to 'Destroy', team_testline, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </br>
+              <%end%>
+            <%end%>
+          <%end%>
+        <%end%>
+      <%end%>
+    </tbody>
+  </table>
+
+  <br>
+
+  <br>
+
+  <%= link_to 'New Team testline', new_team_testline_path %>
+
+  <% else %>
+    
+    <h1>Sorry, you need to be an admin to view this page.</h1>
+    <p>Please contact the administrator if you want to be one.</p>
+
+  <% end %>
+
+<% else %>
+
+  <h1>Sorry, you need to be logged-in to view this page.</h1>
+
+<% end %>

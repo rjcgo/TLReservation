@@ -27,7 +27,7 @@
                 <span class="bar2"></span>
                 <span class="bar3"></span>
             </button>
-            <a href="" class="navbar-brand">
+            <a href="/" class="navbar-brand">
             <i class="fa fa-thermometer icon-lg" id="logo"></i>
             <h1>Test Line Reservation</h1>
         </a>
@@ -35,8 +35,10 @@
                 <h2>Main Navigation</h2>
                 <ul>
                     <li><%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path %></li>
-                    <li><a href="home.html"><i class="fa fa-"></i> Teams</a></li>
                     <% if user_signed_in? %>
+                        <% if current_user.isAdmin? %>
+                            <li><a href="/admin/home"><i class="fa fa-user"></i> Administrator</a></li>
+                        <% end %>
                         <li><%= link_to '<i class="fa fa-user"></i> Logout'.html_safe, destroy_user_session_path, method: :delete %></li>
                     <% else %>
                         <li><a href="/users/sign_in"><i class="fa fa-user"></i> Login</a></li>

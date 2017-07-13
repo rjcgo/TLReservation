@@ -1,14 +1,28 @@
-<p id="notice"><%= notice %></p>
+<% if user_signed_in? %>
 
-<p>
-  <strong>Team:</strong>
-  <%= @team_testline.team_id %>
-</p>
+	<% if current_user.isAdmin? %>
+	
+		<p>
+		  <strong>Team:</strong>
+		  <%= @team_testline.team_id %>
+		</p>
 
-<p>
-  <strong>Testline:</strong>
-  <%= @team_testline.testline_id %>
-</p>
+		<p>
+		  <strong>Testline:</strong>
+		  <%= @team_testline.testline_id %>
+		</p>
 
-<%= link_to 'Edit', edit_team_testline_path(@team_testline) %> |
-<%= link_to 'Back', team_testlines_path %>
+		<%= link_to 'Edit', edit_team_testline_path(@team_testline) %>
+
+	<% else %>
+
+		<h1>Sorry, you need to be an admin to view this page.</h1>
+		<p>Please contact the administrator if you want to be one.</p>
+
+	<% end %>
+
+<% else %>
+
+	<h1>Sorry, you need to be logged-in to view this page.</h1>
+
+<% end %>

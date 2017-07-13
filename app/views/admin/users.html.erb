@@ -1,0 +1,35 @@
+<% if user_signed_in? %>
+
+    <% if current_user.isAdmin? %>
+
+    <br>
+    <h1>Users</h1>
+    <br>
+
+    <% if @users.empty? %>
+    	There are no users yet.
+    <% end %>
+
+    <tbody>
+    	<tr>
+            <td>Email</td>
+            <td>Administrator</td>
+        	<td></td>
+        </tr>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.email %></td>
+            <td><%= user.isAdmin %></td>
+            <td><%= link_to 'Make admin', user, method: :makeAdmin, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+    </tbody>
+
+    <% else %>
+    <h1>Sorry, you need to be an admin to view this page.</h1>
+    <p>Please contact the administrator if you want to be one.</p>
+    <% end %>
+
+<% else %>
+    <h1>Sorry, you need to be logged-in to view this page.</h1>
+<% end %>

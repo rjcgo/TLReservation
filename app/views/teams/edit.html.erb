@@ -1,6 +1,22 @@
-<h1>Editing Team</h1>
+<% if user_signed_in? %>
 
-<%= render 'form' %>
+	<% if current_user.isAdmin? %>
+	
+		<h1>Editing Team</h1>
 
-<%= link_to 'Show', @team %> |
-<%= link_to 'Back', teams_path %>
+		<%= render 'form' %>
+
+		<%= link_to 'Show', @team %>
+		
+	<% else %>
+
+		<h1>Sorry, you need to be an admin to view this page.</h1>
+		<p>Please contact the administrator if you want to be one.</p>
+
+	<% end %>
+
+<% else %>
+
+	<h1>Sorry, you need to be logged-in to view this page.</h1>
+
+<% end %>
