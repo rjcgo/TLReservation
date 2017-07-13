@@ -129,59 +129,7 @@
                         <p class="card-ellipsis"><i class="fa fa-ellipsis-h"></i></p>
                         <button type="button" class="card-btn">Reserve Now!</button>
                     </div>
-  <!-- <%= link_to 'New Testline', new_testline_path %> -->
-    <!-- <main class="wrapper"> -->
-      <!-- <section> -->
-        <!--  <% @testlines.each do |testline| %> 
-           <% if ( testline.reservations.count ==0) %>  -->
-            <!-- <div class="card"> -->
-               <!-- <div class="card-header bg-green">  -->
-                <!-- <i class="fa fa-check-circle-o icon-lg"></i> -->
-                <!-- <h2> -->
-                  <!-- <%= testline.name %> -->
-                <!-- </h2> -->
-                <!-- <p>Available</p> -->
-              <!-- </div> -->
-              <!-- <div class="card-content"> -->
-                <!-- <%= button_to "Use now!", testline, :class => "card-btn", :method => :get %>
-                  <%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' },:class => "card-btn", :method => :get %>
-                    <%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %> -->
-              <!-- </div> -->
-            <!-- </div> -->
-            <!-- <% else %> -->
-              <!-- <div class="card"> -->
-                <!-- <div class="card-header bg-red"> -->
-                  <!-- <i class="fa fa-times-circle-o icon-lg"></i> -->
-                  <!-- <h2> -->
-                    <!-- <%= testline.name %> -->
-                  <!-- </h2> -->
-                  <!-- <p>In Use</p> -->
-                <!-- </div> -->
-                <!-- <div class="card-content"> -->
-                  <!-- <% isFirst = true %>
-                    <% @reservations.each_with_index do |reserve, ind| %>
 
-                      <% if testline.id == reserve.testline_id  %>
-                        <% if isFirst %>
-                          <% isFirst = false %>
-                          <h1 style="color:red;">
-                          <%= reserve.team_name %></h1>
-                        <% else %>
-                        <h3><%= reserve.team_name %></h3>
-                        <% end %>
-                      <% end %>
-
-                    <% end %>
-                      <br/>
-                      <%= button_to "Reserve Now!", testline, :class => "card-btn", :method => :get %>
-                      <%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' },:class => "card-btn", :method => :get %>
-                      <%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %> -->
-
-                <!-- </div> -->
-               <!-- </div>  -->
-              <!-- <% end %>
-                <% end %> -->
-                  <!-- </div> -->
        </section> 
      </main> 
 
@@ -191,9 +139,3 @@
 </body>
 
 </html>
-
-<!-- <p id="notice">
-  <%= notice %>
-</p>
-
-<br> -->
