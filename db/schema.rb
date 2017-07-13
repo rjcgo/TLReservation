@@ -16,6 +16,13 @@ ActiveRecord::Schema.define(version: 20170713022837) do
 # Could not dump table "reservations" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
 
+  create_table "team_testlines", force: :cascade do |t|
+    t.integer  "team_id"
+    t.integer  "testline_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
