@@ -1,116 +1,98 @@
 <html>
 
-<head>
-  <title>index</title>
-  
-</head>
+	<head>
+		<title>index</title>
+	</head>
 
-<body>
-<% if user_signed_in? %>
-<% if current_user.isAdmin? %>
-  <%= link_to 'ADMIN STUFF', admin_home_path %>
-  <%= link_to 'New Testline', new_testline_path %>
-<% end %>
-<% end %>
-<br>
-    <span>
-        <i class="fa fa-th"></i>
-    </span>
-    <%= link_to 'New Testline', new_testline_path %>
-    <main class="wrapper">
-
-          <% if available %>
-        <section id="available">
-            <h2>Available</h2>
-            <div class="card-deck">
-            <% @testlines.each do |testline| %>
-
-              <% if ( testline.reservations.count ==0) %>
-
-                <div class="card">
-                    <div class="card-header bg-green">
-                        <i class="fa fa-check-circle-o fa-white icon-lg"></i>
-                        <h3><%= testline.name %></h3>
-                        <p>Available</p>
-                    </div>
-                    <div class="card-content">
-                    <%= button_to "Use now!", testline, :class => "card-btn", :method => :get %>
-
-                    <% if user_signed_in? %>
-                      <% if current_user.isAdmin? %>
-                      <%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' },:class => "card-btn", :method => :get %>
-                      <%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %>
-                      <% end %>
-                    <% end %>
-                    <br/>
-                    </div>
-                </div>
-
-               <% end %>
-
-            <% end %>
-
-            </div>
-
-        </section>
-          <% end %>
-        <section id="in-use">
-            <h2>In Use</h2>
-            <div class="card-deck">
-                
-            <% @testlines.each do |testline| %>
-              <% if ( testline.reservations.count !=0) %>
-                <div class="card">
-                    <div class="card-header bg-red">
-                        <i class="fa fa-times-circle-o fa-white icon-lg"></i>
-                        <h3><%= testline.name %></h3>
-                        <p>In Use</p>
-                    </div>
-                    <div class="card-content">
-                      <% userQueue = 1 %>
-
-                      <% @reservations.each_with_index do |reserve, index| %>
-
-                        <% if testline.id == reserve.testline_id  %>
-                          <% if userQueue==1 %>
-                            <% userQueue = 2 %>
-                            <h3 class="card-title"><%= reserve.team_name %><small class="badge badge-current">Current</small></h3>
-                            
-                          <% elsif userQueue==2 %>
-                            <p class="card-text"><%= reserve.team_name %><small class="badge badge-next">Next in Line</small></p>
-                            <% userQueue = 3 %>
-                          <% elsif userQueue==3 && index!= 4 %>
-                            <p class="card-text"><%= reserve.team_name %><small class="badge badge-pending">Pending</small></p>
-                          <% end %>
-                        <% end %>
-
-                    <% end %>
-                      <br/>
-                      <%= button_to "Reserve Now!", testline, :class => "card-btn", :method => :get %>
-
-                      <% if user_signed_in? %>
-                        <% if current_user.isAdmin? %>
-                          <%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'card-btn' %>
-                          <%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %>
-                        <% end %>
-                      <% end %>
-                      <p></p>
-                    </div>
-                </div>
-              <% end %>
-            <% end %>
-       </section> 
-     </main> 
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="assets/home.js"></script>
-</body>
-
+	<body>
+		<% if user_signed_in? && current_user.isAdmin? %>
+			<%= link_to 'ADMIN STUFF', admin_home_path %>
+			<%= link_to 'New Testline', new_testline_path %>
+		<% end %>
+		
+		<br>
+		
+		<span>
+			<i class="fa fa-th"></i>
+		</span>
+		<%= link_to 'New Testline', new_testline_path %>
+		<main class="wrapper">
+			<% if available %>
+				<section id="available">
+					<h2>Available</h2>
+					<div class="card-deck">
+						<% @testlines.each do |testline| %>
+							<% if ( testline.reservations.count ==0) %>
+								<div class="card">
+									<div class="card-header bg-green">
+										<i class="fa fa-check-circle-o fa-white icon-lg"></i>
+										<h3><%= testline.name %></h3>
+										<p>Available</p>
+									</div>
+									<div class="card-content">
+										<%= button_to "Use now!", testline, :class => "card-btn", :method => :get %>
+										<% if user_signed_in? && current_user.isAdmin? %>
+											<%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' },:class => "card-btn", :method => :get %>
+											<%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %>
+										<% end %>
+										<br/>
+									</div>
+								</div>
+							<% end %>
+						<% end %>
+					</div>
+				</section>
+			<% end %>
+			
+			<% if inUse %>
+				<section id="in-use">
+					<h2>In Use</h2>
+					<div class="card-deck">
+						<% @testlines.each do |testline| %>
+							<% if ( testline.reservations.count !=0) %>
+								<div class="card">
+									<div class="card-header bg-red">
+										<i class="fa fa-times-circle-o fa-white icon-lg"></i>
+										<h3><%= testline.name %></h3>
+										<p>In Use</p>
+									</div>
+									<div class="card-content">
+										<% userQueue = 1 %>
+										<% @reservations.each do |reserve| %>
+											<% if testline.id == reserve.testline_id  %>
+												<% if userQueue == 1 %>
+													<% userQueue = 2 %>
+													<h3 class="card-title"><%= reserve.team_name %><small class="badge badge-current">Current</small></h3>
+												<% elsif userQueue == 2 %>
+													<p class="card-text"><%= reserve.team_name %><small class="badge badge-next">Next in Line</small></p>
+													<% userQueue = 3 %>
+												<% elsif userQueue == 3 || userQueue == 4 %>
+													<p class="card-text"><%= reserve.team_name %><small class="badge badge-pending">Pending</small></p>
+												<% end %>
+											<% end %>
+										<% end %>
+										<br/>
+										<%= button_to "Reserve Now!", testline, :class => "card-btn", :method => :get %>
+										<% if user_signed_in? && current_user.isAdmin? %>
+											<%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'card-btn' %>
+											<%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %>
+										<% end %>
+										<p></p>
+									</div>
+								</div>
+							<% end %>
+						<% end %>
+					</div>
+				</section> 
+			<% end %>
+		</main> 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="assets/home.js"></script>
+	</body>
 </html>
 
 <!-- <p id="notice">
-  <%= notice %>
+<%= notice %>
 </p>
 
 <br> -->
