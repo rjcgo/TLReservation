@@ -15,35 +15,149 @@
 <body>
   
 
-  <!-- <%= link_to 'New Testline', new_testline_path %> -->
+    <nav id="main-nav">
+        <div class="wrapper">
+            <button type="button" id="burger-nav">
+                <span class="bar1"></span>
+                <span class="bar2"></span>
+                <span class="bar3"></span>
+            </button>
+            <a href="" class="navbar-brand">
+            <i class="fa fa-thermometer icon-lg" id="logo"></i>
+            <h1>Test Line Reservation</h1>
+        </a>
+            <div class="navbar-nav">
+                <h2>Main Navigation</h2>
+                <ul>
+                    <li><a href="home.html"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="home.html"><i class="fa fa-"></i> Teams</a></li>
+                    <li><a href="login.html"><i class="fa fa-user"></i> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <span>
+        <i class="fa fa-th"></i>
+    </span>
+
     <main class="wrapper">
-      <section>
-        <!-- <% @testlines.each do |testline| %>
-          <% if ( testline.reservations.count ==0) %> -->
-            <div class="card">
-              <div class="card-header bg-green">
-                <i class="fa fa-check-circle-o icon-lg"></i>
-                <h2>
+        <section id="available">
+            <h2>Available</h2>
+            <div class="card-deck">
+                <div class="card">
+                    <div class="card-header bg-green">
+                        <i class="fa fa-check-circle-o fa-white icon-lg"></i>
+                        <h3>Line #1</h3>
+                        <p>Available</p>
+                    </div>
+                    <div class="card-content">
+                        <button type="button" class="card-btn">Reserve Now!</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header bg-green">
+                        <i class="fa fa-check-circle-o fa-white icon-lg"></i>
+                        <h3>Line #2</h3>
+                        <p>Available</p>
+                    </div>
+                    <div class="card-content">
+                        <button type="button" class="card-btn">Reserve Now!</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="in-use">
+            <h2>In Use</h2>
+            <div class="card-deck">
+                <div class="card">
+                    <div class="card-header bg-red">
+                        <i class="fa fa-times-circle-o fa-white icon-lg"></i>
+                        <h3>Line #3</h3>
+                        <p>In Use</p>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Lorem Ipsum. <small class="badge badge-current">Current</small></h3>
+                        <p class="card-text">Nulla vitae libero, <small class="badge badge-next">Next in Line</small></p>
+                        <p class="card-text">Nulla vitae libero, <small class="badge badge-pending">Pending</small></p>
+                        <p class="card-text">Nulla vitae libero, <small class="badge badge-pending">Pending</small></p>
+                        <p class="card-ellipsis"><i class="fa fa-ellipsis-h"></i></p>
+                        <button type="button" class="card-btn">Reserve Now!</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header bg-red">
+                        <i class="fa fa-times-circle-o fa-white icon-lg"></i>
+                        <h3>Line #3</h3>
+                        <p>In Use</p>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Lorem Ipsum. <small class="badge badge-current">Current</small></h3>
+                        <p class="card-text">Nulla vitae libero, <small class="badge badge-next">Next in Line</small></p>
+                        <p class="card-text">Nulla vitae libero, <small class="badge badge-pending">Pending</small></p>
+                        <p class="card-text">Nulla vitae libero, <small class="badge badge-pending">Pending</small></p>
+                        <p class="card-ellipsis"><i class="fa fa-ellipsis-h"></i></p>
+                        <button type="button" class="card-btn">Reserve Now!</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header bg-red">
+                        <i class="fa fa-times-circle-o fa-white icon-lg"></i>
+                        <h3>Line #3</h3>
+                        <p>In Use</p>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Lorem Ipsum. <small class="badge badge-current">Current</small></h3>
+                        <p class="card-text">Nulla vitae libero, <small class="badge badge-next">Next in Line</small></p>
+                        <p class="card-text">Nulla vitae libero, <small class="badge badge-pending">Pending</small></p>
+                        <p class="card-text">Nulla vitae libero, <small class="badge badge-pending">Pending</small></p>
+                        <p class="card-ellipsis"><i class="fa fa-ellipsis-h"></i></p>
+                        <button type="button" class="card-btn">Reserve Now!</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header bg-red">
+                        <i class="fa fa-times-circle-o fa-white icon-lg"></i>
+                        <h3>Line #3</h3>
+                        <p>In Use</p>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Lorem Ipsum. <small class="badge badge-current">Current</small></h3>
+                        <p class="card-text">Nulla vitae libero, <small class="badge badge-next">Next in Line</small></p>
+                        <p class="card-text">Nulla vitae libero, <small class="badge badge-pending">Pending</small></p>
+                        <p class="card-text">Nulla vitae libero, <small class="badge badge-pending">Pending</small></p>
+                        <p class="card-ellipsis"><i class="fa fa-ellipsis-h"></i></p>
+                        <button type="button" class="card-btn">Reserve Now!</button>
+                    </div>
+  <!-- <%= link_to 'New Testline', new_testline_path %> -->
+    <!-- <main class="wrapper"> -->
+      <!-- <section> -->
+        <!--  <% @testlines.each do |testline| %> 
+           <% if ( testline.reservations.count ==0) %>  -->
+            <!-- <div class="card"> -->
+               <!-- <div class="card-header bg-green">  -->
+                <!-- <i class="fa fa-check-circle-o icon-lg"></i> -->
+                <!-- <h2> -->
                   <!-- <%= testline.name %> -->
-                </h2>
-                <p>Available</p>
-              </div>
-              <div class="card-content">
+                <!-- </h2> -->
+                <!-- <p>Available</p> -->
+              <!-- </div> -->
+              <!-- <div class="card-content"> -->
                 <!-- <%= button_to "Use now!", testline, :class => "card-btn", :method => :get %>
                   <%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' },:class => "card-btn", :method => :get %>
                     <%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %> -->
-              </div>
-            </div>
+              <!-- </div> -->
+            <!-- </div> -->
             <!-- <% else %> -->
-              <div class="card">
-                <div class="card-header bg-red">
-                  <i class="fa fa-times-circle-o icon-lg"></i>
-                  <h2>
+              <!-- <div class="card"> -->
+                <!-- <div class="card-header bg-red"> -->
+                  <!-- <i class="fa fa-times-circle-o icon-lg"></i> -->
+                  <!-- <h2> -->
                     <!-- <%= testline.name %> -->
-                  </h2>
-                  <p>In Use</p>
-                </div>
-                <div class="card-content">
+                  <!-- </h2> -->
+                  <!-- <p>In Use</p> -->
+                <!-- </div> -->
+                <!-- <div class="card-content"> -->
                   <!-- <% isFirst = true %>
                     <% @reservations.each_with_index do |reserve, ind| %>
 
@@ -63,13 +177,13 @@
                       <%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' },:class => "card-btn", :method => :get %>
                       <%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %> -->
 
-                </div>
-              </div>
+                <!-- </div> -->
+               <!-- </div>  -->
               <!-- <% end %>
                 <% end %> -->
-                  </div>
-      </section>
-    </main>
+                  <!-- </div> -->
+       </section> 
+     </main> 
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -78,8 +192,8 @@
 
 </html>
 
-<p id="notice">
+<!-- <p id="notice">
   <%= notice %>
 </p>
 
-<br>
+<br> -->

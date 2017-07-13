@@ -64,6 +64,27 @@ class TestlinesController < ApplicationController
     end
   end
 
+# def destroy
+#     @testline = Testline.find(params[:id])
+#     @testline.destroy!
+#     redirect_to root_path, :notice => "Deleted!!!!!!!!!!!"
+# end
+
+
+  # def destroy
+  #   @testline = Testline.find(params[:id])
+  
+  #   respond_to do |format|
+  #     if @testline.destroy
+  #       format.html { redirect_to testlines_url }
+  #       format.json { head :no_content }
+  #     else
+  #       format.html # do something here
+  #       format.json { head :no_content }
+  #     end
+  #   end
+  # end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_testline
