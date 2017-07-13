@@ -25,18 +25,23 @@ h4 {
 
 .wrapper {
     width: 96%;
-    max-width: 1199px;
+    max-width: 1400px;
     padding: 0 2%;
     margin: 0 auto;
 }
 
 
-/* ********************* Burger Nav **********************/
+/* ********************* Nav **********************/
 
-nav {
+#main-nav {
     background: #0275d8;
     padding: 10px;
     z-index: 1;
+}
+
+#sub-nav{
+    background: #f0f0f0;
+    padding: 10px;
 }
 
 
@@ -142,27 +147,38 @@ nav {
     background: #42A5F5;
 }
 
-
-/* ********************* Card **********************/
+/* ********************* Section **********************/
 
 section {
+    margin: 5% 0;
+    border-top: 1px solid #999;
+}
+
+section h2{
+    position: relative;
+    top: -15px;
+    width: 160px;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+    background: #333;
+    text-transform: uppercase;
+}
+
+/* ********************* Card-deck **********************/
+
+.card-deck {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 2%;
 }
-
-section::after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
 
 /* ********************* Card **********************/
 
 .card {
     flex: 1 0 80%;
+    display: flex;
+    flex-direction: column;
     margin: 5%;
     border-radius: 0.25em;
 }
@@ -179,15 +195,35 @@ section::after {
 }
 
 .card-content {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background: #fff;
     padding: 4%;
     border-bottom-left-radius: 0.25em;
     border-bottom-right-radius: 0.25em;
 }
 
+.card-title::after, 
+.card-text::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.card-title{
+    margin-bottom: 8px;
+}
+
 .card-text {
     color: #555;
     font-style: italic;
+    margin: 8px 0;
+}
+
+.card-ellipsis{
+    text-align: center;
 }
 
 .card-btn {
@@ -197,10 +233,36 @@ section::after {
     border: 1px solid #000;
     border-radius: 0.25em;
     padding: 8px 16px;
+    align-self: flex-end;
 }
 
 .card .card-btn:hover {
     background: #ccc;
+}
+
+
+/* ********************* Badges **********************/
+
+.badge{
+    float: right;
+    display: block;
+    background: #777;
+    padding: 4px 6px;
+    border-radius: 0.25em;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.badge.badge-current{
+    background: #0275d8;
+    font-size: 0.8em;
+}
+.badge.badge-next{
+    font-size: 0.6em;
+    background: #18a3fa;
+}
+.badge.badge-pending{
+    font-size: 0.6em;
 }
 
 
@@ -227,16 +289,12 @@ section::after {
 @media screen and (min-width: 320px) {}
 
 @media screen and (min-width: 576px) {
-    .card {
-        flex: 0 1 46%;
-        margin: 2%;
-    }
 }
 
 @media screen and (min-width: 768px) {
     .card {
-        flex: 0 1 31%;
-        margin: 1%;
+        flex: 0 1 46%;
+        margin: 2%;
     }
     #burger-nav {
         display: none;
@@ -268,7 +326,12 @@ section::after {
     }
 }
 
-@media screen and (min-width: 992px) {}
+@media screen and (min-width: 992px) {
+    .card {
+        flex: 0 1 31%;
+        margin: 1%;
+    }
+}
 
 @media screen and (min-width: 1200px) {
     .card {

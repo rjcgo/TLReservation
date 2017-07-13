@@ -6,26 +6,28 @@
     <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag "reserve" %>
-    <%= stylesheet_link_tag "home" %>
+    
+    
 
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <!-- font-awesome CSS-->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+    
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <!-- font-awesome CSS-->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
     crossorigin="anonymous">
+    <%= stylesheet_link_tag "home" %>
   
 
 </head>
 <body>
-<nav>
+<nav id="main-nav">
         <div class="wrapper">
             <button type="button" id="burger-nav">
                 <span class="bar1"></span>
                 <span class="bar2"></span>
                 <span class="bar3"></span>
             </button>
-            <a href="" class="navbar-brand">
+            <a href="/" class="navbar-brand">
             <i class="fa fa-thermometer icon-lg" id="logo"></i>
             <h1>Test Line Reservation</h1>
         </a>
@@ -34,6 +36,9 @@
                 <ul>
                     <li><%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path %></li>
                     <% if user_signed_in? %>
+                        <% if current_user.isAdmin? %>
+                            <li><a href="/admin/home"><i class="fa fa-user"></i> Administrator</a></li>
+                        <% end %>
                         <li><%= link_to '<i class="fa fa-user"></i> Logout'.html_safe, destroy_user_session_path, method: :delete %></li>
                     <% else %>
                         <li><a href="/users/sign_in"><i class="fa fa-user"></i> Login</a></li>

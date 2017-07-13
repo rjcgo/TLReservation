@@ -2,8 +2,11 @@
     <p> <%= f.label :name,'Title: '%>
         <%= f.text_field :name %>
     </p>
-    <p> <%= f.label :team_name,'Team Name/Username: '%>
-        <%= f.text_field :team_name %>
+    <p> <%= f.label :email,'Email: '%>
+        <%= f.email_field :email, :value => current_user.email, :readonly => true%>
+    </p>
+    <p> <%= f.label :team_name,'Team Name'%>
+        <%= f.collection_select :team_name, Team.order(:name),:id,:name, include_blank: true %>
     </p>
     <p> <%= f.label :description,'Description: '%>
         <%= f.text_area :description %>

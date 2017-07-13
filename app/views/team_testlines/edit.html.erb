@@ -2,9 +2,11 @@
 
 	<% if current_user.isAdmin? %>
 	
-		<h1>New Testline</h1>
+		<h1>Editing Team Testline</h1>
 
 		<%= render 'form' %>
+
+		<%= link_to 'Show', @team_testline %>
 
 	<% else %>
 

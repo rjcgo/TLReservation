@@ -2,9 +2,17 @@
 
 	<% if current_user.isAdmin? %>
 	
-		<h1>New Testline</h1>
+		<p>
+		  <strong>Team:</strong>
+		  <%= @team_testline.team_id %>
+		</p>
 
-		<%= render 'form' %>
+		<p>
+		  <strong>Testline:</strong>
+		  <%= @team_testline.testline_id %>
+		</p>
+
+		<%= link_to 'Edit', edit_team_testline_path(@team_testline) %>
 
 	<% else %>
 

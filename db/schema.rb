@@ -11,19 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170712100641) do
+ActiveRecord::Schema.define(version: 20170713060108) do
 
-  create_table "reservations", force: :cascade do |t|
-    t.string   "name"
-    t.boolean  "released",    default: false
+# Could not dump table "reservations" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
+
+  create_table "team_testlines", force: :cascade do |t|
+    t.integer  "team_id"
     t.integer  "testline_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.string   "team_name"
-    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
-
-  add_index "reservations", ["testline_id"], name: "index_reservations_on_testline_id"
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
@@ -33,8 +31,11 @@ ActiveRecord::Schema.define(version: 20170712100641) do
 
   create_table "testlines", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "ip_address"
+    t.integer  "port_number"
+    t.boolean  "isMaintenance", default: false
   end
 
   create_table "users", force: :cascade do |t|

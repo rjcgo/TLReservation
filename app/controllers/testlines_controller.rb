@@ -6,6 +6,7 @@ class TestlinesController < ApplicationController
   def index
     @testlines = Testline.all
     @reservations = Reservation.all
+    @teams = Team.all
     
   end
 
@@ -30,7 +31,7 @@ class TestlinesController < ApplicationController
 
     respond_to do |format|
       if @testline.save
-        format.html { redirect_to @testline, notice: 'Testline was successfully created.' }
+        format.html { redirect_to admin_testlines_path, notice: 'Testline was successfully created.' }
         format.json { render :show, status: :created, location: @testline }
       else
         format.html { render :new }
@@ -58,10 +59,31 @@ class TestlinesController < ApplicationController
   def destroy
     @testline.destroy
     respond_to do |format|
-      format.html { redirect_to testlines_url, notice: 'Testline was successfully destroyed.' }
+      format.html { redirect_to admin_testlines_path, notice: 'Testline was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
+
+# def destroy
+#     @testline = Testline.find(params[:id])
+#     @testline.destroy!
+#     redirect_to root_path, :notice => "Deleted!!!!!!!!!!!"
+# end
+
+
+  # def destroy
+  #   @testline = Testline.find(params[:id])
+  
+  #   respond_to do |format|
+  #     if @testline.destroy
+  #       format.html { redirect_to testlines_url }
+  #       format.json { head :no_content }
+  #     else
+  #       format.html # do something here
+  #       format.json { head :no_content }
+  #     end
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -71,6 +93,6 @@ class TestlinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def testline_params
-      params.require(:testline).permit(:name)
+      params.require(:testline).permit(:name, :ip_address, :port_number)
     end
 end

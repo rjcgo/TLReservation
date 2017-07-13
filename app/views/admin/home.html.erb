@@ -1,12 +1,23 @@
 <% if user_signed_in? %>
 
-	<% if current_user.isAdmin? %>
-	<h1>Welcome, admin!</h1>
+<% if current_user.isAdmin? %>
 
-	<% else %>
-	<h1>Sorry, you need to be an admin to view this page.</h1>
-	<p>Please contact the administrator if you want to be one.</p>
-	<% end %>
+<br>
+<h1>Welcome, admin!</h1>
+<br>
+
+<h2>
+<a href="/admin/teams">Manage teams</a><br>
+<a href="/admin/testlines">Manage testlines</a><br>
+<a href="/admin/associations">Manage associations</a><br>
+<a href="/admin/users">Manage users</a><br>
+</h2>
+
+
+<% else %>
+<h1>Sorry, you need to be an admin to view this page.</h1>
+<p>Please contact the administrator if you want to be one.</p>
+<% end %>
 
 <% else %>
 <h1>Sorry, you need to be an admin to view this page.</h1>
