@@ -9,7 +9,7 @@
 
 <body>
   <% if current_user.isAdmin? %>
-    <%= link_to 'ADMIN STUFF', 'admin/home' %>
+    <%= link_to 'ADMIN STUFF', admin_home_path %>
   <% end %>
 
   <%= link_to 'New Testline', new_testline_path %>
