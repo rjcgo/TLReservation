@@ -13,7 +13,6 @@
           <%@testlines.each do |testline| %>
             <% if team_testline.testline_id == testline.id %>
               <%= testline.name %>
-
               <%= link_to 'Show', team_testline %>
               <%= link_to 'Edit', edit_team_testline_path(team_testline) %>
               <%= link_to 'Destroy', team_testline, method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -2,77 +2,86 @@
 
 <head>
   <title>index</title>
-
   
-
 </head>
 
 <body>
-      <% if user_signed_in? %>
-        <% if current_user.isAdmin? %>
-          <%= link_to 'ADMIN STUFF', admin_home_path %>
-          <%= link_to 'New Testline', new_testline_path %>
-        <% end %>
-      <% end %>
-    <br>
+<% if user_signed_in? %>
+<% if current_user.isAdmin? %>
+  <%= link_to 'ADMIN STUFF', admin_home_path %>
+  <%= link_to 'New Testline', new_testline_path %>
+<% end %>
+<% end %>
+<br>
+    <span>
+        <i class="fa fa-th"></i>
+    </span>
+    <%= link_to 'New Testline', new_testline_path %>
     <main class="wrapper">
-      <section>
-        <% @testlines.each do |testline| %>
-          <% if ( testline.reservations.count ==0) %>
-            <div class="card">
-              <div class="card-header bg-green">
-                <i class="fa fa-check-circle-o icon-lg"></i>
-                <h2>
-                  <%= testline.name %>
-                </h2>
-                <p>Available</p>
-              </div>
-              <div class="card-content">
-                <%= button_to "Use now!", testline, :class => "card-btn", :method => :get %>
-                  <% if user_signed_in? %>
-                      <% if current_user.isAdmin? %>
-                      <%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' },:class => "card-btn", :method => :get %>
-                    <%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %>
-                      <% end %>
-                  <% end %>
-              </div>
+        <section id="available">
+            <h2>Available</h2>
+            <div class="card-deck">
+                
+            <% @testlines.each do |testline| %>
+              <% if ( testline.reservations.count ==0) %>
+
+                <div class="card">
+                    <div class="card-header bg-green">
+                        <i class="fa fa-check-circle-o fa-white icon-lg"></i>
+                        <h3><%= testline.name %></h3>
+                        <p>Available</p>
+                    </div>
+                    <div class="card-content">
+                    <%= button_to "Use now!", testline, :class => "card-btn", :method => :get %>
+                    <%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' },:class => "card-btn", :method => :get %>
+                    </div>
+                </div>
+               <% end %>
+            <% end %>
             </div>
-            <% else %>
-              <div class="card">
-                <div class="card-header bg-red">
-                  <i class="fa fa-times-circle-o icon-lg"></i>
-                  <h2>
-                    <%= testline.name %>
-                  </h2>
-                  <p>In Use</p>
-                </div>
-                <div class="card-content">
-                  <% isFirst = true %>
-                    <% @reservations.each_with_index do |reserve, ind| %>
+        </section>
+        <section id="in-use">
+            <h2>In Use</h2>
+            <div class="card-deck">
+                
+            <% @testlines.each do |testline| %>
+              <% if ( testline.reservations.count !=0) %>
+                <div class="card">
+                    <div class="card-header bg-red">
+                        <i class="fa fa-times-circle-o fa-white icon-lg"></i>
+                        <h3><%= testline.name %></h3>
+                        <p>In Use</p>
+                    </div>
+                    <div class="card-content">
+                      <% userQueue = 1 %>
 
-                      <% if testline.id == reserve.testline_id  %>
-                        <% if isFirst %>
-                          <% isFirst = false %>
-                          <h1 style="color:red;">
-                          <%= reserve.team_name %></h1>
-                        <% else %>
-                        <h3><%= reserve.team_name %></h3>
+                      <% @reservations.each_with_index do |reserve, index| %>
+
+                        <% if testline.id == reserve.testline_id  %>
+                          <% if userQueue==1 %>
+                            <% userQueue = 2 %>
+                            <h3 class="card-title"><%= reserve.team_name %><small class="badge badge-current">Current</small></h3>
+                            
+                          <% elsif userQueue==2 %>
+                            <p class="card-text"><%= reserve.team_name %><small class="badge badge-next">Next in Line</small></p>
+                            <% userQueue = 3 %>
+                          <% elsif userQueue==3 && index!= 4 %>
+                            <p class="card-text"><%= reserve.team_name %><small class="badge badge-pending">Pending</small></p>
+                          <% end %>
                         <% end %>
+
                       <% end %>
+                        <br/>
+                        <%= button_to "Reserve Now!", testline, :class => "card-btn", :method => :get %>
+                        <%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' },:class => "card-btn", :method => :get %>
+                        <%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %>
 
-                    <% end %>
-                      <br/>
-                      <%= button_to "Reserve Now!", testline, :class => "card-btn", :method => :get %>
-                      <%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' },:class => "card-btn", :method => :get %>
-                      <%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %>
-
+                    </div>
                 </div>
-              </div>
               <% end %>
-                <% end %>
-                  </div>
-      </section>
-    </main>
+            <% end %>
+       </section> 
+     </main> 
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -81,8 +90,8 @@
 
 </html>
 
-<p id="notice">
+<!-- <p id="notice">
   <%= notice %>
 </p>
 
-<br>
+<br> -->
