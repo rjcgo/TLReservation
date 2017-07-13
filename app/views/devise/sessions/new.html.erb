@@ -3,30 +3,21 @@
 		<div class="card"></div>
 		<div class="card" style="top: -5px;">
 			<h1 class="title">Log-in</h1>
-			<form>
-				<div class="input-container field">
-					<%= f.label :email %><br />
-					<%= f.email_field :email, autofocus: true %>
-					<div class="bar"></div>
-				</div>
-				<div class="input-container field">
-					<%= f.label :password %><br />
-					<%= f.password_field :password, autocomplete: "off" %>
-					<div class="bar"></div>
-				</div>
+			<div class="input-container">
+				<%= f.email_field :email%>
+				<%= f.label :email %>
+				<div class="bar"></div>
+			</div>
+			<div class="input-container">
+				<%= f.password_field :password %>
+				<%= f.label :password %>
+				<div class="bar"></div>
+			</div>
 
-				<% if devise_mapping.rememberable? -%>
-					<div class="field">
-						<%= f.check_box :remember_me %>
-						<%= f.label :remember_me %>
-					</div>
-				<% end -%>
-
-				<div class="button-container">
-					<button><span>Log in</span></button>
-				</div>
-				<div class="footer"></div>
-			</form>
+			<div class="button-container">
+				<button><span>Log in</span></button>
+			</div>
+			<div class="footer"></div>
 		</div>
 	</div>
 <% end %>
