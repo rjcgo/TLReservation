@@ -1,6 +1,9 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-	<div class="container">
+	<div class="container" style="top: 20px">
 		<div class="card"></div>
+		<div class="card alt">
+			<div class="toggle"></div>
+		</div>
 		<div class="card" style="top: -5px;">
 			<h1 class="title">Log-in</h1>
 			<div class="input-container">
@@ -423,7 +426,6 @@
 	    font-size: 58px;
 	    line-height: 140px;
 	    text-align: center;
-	    cursor: pointer;
 	}
 
 	.card.alt .toggle:before {
