@@ -1,0 +1,232 @@
+/* Body */
+
+body {
+    background: #333;
+    font-family: Raleway, sans-serif;
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+}
+
+.icon-lg {
+    font-size: 4.5em;
+}
+
+.wrapper {
+    width: 96%;
+    max-width: 1400px;
+    padding: 0 2%;
+    margin: 0 auto;
+}
+
+
+/*  Nav */
+
+#main-nav {
+    background: #0275d8;
+    padding: 10px;
+    z-index: 1;
+}
+
+
+/* Burger Nav */
+
+#burger-nav {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    float: right;
+    margin-top: 5px;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+    display: block;
+    width: 32px;
+    height: 4px;
+    background: #fff;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+
+/* Rotate first bar */
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-6px, 6px);
+    transform: rotate(-45deg) translate(-6px, 6px);
+}
+
+
+/* Fade out the second bar */
+
+.change .bar2 {
+    opacity: 0;
+}
+
+
+/* Rotate last bar */
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+}
+
+
+/*  navbar brand */
+
+.navbar-brand {
+    color: #fff;
+    text-decoration: none;
+}
+
+#logo {
+    float: left;
+    margin-right: 10px;
+    line-height: 1.2em;
+    font-size: 2.5em;
+}
+
+.navbar-brand h1 {
+    float: left;
+    width: 160px;
+    font-size: 1.2em;
+}
+
+.navbar-brand::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+/*  navbar nav */
+
+.navbar-nav {
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.navbar-nav.open {
+    height: 80px;
+    margin-top: 8px;
+}
+
+.navbar-nav h2 {
+    display: none;
+}
+
+.navbar-nav a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    font-size: 1em;
+}
+
+.navbar-nav a:hover {
+    background: #42A5F5;
+}
+
+
+/* ********************* Sub-nav **********************/
+
+#sub-nav {
+    position: relative;
+    top: 20px;
+}
+
+#sub-nav .dropbtn {
+    position: absolute;
+    right: 15px;
+    background: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 1.5em;
+    display: block;
+    margin: 0 auto;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+#sub-nav .dropdown-triangle {
+    display: none;
+    position: absolute;
+    top: 32px;
+    right: 114px;
+    border-color: transparent;
+    border-bottom-color: #fff;
+    border-width: 0 8.5px 8.5px;
+    border-style: dashed dashed solid;
+    height: 0;
+    width: 0;
+}
+
+#sub-nav .dropdown-content {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: absolute;
+    top: 40px;
+    right: 1px;
+    margin: auto;
+    width: 265px;
+    padding: 26px;
+    z-index: 1;
+    background: #f9f9f9;
+    max-height: 555px;
+    overflow-y: auto;
+}
+
+#sub-nav .dropdown-content.show {
+    display: flex;
+}
+
+#sub-nav .dropdown-triangle.show {
+    display: block;
+}
+
+#sub-nav .dropdown-content li {
+    width: 33%;
+    display: flex;
+}
+
+#sub-nav .dropdown-content a {
+    flex: 1 1 0;
+    display: block;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    margin: 8px 2px;
+    padding: 4px 0;
+    font-size: 14px;
+    overflow: hidden;
+    overflow-wrap: break-word;
+}
+
+#sub-nav .dropdown-content a:hover {
+    border: 1px solid #ccc;
+}
+
+#sub-nav .team-brand {
+    background: url(pokeballs.png) no-repeat center;
+    background-size: 250px 200px;
+    display: block;
+    margin: 5px auto;
+    width: 48px;
+    height: 50px;
+}

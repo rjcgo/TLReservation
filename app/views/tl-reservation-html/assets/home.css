@@ -39,11 +39,6 @@ h4 {
     z-index: 1;
 }
 
-#sub-nav{
-    background: #f0f0f0;
-    padding: 10px;
-}
-
 
 /* ********************* Burger Nav **********************/
 
@@ -147,14 +142,113 @@ h4 {
     background: #42A5F5;
 }
 
+
+/* ********************* Sub-nav **********************/
+
+#sub-nav {
+    position: relative;
+    top: 20px;
+}
+
+#sub-nav .dropbtn {
+    position: absolute;
+    right: 15px;
+    background: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 1.5em;
+    display: block;
+    margin: 0 auto;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+#sub-nav .dropdown-triangle {
+    display: none;
+    position: absolute;
+    top: 32px;
+    right: 114px;
+    border-color: transparent;
+    border-bottom-color: #fff;
+    border-width: 0 8.5px 8.5px;
+    border-style: dashed dashed solid;
+    height: 0;
+    width: 0;
+}
+
+#sub-nav .dropdown-content {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: absolute;
+    top: 40px;
+    right: 1px;
+    margin: auto;
+    width: 265px;
+    padding: 26px;
+    z-index: 1;
+    background: #f9f9f9;
+    max-height: 555px;
+    overflow-y: auto;
+}
+
+#sub-nav .dropdown-content.show {
+    display: flex;
+}
+
+#sub-nav .dropdown-triangle.show {
+    display: block;
+}
+
+#sub-nav .dropdown-content li {
+    width: 33%;
+    display: flex;
+}
+
+#sub-nav .dropdown-content a {
+    flex: 1 1 0;
+    display: block;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    margin: 8px 2px;
+    padding: 4px 0;
+    font-size: 14px;
+    overflow: hidden;
+    overflow-wrap: break-word;
+}
+
+#sub-nav .dropdown-content a:hover {
+    border: 1px solid #ccc;
+}
+
+#sub-nav .team-brand {
+    background: url(pokeballs.png) no-repeat center;
+    background-size: 250px 200px;
+    display: block;
+    margin: 5px auto;
+    width: 48px;
+    height: 50px;
+}
+
+
+/********************** Main **********************/
+
+main h1 {
+    margin: 20px 0;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+
 /* ********************* Section **********************/
 
 section {
-    margin: 5% 0;
+    margin: 2% 0;
     border-top: 1px solid #999;
 }
 
-section h2{
+section h2 {
     position: relative;
     top: -15px;
     width: 160px;
@@ -165,6 +259,7 @@ section h2{
     text-transform: uppercase;
 }
 
+
 /* ********************* Card-deck **********************/
 
 .card-deck {
@@ -172,6 +267,7 @@ section h2{
     flex-wrap: wrap;
     justify-content: center;
 }
+
 
 /* ********************* Card **********************/
 
@@ -192,6 +288,7 @@ section h2{
     text-align: center;
     border-top-left-radius: 0.25em;
     border-top-right-radius: 0.25em;
+    position: relative;
 }
 
 .card-content {
@@ -205,14 +302,14 @@ section h2{
     border-bottom-right-radius: 0.25em;
 }
 
-.card-title::after, 
-.card-text::after{
+.card-title::after,
+.card-text::after {
     content: "";
     display: block;
     clear: both;
 }
 
-.card-title{
+.card-title {
     margin-bottom: 8px;
 }
 
@@ -222,7 +319,7 @@ section h2{
     margin: 8px 0;
 }
 
-.card-ellipsis{
+.card-ellipsis {
     text-align: center;
 }
 
@@ -241,9 +338,52 @@ section h2{
 }
 
 
+/* ********************* Card Dropdown **********************/
+
+.card .dropdown {
+    position: relative;
+    top: -10px;
+}
+
+.card .dropbtn {
+    position: absolute;
+    right: 0;
+    top: -5px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 2.5em;
+}
+
+.card .dropdown-content {
+    display: none;
+    background: #f9f9f9;
+    position: absolute;
+    top: 48px;
+    right: 0;
+    min-width: 110px;
+    z-index: 1;
+    box-shadow: 0 2px 4px #888;
+}
+
+.card .dropdown-content.show {
+    display: block;
+}
+
+.card .dropdown-content a {
+    color: #000;
+    display: block;
+    text-decoration: none;
+    padding: 8px 0;
+}
+
+.card .dropdown-content a:hover {
+    background: #f1f1f1;
+}
+
+
 /* ********************* Badges **********************/
 
-.badge{
+.badge {
     float: right;
     display: block;
     background: #777;
@@ -253,15 +393,17 @@ section h2{
     text-transform: uppercase;
 }
 
-.badge.badge-current{
+.badge.badge-current {
     background: #0275d8;
     font-size: 0.8em;
 }
-.badge.badge-next{
+
+.badge.badge-next {
     font-size: 0.6em;
     background: #18a3fa;
 }
-.badge.badge-pending{
+
+.badge.badge-pending {
     font-size: 0.6em;
 }
 
@@ -284,12 +426,94 @@ section h2{
 }
 
 
+/* ********************* Poke-balls **********************/
+
+.poke-ball {
+    background-position: 0 0 !important;
+}
+
+.premier-ball {
+    background-position: -50px 0 !important;
+}
+
+.great-ball {
+    background-position: -98px 0 !important;
+}
+
+.ultra-ball {
+    background-position: -148px 0 !important;
+}
+
+.master-ball {
+    background-position: -198px 0 !important;
+}
+
+.safari-ball {
+    background-position: 0 -50px !important;
+}
+
+.level-ball {
+    background-position: -50px -50px !important;
+}
+
+.lure-ball {
+    background-position: -100px -50px !important;
+}
+
+.moon-ball {
+    background-position: -150px -50px !important;
+}
+
+.friend-ball {
+    background-position: -200px -50px !important;
+}
+
+.love-ball {
+    background-position: 0 -100px !important;
+}
+
+.heavy-ball {
+    background-position: -50px -100px !important;
+}
+
+.fast-ball {
+    background-position: -100px -100px !important;
+}
+
+.sports-ball {
+    background-position: -150px -100px !important;
+}
+
+.repeat-ball {
+    background-position: -200px -100px !important;
+}
+
+.timer-ball {
+    background-position: 0 -150px !important;
+}
+
+.nest-ball {
+    background-position: -50px -150px !important;
+}
+
+.nest-ball {
+    background-position: -100px -150px !important;
+}
+
+.dive-ball {
+    background-position: -150px -150px !important;
+}
+
+.luxury-ball {
+    background-position: -200px -150px !important;
+}
+
+
 /* ********************* Media Queries **********************/
 
 @media screen and (min-width: 320px) {}
 
-@media screen and (min-width: 576px) {
-}
+@media screen and (min-width: 576px) {}
 
 @media screen and (min-width: 768px) {
     .card {
