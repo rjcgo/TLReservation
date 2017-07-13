@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170713031045) do
+ActiveRecord::Schema.define(version: 20170713060108) do
 
 # Could not dump table "reservations" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
@@ -31,8 +31,11 @@ ActiveRecord::Schema.define(version: 20170713031045) do
 
   create_table "testlines", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "ip_address"
+    t.integer  "port_number"
+    t.boolean  "isMaintenance", default: false
   end
 
   create_table "users", force: :cascade do |t|
