@@ -6,19 +6,34 @@
 		<br>
 
 		<% if @teams.blank? %>
-			There are no teams yet.
+			<div class="wrapper-greeting">
+				<div class="alert alert-success alert-dismissible" role="alert">
+				  	<h4 class="alert-heading">There are no teams yet.</h4>
+				</div>
+			</div>
 
 		<% else %>
+			<main class="wrapper">
+				<div class="card-deck">
+					<% @teams.each do |team| %>
+						<div class="card">
+							<div class="card-header bg-green">
+								<i class="fa fa-group fa-white icon-lg"></i>
+								<h3><%= team.name %></h3>
+							</div>
 
-			<% @teams.each do |team| %>
-
-			    <%= team.name %>
-			    <%= link_to 'Show', team %>
-			    <%= link_to 'Edit', edit_team_path(team) %>
-			    <%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %>
-
-			<% end %>
-
+							<div class="card-content">
+								<div class="card-title-admin">
+								<%= button_to 'Show', team , :class => "card-btn-admin"%>
+								<%= button_to 'Edit', edit_team_path(team) , :class => "card-btn-admin"%>
+								<%= button_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?'} , :class => "card-btn-admin" %>
+								</div>
+							</div>
+						</div>
+						<p></p>
+					<% end %>
+				</div>
+			</main>	
 		<% end %>
 
 	<br>
@@ -38,3 +53,133 @@
 	<h1>Sorry, you need to be logged-in to view this page.</h1>
 
 <% end %>
+
+
+<style type="text/css">
+	.wrapper-greeting{
+		padding: 10px;
+	}
+
+	.card-deck {
+	    display: flex;
+	    flex-wrap: wrap;
+	    justify-content: center;
+	}
+
+	.card .card-btn-admin:hover {
+   		background: #ccc;
+	}
+
+
+	.card-content-admin{
+		flex: 1 1 auto;
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: space-between;
+	    padding: 10px;
+	    background: #fff;
+	    border-bottom-left-radius: 0.25em;
+	    border-bottom-right-radius: 0.25em;
+	}
+
+	.card-title-admin{
+		padding: 10px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+	}
+
+	.card-btn-admin {
+	    width: 100%;
+	    color: #000;
+	    background: #fff;
+	    border: 1px solid #000;
+	    border-radius: 0.25em;
+	    padding: 8px 16px;
+	    align-self: flex-end;
+	    margin-top: 5px;
+	}
+
+	.alert {
+	  padding: 15px;
+	  margin-bottom: 20px;
+	  border: 1px solid transparent;
+	  border-radius: 4px;
+	}
+	.alert h4 {
+	  margin-top: 0;
+	  color: inherit;
+	}
+	.alert .alert-link {
+	  font-weight: bold;
+	}
+	.alert > p,
+	.alert > ul {
+	  margin-bottom: 0;
+	}
+	.alert > p + p {
+	  margin-top: 5px;
+	}
+	.alert-dismissable,
+	.alert-dismissible {
+	  padding-right: 35px;
+	}
+	.alert-dismissable .close,
+	.alert-dismissible .close {
+	  position: relative;
+	  top: -2px;
+	  right: -21px;
+	  color: inherit;
+	}
+	.alert-success {
+	  color: #3c763d;
+	  background-color: #dff0d8;
+	  border-color: #d6e9c6;
+	}
+	.alert-success hr {
+	  border-top-color: #c9e2b3;
+	}
+	.alert-success .alert-link {
+	  color: #2b542c;
+	}
+	.alert-info {
+	  color: #31708f;
+	  background-color: #d9edf7;
+	  border-color: #bce8f1;
+	}
+	.alert-info hr {
+	  border-top-color: #a6e1ec;
+	}
+	.alert-info .alert-link {
+	  color: #245269;
+	}
+	.alert-warning {
+	  color: #8a6d3b;
+	  background-color: #fcf8e3;
+	  border-color: #faebcc;
+	}
+	.alert-warning hr {
+	  border-top-color: #f7e1b5;
+	}
+	.alert-warning .alert-link {
+	  color: #66512c;
+	}
+	.alert-danger {
+	  color: #a94442;
+	  background-color: #f2dede;
+	  border-color: #ebccd1;
+	}
+	.alert-danger hr {
+	  border-top-color: #e4b9c0;
+	}
+	.alert-danger .alert-link {
+	  color: #843534;
+	}
+	button.close {
+	  -webkit-appearance: none;
+	  padding: 0;
+	  cursor: pointer;
+	  background: transparent;
+	  border: 0;
+	}
+</style>
