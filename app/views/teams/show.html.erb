@@ -1,19 +1,15 @@
 <% if user_signed_in? %>
 
-	<% if current_user.isAdmin? %>
-	
-		<p>
-		  <strong>Name:</strong>
-		  <%= @team.name %>
-		</p>
+	<h1><%= @team.name %>'s Testlines</h1>
+	<br>
 
-		<%= link_to 'Edit', edit_team_path(@team) %>
-
+	<% if @mytestlines.empty? %>
+		No testlines associated with this team yet.
 	<% else %>
-
-		<h1>Sorry, you need to be an admin to view this page.</h1>
-		<p>Please contact the administrator if you want to be one.</p>
-
+		<% @mytestlines.each do |tl| %>
+			<%= tl.name %><br>
+			<%= tl.ip_address %><br>
+		<% end %>
 	<% end %>
 
 <% else %>
