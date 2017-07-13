@@ -31,7 +31,7 @@
                 <%= button_to "Use now!", testline, :class => "card-btn", :method => :get %>
                   <% if user_signed_in? %>
                       <% if current_user.isAdmin? %>
-                      <%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' },:class => "card-btn", :method => :get %>
+                      <%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'card-btn' %>
                     <%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %>
                       <% end %>
                   <% end %>
@@ -63,7 +63,7 @@
                     <% end %>
                       <br/>
                       <%= button_to "Reserve Now!", testline, :class => "card-btn", :method => :get %>
-                      <%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' },:class => "card-btn", :method => :get %>
+                      <%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'card-btn' %>
                       <%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %>
 
                 </div>
