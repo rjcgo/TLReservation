@@ -20,32 +20,30 @@
 
 </head>
 <body>
-<nav id="main-nav">
-<div class="wrapper">
-    <button type="button" id="burger-nav">
-        <span class="bar1"></span>
-        <span class="bar2"></span>
-        <span class="bar3"></span>
-    </button>
-    <a href="" class="navbar-brand">
-    <i class="fa fa-thermometer icon-lg" id="logo"></i>
-    <h1>Test Line Reservation</h1>
-</a>
-    <div class="navbar-nav">
-        <h2>Main Navigation</h2>
-        <ul>
-            <li><%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path %></li>
-            <li><a href="home.html"><i class="fa fa-"></i> Teams</a></li>
-            <% if user_signed_in? %>
-                <li><%= link_to('<i class="fa fa-user"></i> Logout'.html_safe, destroy_user_session_path, method: :delete) %></li>
-            <% else %>
-                <li><a href=""><i class="fa fa-user"></i> Login</a></li>
-            <% end %>
-            
-        </ul>
-    </div>
-</div>
-</nav>
+<nav>
+        <div class="wrapper">
+            <button type="button" id="burger-nav">
+                <span class="bar1"></span>
+                <span class="bar2"></span>
+                <span class="bar3"></span>
+            </button>
+            <a href="" class="navbar-brand">
+            <i class="fa fa-thermometer icon-lg" id="logo"></i>
+            <h1>Test Line Reservation</h1>
+        </a>
+            <div class="navbar-nav">
+                <h2>Main Navigation</h2>
+                <ul>
+                    <li><%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path %></li>
+                    <% if user_signed_in? %>
+                        <li><%= link_to '<i class="fa fa-user"></i> Logout'.html_safe, destroy_user_session_path, method: :delete %></li>
+                    <% else %>
+                        <li><a href="/users/sign_in"><i class="fa fa-user"></i> Login</a></li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+    </nav>
 <%= yield %>
 
 </body>

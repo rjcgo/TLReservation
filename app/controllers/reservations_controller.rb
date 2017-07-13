@@ -1,4 +1,5 @@
 class ReservationsController < ApplicationController
+    before_action :authenticate_user!, except: [:index]
     def create
         @testline = Testline.find(params[:testline_id])
         @reservation = @testline.reservations.create(params[:reservation].permit(:name, :released, :team_name, :description))

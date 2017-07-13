@@ -1,6 +1,6 @@
 class TestlinesController < ApplicationController
   before_action :set_testline, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index]
   # GET /testlines
   # GET /testlines.json
   def index
