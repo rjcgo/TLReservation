@@ -24,4 +24,11 @@ class AdminController < ApplicationController
   def users
     @users = User.all
   end
+
+  def makeAdmin(u)
+    u.isAdmin = true;
+    u.save
+    redirect_to admin_users_path
+  end
+
 end

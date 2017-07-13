@@ -1,6 +1,8 @@
 
 <br/><h2>Test title: <%= reservation.name %></h2>
-<h2>Team/User: <%= reservation.email %></h2>
-<h2>Team/User: <%= reservation.team_name %></h2>
+<h2>User: <%= reservation.email %></h2>
+<h2>Team: <%= reservation.team_name %></h2>
 <h2>Description: <%= reservation.description %></h2>
-<p><%= link_to 'Release',[reservation.testline,reservation], method: :delete, data:{confirm: 'Release?'} %> </p> 
+<% if current_user.email == reservation.email %>
+	<p><%= link_to 'Release',[reservation.testline,reservation], method: :delete, data:{confirm: 'Release?'} %> </p> 
+<% end %>

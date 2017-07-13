@@ -14,13 +14,19 @@
     	<tr>
             <td>Email</td>
             <td>Administrator</td>
-        	<td></td>
+        	<td></td><br><br>
         </tr>
         <% @users.each do |user| %>
           <tr>
             <td><%= user.email %></td>
-            <td><%= user.isAdmin %></td>
-            <td><%= link_to 'Make admin', user, method: :makeAdmin, data: { confirm: 'Are you sure?' } %></td>
+            <td>
+                <% if user.isAdmin? %>
+                    Administrator
+                <% else %>
+                    <%= link_to 'Make admin', admin_makeAdmin_path(user), data: { confirm: 'Are you sure?' } %>
+                <% end %>
+            </td>
+            <br>
           </tr>
         <% end %>
     </tbody>
