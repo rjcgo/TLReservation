@@ -5,17 +5,9 @@
 	</head>
 
 	<body>
-		<% if user_signed_in? && current_user.isAdmin? %>
-			<%= link_to 'ADMIN STUFF', admin_home_path %>
-			<%= link_to 'New Testline', new_testline_path %>
-		<% end %>
 		
 		<br>
 		
-		<span>
-			<i class="fa fa-th"></i>
-		</span>
-		<%= link_to 'New Testline', new_testline_path %>
 		<main class="wrapper">
 			<% if available %>
 				<section id="available">
