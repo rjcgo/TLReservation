@@ -25,9 +25,10 @@ class AdminController < ApplicationController
     @users = User.all
   end
 
-  def makeAdmin(u)
-    u.isAdmin = true;
-    u.save
+  def makeAdmin
+    @user = User.find(params[:format])
+    @user.isAdmin = true;
+    @user.save
     redirect_to admin_users_path
   end
 

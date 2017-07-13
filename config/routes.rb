@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   root 'testlines#index'
+  post 'admin/makeAdmin'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
