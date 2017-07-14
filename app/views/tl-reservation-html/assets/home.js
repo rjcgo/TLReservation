@@ -29,24 +29,4 @@ $(document).ready(function () {
         }
     });
 
-    var testlinescount = 5;
-
-    for (var i = 1; i < testlinescount; i++) {
-        (function (i) {
-            var btnSelector = ".dropdown:eq(" + i + ") .dropbtn";
-            var drpSelector = ".dropdown:eq(" + i + ") .dropdown-content";
-
-            $(btnSelector).on("click", function (event) {
-                if (!$(drpSelector).hasClass("show")) {
-                    $(drpSelector).addClass("show");
-                    $("*:not(" + drpSelector + ")").removeClass("show");
-                } else {
-                    $(drpSelector).removeClass("show");
-                    $(".dropdown-triangle").removeClass("show");
-                }
-
-            });
-
-        })(i);
-    }
 });

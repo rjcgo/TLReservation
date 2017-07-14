@@ -15,7 +15,6 @@ $(document).ready(function () {
         event.preventDefault();
         $(".sidenav").removeClass("toggle");
     });
-    openReservation(event, 'milo');
 });
 
 

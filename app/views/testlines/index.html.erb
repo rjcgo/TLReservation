@@ -1,3 +1,22 @@
+<div id="sub-nav" class="wrapper">
+	<h1>Team Name</h1>
+	<div class="dropdown">
+		<button class="dropbtn">
+			<i class="fa fa-th fa-white"></i>
+			Teams
+		</button>
+		<div class="dropdown-triangle"></div>
+		<ul class="dropdown-content">
+			<% ball = pokelist %>
+			<% @teams.each_with_index do |team, index| %>
+				<li>
+					<a href=""><%= content_tag :span, '', :class => ball[index % 9] %> <%= team.name %></a>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+</div>
+
 <main class="wrapper">
 	<% if available %>
 		<section id="available">
@@ -38,12 +57,11 @@
 						<% end %>
 					<% end %>
 
-					<% if ( testline.reservations.count ==0) %>
+					<% if ( testline.reservations.count ==0) && !testline.isMaintenance? %>
 						<div class="card">
 							<div class="card-header bg-green">
 								<i class="fa fa-check-circle-o fa-white icon-lg"></i>
 								<h3><%= testline.name %></h3>
-								<p>Available</p>
 							</div>
 							<div class="card-content">
 								<% if user_signed_in? %>
@@ -101,12 +119,11 @@
 						<% end %>
 					<% end %>
 
-					<% if ( testline.reservations.count !=0) %>
+					<% if ( testline.reservations.count !=0) && !testline.isMaintenance? %>
 						<div class="card">
 							<div class="card-header bg-red">
 								<i class="fa fa-times-circle-o fa-white icon-lg"></i>
 								<h3><%= testline.name %></h3>
-								<p>In Use</p>
 							</div>
 							<div class="card-content">
 								<% userQueue = 1 %>
@@ -140,12 +157,62 @@
 			</div>
 		</section> 
 	<% end %>
+	<% if maintenance %>
+		<section id="maintenance">
+			<h2>Under Maintenance</h2>
+			<div class="card-deck">
+				<% @testlines.each do |testline| %>
+					<% if testline.isMaintenance? %>
+						<div class="card">
+							<div class="card-header bg-yellow">
+								<i class="fa fa-exclamation-triangle fa-white icon-lg"></i>
+								<h3><%= testline.name %></h3>
+							</div>
+							<div class="card-content">
+							</div>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+		</section> 
+	<% end %>
 </main> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="assets/home.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 
+	$(document).ready(function () {
+
+	    $("#burger-nav").on("click", function (event) {
+
+	        $("#burger-nav").toggleClass("change");
+	        $(".navbar-nav").toggleClass("open");
+	    });
+
+	    $(document).click(function () {
+	        $(".dropdown-content").removeClass("show");
+	        $(".dropdown-triangle").removeClass("show");
+	    });
+
+	    $(".dropbtn").click(function (e) {
+	        e.stopPropagation();
+	    });
+
+	    $(".dropdown-content").click(function (e) {
+	        e.stopPropagation();
+	    });
+
+	    $(".dropdown:eq(0) .dropbtn").on("click", function (event) {
+	        if (!$(".dropdown:eq(0) .dropdown-content").hasClass("show")) {
+	            $(".dropdown:eq(0) .dropdown-triangle").addClass("show");
+	            $(".dropdown:eq(0) .dropdown-content").addClass("show");
+	        } else {
+	            $(".dropdown-content").removeClass("show");
+	            $(".dropdown-triangle").removeClass("show");
+	        }
+	    });
+
+	});
 	function activate_modal(id) {
 		var s = document.getElementById(id);
 	    s.style.display = "block";
