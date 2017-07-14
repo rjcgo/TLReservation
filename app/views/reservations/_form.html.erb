@@ -1,29 +1,17 @@
 <div class="container reservation-form">  
 	<%= form_for([@testline,@testline.reservations.build], :html => {:class => "reserve"}) do |f| %>
 		<h3><%= @testline.name %></h3>
-
-
-		<% 
-			h = Array.new 
-			Team.order(:name).each do |t|
-				h << [t, !TeamTestline.where(:team_id => t.id, :testline_id => @testline.id).present?]
-			end
-		%>	
+		
 		<fieldset>
 			<%= f.text_field :name, :placeholder => "Title", :tabindex => "1", :required => "required" %>
 		</fieldset>
 		
 		<fieldset>
-			<%= f.email_field :email, :value => current_user.email, :tabindex => "2", :required => "required", :readonly => true%>
+			<%= f.email_field :email, :value => current_user.email, :tabindex => "2", :disabled => true %>
 		</fieldset>
 		
 		<fieldset>
-			<%= f.select(:team_name) do %>
-				<% h.each do |c| -%>
-					<%= content_tag(:option, c.first.name, value: c.first.id, :disabled => c.last) %>
-				<% end %>
-			<% end %>
-
+			<%= f.text_field :team_name, :tabindex => "3", :disabled => true, :placeholder => "Team" %>
 		</fieldset>
 		
 		<fieldset>
