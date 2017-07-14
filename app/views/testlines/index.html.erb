@@ -1,3 +1,43 @@
+<div id="sub-nav" class="wrapper">
+	<h1>Team Apple</h1>
+	<div class="dropdown">
+		<button class="dropbtn">
+			<i class="fa fa-th fa-white"></i>
+			Teams
+		</button>
+		<div class="dropdown-triangle"></div>
+		<ul class="dropdown-content">
+			<li>
+				<a href=""><span class="team-brand poke-ball"></span>Apple</a>
+			</li>
+			<li>
+				<a href=""><span class="team-brand premier-ball"></span>Bag</a>
+			</li>
+			<li>
+				<a href=""><span class="team-brand great-ball"></span>Cat</a>
+			</li>
+			<li>
+				<a href=""><span class="team-brand ultra-ball"></span>Dog</a>
+			</li>
+			<li>
+				<a href=""><span class="team-brand master-ball"></span>Elephant</a>
+			</li>
+			<li>
+				<a href=""><span class="team-brand safari-ball"></span>Fish</a>
+			</li>
+			<li>
+				<a href=""><span class="team-brand level-ball"></span>Giraffe</a>
+			</li>
+			<li>
+				<a href=""><span class="team-brand lure-ball"></span>Hippopotamus</a>
+			</li>
+			<li>
+				<a href=""><span class="team-brand moon-ball"></span>I am Mr. Bean</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
 <main class="wrapper">
 	<% if available %>
 		<section id="available">
@@ -163,6 +203,38 @@
 
 <script>
 
+	$(document).ready(function () {
+
+	    $("#burger-nav").on("click", function (event) {
+
+	        $("#burger-nav").toggleClass("change");
+	        $(".navbar-nav").toggleClass("open");
+	    });
+
+	    $(document).click(function () {
+	        $(".dropdown-content").removeClass("show");
+	        $(".dropdown-triangle").removeClass("show");
+	    });
+
+	    $(".dropbtn").click(function (e) {
+	        e.stopPropagation();
+	    });
+
+	    $(".dropdown-content").click(function (e) {
+	        e.stopPropagation();
+	    });
+
+	    $(".dropdown:eq(0) .dropbtn").on("click", function (event) {
+	        if (!$(".dropdown:eq(0) .dropdown-content").hasClass("show")) {
+	            $(".dropdown:eq(0) .dropdown-triangle").addClass("show");
+	            $(".dropdown:eq(0) .dropdown-content").addClass("show");
+	        } else {
+	            $(".dropdown-content").removeClass("show");
+	            $(".dropdown-triangle").removeClass("show");
+	        }
+	    });
+
+	});
 	function activate_modal(id) {
 		var s = document.getElementById(id);
 	    s.style.display = "block";
