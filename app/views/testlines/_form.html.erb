@@ -1,14 +1,20 @@
 <%= form_for(@testline) do |f| %>
-  <% if @testline.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@testline.errors.count, "error") %> prohibited this testline from being saved:</h2>
 
-      <ul>
-      <% @testline.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <% if @testline.errors.any? %>
+
+    <div class="wrapper-greeting">
+      <div class="alert alert-danger alert-dismissible" role="alert" id="notice">
+        <h4 class="alert-heading">
+          <b><%= pluralize(@testline.errors.count, "error") %> prohibited this testline from being saved:</b>
+        </h4>
+          <ul>
+            <% @testline.errors.full_messages.each do |message| %>
+              <li>&emsp;<%= message %></li>
+            <% end %>
+          </ul>
+      </div>
     </div>
+
   <% end %>
 
   <div class="field">

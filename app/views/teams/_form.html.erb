@@ -1,14 +1,21 @@
 <%= form_for(@team) do |f| %>
-  <% if @team.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</h2>
 
-      <ul>
-      <% @team.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+
+  <% if @team.errors.any? %>
+
+    <div class="wrapper-greeting">
+      <div class="alert alert-danger alert-dismissible" role="alert" id="notice">
+        <h4 class="alert-heading">
+          <b><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</b>
+        </h4>
+          <ul>
+            <% @team.errors.full_messages.each do |message| %>
+              <li>&emsp;<%= message %></li>
+            <% end %>
+          </ul>
+      </div>
     </div>
+
   <% end %>
 
   <div class="field">
@@ -18,4 +25,6 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
+
 <% end %>

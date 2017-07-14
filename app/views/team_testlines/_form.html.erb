@@ -1,15 +1,21 @@
 <div class="container reservation-form">
 <%= form_for(@team_testline) do |f| %>
-  <% if @team_testline.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@team_testline.errors.count, "error") %> prohibited this team_testline from being saved:</h2>
 
-      <ul>
-      <% @team_testline.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+  <% if @team_testline.errors.any? %>
+
+  <div class="wrapper-greeting">
+      <div class="alert alert-danger alert-dismissible" role="alert" id="notice">
+          <h4 class="alert-heading">
+            <%= pluralize(@team_testline.errors.count, "error") %> prohibited this association from being saved:
+          </h4>
+          <ul>
+            <% @team_testline.errors.full_messages.each do |message| %>
+              <li>&emsp;<%= message %></li>
+            <% end %>
+          </ul>
+      </div>
+  </div>
+
   <% end %>
 
   <div class="field">
