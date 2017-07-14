@@ -466,7 +466,7 @@ article {
     background: #fff;
     border: 1px solid #000;
     border-radius: 0.25em;
-    padding: 8px 16px;
+    padding: 0.25em 0.5em;
     align-self: flex-end;
 }
 
@@ -714,73 +714,29 @@ article {
 }
 
 
-/************** Reservations View ***************/
-/* Style the tab */
-div.tab {
-    float: left;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
-    width: 30%;
-    height: 300px;
-}
-
-/* Style the buttons inside the tab */
-div.tab button {
-    display: block;
-    background-color: inherit;
-    color: black;
-    padding: 22px 16px;
-    width: 100%;
-    border: none;
-    outline: none;
-    text-align: left;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-/* Change background color of buttons on hover */
-div.tab button:hover {
-    background-color: #ddd;
-}
-
-/* Create an active/current "tab button" class */
-div.tab button.active {
-    background-color: #ccc;
-}
-
-/* Style the tab content */
-.tabcontent {
-    float: left;
-    padding: 0px 12px;
-    border: 1px solid #ccc;
-    width: 70%;
-    border-left: none;
-    height: 300px;
-    background-color: #f1f1f1;
 /* Reservation Form */
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
-
-.reservation-form, .reservation-form * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-font-smoothing: antialiased;
-  -o-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+.reservation-form,
+.reservation-form * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
     border-radius: 25px;
 }
 
-
 .container {
-  max-width: 400px;
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
 }
 
 .reserve input[type="text"],
@@ -789,36 +745,36 @@ div.tab button.active {
 .reserve input[type="url"],
 .reserve textarea,
 .reserve button[type="submit"] {
-  font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+    font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
 }
 
 .reserve {
-  background: #F9F9F9;
-  padding: 25px;
-  margin: 150px 0;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    background: #F9F9F9;
+    padding: 25px;
+    margin: 150px 0;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .reserve h3 {
-  display: block;
-  font-size: 30px;
-  font-weight: 300;
-  margin-bottom: 10px;
+    display: block;
+    font-size: 30px;
+    font-weight: 300;
+    margin-bottom: 10px;
 }
 
 .reserve h4 {
-  margin: 5px 0 15px;
-  display: block;
-  font-size: 13px;
-  font-weight: 400;
+    margin: 5px 0 15px;
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
 }
 
 fieldset {
-  border: medium none !important;
-  margin: 0 0 10px;
-  min-width: 100%;
-  padding: 0;
-  width: 100%;
+    border: medium none !important;
+    margin: 0 0 10px;
+    min-width: 100%;
+    padding: 0;
+    width: 100%;
 }
 
 .reserve input[type="text"],
@@ -830,14 +786,14 @@ fieldset {
 .reserve button,
 .reserve textarea {
     border-radius: 0;
-  width: 100%;
-  border: 1px solid #ccc;
-  background: #FFF;
-  margin: 0 0 5px;
-  padding: 10px;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
-  font-weight: 100;
-  font-size: 12px;
+    width: 100%;
+    border: 1px solid #ccc;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    font-size: 12px;
 }
 
 .reserve input[type="text"]:hover,
@@ -845,62 +801,62 @@ fieldset {
 .reserve input[type="tel"]:hover,
 .reserve input[type="url"]:hover,
 .reserve textarea:hover {
-  -webkit-transition: border-color 0.3s ease-in-out;
-  -moz-transition: border-color 0.3s ease-in-out;
-  transition: border-color 0.3s ease-in-out;
-  border: 1px solid #aaa;
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #aaa;
 }
 
 .reserve textarea {
-  height: 100px;
-  max-width: 100%;
-  resize: none;
+    height: 100px;
+    max-width: 100%;
+    resize: none;
 }
 
 .reserve button[type="submit"] {
-  cursor: pointer;
-  width: 100%;
-  border: none;
-  background: #4CAF50;
-  color: #FFF;
-  margin: 0 0 5px;
-  padding: 10px;
-  font-size: 15px;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: #4CAF50;
+    color: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+    font-size: 15px;
 }
 
 .reserve button[type="submit"]:hover {
-  background: #43A047;
-  -webkit-transition: background 0.3s ease-in-out;
-  -moz-transition: background 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out;
+    background: #43A047;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .reserve button[type="submit"]:active {
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .copyright {
-  text-align: center;
+    text-align: center;
 }
 
 .reserve input:focus,
 .reserve textarea:focus {
-  outline: 0;
-  border: 1px solid #aaa;
+    outline: 0;
+    border: 1px solid #aaa;
 }
 
 ::-webkit-input-placeholder {
-  color: #888;
+    color: #888;
 }
 
 :-moz-placeholder {
-  color: #888;
+    color: #888;
 }
 
 ::-moz-placeholder {
-  color: #888;
+    color: #888;
 }
 
 :-ms-input-placeholder {
-  color: #888;
+    color: #888;
 }
