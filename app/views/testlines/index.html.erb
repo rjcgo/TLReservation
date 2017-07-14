@@ -1,5 +1,5 @@
 <div id="sub-nav" class="wrapper">
-	<h1>Team Apple</h1>
+	<h1>Team Name</h1>
 	<div class="dropdown">
 		<button class="dropbtn">
 			<i class="fa fa-th fa-white"></i>
@@ -7,33 +7,12 @@
 		</button>
 		<div class="dropdown-triangle"></div>
 		<ul class="dropdown-content">
-			<li>
-				<a href=""><span class="team-brand poke-ball"></span>Apple</a>
-			</li>
-			<li>
-				<a href=""><span class="team-brand premier-ball"></span>Bag</a>
-			</li>
-			<li>
-				<a href=""><span class="team-brand great-ball"></span>Cat</a>
-			</li>
-			<li>
-				<a href=""><span class="team-brand ultra-ball"></span>Dog</a>
-			</li>
-			<li>
-				<a href=""><span class="team-brand master-ball"></span>Elephant</a>
-			</li>
-			<li>
-				<a href=""><span class="team-brand safari-ball"></span>Fish</a>
-			</li>
-			<li>
-				<a href=""><span class="team-brand level-ball"></span>Giraffe</a>
-			</li>
-			<li>
-				<a href=""><span class="team-brand lure-ball"></span>Hippopotamus</a>
-			</li>
-			<li>
-				<a href=""><span class="team-brand moon-ball"></span>I am Mr. Bean</a>
-			</li>
+			<% ball = pokelist %>
+			<% @teams.each_with_index do |team, index| %>
+				<li>
+					<a href=""><%= content_tag :span, '', :class => ball[index % 9] %> <%= team.name %></a>
+				</li>
+			<% end %>
 		</ul>
 	</div>
 </div>
@@ -198,9 +177,8 @@
 		</section> 
 	<% end %>
 </main> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="assets/home.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 
 	$(document).ready(function () {
