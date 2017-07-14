@@ -19,22 +19,30 @@ $(document).ready(function () {
         e.stopPropagation();
     });
 
+    $(".dropdown:eq(0) .dropbtn").on("click", function (event) {
+        if (!$(".dropdown:eq(0) .dropdown-content").hasClass("show")) {
+            $(".dropdown:eq(0) .dropdown-triangle").addClass("show");
+            $(".dropdown:eq(0) .dropdown-content").addClass("show");
+        } else {
+            $(".dropdown-content").removeClass("show");
+            $(".dropdown-triangle").removeClass("show");
+        }
+    });
+
     var testlinescount = 5;
 
-    for (var i = 0; i < testlinescount; i++) {
+    for (var i = 1; i < testlinescount; i++) {
         (function (i) {
             var btnSelector = ".dropdown:eq(" + i + ") .dropbtn";
             var drpSelector = ".dropdown:eq(" + i + ") .dropdown-content";
-            var triSelector = ".dropdown:eq(" + i + ") .dropdown-triangle";
 
             $(btnSelector).on("click", function (event) {
                 if (!$(drpSelector).hasClass("show")) {
                     $(drpSelector).addClass("show");
-                    $(triSelector).addClass("show");
-                    $("*:not(" + drpSelector, triSelector +")").removeClass("show");
+                    $("*:not(" + drpSelector + ")").removeClass("show");
                 } else {
                     $(drpSelector).removeClass("show");
-                    $(triSelector).removeClass("show");
+                    $(".dropdown-triangle").removeClass("show");
                 }
 
             });

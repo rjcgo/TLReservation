@@ -146,28 +146,26 @@ h4 {
 /* ********************* Sub-nav **********************/
 
 #sub-nav {
-    position: relative;
-    top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#sub-nav h1 {
+    margin: 20px 0;
+    color: #fff;
+    text-transform: uppercase;
 }
 
 #sub-nav .dropbtn {
-    position: absolute;
-    right: 15px;
-    background: transparent;
-    border: 0;
-    color: #fff;
     font-size: 1.5em;
-    display: block;
-    margin: 0 auto;
-    text-transform: uppercase;
-    font-weight: 300;
 }
 
 #sub-nav .dropdown-triangle {
     display: none;
     position: absolute;
     top: 32px;
-    right: 114px;
+    right: 100px;
     border-color: transparent;
     border-bottom-color: #fff;
     border-width: 0 8.5px 8.5px;
@@ -177,18 +175,11 @@ h4 {
 }
 
 #sub-nav .dropdown-content {
-    display: none;
     flex-wrap: wrap;
     justify-content: center;
-    position: absolute;
-    top: 40px;
-    right: 1px;
-    margin: auto;
     width: 265px;
     padding: 26px;
-    z-index: 1;
-    background: #f9f9f9;
-    max-height: 555px;
+    max-height: 370px;
     overflow-y: auto;
 }
 
@@ -206,23 +197,17 @@ h4 {
 }
 
 #sub-nav .dropdown-content a {
-    flex: 1 1 0;
-    display: block;
-    color: #000;
-    text-decoration: none;
-    text-align: center;
-    margin: 8px 2px;
-    padding: 4px 0;
-    font-size: 14px;
-    overflow: hidden;
-    overflow-wrap: break-word;
+    flex: 1 1 auto;
 }
 
 #sub-nav .dropdown-content a:hover {
     border: 1px solid #ccc;
 }
 
-#sub-nav .team-brand {
+
+/* ********************* Team-brand **********************/
+
+.team-brand {
     background: url(pokeballs.png) no-repeat center;
     background-size: 250px 200px;
     display: block;
@@ -232,12 +217,86 @@ h4 {
 }
 
 
-/********************** Main **********************/
+/* ********************* Poke-balls **********************/
 
-main h1 {
-    margin: 20px 0;
-    color: #fff;
-    text-transform: uppercase;
+.team-brand.poke-ball {
+    background-position: 0 0 !important;
+}
+
+.team-brand.premier-ball {
+    background-position: -50px 0 !important;
+}
+
+.team-brand.great-ball {
+    background-position: -98px 0 !important;
+}
+
+.team-brand.ultra-ball {
+    background-position: -148px 0 !important;
+}
+
+.team-brand.master-ball {
+    background-position: -198px 0 !important;
+}
+
+.team-brand.safari-ball {
+    background-position: 0 -50px !important;
+}
+
+.team-brand.level-ball {
+    background-position: -50px -50px !important;
+}
+
+.team-brand.lure-ball {
+    background-position: -100px -50px !important;
+}
+
+.team-brand.moon-ball {
+    background-position: -150px -50px !important;
+}
+
+.team-brand.friend-ball {
+    background-position: -200px -50px !important;
+}
+
+.team-brand.love-ball {
+    background-position: 0 -100px !important;
+}
+
+.team-brand.heavy-ball {
+    background-position: -50px -100px !important;
+}
+
+.team-brand.fast-ball {
+    background-position: -100px -100px !important;
+}
+
+.team-brand.sports-ball {
+    background-position: -150px -100px !important;
+}
+
+.team-brand.repeat-ball {
+    background-position: -200px -100px !important;
+}
+
+.team-brand.timer-ball {
+    background-position: 0 -150px !important;
+}
+
+.team-brand.nest-ball {
+    background-position: -50px -150px !important;
+}
+
+.team-brand.nest-ball {
+    background-position: -100px -150px !important;
+}
+
+.team-brand.dive-ball {
+    background-position: -150px -150px !important;
+}
+
+.team-brand.luxury-ball {
+    background-position: -200px -150px !important;
 }
 
 
@@ -251,7 +310,7 @@ section {
 section h2 {
     position: relative;
     top: -15px;
-    width: 160px;
+    width: 200px;
     margin: 0 auto;
     text-align: center;
     color: #fff;
@@ -282,9 +341,7 @@ section h2 {
 .card-header {
     display: block;
     color: #fff;
-    text-decoration: none;
-    padding: 20px 10px;
-    box-sizing: border-box;
+    padding: 4%;
     text-align: center;
     border-top-left-radius: 0.25em;
     border-top-right-radius: 0.25em;
@@ -340,44 +397,60 @@ section h2 {
 
 /* ********************* Card Dropdown **********************/
 
-.card .dropdown {
-    position: relative;
-    top: -10px;
-}
-
 .card .dropbtn {
+    font-size: 2em;
     position: absolute;
     right: 0;
-    top: -5px;
-    padding: 10px 16px;
-    cursor: pointer;
-    font-size: 2.5em;
 }
 
 .card .dropdown-content {
-    display: none;
-    background: #f9f9f9;
-    position: absolute;
-    top: 48px;
-    right: 0;
     min-width: 110px;
-    z-index: 1;
-    box-shadow: 0 2px 4px #888;
 }
 
 .card .dropdown-content.show {
     display: block;
 }
 
-.card .dropdown-content a {
+.card .dropdown-content a:hover {
+    background: #ccc;
+}
+
+
+/* ********************* Dropdown **********************/
+
+.dropdown {
+    position: relative;
+}
+
+.dropbtn {
+    background: transparent;
+    border: 0;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    background: #f9f9f9;
+    position: absolute;
+    top: 40px;
+    right: 1px;
+    z-index: 1;
+    box-shadow: 0 2px 4px #555;
+}
+
+.dropdown-content a {
     color: #000;
     display: block;
     text-decoration: none;
+    text-align: center;
     padding: 8px 0;
-}
-
-.card .dropdown-content a:hover {
-    background: #f1f1f1;
+    margin: 8px 2px;
+    font-size: 14px;
+    overflow: hidden;
+    overflow-wrap: break-word;
 }
 
 
@@ -425,87 +498,8 @@ section h2 {
     background: #a94442;
 }
 
-
-/* ********************* Poke-balls **********************/
-
-.poke-ball {
-    background-position: 0 0 !important;
-}
-
-.premier-ball {
-    background-position: -50px 0 !important;
-}
-
-.great-ball {
-    background-position: -98px 0 !important;
-}
-
-.ultra-ball {
-    background-position: -148px 0 !important;
-}
-
-.master-ball {
-    background-position: -198px 0 !important;
-}
-
-.safari-ball {
-    background-position: 0 -50px !important;
-}
-
-.level-ball {
-    background-position: -50px -50px !important;
-}
-
-.lure-ball {
-    background-position: -100px -50px !important;
-}
-
-.moon-ball {
-    background-position: -150px -50px !important;
-}
-
-.friend-ball {
-    background-position: -200px -50px !important;
-}
-
-.love-ball {
-    background-position: 0 -100px !important;
-}
-
-.heavy-ball {
-    background-position: -50px -100px !important;
-}
-
-.fast-ball {
-    background-position: -100px -100px !important;
-}
-
-.sports-ball {
-    background-position: -150px -100px !important;
-}
-
-.repeat-ball {
-    background-position: -200px -100px !important;
-}
-
-.timer-ball {
-    background-position: 0 -150px !important;
-}
-
-.nest-ball {
-    background-position: -50px -150px !important;
-}
-
-.nest-ball {
-    background-position: -100px -150px !important;
-}
-
-.dive-ball {
-    background-position: -150px -150px !important;
-}
-
-.luxury-ball {
-    background-position: -200px -150px !important;
+.bg-yellow {
+    background: #f0ad4e;
 }
 
 
