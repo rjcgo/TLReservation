@@ -14,10 +14,10 @@
 		
 				<section id="testlines" class="tabcontent">
 
-					<h1 id="testlines-label">Testlines</h1>
+					<h2 id="testlines-label"><i class="fa fa-server sidenav-toggle"></i> Testlines</h2>
 
-					<h1 id="add-testline"><i class="fa fa-plus fa-white"></i><%= link_to ' New Testline', new_testline_path, :class=> "new-testline-link" %></h1>
-					
+					<h2 id="add-testline"><i class="fa fa-plus fa-white"></i><%= link_to ' New Testline', new_testline_path, :class=> "new-testline-link" %></h2>
+
 					<% if @testlines.empty? %>
 						<div class="wrappergreeting-">
 							<div class="alert alert-success alert-dismissible" role="alert">
