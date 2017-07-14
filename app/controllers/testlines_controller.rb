@@ -57,6 +57,20 @@ class TestlinesController < ApplicationController
   # DELETE /testlines/1
   # DELETE /testlines/1.json
   def destroy
+
+    # Delete associations of all teams with this testline
+    @myassociations = TeamTestline.where(testline_id: params[:id])
+    @myassociations.each do |a|
+      a.delete
+    end
+
+    # Delete all reservations associated with this testline
+    @myreservations = Reservation.where(testline_id: params[:id])
+    @myreservations.each do |r|
+      r.delete
+    end
+
+    # Delete the testline
     @testline.destroy
     respond_to do |format|
       format.html { redirect_to admin_testlines_path, notice: 'Testline was successfully destroyed.' }

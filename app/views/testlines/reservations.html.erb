@@ -1,29 +1,118 @@
+<html>
 
-<div class="tab">
-    <% @testlines.each do |testline| %>
-    <button class="tablinks" onclick="openCity(event, '<%= testline.id %>')"> <%= testline.name %></button>
-<% end %>
 
-</div>
+<body>
 
-<ul>
-    <% @testlines.each do |testline| %>
-        <div id="<%= testline.id %>" class="tabcontent">
-        <% @reservations.each do |reserve| %>
-        
-            <% if testline.id == reserve.testline_id  %>
 
-                    <h3 class="title">Title: <%=reserve.name%></h3>
-                    <p class="subtitle">Team: <%=reserve.team_name%></p>
-                    <p class="subtitle">Email: <%=reserve.email%></p>
-                    <p class="description">Description: <%=reserve.description%></p>
-                    <a href=""><i class="fa fa-pencil-square-o"></i> Edit</a>
-                    <% if current_user.email == reserve.email %>
-                        <%= link_to 'Release',[reserve.testline,reserve],  method: :delete, data:{confirm: 'Release?'}, :class=>"danger" %>
-                    <% end %>
-            <% end %>        
-        
-        <% end %>
-        </div>
-    <% end %>
-</ul>
+    <main class="wrapper">
+        <article>
+            <aside class="sidenav">
+                <a href="" class="closebtn">
+                    <i class="fa fa-times"></i>
+                </a>
+                <a href="javascript:void(0)" class="tablinks active" onclick="openReservation(event, 'milo')">
+                    <i class="fa fa-thermometer"></i>
+                    Line #1
+                </a>
+                <a href="javascript:void(0)" class="tablinks" onclick="openReservation(event, 'latte')">
+                    <i class="fa fa-thermometer"></i>
+                    Line #2
+                </a>
+                <a href="javascript:void(0)" class="tablinks" onclick="openReservation(event, 'choco')">
+                    <i class="fa fa-thermometer"></i>
+                    Line #3
+                </a>
+            </aside>
+            <section id="milo" class="tabcontent">
+                <h2>
+                    <i class="fa fa-navicon sidenav-toggle"></i> Milo
+                </h2>
+                <ul>
+                    <li class="list-item">
+                        <h3 class="title">Lorem Ipsum</h3>
+                        <p class="subtitle">Team #1</p>
+                        <p class="description">Nulla vitae libero, a pharetra augue. Integer posuere erat a ante venenatis condimentum velit dapibus.</p>
+                        <a href=""><i class="fa fa-pencil-square-o"></i> Edit</a>
+                        <a href="" class="text-danger"><i class="fa fa-times"></i> Release</a>
+                    </li>
+                    <li class="list-item">
+                        <h3 class="title">Lorem Ipsum</h3>
+                        <p class="subtitle">Team #1</p>
+                        <p class="description">Nulla vitae libero, a pharetra augue. Integer posuere erat a ante venenatis condimentum velit dapibus.</p>
+                        <a href=""><i class="fa fa-pencil-square-o"></i> Edit</a>
+                        <a href="" class="text-danger"><i class="fa fa-times"></i> Release</a>
+                    </li>
+                    <li class="list-item">
+                        <h3 class="title">Lorem Ipsum</h3>
+                        <p class="subtitle">Team #1</p>
+                        <p class="description">Nulla vitae libero, a pharetra augue. Integer posuere erat a ante venenatis condimentum velit dapibus.</p>
+                        <a href=""><i class="fa fa-pencil-square-o"></i> Edit</a>
+                        <a href="" class="text-danger"><i class="fa fa-times"></i> Release</a>
+                    </li>
+                </ul>
+            </section>
+            <section id="latte" class="tabcontent">
+                <h2>
+                    <i class="fa fa-navicon sidenav-toggle"></i> Latte
+                </h2>
+                <ul>
+                    <li class="list-item">
+                        <h3 class="title">Lorem Ipsum</h3>
+                        <p class="subtitle">Team #1</p>
+                        <p class="description">Nulla vitae libero, a pharetra augue. Integer posuere erat a ante venenatis condimentum velit dapibus.</p>
+                        <a href=""><i class="fa fa-pencil-square-o"></i> Edit</a>
+                        <a href="" class="text-danger"><i class="fa fa-times"></i> Release</a>
+                    </li>
+                    <li class="list-item">
+                        <h3 class="title">Lorem Ipsum</h3>
+                        <p class="subtitle">Team #1</p>
+                        <p class="description">Nulla vitae libero, a pharetra augue. Integer posuere erat a ante venenatis condimentum velit dapibus.</p>
+                        <a href=""><i class="fa fa-pencil-square-o"></i> Edit</a>
+                        <a href="" class="text-danger"><i class="fa fa-times"></i> Release</a>
+                    </li>
+                    <li class="list-item">
+                        <h3 class="title">Lorem Ipsum</h3>
+                        <p class="subtitle">Team #1</p>
+                        <p class="description">Nulla vitae libero, a pharetra augue. Integer posuere erat a ante venenatis condimentum velit dapibus.</p>
+                        <a href=""><i class="fa fa-pencil-square-o"></i> Edit</a>
+                        <a href="" class="text-danger"><i class="fa fa-times"></i> Release</a>
+                    </li>
+                </ul>
+            </section>
+            <section id="choco" class="tabcontent">
+                <h2>
+                    <i class="fa fa-navicon sidenav-toggle"></i> Choco
+                </h2>
+                <ul>
+                    <li class="list-item">
+                        <h3 class="title">Lorem Ipsum</h3>
+                        <p class="subtitle">Team #1</p>
+                        <p class="description">Nulla vitae libero, a pharetra augue. Integer posuere erat a ante venenatis condimentum velit dapibus.</p>
+                        <a href=""><i class="fa fa-pencil-square-o"></i> Edit</a>
+                        <a href="" class="text-danger"><i class="fa fa-times"></i> Release</a>
+                    </li>
+                    <li class="list-item">
+                        <h3 class="title">Lorem Ipsum</h3>
+                        <p class="subtitle">Team #1</p>
+                        <p class="description">Nulla vitae libero, a pharetra augue. Integer posuere erat a ante venenatis condimentum velit dapibus.</p>
+                        <a href=""><i class="fa fa-pencil-square-o"></i> Edit</a>
+                        <a href="" class="text-danger"><i class="fa fa-times"></i> Release</a>
+                    </li>
+                    <li class="list-item">
+                        <h3 class="title">Lorem Ipsum</h3>
+                        <p class="subtitle">Team #1</p>
+                        <p class="description">Nulla vitae libero, a pharetra augue. Integer posuere erat a ante venenatis condimentum velit dapibus.</p>
+                        <a href=""><i class="fa fa-pencil-square-o"></i> Edit</a>
+                        <a href="" class="text-danger"><i class="fa fa-times"></i> Release</a>
+                    </li>
+                </ul>
+            </section>
+        </article>
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/reserve.js"></script>
+</body>
+
+</html>
+
