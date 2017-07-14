@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'home/index'
+
   get 'admin/home'
   get 'admin/teams'
   get 'admin/associations'
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
   get 'admin/home'
   get 'admin/users'
   get 'testlines/reservations'
+  get 'testlines/index'
 
   resources :team_testlines, except: [:index]
   devise_for :users
@@ -20,7 +23,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
-  root 'testlines#index'
+  root 'home#index'
   post 'admin/makeAdmin'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

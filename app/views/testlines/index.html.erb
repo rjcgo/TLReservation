@@ -1,3 +1,22 @@
+<div id="sub-nav" class="wrapper">
+	<h1>Team Name</h1>
+	<div class="dropdown">
+		<button class="dropbtn">
+			<i class="fa fa-th fa-white"></i>
+			Teams
+		</button>
+		<div class="dropdown-triangle"></div>
+		<ul class="dropdown-content">
+			<% ball = pokelist %>
+			<% @teams.each_with_index do |team, index| %>
+				<li>
+					<a href=""><%= content_tag :span, '', :class => ball[index % 9] %> <%= team.name %></a>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+</div>
+
 <main class="wrapper">
 	<% if available %>
 		<section id="available">
@@ -158,11 +177,42 @@
 		</section> 
 	<% end %>
 </main> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="assets/home.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 
+	$(document).ready(function () {
+
+	    $("#burger-nav").on("click", function (event) {
+
+	        $("#burger-nav").toggleClass("change");
+	        $(".navbar-nav").toggleClass("open");
+	    });
+
+	    $(document).click(function () {
+	        $(".dropdown-content").removeClass("show");
+	        $(".dropdown-triangle").removeClass("show");
+	    });
+
+	    $(".dropbtn").click(function (e) {
+	        e.stopPropagation();
+	    });
+
+	    $(".dropdown-content").click(function (e) {
+	        e.stopPropagation();
+	    });
+
+	    $(".dropdown:eq(0) .dropbtn").on("click", function (event) {
+	        if (!$(".dropdown:eq(0) .dropdown-content").hasClass("show")) {
+	            $(".dropdown:eq(0) .dropdown-triangle").addClass("show");
+	            $(".dropdown:eq(0) .dropdown-content").addClass("show");
+	        } else {
+	            $(".dropdown-content").removeClass("show");
+	            $(".dropdown-triangle").removeClass("show");
+	        }
+	    });
+
+	});
 	function activate_modal(id) {
 		var s = document.getElementById(id);
 	    s.style.display = "block";
