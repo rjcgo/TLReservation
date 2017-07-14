@@ -10,6 +10,11 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+    @associations = TeamTestline.where(team_id: params[:id])
+    @mytestlines = []
+    @associations.each do |a|
+      @mytestlines.append(Testline.where(id: a.testline_id).first)
+    end
   end
 
   # GET /teams/new

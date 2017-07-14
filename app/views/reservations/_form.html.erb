@@ -1,18 +1,25 @@
-<%= form_for([@testline,@testline.reservations.build]) do |f| %>
-    <p> <%= f.label :name,'Title: '%>
-        <%= f.text_field :name %>
-    </p>
-    <p> <%= f.label :email,'Email: '%>
-        <%= f.email_field :email, :value => current_user.email, :readonly => true%>
-    </p>
-    <p> <%= f.label :team_name,'Team Name'%>
-        <%= f.collection_select :team_name, Team.order(:name),:id,:name, include_blank: true %>
-    </p>
-    <p> <%= f.label :description,'Description: '%>
-        <%= f.text_area :description %>
-    </p>
-    <p>
-        <%= f.submit %>
-    </p>
-        
-<% end %>
+<div class="container reservation-form">  
+	<%= form_for([@testline,@testline.reservations.build], :html => {:class => "reserve"}) do |f| %>
+		<h3><%= @testline.name %></h3>
+		
+		<fieldset>
+			<%= f.text_field :name, :placeholder => "Title", :tabindex => "1", :required => "required" %>
+		</fieldset>
+		
+		<fieldset>
+			<%= f.email_field :email, :value => current_user.email, :tabindex => "2", :disabled => true %>
+		</fieldset>
+		
+		<fieldset>
+			<%= f.text_field :team_name, :tabindex => "3", :disabled => true, :placeholder => "Team" %>
+		</fieldset>
+		
+		<fieldset>
+			<%= f.text_area :description, :placeholder => "Description", :tabindex => "4", :required => "required" %>
+		</fieldset>
+		
+		<fieldset>
+			<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+		</fieldset>
+	<% end %>
+</div>

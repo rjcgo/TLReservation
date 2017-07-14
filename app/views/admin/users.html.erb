@@ -23,7 +23,7 @@
                 <% if user.isAdmin? %>
                     Administrator
                 <% else %>
-                    <%= link_to 'Make admin', admin_makeAdmin_path(user), data: { confirm: 'Are you sure?' } %>
+                    <%= button_to 'Make admin', admin_makeAdmin_path(user), method: :post %>
                 <% end %>
             </td>
             <br>

@@ -1,27 +1,7 @@
 <% if user_signed_in? %>
-
-	<% if current_user.isAdmin? %>
-
-		<p>
-		  <strong>Testline Name:</strong>
-		  <%= @testline.name %>
-		</p>
-		<h2>
-		  <%= render @testline.reservations %>
-		  <%= render 'reservations/form' %>
-		</h2>
-		<%= link_to 'Edit', edit_testline_path(@testline) %>
-	
-
-	<% else %>
-
-		<h1>Sorry, you need to be an admin to view this page.</h1>
-		<p>Please contact the administrator if you want to be one.</p>
-
-	<% end %>
-
+	<h2>
+		<%= render 'reservations/form' %>
+	</h2>
 <% else %>
-
 	<h1>Sorry, you need to be logged-in to view this page.</h1>
-
 <% end %>
