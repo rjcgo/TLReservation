@@ -1,41 +1,24 @@
 <% if user_signed_in? %>
 
-    <% if current_user.isAdmin? %>
-
-    <br>
-    <h1>Users</h1>
-    <br>
-
-    <% if @users.empty? %>
-    	There are no users yet.
-    <% end %>
-
-    <tbody>
-    	<tr>
-            <td>Email</td>
-            <td>Administrator</td>
-        	<td></td><br><br>
-        </tr>
-        <% @users.each do |user| %>
-          <tr>
-            <td><%= user.email %></td>
-            <td>
-                <% if user.isAdmin? %>
-                    Administrator
-                <% else %>
-                    <%= button_to 'Make admin', admin_makeAdmin_path(user), method: :post %>
-                <% end %>
-            </td>
-            <br>
-          </tr>
-        <% end %>
-    </tbody>
-
-    <% else %>
-    <h1>Sorry, you need to be an admin to view this page.</h1>
-    <p>Please contact the administrator if you want to be one.</p>
-    <% end %>
+	<% if current_user.isAdmin? %>
+		<div class="container">
+			<div class="div-list">
+				<h2 class="head-title">Users</h2>
+				<% if @users.empty? %>
+					There are no users yet.
+				<% end %>
+				<ul class="h-table">
+					<% @users.each do |user| %>
+						<li class="li-row"><%= user.email %><%= button_to 'Make admin', admin_makeAdmin_path(user), method: :post %></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	<% else %>
+		<h1>Sorry, you need to be an admin to view this page.</h1>
+		<p>Please contact the administrator if you want to be one.</p>
+	<% end %>
 
 <% else %>
-    <h1>Sorry, you need to be logged-in to view this page.</h1>
+	<h1>Sorry, you need to be logged-in to view this page.</h1>
 <% end %>
