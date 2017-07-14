@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 
     <link rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
-    <!-- <link rel="stylesheet" href="assets/reserve.css"> -->
+    <link rel="stylesheet" href="assets/reserve.css">
     <link rel="stylesheet" href="assets/style.css">
 
 </head>
@@ -37,23 +37,81 @@
     <main class="wrapper">
         <article>
             <aside class="sidenav">
-                <a href="" class="closebtn"><i class="fa fa-times"></i></a>
-                <a href="">
-                            <i class="fa fa-thermometer"></i>
-                            Line #1
-                        </a>
-                <a href="">
-                            <i class="fa fa-thermometer"></i>
-                            Line #2
-                        </a>
-                <a href="">
-                            <i class="fa fa-thermometer"></i>
-                            Line #3
-                        </a>
+                <a href="" class="closebtn">
+                    <i class="fa fa-times"></i>
+                </a>
+                <a href="javascript:void(0)" class="tablinks active" onclick="openReservation(event, 'milo')">
+                    <i class="fa fa-thermometer"></i>
+                    Line #1
+                </a>
+                <a href="javascript:void(0)" class="tablinks" onclick="openReservation(event, 'latte')">
+                    <i class="fa fa-thermometer"></i>
+                    Line #2
+                </a>
+                <a href="javascript:void(0)" class="tablinks" onclick="openReservation(event, 'choco')">
+                    <i class="fa fa-thermometer"></i>
+                    Line #3
+                </a>
             </aside>
-            <section id="reservations">
+            <section id="milo" class="tabcontent">
                 <h2>
-                    <i class="fa fa-navicon sidenav-toggle"></i> Test Lines
+                    <i class="fa fa-navicon sidenav-toggle"></i> Milo
+                </h2>
+                <ul>
+                    <li class="list-item">
+                        <h3 class="title">Lorem Ipsum</h3>
+                        <p class="subtitle">Team #1</p>
+                        <p class="description">Nulla vitae libero, a pharetra augue. Integer posuere erat a ante venenatis condimentum velit dapibus.</p>
+                        <a href=""><i class="fa fa-pencil-square-o"></i> Edit</a>
+                        <a href="" class="text-danger"><i class="fa fa-times"></i> Release</a>
+                    </li>
+                    <li class="list-item">
+                        <h3 class="title">Lorem Ipsum</h3>
+                        <p class="subtitle">Team #1</p>
+                        <p class="description">Nulla vitae libero, a pharetra augue. Integer posuere erat a ante venenatis condimentum velit dapibus.</p>
+                        <a href=""><i class="fa fa-pencil-square-o"></i> Edit</a>
+                        <a href="" class="text-danger"><i class="fa fa-times"></i> Release</a>
+                    </li>
+                    <li class="list-item">
+                        <h3 class="title">Lorem Ipsum</h3>
+                        <p class="subtitle">Team #1</p>
+                        <p class="description">Nulla vitae libero, a pharetra augue. Integer posuere erat a ante venenatis condimentum velit dapibus.</p>
+                        <a href=""><i class="fa fa-pencil-square-o"></i> Edit</a>
+                        <a href="" class="text-danger"><i class="fa fa-times"></i> Release</a>
+                    </li>
+                </ul>
+            </section>
+            <section id="latte" class="tabcontent">
+                <h2>
+                    <i class="fa fa-navicon sidenav-toggle"></i> Latte
+                </h2>
+                <ul>
+                    <li class="list-item">
+                        <h3 class="title">Lorem Ipsum</h3>
+                        <p class="subtitle">Team #1</p>
+                        <p class="description">Nulla vitae libero, a pharetra augue. Integer posuere erat a ante venenatis condimentum velit dapibus.</p>
+                        <a href=""><i class="fa fa-pencil-square-o"></i> Edit</a>
+                        <a href="" class="text-danger"><i class="fa fa-times"></i> Release</a>
+                    </li>
+                    <li class="list-item">
+                        <h3 class="title">Lorem Ipsum</h3>
+                        <p class="subtitle">Team #1</p>
+                        <p class="description">Nulla vitae libero, a pharetra augue. Integer posuere erat a ante venenatis condimentum velit dapibus.</p>
+                        <a href=""><i class="fa fa-pencil-square-o"></i> Edit</a>
+                        <a href="" class="text-danger"><i class="fa fa-times"></i> Release</a>
+                    </li>
+                    <li class="list-item">
+                        <h3 class="title">Lorem Ipsum</h3>
+                        <p class="subtitle">Team #1</p>
+                        <p class="description">Nulla vitae libero, a pharetra augue. Integer posuere erat a ante venenatis condimentum velit dapibus.</p>
+                        <a href=""><i class="fa fa-pencil-square-o"></i> Edit</a>
+                        <a href="" class="text-danger"><i class="fa fa-times"></i> Release</a>
+                    </li>
+                </ul>
+            </section>
+            <section id="choco" class="tabcontent">
+                <h2>
+                    <i class="fa fa-navicon sidenav-toggle"></i> Choco
                 </h2>
                 <ul>
                     <li class="list-item">

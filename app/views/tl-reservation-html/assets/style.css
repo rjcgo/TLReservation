@@ -336,11 +336,12 @@ article {
     text-transform: uppercase;
 }
 
-#reservations {
+.tabcontent {
+    /* display: none; */
     padding: 0 2%;
 }
 
-#reservations h2 {
+.tabcontent h2 {
     font-size: 1.8em;
     margin: 20px 0;
     color: #000;
@@ -369,7 +370,7 @@ article {
     width: 100%;
 }
 
-.sidenav a {
+.sidenav .tablinks {
     /* color: #000; */
     color: #fff;
     text-decoration: none;
@@ -379,7 +380,11 @@ article {
     text-align: center;
 }
 
-.sidenav a:hover {
+.sidenav .tablinks.active {
+    background: #444;
+}
+
+.sidenav .tablinks:hover {
     /* background: #e5e5e5; */
     background: #444;
 }
@@ -676,7 +681,7 @@ article {
         display: block;
         clear: both;
     }
-    #reservations {
+    .tabcontent {
         flex: 1 1 0;
     }
     .sidenav,
