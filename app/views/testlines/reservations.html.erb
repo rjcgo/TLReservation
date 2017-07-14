@@ -1,50 +1,59 @@
-<html>
-
-<body>
 <% isInit = true %>
-    <main class="wrapper">
-        <article>
-        <aside class="sidenav">
-            <% @testlines.each do |testline| %>
-                <% if ( testline.reservations.count !=0) %>
-                    <a href="" class="closebtn">
-                        <i class="fa fa-times"></i>
-                    </a>
-                    <a href="javascript:void(0)" class="tablinks" onclick="openReservation(event, '<%= testline.id %>')">
-                        <i class="fa fa-thermometer"></i>
-                        <%= testline.name %>
-                    </a>
-                <% end %>
-            <% end %>
-        </aside>
-        <% @testlines.each do |testline| %>
-            <section id="<%= testline.id %>" class="tabcontent">
-                <h2>
-                    <i class="fa fa-navicon sidenav-toggle"></i> 
-                    <%= testline.name %>
-                </h2>
-                <ul>
-                    <% @reservations.each do |reserve| %>
-                        <% if testline.id == reserve.testline_id %>
-                            <li class="list-item">
-                                <h3 class="title">Title: <%=reserve.name%></h3>
-                                <p class="subtitle">Team: <%=reserve.team_name%></p>
-                                <p class="description">Description: <%=reserve.description%>.</p>
-                                <% if current_user.email == reserve.email %>
-                                    <%= link_to '<i class="fa fa-times"></i> Release'.html_safe,[reserve.testline,reserve],  method: :delete, data:{confirm: 'Release?'}, :class=>"text-danger" %>
-                                <% end %>
-                            </li>
-                        <% end %>        
-                    <% end %>
-                </ul>
-            </section>
-        <% end %>    
-        </article>
-    </main>
+<main class="wrapper">
+	<article>
+		<% reserve1 = firstReserve; %>
+		<% if reserve1 == 0 %>
+			<div class="wrapper-greeting">
+				<div class="alert alert-success alert-dismissible">
+					<h4 class="alert-heading">There are no reservations.</h4>
+				</div>
+			</div>
+		<% else %>
+		<aside class="sidenav">
+			<% @testlines.each do |testline| %>
+				<% if ( testline.reservations.count !=0) %>
+					<a href="" class="closebtn">
+						<i class="fa fa-times"></i>
+					</a>
+					<% if testline.id == reserve1 %>
+						<a href="javascript:void(0)" class="tablinks active" onclick="openReservation(event, '<%= testline.id %>')">
+					<% else %>
+						<a href="javascript:void(0)" class="tablinks" onclick="openReservation(event, '<%= testline.id %>')">
+					<% end %>
+						<i class="fa fa-thermometer"></i>
+						<%= testline.name %>
+					</a>
+				<% end %>
+			<% end %>
+		</aside>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="assets/reserve.js"></script>
-</body>
-
-</html>
-
+		<% @testlines.each do |testline| %>
+			<% if testline.id == reserve1 %>
+				<section id="<%= testline.id %>" class="tabcontent" style="display: block;">
+			<% else %>
+				<section id="<%= testline.id %>" class="tabcontent" style="display: none;">
+			<% end %>
+				<h2>
+					<i class="fa fa-navicon sidenav-toggle"></i> 
+					<%= testline.name %>
+				</h2>
+				<ul>
+					<% @reservations.each do |reserve| %>
+						<% if testline.id == reserve.testline_id %>
+							<li class="list-item">
+								<h3 class="title">Title: <%=reserve.name%></h3>
+								<p class="subtitle">Team: <%=reserve.team_name%></p>
+								<p class="description">Description: <%=reserve.description%>.</p>
+								<% if current_user.email == reserve.email %>
+									<%= link_to '<i class="fa fa-times"></i> Release'.html_safe,[reserve.testline,reserve],  method: :delete, data:{confirm: 'Release?'}, :class=>"text-danger" %>
+								<% end %>
+							</li>
+						<% end %>        
+					<% end %>
+				</ul>
+			</section>
+		<% end %>    
+		<% end %>
+	</article>
+</main>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
