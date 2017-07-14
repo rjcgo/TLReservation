@@ -4,37 +4,38 @@
 			<h2>Available</h2>
 			<div class="card-deck">
 				<% @testlines.each do |testline| %>
-
-					<%= content_tag :div, :class => "modal", :id => testline.id do -%>
-						<div class="container reservation-form">  
-							<div class="modal-content">
-								<%= form_for([testline,testline.reservations.build], :html => {:class => "reserve"}) do |f| %>
-									<div class="modal-header">
-										<%= content_tag :span, 'x', :class => "close", :onclick => "deactivate_modal(#{testline.id})" %>
-										<h3><%= testline.name %></h3>
-									</div>
-									<fieldset>
-										<%= f.text_field :name, :placeholder => "Title", :tabindex => "1", :required => "required" %>
-									</fieldset>
-									
-									<fieldset>
-										<%= f.email_field :email, :value => current_user.email, :tabindex => "2", :readonly => true %>
-									</fieldset>
-									
-									<fieldset>
-										<%= f.text_field :team_name, :tabindex => "3", :readonly => true, :placeholder => "Team" %>
-									</fieldset>
-									
-									<fieldset>
-										<%= f.text_area :description, :placeholder => "Description", :tabindex => "4", :required => "required" %>
-									</fieldset>
-									
-									<fieldset>
-										<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-									</fieldset>
-								<% end %>
+					<% if user_signed_in? %>
+						<%= content_tag :div, :class => "modal", :id => testline.id do -%>
+							<div class="container reservation-form">  
+								<div class="modal-content">
+									<%= form_for([testline,testline.reservations.build], :html => {:class => "reserve"}) do |f| %>
+										<div class="modal-header">
+											<%= content_tag :span, 'x', :class => "close", :onclick => "deactivate_modal(#{testline.id})" %>
+											<h3><%= testline.name %></h3>
+										</div>
+										<fieldset>
+											<%= f.text_field :name, :placeholder => "Title", :tabindex => "1", :required => "required" %>
+										</fieldset>
+										
+										<fieldset>
+											<%= f.email_field :email, :value => current_user.email, :tabindex => "2", :readonly => true %>
+										</fieldset>
+										
+										<fieldset>
+											<%= f.text_field :team_name, :tabindex => "3", :readonly => true, :placeholder => "Team" %>
+										</fieldset>
+										
+										<fieldset>
+											<%= f.text_area :description, :placeholder => "Description", :tabindex => "4", :required => "required" %>
+										</fieldset>
+										
+										<fieldset>
+											<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+										</fieldset>
+									<% end %>
+								</div>
 							</div>
-						</div>
+						<% end %>
 					<% end %>
 
 					<% if ( testline.reservations.count ==0) %>
@@ -45,10 +46,12 @@
 								<p>Available</p>
 							</div>
 							<div class="card-content">
-								<%= submit_tag "Reserve now!", :type => "button", :id => testline.id, :class => "card-btn", :onclick => "activate_modal(#{testline.id})" %>
-								<% if user_signed_in? && current_user.isAdmin? %>
-									<%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' },:class => "card-btn", :method => :get %>
-									<%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %>
+								<% if user_signed_in? %>
+									<%= submit_tag "Reserve now!", :type => "button", :id => testline.id, :class => "card-btn", :onclick => "activate_modal(#{testline.id})" %>
+									<% if current_user.isAdmin? %>
+										<%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' },:class => "card-btn", :method => :get %>
+										<%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %>
+									<% end %>
 								<% end %>
 								<br/>
 							</div>
@@ -64,37 +67,38 @@
 			<h2>In Use</h2>
 			<div class="card-deck">
 				<% @testlines.each do |testline| %>
-
-					<%= content_tag :div, :class => "modal", :id => testline.id do -%>
-						<div class="container reservation-form">  
-							<div class="modal-content">
-								<%= form_for([testline,testline.reservations.build], :html => {:class => "reserve"}) do |f| %>
-									<div class="modal-header">
-										<%= content_tag :span, 'x', :class => "close", :onclick => "deactivate_modal(#{testline.id})" %>
-										<h3><%= testline.name %></h3>
-									</div>
-									<fieldset>
-										<%= f.text_field :name, :placeholder => "Title", :tabindex => "1", :required => "required" %>
-									</fieldset>
-									
-									<fieldset>
-										<%= f.email_field :email, :value => current_user.email, :tabindex => "2", :readonly => true %>
-									</fieldset>
-									
-									<fieldset>
-										<%= f.text_field :team_name, :tabindex => "3", :readonly => true, :placeholder => "Team" %>
-									</fieldset>
-									
-									<fieldset>
-										<%= f.text_area :description, :placeholder => "Description", :tabindex => "4", :required => "required" %>
-									</fieldset>
-									
-									<fieldset>
-										<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-									</fieldset>
-								<% end %>
+					<% if user_signed_in? %>
+						<%= content_tag :div, :class => "modal", :id => testline.id do -%>
+							<div class="container reservation-form">  
+								<div class="modal-content">
+									<%= form_for([testline,testline.reservations.build], :html => {:class => "reserve"}) do |f| %>
+										<div class="modal-header">
+											<%= content_tag :span, 'x', :class => "close", :onclick => "deactivate_modal(#{testline.id})" %>
+											<h3><%= testline.name %></h3>
+										</div>
+										<fieldset>
+											<%= f.text_field :name, :placeholder => "Title", :tabindex => "1", :required => "required" %>
+										</fieldset>
+										
+										<fieldset>
+											<%= f.email_field :email, :value => current_user.email, :tabindex => "2", :readonly => true %>
+										</fieldset>
+										
+										<fieldset>
+											<%= f.text_field :team_name, :tabindex => "3", :readonly => true, :placeholder => "Team" %>
+										</fieldset>
+										
+										<fieldset>
+											<%= f.text_area :description, :placeholder => "Description", :tabindex => "4", :required => "required" %>
+										</fieldset>
+										
+										<fieldset>
+											<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+										</fieldset>
+									<% end %>
+								</div>
 							</div>
-						</div>
+						<% end %>
 					<% end %>
 
 					<% if ( testline.reservations.count !=0) %>
@@ -121,10 +125,12 @@
 									<% end %>
 								<% end %>
 								<br/>
-								<%= submit_tag "Reserve now!", :type => "button", :id => testline.id, :class => "card-btn", :onclick => "activate_modal(#{testline.id})" %>
-								<% if user_signed_in? && current_user.isAdmin? %>
-									<%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'card-btn' %>
-									<%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %>
+								<% if user_signed_in? %>
+									<%= submit_tag "Reserve now!", :type => "button", :id => testline.id, :class => "card-btn", :onclick => "activate_modal(#{testline.id})" %>
+									<% if current_user.isAdmin? %>
+										<%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'card-btn' %>
+										<%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %>
+									<% end %>
 								<% end %>
 								<p></p>
 							</div>
