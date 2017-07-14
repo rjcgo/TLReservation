@@ -6,7 +6,7 @@ class TestlinesController < ApplicationController
   def index
     @testlines = Testline.all
     @reservations = Reservation.all
-    @teams = Team.all
+    @teams = Team.order(:name)
     
   end
 
