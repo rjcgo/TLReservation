@@ -17,4 +17,13 @@ module TestlinesHelper
 		return false
 	end
 
+	def maintenance
+		@testlines.each do |testline|
+			if testline.isMaintenance?
+				return true
+			end
+		end
+		return false
+	end
+
 end

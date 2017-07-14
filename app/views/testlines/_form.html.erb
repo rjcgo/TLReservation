@@ -23,17 +23,17 @@
     </fieldset>
 
     <fieldset>
-      <%= f.text_field :ip_address, :placeholder => "IP Address", :tabindex => "1", :required => "required" %>
+      <%= f.text_field :ip_address, :placeholder => "IP Address", :tabindex => "2", :required => "required" %>
     </fieldset>
 
     <fieldset>
-      <%= f.text_field :port_number, :placeholder => "Port Number", :tabindex => "1", :required => "required" %>
+      <%= f.text_field :port_number, :placeholder => "Port Number", :tabindex => "3", :required => "required" %>
     </fieldset>
 
     <% if current_user.isAdmin? %>
     <fieldset>
       <p>Under Maintenance?
-      <%= f.check_box :name, :placeholder => "Under Maintenance?", :tabindex => "1", :required => "required" %>
+      <%= f.check_box :isMaintenance, :tabindex => "4" %>
       </p>
     </fieldset>
     <%end%>

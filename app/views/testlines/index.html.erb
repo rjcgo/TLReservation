@@ -38,12 +38,11 @@
 						<% end %>
 					<% end %>
 
-					<% if ( testline.reservations.count ==0) %>
+					<% if ( testline.reservations.count ==0) && !testline.isMaintenance? %>
 						<div class="card">
 							<div class="card-header bg-green">
 								<i class="fa fa-check-circle-o fa-white icon-lg"></i>
 								<h3><%= testline.name %></h3>
-								<p>Available</p>
 							</div>
 							<div class="card-content">
 								<% if user_signed_in? %>
@@ -101,12 +100,11 @@
 						<% end %>
 					<% end %>
 
-					<% if ( testline.reservations.count !=0) %>
+					<% if ( testline.reservations.count !=0) && !testline.isMaintenance? %>
 						<div class="card">
 							<div class="card-header bg-red">
 								<i class="fa fa-times-circle-o fa-white icon-lg"></i>
 								<h3><%= testline.name %></h3>
-								<p>In Use</p>
 							</div>
 							<div class="card-content">
 								<% userQueue = 1 %>
@@ -133,6 +131,25 @@
 									<% end %>
 								<% end %>
 								<p></p>
+							</div>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+		</section> 
+	<% end %>
+	<% if maintenance %>
+		<section id="maintenance">
+			<h2>Under Maintenance</h2>
+			<div class="card-deck">
+				<% @testlines.each do |testline| %>
+					<% if testline.isMaintenance? %>
+						<div class="card">
+							<div class="card-header bg-yellow">
+								<i class="fa fa-exclamation-triangle fa-white icon-lg"></i>
+								<h3><%= testline.name %></h3>
+							</div>
+							<div class="card-content">
 							</div>
 						</div>
 					<% end %>
