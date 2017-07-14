@@ -126,7 +126,7 @@ h4 {
 }
 
 .navbar-nav.open {
-    height: 80px;
+    height: 160px;
     margin-top: 8px;
 }
 
@@ -421,7 +421,7 @@ article {
 .card-header {
     display: block;
     color: #fff;
-    padding: 4%;
+    padding: 10px;
     text-align: center;
     border-top-left-radius: 0.25em;
     border-top-right-radius: 0.25em;

@@ -43,7 +43,6 @@
 							<div class="card-header bg-green">
 								<i class="fa fa-check-circle-o fa-white icon-lg"></i>
 								<h3><%= testline.name %></h3>
-								<p>Available</p>
 							</div>
 							<div class="card-content">
 								<% if user_signed_in? %>
@@ -106,7 +105,6 @@
 							<div class="card-header bg-red">
 								<i class="fa fa-times-circle-o fa-white icon-lg"></i>
 								<h3><%= testline.name %></h3>
-								<p>In Use</p>
 							</div>
 							<div class="card-content">
 								<% userQueue = 1 %>
@@ -150,7 +148,6 @@
 							<div class="card-header bg-yellow">
 								<i class="fa fa-exclamation-triangle fa-white icon-lg"></i>
 								<h3><%= testline.name %></h3>
-								<p>Under Maintenance</p>
 							</div>
 							<div class="card-content">
 							</div>
