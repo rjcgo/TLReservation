@@ -1,37 +1,31 @@
-<div class="container reservation-form">  
-	<%= form_for([@testline,@testline.reservations.build], :html => {:class => "reserve"}) do |f| %>
-		<h3><%= @testline.name %></h3>
-
-
-		<% 
-			h = Array.new 
-			Team.order(:name).each do |t|
-				h << [t, !TeamTestline.where(:team_id => t.id, :testline_id => @testline.id).present?]
-			end
-		%>	
-		<fieldset>
-			<%= f.text_field :name, :placeholder => "Title", :tabindex => "1", :required => "required" %>
-		</fieldset>
-		
-		<fieldset>
-			<%= f.email_field :email, :value => current_user.email, :tabindex => "2", :required => "required", :readonly => true%>
-		</fieldset>
-		
-		<fieldset>
-			<%= f.select(:team_name) do %>
-				<% h.each do |c| -%>
-					<%= content_tag(:option, c.first.name, value: c.first.id, :disabled => c.last) %>
-				<% end %>
+<div class="modal" id="myModal">
+	<div class="container reservation-form">  
+		<div class="modal-content">
+			<%= form_for([@testline,@testline.reservations.build], :html => {:class => "reserve"}) do |f| %>
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h3><%= @testline.name %></h3>
+				</div>
+				<fieldset>
+					<%= f.text_field :name, :placeholder => "Title", :tabindex => "1", :required => "required" %>
+				</fieldset>
+				
+				<fieldset>
+					<%= f.email_field :email, :value => current_user.email, :tabindex => "2", :readonly => true %>
+				</fieldset>
+				
+				<fieldset>
+					<%= f.text_field :team_name, :tabindex => "3", :readonly => true, :placeholder => "Team" %>
+				</fieldset>
+				
+				<fieldset>
+					<%= f.text_area :description, :placeholder => "Description", :tabindex => "4", :required => "required" %>
+				</fieldset>
+				
+				<fieldset>
+					<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+				</fieldset>
 			<% end %>
-
-		</fieldset>
-		
-		<fieldset>
-			<%= f.text_area :description, :placeholder => "Description", :tabindex => "4", :required => "required" %>
-		</fieldset>
-		
-		<fieldset>
-			<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-		</fieldset>
-	<% end %>
+		</div>
+	</div>
 </div>

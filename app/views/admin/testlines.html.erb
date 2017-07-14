@@ -1,37 +1,219 @@
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="home.js"></script>
 <% if user_signed_in? %>
 
 	<% if current_user.isAdmin? %>
+		<main class="wrapper">
+			<div class="row">
+				<h1 id="testlines-label">Testlines</h1>
 
-		<br>
-		<h1>Testlines</h1>
-		<br>
+				<h1 id="add-testline"><i class="fa fa-plus fa-white"></i><%= link_to ' New Testline', new_testline_path, :class=> "new-testline-link" %></h1>
+			</div>
+	
+			<section id="testlines">
+				<% if @testlines.empty? %>
+					<div class="wrapper-greeting">
+						<div class="alert alert-success alert-dismissible" role="alert">
+						  	<h4 class="alert-heading">There are no testlines yet.</h4>
+						</div>
+					</div>
+				<% end %>
+				<div class="card-deck"> 	 
+					<% @testlines.each do |testline| %>
+						<div class="card">
+							<div class="card-header bg-green">
+								<i class="fa fa-server fa-white icon-lg"></i>
+		                        <h3>  <%= testline.name %></h3>
+		                    </div>
 
-		<% if @testlines.empty? %>
-			There are no testlines yet.
+		                    <div class="card-content">
+		                    	<div class="card-title-admin">
+									<%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn-admin" %>
+								 	<%= button_to 'Destroy', testline, method: :delete, data: { confirm: 'Are you sure?' }, :class => "card-btn-admin" %>
+		                          </div>		                       
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</section>
+
+			<% else %>
+			
+			<h1>Sorry, you need to be an admin to view this page.</h1>
+			<p>Please contact the administrator if you want to be one.</p>
+
 		<% end %>
-
-		<% @testlines.each do |testline| %>
-
-		    <%= testline.name %>
-		    <%= link_to 'Show', testline %>
-		    <%= link_to 'Edit', edit_testline_path(testline) %>
-		    <%= link_to 'Destroy', testline, method: :delete, data: { confirm: 'Are you sure?' } %>
-
-		<% end %>
-
-		<%= link_to 'New Testline', new_testline_path %>
-
 
 	<% else %>
-		
-		<h1>Sorry, you need to be an admin to view this page.</h1>
-		<p>Please contact the administrator if you want to be one.</p>
-
-	<% end %>
-
-<% else %>
-
-	<h1>Sorry, you need to be logged-in to view this page.</h1>
+		<h1>Sorry, you need to be logged-in to view this page.</h1>
 
 <% end %>
+
+<style type="text/css">
+
+	.row {
+	  width: 100%;
+	}
+
+	.wrapper-greeting{
+		padding: 10px;
+	}
+
+	main h1 {
+	    margin: 20px 0;
+	    color: #fff;
+	    text-transform: uppercase;
+	}
+
+	#testlines{
+		border-top: 1px solid #999;
+		padding: 2%;
+		margin: 0 auto;
+	}
+
+	#testlines-label{
+		width: 50%;
+		display:inline-block;
+	}
+
+	#add-testline{		
+		display:inline-block;
+		text-align:right;
+		float: right;
+		color:white;
+	}
+
+	.new-testline-link{
+		color: white;
+		text-decoration: none;
+	}
+
+	.card-content-admin{
+		flex: 1 1 auto;
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: space-between;
+	    padding: 10px;
+	    background: #fff;
+	    border-bottom-left-radius: 0.25em;
+	    border-bottom-right-radius: 0.25em;
+	}
+
+	.card-title-admin{
+		padding: 10px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+	}
+
+	.card-btn-admin {
+	    width: 100%;
+	    color: #000;
+	    background: #fff;
+	    border: 1px solid #000;
+	    border-radius: 0.25em;
+	    padding: 8px 16px;
+	    align-self: flex-end;
+	    margin-top: 5px;
+	}
+
+	.card .card-btn-admin:hover {
+   		background: #ccc;
+	}
+
+
+	.card .dropbtn {
+	    position: absolute;
+	    right: 0;
+	    top: -5px;
+	    padding: 10px 16px;
+	    cursor: pointer;
+	    font-size: 2.5em;
+	}
+
+	.alert {
+	  padding: 15px;
+	  margin-bottom: 20px;
+	  border: 1px solid transparent; 
+	  border-radius: 4px;
+	}
+	.alert h4 {
+	  margin-top: 0;
+	  color: inherit;
+	}
+	.alert .alert-link {
+	  font-weight: bold;
+	}
+	.alert > p,
+	.alert > ul {
+	  margin-bottom: 0;
+	}
+	.alert > p + p {
+	  margin-top: 5px;
+	}
+	.alert-dismissable,
+	.alert-dismissible {
+	  padding-right: 35px;
+	}
+	.alert-dismissable .close,
+	.alert-dismissible .close {
+	  position: relative;
+	  top: -2px;
+	  right: -21px;
+	  color: inherit;
+	}
+	.alert-success {
+	  color: #3c763d;
+	  background-color: #dff0d8;
+	  border-color: #d6e9c6;
+	}
+	.alert-success hr {
+	  border-top-color: #c9e2b3;
+	}
+	.alert-success .alert-link {
+	  color: #2b542c;
+	}
+	.alert-info {
+	  color: #31708f;
+	  background-color: #d9edf7;
+	  border-color: #bce8f1;
+	}
+	.alert-info hr {
+	  border-top-color: #a6e1ec;
+	}
+	.alert-info .alert-link {
+	  color: #245269;
+	}
+	.alert-warning {
+	  color: #8a6d3b;
+	  background-color: #fcf8e3;
+	  border-color: #faebcc;
+	}
+	.alert-warning hr {
+	  border-top-color: #f7e1b5;
+	}
+	.alert-warning .alert-link {
+	  color: #66512c;
+	}
+	.alert-danger {
+	  color: #a94442;
+	  background-color: #f2dede;
+	  border-color: #ebccd1;
+	}
+	.alert-danger hr {
+	  border-top-color: #e4b9c0;
+	}
+	.alert-danger .alert-link {
+	  color: #843534;
+	}
+	button.close {
+	  -webkit-appearance: none;
+	  padding: 0;
+	  cursor: pointer;
+	  background: transparent;
+	  border: 0;
+	}
+
+
+</style>

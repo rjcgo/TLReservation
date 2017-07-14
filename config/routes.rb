@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'admin/testlines'
   get 'admin/home'
   get 'admin/users'
+  get 'testlines/reservations'
 
   resources :team_testlines, except: [:index]
   devise_for :users
