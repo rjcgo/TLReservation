@@ -60,7 +60,15 @@ class TeamsController < ApplicationController
   # DELETE /teams/1
   # DELETE /teams/1.json
   def destroy
+
+    # Delete associations of all testlines to this team
+    @myassociations = TeamTestline.where(team_id: params[:id])
+    @myassociations.each do |a|
+      a.delete
+    end
+    # Delete the team
     @team.destroy
+    
     respond_to do |format|
       format.html { redirect_to admin_teams_path, notice: 'Team was successfully destroyed.' }
       format.json { head :no_content }
