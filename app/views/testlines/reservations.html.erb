@@ -1,0 +1,29 @@
+
+<div class="tab">
+    <% @testlines.each do |testline| %>
+    <button class="tablinks" onclick="openCity(event, '<%= testline.id %>')"> <%= testline.name %></button>
+<% end %>
+
+</div>
+
+<ul>
+    <% @testlines.each do |testline| %>
+        <div id="<%= testline.id %>" class="tabcontent">
+        <% @reservations.each do |reserve| %>
+        
+            <% if testline.id == reserve.testline_id  %>
+
+                    <h3 class="title">Title: <%=reserve.name%></h3>
+                    <p class="subtitle">Team: <%=reserve.team_name%></p>
+                    <p class="subtitle">Email: <%=reserve.email%></p>
+                    <p class="description">Description: <%=reserve.description%></p>
+                    <a href=""><i class="fa fa-pencil-square-o"></i> Edit</a>
+                    <% if current_user.email == reserve.email %>
+                        <%= link_to 'Release',[reserve.testline,reserve],  method: :delete, data:{confirm: 'Release?'}, :class=>"danger" %>
+                    <% end %>
+            <% end %>        
+        
+        <% end %>
+        </div>
+    <% end %>
+</ul>

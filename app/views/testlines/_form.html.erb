@@ -1,31 +1,28 @@
-<%= form_for(@testline) do |f| %>
-  <% if @testline.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@testline.errors.count, "error") %> prohibited this testline from being saved:</h2>
+<div class="container reservation-form">  
+  <%= form_for((@testline), :html => {:class => "reserve"}) do |f| %>
+    <h3>Create New Testline </h3>
+    <fieldset>
+      <%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required" %>
+    </fieldset>
 
-      <ul>
-      <% @testline.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+    <fieldset>
+      <%= f.text_field :ip_address, :placeholder => "IP Address", :tabindex => "1", :required => "required" %>
+    </fieldset>
+
+    <fieldset>
+      <%= f.text_field :port_number, :placeholder => "Port Number", :tabindex => "1", :required => "required" %>
+    </fieldset>
+
+    <% if current_user.isAdmin? %>
+    <fieldset>
+      <p>Under Maintenance?
+      <%= f.check_box :name, :placeholder => "Under Maintenance?", :tabindex => "1", :required => "required" %>
+      </p>
+    </fieldset>
+    <%end%>
+
+    <fieldset>
+      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+    </fieldset>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :ip_address %><br>
-    <%= f.text_field :ip_address %>
-  </div>
-
-  <div class="field">
-    <%= f.label :port_number %><br>
-    <%= f.text_field :port_number %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

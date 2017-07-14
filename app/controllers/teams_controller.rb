@@ -10,6 +10,7 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+    @reservations = Reservation.all
     @associations = TeamTestline.where(team_id: params[:id])
     @mytestlines = []
     @associations.each do |a|
