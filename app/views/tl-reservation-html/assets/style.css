@@ -334,6 +334,7 @@ article {
 .tabcontent {
     /* display: none; */
     padding: 0 2%;
+    flex: 1 1 0;
 }
 
 .tabcontent h2 {
@@ -490,6 +491,53 @@ article {
     background: #ccc;
 }
 
+/* ******************** Card TL ******************** */
+
+.card-tl{
+    flex: 1 0 80%;
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+    border-radius: 0.25em;
+}
+
+.card-tl-title {
+    float: left;
+}
+
+.card-tl-add{
+    background: transparent;
+    color: #fff;
+    border: 0;
+    float: right;
+    font-size: 1.6em;
+    cursor: pointer;
+}
+
+.card-teams{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card-team-icon{
+    flex: 0 1 32%;
+    text-align: center;
+    color: #000;
+    text-decoration: none;
+    position: relative;
+    /* padding: 0.8rem; */
+}
+
+.card-team-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    border: 0;
+    font-size: 1em;
+    cursor: pointer;
+}
 
 /* ******************** Badges ******************** */
 
@@ -646,7 +694,7 @@ article {
 }
 
 .modal-content {
-    width: 60%;
+    width: 100%;
     margin: 10% auto;
     background: #fefefe;
     padding: 26px;
@@ -761,12 +809,16 @@ article {
 
 @media screen and (min-width: 320px) {}
 
-@media screen and (min-width: 576px) {}
+@media screen and (min-width: 576px) {
+    .modal-content{
+        width: 80%;
+    }
+}
 
 @media screen and (min-width: 768px) {
     .card {
-        flex: 0 1 46%;
-        margin: 2%;
+        flex: 0 1 48%;
+        margin: 1%;
     }
     #burger-nav {
         display: none;
@@ -796,9 +848,6 @@ article {
         display: block;
         clear: both;
     }
-    .tabcontent {
-        flex: 1 1 0;
-    }
     .sidenav,
     .sidenav.toggle {
         position: static;
@@ -813,9 +862,16 @@ article {
     .sidenav .closebtn {
         display: none;
     }
+    .modal-content{
+        width: 60%;
+    }
 }
 
 @media screen and (min-width: 992px) {
+    .card-tl{
+        flex: 0 1 48%;
+        margin: 1%;
+    }
     .card {
         flex: 0 1 31%;
         margin: 1%;
