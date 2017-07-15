@@ -527,8 +527,9 @@ article {
 
 .list-item {
     box-sizing: border-box;
-    padding: 5%;
+    padding: 4%;
     background: #616161;
+    position: relative;
 }
 
 .list-item:nth-of-type(odd) {
@@ -553,6 +554,19 @@ article {
     color: #e1e1e1;
     font-size: 14px;
     line-height: 1.6em;
+}
+
+.list-item .release {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    padding: 0.6em 1em;
+    border: 0;
+    background: #d9534f;
+}
+.list-item .release:hover {
+    background: #a94442 !important;
 }
 
 .list-item a {
