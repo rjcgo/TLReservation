@@ -3,7 +3,7 @@ class ReservationsController < ApplicationController
     def create
         @testline = Testline.find(params[:testline_id])
         @reservation = @testline.reservations.create(params[:reservation].permit(:name, :released, :team_name, :description, :email))
-        redirect_to root_path
+        redirect_to(:back)
     end
     def destroy
         @testline = Testline.find(params[:testline_id])

@@ -10,7 +10,7 @@
 			<% ball = pokelist %>
 			<% @teams.each_with_index do |team, index| %>
 				<li>
-					<a href="/teams/show/<%= team.id %>"><%= content_tag :span, '', :class => ball[index % 9] %> <%= team.name %></a>
+					<a href="/teams/show/<%= team.id %>"><%= content_tag :span, '', :class => ball[index % 20] %> <%= team.name %></a>
 				</li>
 			<% end %>
 		</ul>
@@ -66,10 +66,6 @@
 							<div class="card-content">
 								<% if user_signed_in? %>
 									<%= submit_tag "Reserve now!", :type => "button", :id => testline.id, :class => "card-btn", :onclick => "activate_modal(#{testline.id})" %>
-									<% if current_user.isAdmin? %>
-										<%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' },:class => "card-btn", :method => :get %>
-										<%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %>
-									<% end %>
 								<% end %>
 								<br/>
 							</div>
@@ -130,12 +126,12 @@
 									<% if testline.id == reserve.testline_id  %>
 										<% if userQueue == 1 %>
 											<% userQueue += 1 %>
-											<h3 class="card-title"><%= reserve.email %><small class="badge badge-current">Current</small></h3>
+											<h3 class="card-title"><%= reserve.team_name %><small class="badge badge-current">Current</small></h3>
 										<% elsif userQueue == 2 %>
-											<p class="card-text"><%= reserve.email %><small class="badge badge-next">Next in Line</small></p>
+											<p class="card-text"><%= reserve.team_name %><small class="badge badge-next">Next in Line</small></p>
 											<% userQueue += 1 %>
 										<% elsif userQueue == 3 || userQueue == 4 %>
-											<p class="card-text"><%= reserve.email %><small class="badge badge-pending">Pending</small></p>
+											<p class="card-text"><%= reserve.team_name %><small class="badge badge-pending">Pending</small></p>
 											<% userQueue += 1 %>
 										<% end %>
 									<% end %>
@@ -143,10 +139,6 @@
 								<br/>
 								<% if user_signed_in? %>
 									<%= submit_tag "Reserve now!", :type => "button", :id => testline.id, :class => "card-btn", :onclick => "activate_modal(#{testline.id})" %>
-									<% if current_user.isAdmin? %>
-										<%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'card-btn' %>
-										<%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %>
-									<% end %>
 								<% end %>
 								<p></p>
 							</div>

@@ -13,7 +13,7 @@
 
 						<h2 id="testlines-label"><i class="fa fa-users sidenav-toggle"></i> Teams</h2>
 
-						<h2 id="add-testline"><i class="fa fa-plus fa-white"></i><%= link_to ' New Team', new_team_path, :class=> "new-testline-link" %></h2>
+						<h2 id="add-testline" style="cursor: pointer;"><i class="fa fa-plus fa-white"></i><%= content_tag :a, ' New Team', :class=> "new-testline-link", :onclick => "activate_modal(0)" %></h2>
 
 						<% if @teams.blank? %>
 							<div class="wrapper-greeting">
@@ -25,10 +25,11 @@
 						<% end %>
 
 						<div class="card-deck">
-							<% @teams.each do |team| %>
+							<% balls = pokelist %>
+							<% @teams.each_with_index do |team, index| %>
 								<div class="card">
 									<div class="card-header bg-green">
-										<i class="fa fa-group fa-white icon-lg"></i>
+										<i class="<%= balls[index % 20] %>"></i>
 										<h3><%= team.name %></h3>
 									</div>
 
@@ -44,6 +45,25 @@
 					</section>
 				</article>
 			</main>	
+			<%= content_tag :div, :class => "modal", :id => "0" do -%>
+				<div class="container reservation-form">  
+					<div class="modal-content">
+						<%= form_for(@team, :html => {:class => "reserve"}) do |f| %>
+							<div class="modal-header">
+								<%= content_tag :span, 'x', :class => "close", :onclick => "deactivate_modal(0)" %>
+								<h3>Add New Team</h3>
+							</div>
+							<fieldset>
+								<%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required" %>
+							</fieldset>
+							
+							<fieldset>
+								<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+							</fieldset>
+						<% end %>
+					</div>
+				</div>
+			<% end %>
 
 	<% else %>
 
@@ -57,6 +77,18 @@
 	<h1>Sorry, you need to be logged-in to view this page.</h1>
 
 <% end %>
+
+<script>
+	function activate_modal(id) {
+		var s = document.getElementById(id);
+	    s.style.display = "block";
+	}
+
+	function deactivate_modal(id) {
+		var s = document.getElementById(id);
+	    s.style.display = "none";
+	}
+</script>
 
 <style type="text/css">
 
@@ -222,6 +254,62 @@
 	  background: transparent;
 	  border: 0;
 	}
+</style>
+<style>
+	/* The Modal (background) */
+	.modal {
+	    display: none; /* Hidden by default */
+	    position: fixed; /* Stay in place */
+	    z-index: 1; /* Sit on top */
+	    padding-top: 100px; /* Location of the box */
+	    left: 0;
+	    top: 0;
+	    width: 100%; /* Full width */
+	    height: 100%; /* Full height */
+	    overflow: auto; /* Enable scroll if needed */
+	    background-color: rgb(0,0,0); /* Fallback color */
+	    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	}
 
+	/* Modal Content */
+	.modal-content {
+	    position: relative;
+	    background-color: #fefefe;
+	    margin: auto;
+	    -webkit-animation-name: animatetop;
+	    -webkit-animation-duration: 0.4s;
+	    animation-name: animatetop;
+	    animation-duration: 0.4s
+	}
 
+	/* Add Animation */
+	@-webkit-keyframes animatetop {
+	    from {top:-300px; opacity:0} 
+	    to {top:0; opacity:1}
+	}
+
+	@keyframes animatetop {
+	    from {top:-300px; opacity:0}
+	    to {top:0; opacity:1}
+	}
+
+	/* The Close Button */
+	.close {
+	    color: black;
+	    float: right;
+	    font-size: 28px;
+	    font-weight: bold;
+	}
+
+	.close:hover,
+	.close:focus {
+	    color: #ccc;
+	    text-decoration: none;
+	    cursor: pointer;
+	}
+	.modal-header {
+	    padding: 2px 16px;
+	}
+
+	.modal-body {padding: 2px 16px;}
 </style>

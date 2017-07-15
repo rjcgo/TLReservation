@@ -5,8 +5,9 @@ class AdminController < ApplicationController
 
   def teams
   	@team_testlines = TeamTestline.all
-    @teams = Team.all
+    @teams = Team.order(:name)
     @testlines = Testline.all
+    @team = Team.new
   end
 
   def associations
@@ -19,6 +20,7 @@ class AdminController < ApplicationController
   	@team_testlines = TeamTestline.all
     @teams = Team.all
     @testlines = Testline.all
+    @testline = Testline.new
   end
 
   def users
