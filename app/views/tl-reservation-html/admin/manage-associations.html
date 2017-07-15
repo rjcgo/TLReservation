@@ -1,0 +1,156 @@
+<html>
+
+<head>
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+    <link rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <!-- <link rel="stylesheet" href="assets/reserve.css"> -->
+    <link rel="stylesheet" href="../assets/style.css">
+
+</head>
+
+<body>
+
+    <nav id="main-nav">
+        <div class="wrapper">
+            <button type="button" id="burger-nav">
+                            <span class="bar1"></span>
+                            <span class="bar2"></span>
+                            <span class="bar3"></span>
+                        </button>
+            <a href="" class="navbar-brand">
+                            <i class="fa fa-thermometer icon-lg" id="logo"></i>
+                            <h1>Test Line Reservation</h1>
+                        </a>
+            <div class="navbar-nav">
+                <h2>Main Navigation</h2>
+                <ul>
+                    <li><a href="home.html"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="login.html"><i class="fa fa-user"></i> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="wrapper">
+        <article>
+            <aside class="sidenav">
+                <a href="" class="closebtn">
+                        <i class="fa fa-times"></i>
+                    </a>
+                <a href="manage-users.html" class="tablinks">
+                        <i class="fa fa-users"></i>
+                        Manage Users
+                    </a>
+                <a href="" class="tablinks">
+                        <i class="fa fa-server"></i>
+                        Manage Test Lines
+                    </a>
+                <a href="manage-associations.html" class="tablinks active">
+                        <i class="fa fa-exchange"></i>
+                        Manage Associations
+                    </a>
+                <a href="" class="tablinks">
+                        <i class="fa fa-steam"></i>
+                        DOTA
+                    </a>
+            </aside>
+            <section class="tabcontent">
+                <div class="card-deck">
+                    <div class="card">
+                        <div class="card-header bg-green">
+                            <h3>Line #3</h3>
+                        </div>
+                        <div class="card-content">
+                            <button class="card-btn" id="modal-btn" onclick="openModal()">
+                                <i class="fa fa-plus"></i> Add Teams
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Pick a Team</h4>
+                <button type="button" class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li>
+                        <a href=""><span class="team-brand poke-ball"></span>poke-ball</a>
+                    </li>
+                    <li>
+                        <a href=""><span class="team-brand premier-ball"></span>premier-ball</a>
+                    </li>
+                    <li>
+                        <a href=""><span class="team-brand great-ball"></span>great-ball</a>
+                    </li>
+                    <li>
+                        <a href=""><span class="team-brand ultra-ball"></span>ultra-ball</a>
+                    </li>
+                    <li>
+                        <a href=""><span class="team-brand master-ball"></span>master-ball</a>
+                    </li>
+                    <li>
+                        <a href=""><span class="team-brand safari-ball"></span>safari-ball</a>
+                    </li>
+                    <li>
+                        <a href=""><span class="team-brand level-ball"></span>level-ball</a>
+                    </li>
+                    <li>
+                        <a href=""><span class="team-brand lure-ball"></span>lure-ball</a>
+                    </li>
+                    <li>
+                        <a href=""><span class="team-brand moon-ball"></span>moon-ball</a>
+                    </li>
+                    <li>
+                        <a href=""><span class="team-brand friend-ball"></span>friend-ball</a>
+                    </li>
+                    <li>
+                        <a href=""><span class="team-brand love-ball"></span>love-ball</a>
+                    </li>
+                    <li>
+                        <a href=""><span class="team-brand heavy-ball"></span>heavy-ball</a>
+                    </li>
+                    <li>
+                        <a href=""><span class="team-brand fast-ball"></span>fast-ball</a>
+                    </li>
+                    <li>
+                        <a href=""><span class="team-brand sports-ball"></span>sports-ball</a>
+                    </li>
+                    <li>
+                        <a href=""><span class="team-brand repeat-ball"></span>repeat-ball</a>
+                    </li>
+                    <li>
+                        <a href=""><span class="team-brand timer-ball"></span>timer-ball</a>
+                    </li>
+                    <li>
+                        <a href=""><span class="team-brand nest-ball"></span>nest-ball</a>
+                    </li>
+                    <li>
+                        <a href=""><span class="team-brand net-ball"></span>net-ball</a>
+                    </li>
+                    <li>
+                        <a href=""><span class="team-brand dive-ball"></span>dive-ball</a>
+                    </li>
+                    <li>
+                        <a href=""><span class="team-brand luxury-ball"></span>luxury-ball</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="../assets/reserve.js"></script> -->
+    <script src="../assets/manage-associations.js"></script>
+</body>
+
+</html>
