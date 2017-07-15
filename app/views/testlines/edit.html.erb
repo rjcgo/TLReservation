@@ -2,21 +2,48 @@
 
 	<% if current_user.isAdmin? %>
 	
-		<h1>Editing Testline</h1>
+		<div class="container reservation-form">  
+		  <%= form_for((@testline), :html => {:class => "reserve"}) do |f| %>
+		    <h3>Edit Testline </h3>
+		    <fieldset>
+		      <%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required" %>
+		    </fieldset>
 
-		<%= render 'form' %>
+		    <fieldset>
+		      <%= f.text_field :ip_address, :placeholder => "IP Address", :tabindex => "2", :required => "required" %>
+		    </fieldset>
 
-		<%= link_to 'Show', @testline %>
+		    <fieldset>
+		      <%= f.text_field :port_number, :placeholder => "Port Number", :tabindex => "3", :required => "required" %>
+		    </fieldset>
+
+		    <% if current_user.isAdmin? %>
+		    <fieldset>
+		      <p>Under Maintenance?
+		      <%= f.check_box :isMaintenance, :tabindex => "4" %>
+		      </p>
+		    </fieldset>
+		    <%end%>
+
+		    <fieldset>
+		      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+		    </fieldset>
+		  <% end %>
+		</div>
 
 	<% else %>
-
-		<h1>Sorry, you need to be an admin to view this page.</h1>
-		<p>Please contact the administrator if you want to be one.</p>
-
+		<div class="wrapper-greeting">
+			<div class="alert alert-success alert-dismissible">
+				<h4 class="alert-heading">Sorry, you need to be an admin to view this page. Please contact the administrator if you want to be one.</h4>
+			</div>
+		</div>
 	<% end %>
 
 <% else %>
-
-	<h1>Sorry, you need to be logged-in to view this page.</h1>
+	<div class="wrapper-greeting">
+		<div class="alert alert-success alert-dismissible">
+			<h4 class="alert-heading">Sorry, you need to be logged-in to view this page.</h4>
+		</div>
+	</div>
 
 <% end %>

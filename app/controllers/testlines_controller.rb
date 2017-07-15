@@ -22,6 +22,7 @@ class TestlinesController < ApplicationController
 
   # GET /testlines/1/edit
   def edit
+    @testline = Testline.find(params[:id])
   end
 
   # POST /testlines
@@ -45,7 +46,7 @@ class TestlinesController < ApplicationController
   def update
     respond_to do |format|
       if @testline.update(testline_params)
-        format.html { redirect_to @testline, notice: 'Testline was successfully updated.' }
+        format.html { redirect_to admin_testlines_path, notice: 'Testline was successfully updated.' }
         format.json { render :show, status: :ok, location: @testline }
       else
         format.html { render :edit }

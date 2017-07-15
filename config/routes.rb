@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   get 'testlines/reservations'
   get 'testlines/index'
   get 'teams/show/:id' => 'teams#show'
-
+  post 'teams/:id/edit' => 'teams#edit'
+  post 'testlines/:id/edit' => 'testlines#edit'
   resources :team_testlines, except: [:index]
   devise_for :users
   resources :teams, except: [:index]
