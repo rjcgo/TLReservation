@@ -25,10 +25,11 @@
 						<% end %>
 
 						<div class="card-deck">
-							<% @teams.each do |team| %>
+							<% balls = pokelist %>
+							<% @teams.each_with_index do |team, index| %>
 								<div class="card">
 									<div class="card-header bg-green">
-										<i class="fa fa-group fa-white icon-lg"></i>
+										<i class="<%= balls[index % 9] %>"></i>
 										<h3><%= team.name %></h3>
 									</div>
 
@@ -311,5 +312,4 @@
 	}
 
 	.modal-body {padding: 2px 16px;}
-
 </style>

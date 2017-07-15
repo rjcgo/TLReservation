@@ -5,7 +5,7 @@ class AdminController < ApplicationController
 
   def teams
   	@team_testlines = TeamTestline.all
-    @teams = Team.all
+    @teams = Team.order(:name)
     @testlines = Testline.all
     @team = Team.new
   end
