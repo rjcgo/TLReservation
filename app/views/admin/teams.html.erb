@@ -1,44 +1,49 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="home.js"></script>
 <% if user_signed_in? %>
 	<% if current_user.isAdmin? %>
 
-		<br>
-		<h1>Teams</h1>
-		<br>
-
-		<% if @teams.blank? %>
-			<div class="wrapper-greeting">
-				<div class="alert alert-success alert-dismissible" role="alert">
-				  	<h4 class="alert-heading">There are no teams yet.</h4>
-				</div>
-			</div>
-
-		<% else %>
 			<main class="wrapper">
-				<div class="card-deck">
-					<% @teams.each do |team| %>
-						<div class="card">
-							<div class="card-header bg-green">
-								<i class="fa fa-group fa-white icon-lg"></i>
-								<h3><%= team.name %></h3>
-							</div>
 
-							<div class="card-content">
-								<div class="card-title-admin">
-								<%= button_to 'Edit', edit_team_path(team) , :class => "card-btn-admin"%>
-								<%= button_to 'Delete', team, method: :delete, data: { confirm: 'Are you sure?'} , :class => "card-btn-admin" %>
+				<article>
+
+					<%= render 'sidenav' %>
+
+					<section id="testlines" class="tabcontent">
+
+						<h2 id="testlines-label"><i class="fa fa-users sidenav-toggle"></i> Teams</h2>
+
+						<h2 id="add-testline"><i class="fa fa-plus fa-white"></i><%= link_to ' New Team', new_team_path, :class=> "new-testline-link" %></h2>
+
+						<% if @teams.blank? %>
+							<div class="wrapper-greeting">
+								<div class="alert alert-success alert-dismissible" role="alert">
+								  	<h4 class="alert-heading">There are no teams yet.</h4>
 								</div>
 							</div>
+
+						<% end %>
+
+						<div class="card-deck">
+							<% @teams.each do |team| %>
+								<div class="card">
+									<div class="card-header bg-green">
+										<i class="fa fa-group fa-white icon-lg"></i>
+										<h3><%= team.name %></h3>
+									</div>
+
+									<div class="card-content">
+										<div class="card-title-admin">
+										<%= button_to 'Edit', edit_team_path(team) , :class => "card-btn-admin"%>
+										<%= button_to 'Delete', team, method: :delete, data: { confirm: 'Are you sure?'} , :class => "card-btn-admin" %>
+										</div>
+									</div>
+								</div>
+							<% end %>
 						</div>
-						<p></p>
-					<% end %>
-				</div>
+					</section>
+				</article>
 			</main>	
-		<% end %>
-
-	<br>
-	
-	<%= link_to 'New Team', new_team_path %>
-
 
 	<% else %>
 
@@ -53,22 +58,44 @@
 
 <% end %>
 
-
 <style type="text/css">
+
+	.row {
+	  width: 100%;
+	}
+
 	.wrapper-greeting{
 		padding: 10px;
 	}
 
-	.card-deck {
-	    display: flex;
-	    flex-wrap: wrap;
-	    justify-content: center;
+	main h1 {
+	    margin: 20px 0;
+	    color: #fff;
+	    text-transform: uppercase;
 	}
 
-	.card .card-btn-admin:hover {
-   		background: #ccc;
+	#testlines{
+		border-top: 1px solid #999;
+		padding: 2%;
+		margin: 0 auto;
 	}
 
+	#testlines-label{
+		width: 50%;
+		display:inline-block;
+	}
+
+	#add-testline{		
+		display:inline-block;
+		text-align:right;
+		float: right;
+		color:white;
+	}
+
+	.new-testline-link{
+		color: white;
+		text-decoration: none;
+	}
 
 	.card-content-admin{
 		flex: 1 1 auto;
@@ -97,6 +124,20 @@
 	    padding: 8px 16px;
 	    align-self: flex-end;
 	    margin-top: 5px;
+	}
+
+	.card .card-btn-admin:hover {
+   		background: #ccc;
+	}
+
+
+	.card .dropbtn {
+	    position: absolute;
+	    right: 0;
+	    top: -5px;
+	    padding: 10px 16px;
+	    cursor: pointer;
+	    font-size: 2.5em;
 	}
 
 	.alert {
@@ -181,4 +222,6 @@
 	  background: transparent;
 	  border: 0;
 	}
+
+
 </style>

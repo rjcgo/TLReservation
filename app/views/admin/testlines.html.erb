@@ -4,40 +4,46 @@
 <% if user_signed_in? %>
 
 	<% if current_user.isAdmin? %>
+
 		<main class="wrapper">
-			<div class="row">
-				<h1 id="testlines-label">Testlines</h1>
 
-				<h1 id="add-testline"><i class="fa fa-plus fa-white"></i><%= link_to ' New Testline', new_testline_path, :class=> "new-testline-link" %></h1>
-			</div>
-	
-			<section id="testlines">
-				<% if @testlines.empty? %>
-					<div class="wrapper-greeting">
-						<div class="alert alert-success alert-dismissible" role="alert">
-						  	<h4 class="alert-heading">There are no testlines yet.</h4>
-						</div>
-					</div>
-				<% end %>
-				<div class="card-deck"> 	 
-					<% @testlines.each do |testline| %>
-						<div class="card">
-							<div class="card-header bg-green">
-								<i class="fa fa-server fa-white icon-lg"></i>
-		                        <h3>  <%= testline.name %></h3>
-		                    </div>
+			<article>
 
-		                    <div class="card-content">
-		                    	<div class="card-title-admin">
-									<%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn-admin" %>
-								 	<%= button_to 'Destroy', testline, method: :delete, data: { confirm: 'Are you sure?' }, :class => "card-btn-admin" %>
-		                          </div>		                       
+				<%= render 'sidenav' %>
+
+		
+				<section id="testlines" class="tabcontent">
+
+					<h2 id="testlines-label"><i class="fa fa-server sidenav-toggle"></i> Testlines</h2>
+
+					<h2 id="add-testline"><i class="fa fa-plus fa-white"></i><%= link_to ' New Testline', new_testline_path, :class=> "new-testline-link" %></h2>
+
+					<% if @testlines.empty? %>
+						<div class="wrappergreeting-">
+							<div class="alert alert-success alert-dismissible" role="alert">
+							  	<h4 class="alert-heading">There are no testlines yet.</h4>
 							</div>
 						</div>
 					<% end %>
-				</div>
-			</section>
+					<div class="card-deck"> 	 
+						<% @testlines.each do |testline| %>
+							<div class="card">
+								<div class="card-header bg-green">
+									<i class="fa fa-server fa-white icon-lg"></i>
+			                        <h3>  <%= testline.name %></h3>
+			                    </div>
 
+			                    <div class="card-content">
+			                    	<div class="card-title-admin">
+										<%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn-admin" %>
+									 	<%= button_to 'Destroy', testline, method: :delete, data: { confirm: 'Are you sure?' }, :class => "card-btn-admin" %>
+			                          </div>		                       
+								</div>
+							</div>
+						<% end %>
+					</div>
+				</section>
+			</article>
 			<% else %>
 			
 			<h1>Sorry, you need to be an admin to view this page.</h1>
