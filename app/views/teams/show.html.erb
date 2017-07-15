@@ -1,89 +1,290 @@
-<% if user_signed_in? %>
-	<br>
-	<center><h1><%= @team.name %>'s Testlines</h1></center>
-	<br>
+<div id="sub-nav" class="wrapper">
+	<h1><%= @team.name %></h1>
+	<div class="dropdown">
+		<button class="dropbtn">
+			<i class="fa fa-th fa-white"></i>
+			Teams
+		</button>
+		<div class="dropdown-triangle"></div>
+		<ul class="dropdown-content">
+			<% ball = pokelist %>
+			<% @teams.each_with_index do |team, index| %>
+				<li>
+					<a href="/teams/show/<%= team.id %>"><%= content_tag :span, '', :class => ball[index % 9] %> <%= team.name %></a>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+</div>
 
-	<% if @mytestlines.empty? %>
-		No testlines associated with this team yet.
-	<% else %>
+<main class="wrapper">
+	<% if available %>
+		<section id="available">
+			<h2>Available</h2>
+			<div class="card-deck">
+				<% @mytestlines.each do |testline| %>
+					<% if user_signed_in? %>
+						<%= content_tag :div, :class => "modal", :id => testline.id do -%>
+							<div class="container reservation-form">  
+								<div class="modal-content">
+									<%= form_for([testline,testline.reservations.build], :html => {:class => "reserve"}) do |f| %>
+										<div class="modal-header">
+											<%= content_tag :span, 'x', :class => "close", :onclick => "deactivate_modal(#{testline.id})" %>
+											<h3><%= testline.name %></h3>
+										</div>
+										<fieldset>
+											<%= f.text_field :name, :placeholder => "Title", :tabindex => "1", :required => "required" %>
+										</fieldset>
+										
+										<fieldset>
+											<%= f.email_field :email, :value => current_user.email, :tabindex => "2", :readonly => true %>
+										</fieldset>
+										
+										<fieldset>
+											<%= f.text_field :team_name, :value => @team.name, :tabindex => "3", :readonly => true %>
+										</fieldset>
+										
+										<fieldset>
+											<%= f.text_area :description, :placeholder => "Description", :tabindex => "4", :required => "required" %>
+										</fieldset>
+										
+										<fieldset>
+											<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+										</fieldset>
+									<% end %>
+								</div>
+							</div>
+						<% end %>
+					<% end %>
 
-			<main class="wrapper">
-
-			    <section id="available">
-
-			        <h2>Available</h2>
-			        <div class="card-deck">
-			            
-			        <% @mytestlines.each do |testline| %>
-			          <% if ( testline.reservations.count == 0) %>
-
-			            <div class="card">
-			                <div class="card-header bg-green">
-			                    <i class="fa fa-check-circle-o fa-white icon-lg"></i>
-			                    <h3><%= testline.name %></h3>
-			                    <p>Available</p>
-			                </div>
-			                <div class="card-content">
-			                <%= button_to "Use now!", testline, :class => "card-btn", :method => :get %>
-			                <%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' },:class => "card-btn", :method => :get %>
-			                </div>
-			            </div>
-			           <% end %>
-			        <% end %>
-			        </div>
-			    </section>
-			    <section id="in-use">
-			        <h2>In Use</h2>
-			        <div class="card-deck">
-			            
-			        <% @mytestlines.each do |testline| %>
-			          <% if ( testline.reservations.count !=0) %>
-			            <div class="card">
-			                <div class="card-header bg-red">
-			                    <i class="fa fa-times-circle-o fa-white icon-lg"></i>
-			                    <h3><%= testline.name %></h3>
-			                    <p>In Use</p>
-			                </div>
-			                <div class="card-content">
-			                  <% userQueue = 1 %>
-
-			                  <% @reservations.each do |reserve| %>
-
-			                    <% if testline.id == reserve.testline_id  %>
-			                      <% if userQueue==1 %>
-			                        <% userQueue = 2 %>
-			                        <h3 class="card-title"><%= reserve.team_name %><small class="badge badge-current">Current</small></h3>
-			                        
-			                      <% elsif userQueue==2 %>
-			                        <p class="card-text"><%= reserve.team_name %><small class="badge badge-next">Next in Line</small></p>
-			                        <% userQueue = 3 %>
-			                      <% elsif userQueue==3 %>
-			                        <p class="card-text"><%= reserve.team_name %><small class="badge badge-pending">Pending</small></p>
-			                      <% end %>
-			                    <% end %>
-
-			                  <% end %>
-			                    <br/>
-			                    <%= button_to "Reserve Now!", testline, :class => "card-btn", :method => :get %>
-			                    <%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' },:class => "card-btn", :method => :get %>
-			                    <%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %>
-
-			                </div>
-			            </div>
-			          <% end %>
-			        <% end %>
-			   </section> 
-			 </main> 
-
-
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-			<script src="assets/home.js"></script>
-
-
+					<% if ( testline.reservations.count ==0) && !testline.isMaintenance? %>
+						<div class="card">
+							<div class="card-header bg-green">
+								<i class="fa fa-check-circle-o fa-white icon-lg"></i>
+								<h3><%= testline.name %></h3>
+							</div>
+							<div class="card-content">
+								<% if user_signed_in? %>
+									<%= submit_tag "Reserve now!", :type => "button", :id => testline.id, :class => "card-btn", :onclick => "activate_modal(#{testline.id})" %>
+									<% if current_user.isAdmin? %>
+										<%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' },:class => "card-btn", :method => :get %>
+										<%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %>
+									<% end %>
+								<% end %>
+								<br/>
+							</div>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+		</section>
 	<% end %>
+	<% if inUse %>
+		<section id="in-use">
+			<h2>In Use</h2>
+			<div class="card-deck">
+				<% @mytestlines.each do |testline| %>
+					<% if user_signed_in? %>
+						<%= content_tag :div, :class => "modal", :id => testline.id do -%>
+							<div class="container reservation-form">  
+								<div class="modal-content">
+									<%= form_for([testline,testline.reservations.build], :html => {:class => "reserve"}) do |f| %>
+										<div class="modal-header">
+											<%= content_tag :span, 'x', :class => "close", :onclick => "deactivate_modal(#{testline.id})" %>
+											<h3><%= testline.name %></h3>
+										</div>
+										<fieldset>
+											<%= f.text_field :name, :placeholder => "Title", :tabindex => "1", :required => "required" %>
+										</fieldset>
+										
+										<fieldset>
+											<%= f.email_field :email, :value => current_user.email, :tabindex => "2", :readonly => true %>
+										</fieldset>
+										
+										<fieldset>
+											<%= f.text_field :team_name, :tabindex => "3", :readonly => true, :value => @team.name %>
+										</fieldset>
+										
+										<fieldset>
+											<%= f.text_area :description, :placeholder => "Description", :tabindex => "4", :required => "required" %>
+										</fieldset>
+										
+										<fieldset>
+											<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+										</fieldset>
+									<% end %>
+								</div>
+							</div>
+						<% end %>
+					<% end %>
 
-<% else %>
+					<% if ( testline.reservations.count !=0) && !testline.isMaintenance? %>
+						<div class="card">
+							<div class="card-header bg-red">
+								<i class="fa fa-times-circle-o fa-white icon-lg"></i>
+								<h3><%= testline.name %></h3>
+							</div>
+							<div class="card-content">
+								<% userQueue = 1 %>
+								<% @reservations.each do |reserve| %>
+									<% if testline.id == reserve.testline_id  %>
+										<% if userQueue == 1 %>
+											<% userQueue += 1 %>
+											<h3 class="card-title"><%= reserve.email %><small class="badge badge-current">Current</small></h3>
+										<% elsif userQueue == 2 %>
+											<p class="card-text"><%= reserve.email %><small class="badge badge-next">Next in Line</small></p>
+											<% userQueue += 1 %>
+										<% elsif userQueue == 3 || userQueue == 4 %>
+											<p class="card-text"><%= reserve.email %><small class="badge badge-pending">Pending</small></p>
+											<% userQueue += 1 %>
+										<% end %>
+									<% end %>
+								<% end %>
+								<br/>
+								<% if user_signed_in? %>
+									<%= submit_tag "Reserve now!", :type => "button", :id => testline.id, :class => "card-btn", :onclick => "activate_modal(#{testline.id})" %>
+									<% if current_user.isAdmin? %>
+										<%= button_to 'Delete', testline, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'card-btn' %>
+										<%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn", :method => :get %>
+									<% end %>
+								<% end %>
+								<p></p>
+							</div>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+		</section> 
+	<% end %>
+	<% if maintenance %>
+		<section id="maintenance">
+			<h2>Under Maintenance</h2>
+			<div class="card-deck">
+				<% @mytestlines.each do |testline| %>
+					<% if testline.isMaintenance? %>
+						<div class="card">
+							<div class="card-header bg-yellow">
+								<i class="fa fa-exclamation-triangle fa-white icon-lg"></i>
+								<h3><%= testline.name %></h3>
+							</div>
+							<div class="card-content">
+							</div>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+		</section> 
+	<% end %>
+</main> 
 
-	<h1>Sorry, you need to be logged-in to view this page.</h1>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
 
-<% end %>
+	$(document).ready(function () {
+
+	    $("#burger-nav").on("click", function (event) {
+
+	        $("#burger-nav").toggleClass("change");
+	        $(".navbar-nav").toggleClass("open");
+	    });
+
+	    $(document).click(function () {
+	        $(".dropdown-content").removeClass("show");
+	        $(".dropdown-triangle").removeClass("show");
+	    });
+
+	    $(".dropbtn").click(function (e) {
+	        e.stopPropagation();
+	    });
+
+	    $(".dropdown-content").click(function (e) {
+	        e.stopPropagation();
+	    });
+
+	    $(".dropdown:eq(0) .dropbtn").on("click", function (event) {
+	        if (!$(".dropdown:eq(0) .dropdown-content").hasClass("show")) {
+	            $(".dropdown:eq(0) .dropdown-triangle").addClass("show");
+	            $(".dropdown:eq(0) .dropdown-content").addClass("show");
+	        } else {
+	            $(".dropdown-content").removeClass("show");
+	            $(".dropdown-triangle").removeClass("show");
+	        }
+	    });
+
+	});
+	function activate_modal(id) {
+		var s = document.getElementById(id);
+	    s.style.display = "block";
+	}
+
+	function deactivate_modal(id) {
+		var s = document.getElementById(id);
+	    s.style.display = "none";
+	}
+
+	// window.onclick = function(event) {
+	//     if (event.target == modal) {
+	//         modal.style.display = "none";
+	//     }
+	// }
+</script>
+
+<style>
+	/* The Modal (background) */
+	.modal {
+	    display: none; /* Hidden by default */
+	    position: fixed; /* Stay in place */
+	    z-index: 1; /* Sit on top */
+	    padding-top: 100px; /* Location of the box */
+	    left: 0;
+	    top: 0;
+	    width: 100%; /* Full width */
+	    height: 100%; /* Full height */
+	    overflow: auto; /* Enable scroll if needed */
+	    background-color: rgb(0,0,0); /* Fallback color */
+	    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	}
+
+	/* Modal Content */
+	.modal-content {
+	    position: relative;
+	    background-color: #fefefe;
+	    margin: auto;
+	    -webkit-animation-name: animatetop;
+	    -webkit-animation-duration: 0.4s;
+	    animation-name: animatetop;
+	    animation-duration: 0.4s
+	}
+
+	/* Add Animation */
+	@-webkit-keyframes animatetop {
+	    from {top:-300px; opacity:0} 
+	    to {top:0; opacity:1}
+	}
+
+	@keyframes animatetop {
+	    from {top:-300px; opacity:0}
+	    to {top:0; opacity:1}
+	}
+
+	/* The Close Button */
+	.close {
+	    color: black;
+	    float: right;
+	    font-size: 28px;
+	    font-weight: bold;
+	}
+
+	.close:hover,
+	.close:focus {
+	    color: #ccc;
+	    text-decoration: none;
+	    cursor: pointer;
+	}
+	.modal-header {
+	    padding: 2px 16px;
+	}
+
+	.modal-body {padding: 2px 16px;}
+
+</style>

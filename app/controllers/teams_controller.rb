@@ -10,11 +10,14 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+    @team = Team.where(id: params[:id]).first
+    @teams = Team.order(:name)
     @reservations = Reservation.all
     @associations = TeamTestline.where(team_id: params[:id])
-    @mytestlines = []
+ 
+    @mytestlines = Array.new
     @associations.each do |a|
-      @mytestlines.append(Testline.where(id: a.testline_id).first)
+      @mytestlines << Testline.where(id: a.testline_id).first
     end
   end
 
@@ -25,6 +28,7 @@ class TeamsController < ApplicationController
 
   # GET /teams/1/edit
   def edit
+    @team = Team.find(params[:id])
   end
 
   # POST /teams
