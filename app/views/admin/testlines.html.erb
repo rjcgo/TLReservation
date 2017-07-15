@@ -2,22 +2,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="home.js"></script>
 <% if user_signed_in? %>
-
 	<% if current_user.isAdmin? %>
-
 		<main class="wrapper">
-
 			<article>
-
 				<%= render 'sidenav' %>
-
-		
 				<section id="testlines" class="tabcontent">
-
 					<h2 id="testlines-label"><i class="fa fa-server sidenav-toggle"></i> Testlines</h2>
-
-					<h2 id="add-testline"><i class="fa fa-plus fa-white"></i><%= link_to ' New Testline', new_testline_path, :class=> "new-testline-link" %></h2>
-
+					<h2 id="add-testline" style="cursor: pointer;"><i class="fa fa-plus fa-white"></i><%= content_tag :a, ' New Testline', :class=> "new-testline-link", :onclick => "activate_modal(0)" %></h2>
 					<% if @testlines.empty? %>
 						<div class="wrappergreeting-">
 							<div class="alert alert-success alert-dismissible" role="alert">
@@ -30,7 +21,7 @@
 							<div class="card">
 								<div class="card-header bg-green">
 									<i class="fa fa-server fa-white icon-lg"></i>
-			                        <h3>  <%= testline.name %></h3>
+			                        <h3><%= testline.name %></h3>
 			                    </div>
 
 			                    <div class="card-content">
@@ -44,16 +35,44 @@
 					</div>
 				</section>
 			</article>
-			<% else %>
-			
-			<h1>Sorry, you need to be an admin to view this page.</h1>
-			<p>Please contact the administrator if you want to be one.</p>
+			<%= content_tag :div, :class => "modal", :id => "0" do -%>
+				<div class="container reservation-form">  
+					<div class="modal-content">
+						<%= form_for(@testline, :html => {:class => "reserve"}) do |f| %>
+							<div class="modal-header">
+								<%= content_tag :span, 'x', :class => "close", :onclick => "deactivate_modal(0)" %>
+								<h3>Add New Testline</h3>
+							</div>
+							<fieldset>
+								<%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required" %>
+							</fieldset>
 
-		<% end %>
+							<fieldset>
+								<%= f.text_field :ip_address, :placeholder => "IP Address", :tabindex => "2", :required => "required" %>
+							</fieldset>
 
-	<% else %>
-		<h1>Sorry, you need to be logged-in to view this page.</h1>
-
+							<fieldset>
+								<%= f.text_field :port_number, :placeholder => "Port Number", :tabindex => "3", :required => "required" %>
+							</fieldset>
+							<fieldset>
+								<p>Under Maintenance?
+									<%= f.check_box :isMaintenance, :tabindex => "4" %>
+								</p>
+							</fieldset>
+							<fieldset>
+								<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+							</fieldset>
+						<% end %>
+					</div>
+				</div>
+			<% end %>
+		</main>
+	<% else %>	
+		<h1>Sorry, you need to be an admin to view this page.</h1>
+		<p>Please contact the administrator if you want to be one.</p>
+	<% end %>
+<% else %>
+	<h1>Sorry, you need to be logged-in to view this page.</h1>
 <% end %>
 
 <style type="text/css">
@@ -220,6 +239,73 @@
 	  background: transparent;
 	  border: 0;
 	}
-
-
 </style>
+<style>
+	/* The Modal (background) */
+	.modal {
+	    display: none; /* Hidden by default */
+	    position: fixed; /* Stay in place */
+	    z-index: 1; /* Sit on top */
+	    padding-top: 100px; /* Location of the box */
+	    left: 0;
+	    top: 0;
+	    width: 100%; /* Full width */
+	    height: 100%; /* Full height */
+	    overflow: auto; /* Enable scroll if needed */
+	    background-color: rgb(0,0,0); /* Fallback color */
+	    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	}
+
+	/* Modal Content */
+	.modal-content {
+	    position: relative;
+	    background-color: #fefefe;
+	    margin: auto;
+	    -webkit-animation-name: animatetop;
+	    -webkit-animation-duration: 0.4s;
+	    animation-name: animatetop;
+	    animation-duration: 0.4s
+	}
+
+	/* Add Animation */
+	@-webkit-keyframes animatetop {
+	    from {top:-300px; opacity:0} 
+	    to {top:0; opacity:1}
+	}
+
+	@keyframes animatetop {
+	    from {top:-300px; opacity:0}
+	    to {top:0; opacity:1}
+	}
+
+	/* The Close Button */
+	.close {
+	    color: black;
+	    float: right;
+	    font-size: 28px;
+	    font-weight: bold;
+	}
+
+	.close:hover,
+	.close:focus {
+	    color: #ccc;
+	    text-decoration: none;
+	    cursor: pointer;
+	}
+	.modal-header {
+	    padding: 2px 16px;
+	}
+
+	.modal-body {padding: 2px 16px;}
+</style>
+<script>
+	function activate_modal(id) {
+		var s = document.getElementById(id);
+	    s.style.display = "block";
+	}
+
+	function deactivate_modal(id) {
+		var s = document.getElementById(id);
+	    s.style.display = "none";
+	}
+</script>
