@@ -1,7 +1,7 @@
 module TeamsHelper
 	def available
 		@mytestlines.each do |testline|
-			if testline.reservations.count == 0
+			if testline.reservations.count == 0 && !testline.isMaintenance?
 				return true
 			end
 		end
@@ -10,7 +10,7 @@ module TeamsHelper
 
 	def inUse
 		@mytestlines.each do |testline|
-			if testline.reservations.count != 0
+			if testline.reservations.count != 0 && !testline.isMaintenance?
 				return true
 			end
 		end
