@@ -41,7 +41,7 @@
 										</fieldset>
 										
 										<fieldset>
-											<%= f.text_field :team_name, :tabindex => "3", :readonly => true, :placeholder => "Team" %>
+											<%= f.text_field :team_name, :value => @team.name, :tabindex => "3", :readonly => true %>
 										</fieldset>
 										
 										<fieldset>
@@ -102,7 +102,7 @@
 										</fieldset>
 										
 										<fieldset>
-											<%= f.text_field :team_name, :tabindex => "3", :readonly => true, :placeholder => "Team" %>
+											<%= f.text_field :team_name, :tabindex => "3", :readonly => true, :value => @team.name %>
 										</fieldset>
 										
 										<fieldset>

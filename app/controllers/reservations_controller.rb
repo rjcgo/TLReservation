@@ -9,7 +9,7 @@ class ReservationsController < ApplicationController
         @testline = Testline.find(params[:testline_id])
         @reservation = @testline.reservations.find(params[:id])
         @reservation.destroy
-        redirect_to root_path
+        redirect_to(:back)
     end
     def edit
     

@@ -44,7 +44,7 @@
 									<h3 class="title">Title: <%=reserve.name%></h3>
 									<p class="subtitle">Team: <%=reserve.team_name%></p>
 									<p class="description">Description: <%=reserve.description%>.</p>
-									<% if current_user.email == reserve.email %>
+									<% if current_user.email == reserve.email || current_user.isAdmin? %>
 										<%= link_to '<i class="fa fa-times"></i> Release'.html_safe,[reserve.testline,reserve],  method: :delete, data:{confirm: 'Release?'}, :class=>"text-danger" %>
 									<% end %>
 								</li>
