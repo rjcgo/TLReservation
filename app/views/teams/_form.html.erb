@@ -1,30 +1,29 @@
-<%= form_for(@team) do |f| %>
+<% if @team.errors.any? %>
 
-
-  <% if @team.errors.any? %>
-
-    <div class="wrapper-greeting">
-      <div class="alert alert-danger alert-dismissible" role="alert" id="notice">
-        <h4 class="alert-heading">
-          <b><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</b>
-        </h4>
-          <ul>
-            <% @team.errors.full_messages.each do |message| %>
-              <li>&emsp;<%= message %></li>
+  <div class="wrapper-greeting">
+    <div class="alert alert-danger alert-dismissible" role="alert" id="notice">
+      <h4 class="alert-heading">
+        <b><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</b>
+      </h4>
+      <ul>
+        <% @team.errors.full_messages.each do |message| %>
+        <li>&emsp;<%= message %></li>
             <% end %>
-          </ul>
-      </div>
+      </ul>
     </div>
-
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-
-
 <% end %>
+
+<div class="container reservation-form">  
+  <%= form_for((@team), :html =>{:class => "reserve"}) do |f| %>
+    <h3>Add New Team </h3>
+    <fieldset>
+     <%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required"%>
+    </fieldset>
+
+
+    <fieldset>
+      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+    </fieldset>
+  <% end %>
+</div>
