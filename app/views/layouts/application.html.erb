@@ -64,8 +64,25 @@
 </html>
 
 <style type="text/css">
+    .slide_left:hover {
+      -webkit-transition: ease-out 1s;
+      -moz-transition: ease-out 1s;
+      transition: ease-out 1s;
+      box-shadow: inset 400px 0 0 0 #9eba93;
+    }
+
     .wrapper-greeting{
         padding: 10px;
+    }
+
+    .card-description{
+      display: none;
+      background-color: transparent;
+      padding: 0 10px;
+    }
+
+    .card-description-content{
+      background-color: transparent;
     }
 
     .card-deck {
@@ -74,13 +91,7 @@
         justify-content: center;
     }
 
-    .card .card-btn-admin:hover {
-        background: #ccc;
-    }
-
-
     .card-content-admin{
-        flex: 1 1 auto;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
