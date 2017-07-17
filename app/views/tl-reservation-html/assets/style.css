@@ -860,7 +860,7 @@ article {
 }
 
 .modal-body li {
-    flex: 1 0 20%;
+    flex: 1 0 50%;
 }
 
 .modal-body a {
@@ -919,6 +919,9 @@ article {
     }
     .banner-overlay .display-1 {
         font-size: 3.5em;
+    }
+    .modal-body li {
+        flex: 1 0 33%;
     }
 }
 
@@ -990,7 +993,7 @@ article {
 }
 
 @media screen and (min-width: 992px) {
-    .pokeballs-grid{
+    .pokeballs-grid {
         width: 60%;
     }
     .pokeballs-grid li {
@@ -999,9 +1002,14 @@ article {
     }
     .card-tl {
         flex: 0 1 48%;
+        margin: 5px;
     }
     .card {
         flex: 0 1 31%;
+        margin: 5px;
+    }
+    .modal-body li {
+        flex: 1 0 25%;
     }
 }
 
@@ -1012,6 +1020,9 @@ article {
     }
     .card {
         flex: 0 1 23%;
+    }
+    .modal-body li {
+        flex: 1 0 20%;
     }
 }
 
