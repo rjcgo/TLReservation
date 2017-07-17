@@ -17,20 +17,23 @@ $(document).ready(function () {
     });
 
     $(".card-tl-add").click(function () {
-        $("#modal").addClass("show");
+        $("#modal-add").addClass("show");
     });
 
-    $(".modal-close").click(function () {
-        $("#modal").removeClass("show");
+    $(".modal-close-as, .modal-btn-as").click(function () {
+        $("#modal-add").removeClass("show");
+        $("#modal-del").removeClass("show");
     });
 
     $(".card-team-close", this).click(function(){
-        $(this).parent(".card-team-icon").remove();
+        $("#modal-del").addClass("show");
+        // $(this).parent(".card-team-icon").remove();
     })
 
     $(window).click(function (event) {
-        if (event.target.id == "modal") {
-            $("#modal").removeClass("show");
+        if (event.target.id == "modal-add" || event.target.id == "modal-del") {
+            $("#modal-add").removeClass("show");
+            $("#modal-del").removeClass("show");
         }
     });
 });

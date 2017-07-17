@@ -476,6 +476,7 @@ article {
     font-size: 36px;
     padding: 4px 12px 6px 12px;
     line-height: 1.2em;
+    color: #fff;
 }
 
 
@@ -548,6 +549,7 @@ article {
     border-radius: 0.25em;
     padding: 0.25em 0.5em;
     align-self: flex-end;
+    font-family: Raleway;
 }
 
 .card .card-btn:hover {
@@ -606,7 +608,7 @@ article {
 }
 
 .card-team-icon {
-    flex: 0 1 32%;
+    flex: 0 1 50%;
     text-align: center;
     color: #000;
     text-decoration: none;
@@ -760,7 +762,7 @@ article {
 
 /* ******************** modal ******************** */
 
-.modal {
+.modal-as {
     display: none;
     position: fixed;
     top: 0;
@@ -775,17 +777,15 @@ article {
     /* Black w/ opacity */
 }
 
-.modal.show {
+.modal-as.show {
     display: block;
 }
 
-.modal-content {
-    width: 100%;
+.modal-content-as {
+    width: 98%;
     margin: 50px auto;
     background: #fefefe;
-    padding: 26px;
     box-sizing: border-box;
-    border: 1px solid #888;
     border-radius: 0.25em;
     position: relative;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -820,16 +820,18 @@ article {
     }
 }
 
-.modal-header {
-    margin-bottom: 10px;
+.modal-header-as {
+    padding: 14px 26px;
+    border-top-left-radius: 0.25em;
+    border-top-right-radius: 0.25em;
 }
 
-.modal-header .modal-title {
+.modal-header-as .modal-title-as {
     float: left;
     font-size: 1.6em;
 }
 
-.modal-close {
+.modal-close-as {
     border: 0;
     background: transparent;
     font-size: 1.6em;
@@ -838,32 +840,36 @@ article {
     color: #aaa;
 }
 
-.modal-close {
+.modal-close-as {
     color: #000;
 }
 
-.modal-header::after {
+.modal-header-as::after {
     content: "";
     display: block;
     clear: both;
 }
 
-.modal-body ul {
+.modal-body-as{
+    padding: 1px 14px;
+}
+
+.modal-body-as ul {
     display: flex;
     flex-wrap: wrap;
 }
 
-.modal-body ul::after {
+.modal-body-as ul::after {
     content: "";
     display: block;
     clear: both;
 }
 
-.modal-body li {
+.modal-body-as li {
     flex: 1 0 50%;
 }
 
-.modal-body a {
+.modal-body-as a {
     display: block;
     color: #000;
     text-decoration: none;
@@ -872,23 +878,50 @@ article {
     padding: 8px 2px;
 }
 
-.modal-body a:hover {
+.modal-body-as a:hover {
     border: 1px solid #ccc;
 }
 
+.modal-body-as .modal-text{
+    text-align: center;
+    font-size: 16px;
+    color: #555;
+}
+
+.modal-footer-as{
+    border-bottom-left-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+    text-align: center;
+    padding: 1px 14px 14px 14px;
+}
+
+.modal-footer-as .modal-btn-as{
+    border: 1px solid #000;
+    border-radius: 0.25em;
+    background: transparent;
+    font-size: 1.2em;
+    padding: 6px 16px;
+    font-family: Raleway;
+}
 
 /* ******************** bg-color ******************** */
 
 .bg-green {
-    background: #5cb85c;
+    border: 1px solid #5cb85c !important;
+    background: #5cb85c !important;
+    color: #fff;
 }
 
 .bg-red {
-    background: #a94442;
+    border: 1px solid #a94442 !important;
+    background: #a94442 !important;
+    color: #fff;
 }
 
 .bg-yellow {
-    background: #f0ad4e;
+    border: 1px solid #f0ad4e !important;
+    background: #f0ad4e !important;
+    color: #fff;
 }
 
 
@@ -920,8 +953,11 @@ article {
     .banner-overlay .display-1 {
         font-size: 3.5em;
     }
-    .modal-body li {
-        flex: 1 0 33%;
+    .modal-content-as {
+        width: 80%;
+    }
+    .card-team-icon {
+        flex: 0 1 33%;
     }
 }
 
@@ -933,8 +969,11 @@ article {
         font-size: 2em;
         width: 60%;
     }
-    .modal-content {
+    .modal-content-as {
         width: 80%;
+    }
+    .modal-body-as li {
+        flex: 1 0 33%;
     }
 }
 
@@ -1008,7 +1047,7 @@ article {
         flex: 0 1 31%;
         margin: 5px;
     }
-    .modal-body li {
+    .modal-body-as li {
         flex: 1 0 25%;
     }
 }
@@ -1021,7 +1060,7 @@ article {
     .card {
         flex: 0 1 23%;
     }
-    .modal-body li {
+    .modal-body-as li {
         flex: 1 0 20%;
     }
 }
