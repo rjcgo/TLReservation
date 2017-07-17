@@ -1,47 +1,96 @@
+<% balls = pokelist %>
+<main class="wrapper">
+	<article>
+		<%= render 'sidenav' %>
+		<section class="tabcontent">
+			<h2>
+				<i class="fa fa-navicon sidenav-toggle"></i> Associations
+			</h2>
+			<div class="card-deck">
+				<% @testlines.each do |testline| %>
+					<div class="modal-as" id="<%= testline.id %>">
+						<div class="modal-content-as">
+							<div class="modal-header-as">
+								<h4 class="modal-title-as">Add a Team</h4>
+								<button type="button" class="modal-close-as">&times;</button>
+							</div>
+							<div class="modal-body-as">
+								<ul>
+									<% @teams.each do |team| %>
+										<li>
+											<a href=""><span class="<%= balls[team.id % 20] %>"></span><%= team.name %></a>
+										</li>
+									<% end %>
+								</ul>
+							</div>
+						</div>
+					</div>
+  				<div class="card-tl">
+  					<div class="card-header bg-green">
+  						<h3 class="card-tl-title"><%= testline.name %></h3>
+  						<button class="card-tl-add" id="modal-btn">
+  							<i class="fa fa-plus"></i>
+  						</button>
+  					</div>
+  					<div class="card-content">
+  						<ul class="card-teams">
+  							<li class="card-team-icon">
+  								<span class="team-brand poke-ball"></span>poke-ball
+  								<button type="button" class="card-team-close">&times;</button>
+  							</li>
+  						</ul>
+  					</div>
+  				</div>
+				<% end %>
+			</div>
+		</section>
+	</article>
+</main>
+
 <% if user_signed_in? %>
 
-  <% if current_user.isAdmin? %>
+<% if current_user.isAdmin? %>
 
-  <h1>Listing Team Testlines</h1>
+<h1>Listing Team Testlines</h1>
 
-  <table>
+<table>
 
-    <tbody>
-      <% @teams.each do |team| %>
-        <%=team.name%>
-        </br>
-        <% @team_testlines.each do |team_testline| %>
-          <% if team.id == team_testline.team_id %>
-            <%@testlines.each do |testline| %>
-              <% if team_testline.testline_id == testline.id %>
-                <%= testline.name %>
-                <%= link_to 'Show', team_testline %>
-                <%= link_to 'Edit', edit_team_testline_path(team_testline) %>
-                <%= link_to 'Destroy', team_testline, method: :delete, data: { confirm: 'Are you sure?' } %>
-                </br>
-              <%end%>
-            <%end%>
-          <%end%>
-        <%end%>
-      <%end%>
-    </tbody>
-  </table>
+	<tbody>
+		<% @teams.each do |team| %>
+			<%=team.name%>
+			</br>
+			<% @team_testlines.each do |team_testline| %>
+				<% if team.id == team_testline.team_id %>
+					<%@testlines.each do |testline| %>
+						<% if team_testline.testline_id == testline.id %>
+							<%= testline.name %>
+							<%= link_to 'Show', team_testline %>
+							<%= link_to 'Edit', edit_team_testline_path(team_testline) %>
+							<%= link_to 'Destroy', team_testline, method: :delete, data: { confirm: 'Are you sure?' } %>
+							</br>
+						<%end%>
+					<%end%>
+				<%end%>
+			<%end%>
+		<%end%>
+	</tbody>
+</table>
 
-  <br>
+<br>
 
-  <br>
+<br>
 
-  <%= link_to 'New Team testline', new_team_testline_path %>
+<%= link_to 'New Team testline', new_team_testline_path %>
 
-  <% else %>
-    
-    <h1>Sorry, you need to be an admin to view this page.</h1>
-    <p>Please contact the administrator if you want to be one.</p>
+<% else %>
+	
+	<h1>Sorry, you need to be an admin to view this page.</h1>
+	<p>Please contact the administrator if you want to be one.</p>
 
-  <% end %>
+<% end %>
 
 <% else %>
 
-  <h1>Sorry, you need to be logged-in to view this page.</h1>
+<h1>Sorry, you need to be logged-in to view this page.</h1>
 
 <% end %>
