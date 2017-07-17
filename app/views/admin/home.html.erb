@@ -16,11 +16,18 @@
 					</div>
 					<div class="card-content-admin">
 						<div class="card-title-admin">
-							<a href="/admin/teams" id="manage-teams">
-								<button class="card-btn-admin" id="manage-teams">
+							<a href="/admin/teams">
+								<button class="card-btn-admin slide_left" id="manage-teams" onmouseover="show('manage-teams-description')" onmouseout="hide()">
 									<h3>Manage teams</h3>
 								</button>
 							</a>
+						</div>
+						<div class="card-description" id="manage-teams-description">
+							<div class="card-description-content" >
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -32,13 +39,19 @@
 					<div class="card-content-admin">
 						<div class="card-title-admin">
 							<a href="/admin/testlines">
-								<button class="card-btn-admin" id="manage-testlines">
+								<button class="card-btn-admin slide_left" id="manage-testlines" onmouseover="show('manage-testlines-description')" onmouseout="hide()">
 									<h3>Manage Testlines</h3>
 								</button>
 							</a>
 						</div>
+						<div class="card-description" id="manage-testlines-description">
+							<div class="card-description-content">
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+								</p>
+							</div>
+						</div>
 					</div>
-
 				</div>
 
 				<div class="card">
@@ -48,10 +61,17 @@
 					<div class="card-content-admin">
 						<div class="card-title-admin">
 							<a href="/admin/associations">
-								<button class="card-btn-admin" id="manage-associations">
+								<button class="card-btn-admin slide_left" id="manage-associations" onmouseover="show('manage-associations-description')" onmouseout="hide()">
 									<h3>Manage associations</h3>
 								</button>
 							</a>
+						</div>
+						<div class="card-description" id="manage-associations-description">
+							<div class="card-description-content">
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -63,10 +83,17 @@
 					<div class="card-content-admin">
 						<div class="card-title-admin">
 							<a href="/admin/users">
-								<button class="card-btn-admin" id="manage-users">
+								<button class="card-btn-admin slide_left" id="manage-users" onmouseover="show('manage-users-description')" onmouseout="hide()">
 									<h3>Manage users</h3>
 								</button>
 							</a>
+						</div>
+						<div class="card-description" id="manage-users-description">
+							<div class="card-description-content">
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -84,7 +111,31 @@
 	<% end %>
 <% end %>
 
+<script>
+	function show(id){
+		document.getElementById(id).style.display="block";
+	}
+
+	function hide(){
+		document.getElementById("manage-teams-description").style.display="none";
+		document.getElementById("manage-testlines-description").style.display="none";
+		document.getElementById("manage-users-description").style.display="none";
+		document.getElementById("manage-associations-description").style.display="none";	
+	}
+
+
+
+</script>
+
 <style type="text/css">
+
+	.slide_left:hover {
+		-webkit-transition: ease-out 0.4s;
+		-moz-transition: ease-out 0.4s;
+		transition: ease-out 0.4s;
+		box-shadow: inset 400px 0 0 0 #0275D8;
+	}
+
 	.wrapper-greeting{
 		padding: 10px;
 	}
@@ -99,15 +150,27 @@
    		background: #ccc;
 	}
 
-
 	.card-content-admin{
-		flex: 1 1 auto;
-	    display: flex;
-	    flex-direction: column;
-	    justify-content: space-between;
-	    background: #fff;
-	    border-bottom-left-radius: 0.25em;
-	    border-bottom-right-radius: 0.25em;
+	    flex: 0 0 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #fff;
+        border-bottom-left-radius: 0.25em;
+        border-bottom-right-radius: 0.25em;
+	}
+
+	#manage-users-description, #manage-teams-description, #manage-associations-description, #manage-testlines-description{
+		display: none;
+		background-color: transparent;
+	}
+
+	.card-description{
+		padding: 0 10px;
+	}
+
+	.card-description-content{
+		background-color: transparent;
 	}
 
 	.card-title-admin{
