@@ -36,14 +36,14 @@
                 <h2>Main Navigation</h2>
                 <ul>
                     <li><%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path %></li>
-                    <li><a href="/testlines/reservations"><i class="fa fa-user"></i>    Reservations</a></li>
+                    <li><a href="/testlines/reservations"><i class="fa fa-calendar-check-o"></i>    Reservations</a></li>
                     <% if user_signed_in? %>
                         <% if current_user.isAdmin? %>
-                            <li><a href="/admin/home"><i class="fa fa-user"></i> Administrator</a></li>
+                            <li><a href="/admin/home"><i class="fa fa-cogs"></i> Administrator</a></li>
                         <% end %>
-                        <li><%= link_to '<i class="fa fa-user"></i> Logout'.html_safe, destroy_user_session_path, method: :delete %></li>
+                        <li><%= link_to '<i class="fa fa-sign-out"></i> Logout'.html_safe, destroy_user_session_path, method: :delete %></li>
                     <% else %>
-                        <li><a href="/users/sign_in"><i class="fa fa-user"></i> Login</a></li>
+                        <li><a href="/users/sign_in"><i class="fa fa-sign-in"></i> Login</a></li>
                     <% end %>
                 </ul>
             </div>

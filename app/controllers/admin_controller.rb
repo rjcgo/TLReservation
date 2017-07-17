@@ -14,6 +14,7 @@ class AdminController < ApplicationController
   	@team_testlines = TeamTestline.all
     @teams = Team.order(:name)
     @testlines = Testline.all
+    @team_testline = TeamTestline.new
   end
 
   def testlines

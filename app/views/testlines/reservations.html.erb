@@ -35,9 +35,10 @@
 			<% end %>
 					<h2>
 						<i class="fa fa-navicon sidenav-toggle"></i> 
-						<%= testline.name %>
+						In queue for <%= testline.name %>
 					</h2>
 					<ul>
+						<% currentReserve = true %>
 						<% @reservations.each do |reserve| %>
 							<% if testline.id == reserve.testline_id %>
 								<li class="list-item">
@@ -45,7 +46,12 @@
 									<p class="subtitle"><%=reserve.description%>.</p>
 									<p class="description">Reserved for <b><%=reserve.team_name%></b> by <%=reserve.email%> on <%= reserve.created_at.localtime.to_s(:db) %></p>
 									<% if current_user.email == reserve.email || current_user.isAdmin? %>
-										<%= link_to '<i class="fa fa-times"></i> Release'.html_safe,[reserve.testline,reserve],  method: :delete, data:{confirm: 'Release?'}, :class=>"text-danger" %>
+										<% if currentReserve %>
+											<%= link_to '<i class="fa fa-times"></i> Release'.html_safe,[reserve.testline,reserve],  method: :delete, data:{confirm: 'Release?'}, :class=>"text-danger" %>
+											<% currentReserve = false %>
+										<% else %>
+											<%= link_to '<i class="fa fa-times"></i> Cancel reservation'.html_safe,[reserve.testline,reserve],  method: :delete, data:{confirm: 'Cancel reservation?'}, :class=>"text-danger" %>
+										<% end %>
 									<% end %>
 								</li>
 							<% end %>        
