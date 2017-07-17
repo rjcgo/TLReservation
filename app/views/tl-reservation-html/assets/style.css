@@ -893,6 +893,7 @@ article {
     text-align: center;
     /* margin: 8px 2px; */
     padding: 8px 2px;
+    font-family: Raleway;
 }
 
 .modal-body-as button[type="button"]:hover,
