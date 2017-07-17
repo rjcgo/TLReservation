@@ -305,23 +305,23 @@ h4 {
 /* ******************** Main Banner ******************** */
 
 .carousel {
-    max-height: 89.5%;
-    overflow: hidden;
+    /* max-height: 89.7%; */
+    /* overflow: hidden; */
     position: relative;
 }
 
-#main-banner img {
-    width: 400%;
-     height: 100%; 
+.carousel img {
+    width: 100%;
+    height: 100%;
 }
 
-.banner-overlay{
+.banner-overlay {
     position: absolute;
     top: 20%;
     width: 100%;
 }
 
-.banner-overlay .display-1{
+.banner-overlay .display-1 {
     font-size: 4.5em;
     color: #fff;
 }
@@ -442,7 +442,7 @@ article {
 .card-header {
     display: block;
     color: #fff;
-    padding: 4%;
+    padding: 10px;
     text-align: center;
     border-top-left-radius: 0.25em;
     border-top-right-radius: 0.25em;
@@ -455,7 +455,7 @@ article {
     flex-direction: column;
     justify-content: space-between;
     background: #fff;
-    padding: 4%;
+    padding: 10px;
     border-bottom-left-radius: 0.25em;
     border-bottom-right-radius: 0.25em;
 }
@@ -597,7 +597,7 @@ article {
 
 .list-item {
     box-sizing: border-box;
-    padding: 4%;
+    padding: 10px;
     background: #616161;
     position: relative;
 }
