@@ -17,7 +17,7 @@
 					<div class="card-content-admin">
 						<div class="card-title-admin">
 							<a href="/admin/teams">
-								<button class="card-btn-admin slide_left" id="manage-teams" onmouseover="show('manage-teams-description')" onmouseout="hide()">
+								<button class="card-btn-admin slide_left" id="manage-teams">
 									<h3>Manage teams</h3>
 								</button>
 							</a>
@@ -39,7 +39,7 @@
 					<div class="card-content-admin">
 						<div class="card-title-admin">
 							<a href="/admin/testlines">
-								<button class="card-btn-admin slide_left" id="manage-testlines" onmouseover="show('manage-testlines-description')" onmouseout="hide()">
+								<button class="card-btn-admin slide_left" id="manage-testlines">
 									<h3>Manage Testlines</h3>
 								</button>
 							</a>
@@ -61,7 +61,7 @@
 					<div class="card-content-admin">
 						<div class="card-title-admin">
 							<a href="/admin/associations">
-								<button class="card-btn-admin slide_left" id="manage-associations" onmouseover="show('manage-associations-description')" onmouseout="hide()">
+								<button class="card-btn-admin slide_left" id="manage-associations">
 									<h3>Manage associations</h3>
 								</button>
 							</a>
@@ -83,7 +83,7 @@
 					<div class="card-content-admin">
 						<div class="card-title-admin">
 							<a href="/admin/users">
-								<button class="card-btn-admin slide_left" id="manage-users" onmouseover="show('manage-users-description')" onmouseout="hide()">
+								<button class="card-btn-admin slide_left" id="manage-users">
 									<h3>Manage users</h3>
 								</button>
 							</a>
@@ -112,163 +112,37 @@
 <% end %>
 
 <script>
-	function show(id){
-		document.getElementById(id).style.display="block";
-	}
+	$(document).ready(function() {
+	    $("#manage-teams").hover(
 
-	function hide(){
-		document.getElementById("manage-teams-description").style.display="none";
-		document.getElementById("manage-testlines-description").style.display="none";
-		document.getElementById("manage-users-description").style.display="none";
-		document.getElementById("manage-associations-description").style.display="none";	
-	}
+	    function() {
+	        $("#manage-teams-description").slideDown(500);
+	    }, function() {
+	        $("#manage-teams-description").slideUp(500);
+	    });
+	    
+	    $("#manage-testlines").hover(
 
+	    function() {
+	        $("#manage-testlines-description").slideDown(500);
+	    }, function() {
+	        $("#manage-testlines-description").slideUp(500);
+	    });
 
+	    $("#manage-associations").hover(
 
+	    function() {
+	        $("#manage-associations-description").slideDown(500);
+	    }, function() {
+	        $("#manage-associations-description").slideUp(500);
+	    });
+
+	    $("#manage-users").hover(
+
+	    function() {
+	        $("#manage-users-description").slideDown(500);
+	    }, function() {
+	        $("#manage-users-description").slideUp(500);
+	    });
+	});
 </script>
-
-<style type="text/css">
-
-	.slide_left:hover {
-		-webkit-transition: ease-out 0.4s;
-		-moz-transition: ease-out 0.4s;
-		transition: ease-out 0.4s;
-		box-shadow: inset 400px 0 0 0 #0275D8;
-	}
-
-	.wrapper-greeting{
-		padding: 10px;
-	}
-
-	.card-deck {
-	    display: flex;
-	    flex-wrap: wrap;
-	    justify-content: center;
-	}
-
-	.card .card-btn-admin:hover {
-   		background: #ccc;
-	}
-
-	.card-content-admin{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        background: #fff;
-        border-bottom-left-radius: 0.25em;
-        border-bottom-right-radius: 0.25em;
-	}
-
-	#manage-users-description, #manage-teams-description, #manage-associations-description, #manage-testlines-description{
-		display: none;
-		background-color: transparent;
-	}
-
-	.card-description{
-		padding: 0 10px;
-	}
-
-	.card-description-content{
-		background-color: transparent;
-	}
-
-	.card-title-admin{
-		padding: 10px;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-	}
-
-	.card-btn-admin {
-	    width: 100%;
-	    color: #000;
-	    background: #fff;
-	    border: 1px solid #000;
-	    border-radius: 0.25em;
-	    padding: 8px 16px;
-	    align-self: inline-block;
-	}
-
-	.alert {
-	  padding: 15px;
-	  margin-bottom: 20px;
-	  border: 1px solid transparent;
-	  border-radius: 4px;
-	}
-	.alert h4 {
-	  margin-top: 0;
-	  color: inherit;
-	}
-	.alert .alert-link {
-	  font-weight: bold;
-	}
-	.alert > p,
-	.alert > ul {
-	  margin-bottom: 0;
-	}
-	.alert > p + p {
-	  margin-top: 5px;
-	}
-	.alert-dismissable,
-	.alert-dismissible {
-	  padding-right: 35px;
-	}
-	.alert-dismissable .close,
-	.alert-dismissible .close {
-	  position: relative;
-	  top: -2px;
-	  right: -21px;
-	  color: inherit;
-	}
-	.alert-success {
-	  color: #3c763d;
-	  background-color: #dff0d8;
-	  border-color: #d6e9c6;
-	}
-	.alert-success hr {
-	  border-top-color: #c9e2b3;
-	}
-	.alert-success .alert-link {
-	  color: #2b542c;
-	}
-	.alert-info {
-	  color: #31708f;
-	  background-color: #d9edf7;
-	  border-color: #bce8f1;
-	}
-	.alert-info hr {
-	  border-top-color: #a6e1ec;
-	}
-	.alert-info .alert-link {
-	  color: #245269;
-	}
-	.alert-warning {
-	  color: #8a6d3b;
-	  background-color: #fcf8e3;
-	  border-color: #faebcc;
-	}
-	.alert-warning hr {
-	  border-top-color: #f7e1b5;
-	}
-	.alert-warning .alert-link {
-	  color: #66512c;
-	}
-	.alert-danger {
-	  color: #a94442;
-	  background-color: #f2dede;
-	  border-color: #ebccd1;
-	}
-	.alert-danger hr {
-	  border-top-color: #e4b9c0;
-	}
-	.alert-danger .alert-link {
-	  color: #843534;
-	}
-	button.close {
-	  -webkit-appearance: none;
-	  padding: 0;
-	  cursor: pointer;
-	  background: transparent;
-	  border: 0;
-	}
-</style>
