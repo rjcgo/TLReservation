@@ -50,7 +50,13 @@
 								</div>
 							<% end %>
 							<div class="card">
-								<div class="card-header bg-green">
+								<% if ( testline.reservations.count !=0) && !testline.isMaintenance? %>
+									<div class="card-header bg-red">
+								<% elsif testline.isMaintenance? %>
+									<div class="card-header bg-yellow">
+								<% else %>
+									<div class="card-header bg-green">	
+								<% end %>
 									<i class="fa fa-server fa-white icon-lg"></i>
 			                        <h3><%= testline.name %></h3>
 			                    </div>
