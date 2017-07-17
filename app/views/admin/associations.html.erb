@@ -2,7 +2,7 @@
   <% balls = pokelist %>
   <main class="wrapper">
     <article>
-      <%= render 'sidenav' %>
+      <%= render partial: 'sidenav', :locals => {:sect => "associations"} %>
       <section class="tabcontent">
         <h2>
           <i class="fa fa-navicon sidenav-toggle"></i> Associations

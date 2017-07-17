@@ -1,51 +1,35 @@
-<% if user_signed_in? %>
-
-	<% if current_user.isAdmin? %>
-
-		<main class="wrapper">
-
-			<article>
-				
-				<%= render 'sidenav' %>
-
-				<section id="milo" class="tabcontent">
-					
-					<h2>
-	                    <i class="fa fa-users sidenav-toggle"></i> Users
-	                </h2>
-
-	                <ul>
-	                	<% @users.each do |user| %>
-		                	<li class="list-item" style="padding: 2%;">
-		                		<div style="float: left;">
-	                            	<h3 class="title" style="font-size: 1.4em;">
-	                            		<i class="fa fa-user fa-white"></i> <%= user.email %>
-	                            	</h3>
-	                            </div>
-	                            <div style="float: right;">
-	                            	<% if user.isAdmin? %>
-			                            <small class="badge badge-current" style="font-size: 0.9em;">
-			                                <i class="fa fa-cogs"></i> Administrator
-			                            </small>
-			                        <% else %>
-			                        	<%= link_to '<i class="fa fa-lock"></i> Make Admin'.html_safe, admin_makeAdmin_path(user), method: :post, data: { confirm: 'You will be granting '+user.email+' administrator privileges. This cannot be undone. Click OK to proceed.' } %>
-			                        <% end %>
-		                        </div>
-		                        <div style="clear: both;"></div>
-	                        </li>
-                        <% end %>
-	                </ul>
-				</section>
-
-			</article>
-
-		</main>
-
-	<% else %>
-		<h1>Sorry, you need to be an admin to view this page.</h1>
-		<p>Please contact the administrator if you want to be one.</p>
-	<% end %>
-
+<% if user_signed_in? && current_user.isAdmin? %>
+	<main class="wrapper">
+		<article>
+			<%= render partial: 'sidenav', :locals => {:sect => "users"} %>
+			<section id="milo" class="tabcontent">
+				<h2>
+					<i class="fa fa-users sidenav-toggle"></i> Users
+				</h2>
+				<ul>
+					<% @users.each do |user| %>
+						<li class="list-item" style="padding: 2%;">
+							<div style="float: left;">
+								<h3 class="title" style="font-size: 1.4em;">
+									<i class="fa fa-user fa-white"></i> <%= user.email %>
+								</h3>
+							</div>
+							<div style="float: right;">
+								<% if user.isAdmin? %>
+									<small class="badge badge-current" style="font-size: 0.9em;">
+										<i class="fa fa-cogs"></i> Administrator
+									</small>
+								<% else %>
+									<%= link_to '<i class="fa fa-lock"></i> Make Admin'.html_safe, admin_makeAdmin_path(user), method: :post, data: { confirm: 'You will be granting '+user.email+' administrator privileges. This cannot be undone. Click OK to proceed.' } %>
+								<% end %>
+							</div>
+							<div style="clear: both;"></div>
+						</li>
+					<% end %>
+				</ul>
+			</section>
+		</article>
+	</main>
 <% else %>
-	<h1>Sorry, you need to be logged-in to view this page.</h1>
+	<%= render 'error' %>
 <% end %>

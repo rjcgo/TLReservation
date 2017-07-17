@@ -4,7 +4,7 @@
 <% if user_signed_in? && current_user.isAdmin? %>
 	<main class="wrapper">
 		<article>
-			<%= render 'sidenav' %>
+			<%= render partial: 'sidenav', :locals => {:sect => "testlines"} %>
 			<section id="testlines" class="tabcontent">
 				<h2 id="testlines-label"><i class="fa fa-server sidenav-toggle"></i> Testlines</h2>
 				<h2 id="add-testline" style="cursor: pointer;"><i class="fa fa-plus fa-white"></i><%= content_tag :a, ' New Testline', :class=> "new-testline-link", :onclick => "activate_modal(0)" %></h2>
