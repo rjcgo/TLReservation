@@ -990,6 +990,9 @@ article {
 }
 
 @media screen and (min-width: 992px) {
+    .pokeballs-grid{
+        width: 60%;
+    }
     .pokeballs-grid li {
         flex: 1 0 24%;
         border: 1px solid #ccc;
