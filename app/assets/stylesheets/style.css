@@ -302,6 +302,90 @@ h4 {
 }
 
 
+/* ******************** Main Banner ******************** */
+
+#choose,
+#reserve,
+#queue,
+#release {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-position: 74% top !important;
+}
+
+#choose {
+    background: url(banner-1.png) no-repeat;
+}
+
+#reserve {
+    background: url(banner-2.png) no-repeat;
+}
+
+#queue {
+    background: url(banner-3.png) no-repeat;
+}
+
+#release {
+    background: url(banner-4.png) no-repeat;
+}
+
+#choose img,
+#reserve img,
+#queue img,
+#release img {
+    width: 100%;
+    height: 100%;
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 10%;
+    width: 100%;
+}
+
+.banner-overlay .display-1 {
+    font-size: 3em;
+    color: #fff;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.banner-overlay .overlay-text {
+    font-size: 1.6em;
+    line-height: 1.6em;
+    width: 72%;
+    color: #e9e9e9;
+}
+
+.pokeballs-grid {
+    width: 74%;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 400px;
+    overflow: auto;
+}
+
+.pokeballs-grid li {
+    flex: 1 0 100%;
+    border-bottom: 1px solid #ccc;
+}
+
+.pokeballs-grid a {
+    display: block;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    /* margin: 8px 2px; */
+    padding: 8px 2px;
+}
+
+.pokeballs-grid a:hover {
+    background: #ccc;
+}
+
+
 /* ******************** Article ******************** */
 
 article {
@@ -394,6 +478,7 @@ article {
     font-size: 36px;
     padding: 4px 12px 6px 12px;
     line-height: 1.2em;
+    color: #fff;
 }
 
 
@@ -412,7 +497,7 @@ article {
     flex: 1 0 80%;
     display: flex;
     flex-direction: column;
-    margin: 5%;
+    margin: 10px;
     border-radius: 0.25em;
 }
 
@@ -466,6 +551,7 @@ article {
     border-radius: 0.25em;
     padding: 0.25em 0.5em;
     align-self: flex-end;
+    font-family: Raleway;
 }
 
 .card .card-btn:hover {
@@ -493,13 +579,14 @@ article {
     background: #ccc;
 }
 
+
 /* ******************** Card TL ******************** */
 
-.card-tl{
+.card-tl {
     flex: 1 0 80%;
     display: flex;
     flex-direction: column;
-    margin: 5%;
+    margin: 10px;
     border-radius: 0.25em;
 }
 
@@ -507,7 +594,7 @@ article {
     float: left;
 }
 
-.card-tl-add{
+.card-tl-add {
     background: transparent;
     color: #fff;
     border: 0;
@@ -516,14 +603,14 @@ article {
     cursor: pointer;
 }
 
-.card-teams{
+.card-teams {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.card-team-icon{
-    flex: 0 1 32%;
+.card-team-icon {
+    flex: 0 1 50%;
     text-align: center;
     color: #000;
     text-decoration: none;
@@ -531,7 +618,7 @@ article {
     /* padding: 0.8rem; */
 }
 
-.card-team-close{
+.card-team-close {
     position: absolute;
     top: 0;
     right: 0;
@@ -540,6 +627,7 @@ article {
     font-size: 1em;
     cursor: pointer;
 }
+
 
 /* ******************** Badges ******************** */
 
@@ -577,10 +665,6 @@ article {
     position: relative;
 }
 
-.list-item:first-of-type{
-    /*font-size: 2em;*/
-}
-
 .list-item:nth-of-type(odd) {
     /* background: #f1f1f1; */
     background: #424242;
@@ -590,18 +674,6 @@ article {
     /* color: #555; */
     color: #e1e1e1;
     font-size: 1.5em;
-    display: inline-block;
-}
-
-.list-item .badge{
-    float: none;
-    display: inline-block;
-}
-
-.list-item .title::after{
-    content: "";
-    display: block;
-    clear: both;
 }
 
 .list-item .subtitle {
@@ -625,7 +697,6 @@ article {
     padding: 0.6em 1em;
     border: 0;
     background: #d9534f;
-    border-radius: 0;
 }
 
 .list-item .release:hover {
@@ -640,7 +711,7 @@ article {
     padding: 8px 16px;
     /* border: 1px solid #000; */
     border: 1px solid #fff;
-    /*border-radius: 0.25em;*/
+    border-radius: 0.25em;
 }
 
 .list-item a:hover {
@@ -650,6 +721,17 @@ article {
 
 .list-item:nth-of-type(odd) a:hover {
     background: #616161;
+}
+
+.list-item .badge {
+    float: none;
+    display: inline-block;
+}
+
+.list-item .title::after {
+    content: "";
+    display: block;
+    clear: both;
 }
 
 
@@ -708,39 +790,53 @@ article {
     /* Black w/ opacity */
 }
 
-.modal-as.show{
+.modal-as.show {
     display: block;
 }
 
 .modal-content-as {
-    width: 100%;
-    margin: 10% auto;
+    width: 98%;
+    margin: 50px auto;
     background: #fefefe;
-    padding: 26px;
     box-sizing: border-box;
-    border: 1px solid #888;
     border-radius: 0.25em;
     position: relative;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s
 }
 
+
 /* Add Animation */
+
 @-webkit-keyframes animatetop {
-    from {top: -300px; opacity: 0} 
-    to {top: 0; opacity: 1}
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
 }
 
 @keyframes animatetop {
-    from {top: -300px; opacity: 0}
-    to {top: 0; opacity: 1}
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
 }
 
 .modal-header-as {
-    margin-bottom: 10px;
+    padding: 14px 26px;
+    border-top-left-radius: 0.25em;
+    border-top-right-radius: 0.25em;
 }
 
 .modal-header-as .modal-title-as {
@@ -757,7 +853,7 @@ article {
     color: #aaa;
 }
 
-.modal-close-as{
+.modal-close-as {
     color: #000;
 }
 
@@ -765,6 +861,10 @@ article {
     content: "";
     display: block;
     clear: both;
+}
+
+.modal-body-as {
+    padding: 1px 14px;
 }
 
 .modal-body-as ul {
@@ -779,7 +879,7 @@ article {
 }
 
 .modal-body-as li {
-    flex: 1 0 20%;
+    flex: 1 0 50%;
 }
 
 .modal-body-as button[type="button"],
@@ -793,6 +893,7 @@ article {
     text-align: center;
     /* margin: 8px 2px; */
     padding: 8px 2px;
+    font-family: Raleway;
 }
 
 .modal-body-as button[type="button"]:hover,
@@ -800,20 +901,49 @@ article {
     border: 1px solid #ccc;
 }
 
+.modal-body-as .modal-text {
+    text-align: center;
+    font-size: 16px;
+    color: #555;
+}
+
+.modal-footer-as {
+    border-bottom-left-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+    text-align: center;
+    padding: 1px 14px 14px 14px;
+}
+
+.modal-footer-as .modal-btn-as {
+    border: 1px solid #000;
+    border-radius: 0.25em;
+    background: transparent;
+    font-size: 1.2em;
+    padding: 6px 16px;
+    font-family: Raleway;
+}
+
 
 /* ******************** bg-color ******************** */
 
 .bg-green {
-    background: #5cb85c;
+    border: 1px solid #5cb85c !important;
+    background: #5cb85c !important;
+    color: #fff;
 }
 
 .bg-red {
-    background: #a94442;
+    border: 1px solid #a94442 !important;
+    background: #a94442 !important;
+    color: #fff;
 }
 
 .bg-yellow {
-    background: #f0ad4e;
+    border: 1px solid #f0ad4e !important;
+    background: #f0ad4e !important;
+    color: #fff;
 }
+
 .bg-blue {
     background: #2987C7;
 }
@@ -836,16 +966,47 @@ article {
 
 @media screen and (min-width: 320px) {}
 
-@media screen and (min-width: 576px) {
-    .modal-content-as{
+@media screen and (min-width: 480px) {
+    .pokeballs-grid li {
+        flex: 1 0 48%;
+        border: 1px solid #ccc;
+    }
+    .banner-overlay .overlay-text {
+        width: 66%;
+    }
+    .banner-overlay .display-1 {
+        font-size: 3.5em;
+    }
+    .modal-content-as {
         width: 80%;
+    }
+    .card-team-icon {
+        flex: 0 1 33%;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .banner-overlay .display-1 {
+        font-size: 4em;
+    }
+    .banner-overlay .overlay-text {
+        font-size: 2em;
+        width: 60%;
+    }
+    .modal-content-as {
+        width: 80%;
+    }
+    .modal-body-as li {
+        flex: 1 0 33%;
     }
 }
 
 @media screen and (min-width: 768px) {
+    .pokeballs-grid li {
+        flex: 1 0 32%;
+    }
     .card {
         flex: 0 1 48%;
-        margin: 1%;
     }
     #burger-nav {
         display: none;
@@ -889,25 +1050,42 @@ article {
     .sidenav .closebtn {
         display: none;
     }
-    .modal-content-as{
+    .modal-content-as {
         width: 60%;
     }
 }
 
 @media screen and (min-width: 992px) {
-    .card-tl{
+    .pokeballs-grid {
+        width: 60%;
+    }
+    .pokeballs-grid li {
+        flex: 1 0 24%;
+        border: 1px solid #ccc;
+    }
+    .card-tl {
         flex: 0 1 48%;
-        margin: 1%;
+        margin: 5px;
     }
     .card {
         flex: 0 1 31%;
-        margin: 1%;
+        margin: 5px;
+    }
+    .modal-body-as li {
+        flex: 1 0 25%;
     }
 }
 
 @media screen and (min-width: 1200px) {
+    .pokeballs-grid li {
+        flex: 1 0 19%;
+        border: 1px solid #ccc;
+    }
     .card {
         flex: 0 1 23%;
+    }
+    .modal-body-as li {
+        flex: 1 0 20%;
     }
 }
 
