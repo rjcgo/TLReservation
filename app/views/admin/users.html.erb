@@ -28,7 +28,7 @@
 			                                <i class="fa fa-cogs"></i> Administrator
 			                            </small>
 			                        <% else %>
-			                        	<%= link_to '<i class="fa fa-lock"></i> Make Admin'.html_safe, admin_makeAdmin_path(user), method: :post, data: { confirm: 'You will be granting '+user.email+' administrator privileges. Click OK to proceed.' } %>
+			                        	<%= link_to '<i class="fa fa-lock"></i> Make Admin'.html_safe, admin_makeAdmin_path(user), method: :post, data: { confirm: 'You will be granting '+user.email+' administrator privileges. This cannot be undone. Click OK to proceed.' } %>
 			                        <% end %>
 		                        </div>
 		                        <div style="clear: both;"></div>
