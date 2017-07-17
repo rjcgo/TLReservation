@@ -1,99 +1,89 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="home.js"></script>
-<% if user_signed_in? %>
-	<% if current_user.isAdmin? %>
+<% if user_signed_in? && current_user.isAdmin? %>
 
-		<main class="wrapper">
+	<main class="wrapper">
 
-			<article>
+		<article>
 
-				<%= render 'sidenav' %>
+			<%= render 'sidenav' %>
 
-				<section id="testlines" class="tabcontent">
+			<section id="testlines" class="tabcontent">
 
-					<h2 id="testlines-label"><i class="fa fa-users sidenav-toggle"></i> Teams</h2>
+				<h2 id="testlines-label"><i class="fa fa-users sidenav-toggle"></i> Teams</h2>
 
-					<h2 id="add-testline" style="cursor: pointer;"><i class="fa fa-plus fa-white"></i><%= content_tag :a, ' New Team', :class=> "new-testline-link", :onclick => "activate_modal(0)" %></h2>
+				<h2 id="add-testline" style="cursor: pointer;"><i class="fa fa-plus fa-white"></i><%= content_tag :a, ' New Team', :class=> "new-testline-link", :onclick => "activate_modal(0)" %></h2>
 
-					<% if @teams.blank? %>
-						<div class="wrapper-greeting">
-							<div class="alert alert-success alert-dismissible" role="alert">
-							  	<h4 class="alert-heading">There are no teams yet.</h4>
-							</div>
+				<% if @teams.blank? %>
+					<div class="wrapper-greeting">
+						<div class="alert alert-success alert-dismissible" role="alert">
+						  	<h4 class="alert-heading">There are no teams yet.</h4>
 						</div>
-
-					<% end %>
-
-					<div class="card-deck">
-						<% balls = pokelist %>
-						<% @teams.each do |team| %>
-							<div class="card">
-								<div class="card-header bg-green">
-									<i class="<%= balls[team.id % 20] %>"></i>
-									<h3><%= team.name %></h3>
-								</div>
-
-								<div class="card-content">
-									<div class="card-title-admin">
-									<%= content_tag :button, 'Edit', :onclick => "activate_modal(#{team.id})", :class => "card-btn-admin" %>
-									<%= button_to 'Delete', team, method: :delete, data: { confirm: 'Are you sure?'} , :class => "card-btn-admin" %>
-									</div>
-								</div>
-							</div>
-							<%= content_tag :div, :class => "modal", :id => team.id do -%>
-								<div class="container reservation-form">  
-									<div class="modal-content">
-										<%= form_for(team, :html => {:class => "reserve"}) do |f| %>
-											<div class="modal-header">
-												<%= content_tag :span, 'x', :class => "close", :onclick => "deactivate_modal(#{team.id})" %>
-												<h3>Edit Team</h3>
-											</div>
-											<fieldset>
-												<%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required" %>
-											</fieldset>
-											
-											<fieldset>
-												<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Edit team</button>
-											</fieldset>
-										<% end %>
-									</div>
-								</div>
-							<% end %>
-						<% end %>
 					</div>
-				</section>
-			</article>
-		</main>	
-		<%= content_tag :div, :class => "modal", :id => "0" do -%>
-			<div class="container reservation-form">  
-				<div class="modal-content">
-					<%= form_for(@team, :html => {:class => "reserve"}) do |f| %>
-						<div class="modal-header">
-							<%= content_tag :span, 'x', :class => "close", :onclick => "deactivate_modal(0)" %>
-							<h3>Add new team</h3>
+
+				<% end %>
+
+				<div class="card-deck">
+					<% balls = pokelist %>
+					<% @teams.each do |team| %>
+						<div class="card">
+							<div class="card-header bg-green">
+								<i class="<%= balls[team.id % 20] %>"></i>
+								<h3><%= team.name %></h3>
+							</div>
+
+							<div class="card-content">
+								<div class="card-title-admin">
+								<%= content_tag :button, 'Edit', :onclick => "activate_modal(#{team.id})", :class => "card-btn-admin" %>
+								<%= button_to 'Delete', team, method: :delete, data: { confirm: 'Are you sure?'} , :class => "card-btn-admin" %>
+								</div>
+							</div>
 						</div>
-						<fieldset>
-							<%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required" %>
-						</fieldset>
-						
-						<fieldset>
-							<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Add team</button>
-						</fieldset>
+						<%= content_tag :div, :class => "modal", :id => team.id do -%>
+							<div class="container reservation-form">  
+								<div class="modal-content">
+									<%= form_for(team, :html => {:class => "reserve"}) do |f| %>
+										<div class="modal-header">
+											<%= content_tag :span, 'x', :class => "close", :onclick => "deactivate_modal(#{team.id})" %>
+											<h3>Edit Team</h3>
+										</div>
+										<fieldset>
+											<%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required" %>
+										</fieldset>
+										
+										<fieldset>
+											<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Edit team</button>
+										</fieldset>
+									<% end %>
+								</div>
+							</div>
+						<% end %>
 					<% end %>
 				</div>
+			</section>
+		</article>
+	</main>	
+	<%= content_tag :div, :class => "modal", :id => "0" do -%>
+		<div class="container reservation-form">  
+			<div class="modal-content">
+				<%= form_for(@team, :html => {:class => "reserve"}) do |f| %>
+					<div class="modal-header">
+						<%= content_tag :span, 'x', :class => "close", :onclick => "deactivate_modal(0)" %>
+						<h3>Add new team</h3>
+					</div>
+					<fieldset>
+						<%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required" %>
+					</fieldset>
+					
+					<fieldset>
+						<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Add team</button>
+					</fieldset>
+				<% end %>
 			</div>
-		<% end %>
-	<% else %>
-
-		<h1>Sorry, you need to be an admin to view this page.</h1>
-		<p>Please contact the administrator if you want to be one.</p>
-
+		</div>
 	<% end %>
-
 <% else %>
-
-	<h1>Sorry, you need to be logged-in to view this page.</h1>
-
+	<%= render 'error' %>
 <% end %>
 
 <script>

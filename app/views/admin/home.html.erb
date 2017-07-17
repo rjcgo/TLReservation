@@ -96,11 +96,6 @@
 		</div>
 	</main>
 <% else %>
-	<div class="wrapper-greeting">
-		<div class="alert alert-success alert-danger" role="alert">
-			<h4 class="alert-heading">Sorry, you need to be logged in as an admin to view this page.</h4>
-			<h3 class="alert-heading">Please contact the administrator if you want to be one.</h3>
-		</div>
-	</div>
+	<%= render 'error' %>
 <% end %>
 

@@ -1,115 +1,110 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="home.js"></script>
-<% if user_signed_in? %>
-	<% if current_user.isAdmin? %>
-		<main class="wrapper">
-			<article>
-				<%= render 'sidenav' %>
-				<section id="testlines" class="tabcontent">
-					<h2 id="testlines-label"><i class="fa fa-server sidenav-toggle"></i> Testlines</h2>
-					<h2 id="add-testline" style="cursor: pointer;"><i class="fa fa-plus fa-white"></i><%= content_tag :a, ' New Testline', :class=> "new-testline-link", :onclick => "activate_modal(0)" %></h2>
-					<% if @testlines.empty? %>
-						<div class="wrappergreeting-">
-							<div class="alert alert-success alert-dismissible" role="alert">
-							  	<h4 class="alert-heading">There are no testlines yet.</h4>
+<% if user_signed_in? && current_user.isAdmin? %>
+	<main class="wrapper">
+		<article>
+			<%= render 'sidenav' %>
+			<section id="testlines" class="tabcontent">
+				<h2 id="testlines-label"><i class="fa fa-server sidenav-toggle"></i> Testlines</h2>
+				<h2 id="add-testline" style="cursor: pointer;"><i class="fa fa-plus fa-white"></i><%= content_tag :a, ' New Testline', :class=> "new-testline-link", :onclick => "activate_modal(0)" %></h2>
+				<% if @testlines.empty? %>
+					<div class="wrappergreeting-">
+						<div class="alert alert-success alert-dismissible" role="alert">
+						  	<h4 class="alert-heading">There are no testlines yet.</h4>
+						</div>
+					</div>
+				<% end %>
+				<div class="card-deck"> 	 
+					<% @testlines.each do |testline| %>
+						<%= content_tag :div, :class => "modal", :id => testline.id do -%>
+							<div class="container reservation-form">  
+								<div class="modal-content">
+									<%= form_for(testline, :html => {:class => "reserve"}) do |f| %>
+										<div class="modal-header">
+											<%= content_tag :span, 'x', :class => "close", :onclick => "deactivate_modal(#{testline.id})" %>
+											<h3>Edit testline</h3>
+										</div>
+										<fieldset>
+											<%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required" %>
+										</fieldset>
+
+										<fieldset>
+											<%= f.text_field :ip_address, :placeholder => "IP Address", :tabindex => "2", :required => "required" %>
+										</fieldset>
+
+										<fieldset>
+											<%= f.text_field :port_number, :placeholder => "Port Number", :tabindex => "3", :required => "required" %>
+										</fieldset>
+										<fieldset>
+											<p>Under Maintenance?
+												<%= f.check_box :isMaintenance, :tabindex => "4" %>
+											</p>
+										</fieldset>
+										<fieldset>
+											<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Edit testline</button>
+										</fieldset>
+									<% end %>
+								</div>
+							</div>
+						<% end %>
+						<div class="card">
+							<% if ( testline.reservations.count !=0) && !testline.isMaintenance? %>
+								<div class="card-header bg-red">
+							<% elsif testline.isMaintenance? %>
+								<div class="card-header bg-yellow">
+							<% else %>
+								<div class="card-header bg-green">	
+							<% end %>
+								<i class="fa fa-server fa-white icon-lg"></i>
+		                        <h3><%= testline.name %></h3>
+		                    </div>
+
+		                    <div class="card-content">
+		                    	<div class="card-title-admin">
+									<%= content_tag :button, 'Edit', :onclick => "activate_modal(#{testline.id})", :class => "card-btn-admin" %>
+								 	<%= button_to 'Destroy', testline, method: :delete, data: { confirm: 'Are you sure?' }, :class => "card-btn-admin" %>
+		                          </div>		                       
 							</div>
 						</div>
 					<% end %>
-					<div class="card-deck"> 	 
-						<% @testlines.each do |testline| %>
-							<%= content_tag :div, :class => "modal", :id => testline.id do -%>
-								<div class="container reservation-form">  
-									<div class="modal-content">
-										<%= form_for(testline, :html => {:class => "reserve"}) do |f| %>
-											<div class="modal-header">
-												<%= content_tag :span, 'x', :class => "close", :onclick => "deactivate_modal(#{testline.id})" %>
-												<h3>Edit testline</h3>
-											</div>
-											<fieldset>
-												<%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required" %>
-											</fieldset>
-
-											<fieldset>
-												<%= f.text_field :ip_address, :placeholder => "IP Address", :tabindex => "2", :required => "required" %>
-											</fieldset>
-
-											<fieldset>
-												<%= f.text_field :port_number, :placeholder => "Port Number", :tabindex => "3", :required => "required" %>
-											</fieldset>
-											<fieldset>
-												<p>Under Maintenance?
-													<%= f.check_box :isMaintenance, :tabindex => "4" %>
-												</p>
-											</fieldset>
-											<fieldset>
-												<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Edit testline</button>
-											</fieldset>
-										<% end %>
-									</div>
-								</div>
-							<% end %>
-							<div class="card">
-								<% if ( testline.reservations.count !=0) && !testline.isMaintenance? %>
-									<div class="card-header bg-red">
-								<% elsif testline.isMaintenance? %>
-									<div class="card-header bg-yellow">
-								<% else %>
-									<div class="card-header bg-green">	
-								<% end %>
-									<i class="fa fa-server fa-white icon-lg"></i>
-			                        <h3><%= testline.name %></h3>
-			                    </div>
-
-			                    <div class="card-content">
-			                    	<div class="card-title-admin">
-										<%= content_tag :button, 'Edit', :onclick => "activate_modal(#{testline.id})", :class => "card-btn-admin" %>
-									 	<%= button_to 'Destroy', testline, method: :delete, data: { confirm: 'Are you sure?' }, :class => "card-btn-admin" %>
-			                          </div>		                       
-								</div>
-							</div>
-						<% end %>
-					</div>
-				</section>
-			</article>
-			<%= content_tag :div, :class => "modal", :id => "0" do -%>
-				<div class="container reservation-form">  
-					<div class="modal-content">
-						<%= form_for(@testline, :html => {:class => "reserve"}) do |f| %>
-							<div class="modal-header">
-								<%= content_tag :span, 'x', :class => "close", :onclick => "deactivate_modal(0)" %>
-								<h3>Add new testline</h3>
-							</div>
-							<fieldset>
-								<%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required" %>
-							</fieldset>
-
-							<fieldset>
-								<%= f.text_field :ip_address, :placeholder => "IP Address", :tabindex => "2", :required => "required" %>
-							</fieldset>
-
-							<fieldset>
-								<%= f.text_field :port_number, :placeholder => "Port Number", :tabindex => "3", :required => "required" %>
-							</fieldset>
-							<fieldset>
-								<p>Under Maintenance?
-									<%= f.check_box :isMaintenance, :tabindex => "4" %>
-								</p>
-							</fieldset>
-							<fieldset>
-								<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Add testline</button>
-							</fieldset>
-						<% end %>
-					</div>
 				</div>
-			<% end %>
-		</main>
-	<% else %>	
-		<h1>Sorry, you need to be an admin to view this page.</h1>
-		<p>Please contact the administrator if you want to be one.</p>
-	<% end %>
+			</section>
+		</article>
+		<%= content_tag :div, :class => "modal", :id => "0" do -%>
+			<div class="container reservation-form">  
+				<div class="modal-content">
+					<%= form_for(@testline, :html => {:class => "reserve"}) do |f| %>
+						<div class="modal-header">
+							<%= content_tag :span, 'x', :class => "close", :onclick => "deactivate_modal(0)" %>
+							<h3>Add new testline</h3>
+						</div>
+						<fieldset>
+							<%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required" %>
+						</fieldset>
+
+						<fieldset>
+							<%= f.text_field :ip_address, :placeholder => "IP Address", :tabindex => "2", :required => "required" %>
+						</fieldset>
+
+						<fieldset>
+							<%= f.text_field :port_number, :placeholder => "Port Number", :tabindex => "3", :required => "required" %>
+						</fieldset>
+						<fieldset>
+							<p>Under Maintenance?
+								<%= f.check_box :isMaintenance, :tabindex => "4" %>
+							</p>
+						</fieldset>
+						<fieldset>
+							<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Add testline</button>
+						</fieldset>
+					<% end %>
+				</div>
+			</div>
+		<% end %>
+	</main>
 <% else %>
-	<h1>Sorry, you need to be logged-in to view this page.</h1>
+	<%= render 'error' %>
 <% end %>
 
 <style type="text/css">
