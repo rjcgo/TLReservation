@@ -41,9 +41,9 @@
 						<% @reservations.each do |reserve| %>
 							<% if testline.id == reserve.testline_id %>
 								<li class="list-item">
-									<h3 class="title">Title: <%=reserve.name%></h3>
-									<p class="subtitle">Team: <%=reserve.team_name%></p>
-									<p class="description">Description: <%=reserve.description%>.</p>
+									<h3 class="title"><%=reserve.name%></h3>
+									<p class="subtitle"><%=reserve.description%>.</p>
+									<p class="description">Reserved for <b><%=reserve.team_name%></b> by <%=reserve.email%> on <%= reserve.created_at.localtime.to_s(:db) %></p>
 									<% if current_user.email == reserve.email || current_user.isAdmin? %>
 										<%= link_to '<i class="fa fa-times"></i> Release'.html_safe,[reserve.testline,reserve],  method: :delete, data:{confirm: 'Release?'}, :class=>"text-danger" %>
 									<% end %>
