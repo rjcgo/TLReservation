@@ -35,7 +35,7 @@
 							<div class="card-content">
 								<div class="card-title-admin">
 								<%= content_tag :button, 'Edit', :onclick => "activate_modal(#{team.id})", :class => "card-btn-admin" %>
-								<%= button_to 'Delete', team, method: :delete, data: { confirm: 'Are you sure?'} , :class => "card-btn-admin" %>
+								<%= content_tag :button, 'Delete', :onclick => "activate_modal(-#{team.id})", :class => "card-btn-admin" %>
 								</div>
 							</div>
 						</div>
@@ -58,6 +58,21 @@
 								</div>
 							</div>
 						<% end %>
+						<div class="modal-as" id="-<%= team.id %>">
+							<div class="modal-content-as" style="max-width: 400px;">
+								<div class="modal-header-as bg-red">
+									<h4 class="modal-title-as"><i class="fa fa-trash"></i> Delete</h4>
+									<button type="button" class="modal-close-as bg-red" onclick="deactivate_modal(-<%= team.id %>)">&times;</button>
+								</div>
+								<div class="modal-body-as">
+									<p class="modal-text">Are you sure you want to delete <%= team.name %>?</p>
+								</div>
+								<div class="modal-footer-as">
+									<%= link_to 'Delete', team, method: :delete, :class => "modal-btn-as bg-red" %>
+									<button type="button" class="modal-btn-as" onclick="deactivate_modal(-<%= team.id %>)">Cancel</button>
+								</div>
+							</div>
+						</div>
 					<% end %>
 				</div>
 			</section>

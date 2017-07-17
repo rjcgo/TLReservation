@@ -48,6 +48,23 @@
 								</div>
 							</div>
 						<% end %>
+
+						<div class="modal-as" id="-<%= testline.id %>">
+							<div class="modal-content-as" style="max-width: 400px;">
+								<div class="modal-header-as bg-red">
+									<h4 class="modal-title-as"><i class="fa fa-trash"></i> Delete</h4>
+									<button type="button" class="modal-close-as bg-red" onclick="deactivate_modal(-<%= testline.id %>)">&times;</button>
+								</div>
+								<div class="modal-body-as">
+									<p class="modal-text">Are you sure you want to delete <%= testline.name %>?</p>
+								</div>
+								<div class="modal-footer-as">
+									<%= link_to 'Delete', testline, method: :delete, :class => "modal-btn-as bg-red" %>
+									<button type="button" class="modal-btn-as" onclick="deactivate_modal(-<%= testline.id %>)">Cancel</button>
+								</div>
+							</div>
+						</div>
+
 						<div class="card">
 							<% if ( testline.reservations.count !=0) && !testline.isMaintenance? %>
 								<div class="card-header bg-red">
@@ -63,7 +80,7 @@
 		                    <div class="card-content">
 		                    	<div class="card-title-admin">
 									<%= content_tag :button, 'Edit', :onclick => "activate_modal(#{testline.id})", :class => "card-btn-admin" %>
-								 	<%= button_to 'Destroy', testline, method: :delete, data: { confirm: 'Are you sure?' }, :class => "card-btn-admin" %>
+									<%= content_tag :button, 'Delete', :onclick => "activate_modal(-#{testline.id})", :class => "card-btn-admin" %>
 		                          </div>		                       
 							</div>
 						</div>

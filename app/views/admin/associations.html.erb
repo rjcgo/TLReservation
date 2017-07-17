@@ -57,13 +57,13 @@
                             <div class="modal-content-as" style="max-width: 400px;">
                               <div class="modal-header-as bg-red">
                                 <h4 class="modal-title-as"><i class="fa fa-trash"></i> Delete</h4>
-                                <button type="button" class="modal-close-as bg-red">&times;</button>
+                                <button type="button" class="modal-close-as bg-red" onclick="deactivate_modal(-<%= team_testline.id %>)">&times;</button>
                               </div>
                               <div class="modal-body-as">
-                                <p class="modal-text">Are you sure you want to delete this?</p>
+                                <p class="modal-text">Are you sure you want to remove this <%= team.name %>'s access from this testline?</p>
                               </div>
                               <div class="modal-footer-as">
-                                <%= link_to 'Delete', team_testline, method: :delete, :class => "modal-btn-as bg-red" %>
+                                <%= link_to 'Remove access', team_testline, method: :delete, :class => "modal-btn-as bg-red" %>
                                 <button type="button" class="modal-btn-as" onclick="deactivate_modal(-<%= team_testline.id %>)">Cancel</button>
                               </div>
                             </div>
