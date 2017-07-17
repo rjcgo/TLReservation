@@ -53,7 +53,7 @@
                       <% if team_testline.testline_id == testline.id && team.id == team_testline.team_id %>
                         <li class="card-team-icon">
                           <span class="<%= balls[team.id % 20] %>"></span><%= team.name %>
-                          <div class="modal-as" id="-#{team_testline.id}">
+                          <div class="modal-as" id="-<%= team_testline.id %>">
                             <div class="modal-content-as" style="max-width: 400px;">
                               <div class="modal-header-as bg-red">
                                 <h4 class="modal-title-as"><i class="fa fa-trash"></i> Delete</h4>
@@ -63,12 +63,12 @@
                                 <p class="modal-text">Are you sure you want to delete this?</p>
                               </div>
                               <div class="modal-footer-as">
-                                <%= button_to 'Delete', team_testline, method: :delete, :class => "modal-btn-as bg-red" %>
-                                <button type="button" class="modal-btn-as" onclick="deactivate(#{team_testline.id})">Cancel</button>
+                                <%= link_to 'Delete', team_testline, method: :delete, :class => "modal-btn-as bg-red" %>
+                                <button type="button" class="modal-btn-as" onclick="deactivate_modal(-<%= team_testline.id %>)">Cancel</button>
                               </div>
                             </div>
                           </div>
-                          <%= content_tag :button, 'x', :onclick => "activate_modal(#{team_testline.id}", :class => "card-team-close" %>
+                          <%= content_tag :button, 'x', :onclick => "activate_modal(-#{team_testline.id})", :class => "card-team-close" %>
                         </li>
                       <% end %>
                     <% end %>
