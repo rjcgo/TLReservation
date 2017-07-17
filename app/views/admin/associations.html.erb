@@ -11,8 +11,8 @@
 					<div class="modal-as" id="<%= testline.id %>">
 						<div class="modal-content-as">
 							<div class="modal-header-as">
-								<h4 class="modal-title-as">Add a Team</h4>
-								<button type="button" class="modal-close-as">&times;</button>
+								<h4 class="modal-title-as">Add team to <%= testline.name %></h4>
+								<button type="button" class="modal-close-as" onclick="deactivate_modal(<%= testline.id %>)">&times;</button>
 							</div>
 							<div class="modal-body-as">
 								<ul>
@@ -28,16 +28,22 @@
   				<div class="card-tl">
   					<div class="card-header bg-green">
   						<h3 class="card-tl-title"><%= testline.name %></h3>
-  						<button class="card-tl-add" id="modal-btn">
+  						<button class="card-tl-add" id="modal-btn" onclick="activate_modal(<%= testline.id %>)">
   							<i class="fa fa-plus"></i>
   						</button>
   					</div>
   					<div class="card-content">
   						<ul class="card-teams">
-  							<li class="card-team-icon">
-  								<span class="team-brand poke-ball"></span>poke-ball
-  								<button type="button" class="card-team-close">&times;</button>
-  							</li>
+                <% @teams.each do |team| %>
+                  <% @team_testlines.each do |team_testline| %>
+                    <% if team_testline.testline_id == testline.id && team.id == team_testline.team_id %>
+                      <li class="card-team-icon">
+                        <span class="<%= balls[team.id % 20] %>"></span><%= team.name %>
+                        <%= button_to 'x', team_testline, method: :delete, data: { confirm: 'Are you sure?' }, :class => "card-team-close" %>
+                      </li>
+                    <% end %>
+                  <% end %>
+                <% end %>
   						</ul>
   					</div>
   				</div>
@@ -47,38 +53,21 @@
 	</article>
 </main>
 
+<script>
+  function activate_modal(id) {
+    var s = document.getElementById(id);
+      s.style.display = "block";
+  }
+
+  function deactivate_modal(id) {
+    var s = document.getElementById(id);
+      s.style.display = "none";
+  }
+</script>
+
 <% if user_signed_in? %>
 
 <% if current_user.isAdmin? %>
-
-<h1>Listing Team Testlines</h1>
-
-<table>
-
-	<tbody>
-		<% @teams.each do |team| %>
-			<%=team.name%>
-			</br>
-			<% @team_testlines.each do |team_testline| %>
-				<% if team.id == team_testline.team_id %>
-					<%@testlines.each do |testline| %>
-						<% if team_testline.testline_id == testline.id %>
-							<%= testline.name %>
-							<%= link_to 'Show', team_testline %>
-							<%= link_to 'Edit', edit_team_testline_path(team_testline) %>
-							<%= link_to 'Destroy', team_testline, method: :delete, data: { confirm: 'Are you sure?' } %>
-							</br>
-						<%end%>
-					<%end%>
-				<%end%>
-			<%end%>
-		<%end%>
-	</tbody>
-</table>
-
-<br>
-
-<br>
 
 <%= link_to 'New Team testline', new_team_testline_path %>
 
