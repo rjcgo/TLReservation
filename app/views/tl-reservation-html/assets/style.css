@@ -302,6 +302,31 @@ h4 {
 }
 
 
+/* ******************** Main Banner ******************** */
+
+.carousel {
+    /* max-height: 89.7%; */
+    /* overflow: hidden; */
+    position: relative;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 20%;
+    width: 100%;
+}
+
+.banner-overlay .display-1 {
+    font-size: 4.5em;
+    color: #fff;
+}
+
+
 /* ******************** Article ******************** */
 
 article {
@@ -417,7 +442,7 @@ article {
 .card-header {
     display: block;
     color: #fff;
-    padding: 4%;
+    padding: 10px;
     text-align: center;
     border-top-left-radius: 0.25em;
     border-top-right-radius: 0.25em;
@@ -430,7 +455,7 @@ article {
     flex-direction: column;
     justify-content: space-between;
     background: #fff;
-    padding: 4%;
+    padding: 10px;
     border-bottom-left-radius: 0.25em;
     border-bottom-right-radius: 0.25em;
 }
@@ -491,9 +516,10 @@ article {
     background: #ccc;
 }
 
+
 /* ******************** Card TL ******************** */
 
-.card-tl{
+.card-tl {
     flex: 1 0 80%;
     display: flex;
     flex-direction: column;
@@ -505,7 +531,7 @@ article {
     float: left;
 }
 
-.card-tl-add{
+.card-tl-add {
     background: transparent;
     color: #fff;
     border: 0;
@@ -514,13 +540,13 @@ article {
     cursor: pointer;
 }
 
-.card-teams{
+.card-teams {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.card-team-icon{
+.card-team-icon {
     flex: 0 1 32%;
     text-align: center;
     color: #000;
@@ -529,7 +555,7 @@ article {
     /* padding: 0.8rem; */
 }
 
-.card-team-close{
+.card-team-close {
     position: absolute;
     top: 0;
     right: 0;
@@ -538,6 +564,7 @@ article {
     font-size: 1em;
     cursor: pointer;
 }
+
 
 /* ******************** Badges ******************** */
 
@@ -570,7 +597,7 @@ article {
 
 .list-item {
     box-sizing: border-box;
-    padding: 4%;
+    padding: 10px;
     background: #616161;
     position: relative;
 }
@@ -689,7 +716,7 @@ article {
     /* Black w/ opacity */
 }
 
-.modal.show{
+.modal.show {
     display: block;
 }
 
@@ -702,22 +729,36 @@ article {
     border: 1px solid #888;
     border-radius: 0.25em;
     position: relative;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s
 }
 
+
 /* Add Animation */
+
 @-webkit-keyframes animatetop {
-    from {top: -300px; opacity: 0} 
-    to {top: 0; opacity: 1}
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
 }
 
 @keyframes animatetop {
-    from {top: -300px; opacity: 0}
-    to {top: 0; opacity: 1}
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
 }
 
 .modal-header {
@@ -738,7 +779,7 @@ article {
     color: #aaa;
 }
 
-.modal-close{
+.modal-close {
     color: #000;
 }
 
@@ -810,7 +851,7 @@ article {
 @media screen and (min-width: 320px) {}
 
 @media screen and (min-width: 576px) {
-    .modal-content{
+    .modal-content {
         width: 80%;
     }
 }
@@ -862,13 +903,13 @@ article {
     .sidenav .closebtn {
         display: none;
     }
-    .modal-content{
+    .modal-content {
         width: 60%;
     }
 }
 
 @media screen and (min-width: 992px) {
-    .card-tl{
+    .card-tl {
         flex: 0 1 48%;
         margin: 1%;
     }
