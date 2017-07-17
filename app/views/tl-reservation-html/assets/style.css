@@ -304,26 +304,85 @@ h4 {
 
 /* ******************** Main Banner ******************** */
 
-.carousel {
-    /* max-height: 89.7%; */
-    /* overflow: hidden; */
+#choose,
+#reserve,
+#queue,
+#release {
+    width: 100%;
+    height: 100%;
     position: relative;
+    background-position: 74% top !important;
 }
 
-.carousel img {
+#choose {
+    background: url(banner-1.png) no-repeat;
+}
+
+#reserve {
+    background: url(banner-2.png) no-repeat;
+}
+
+#queue {
+    background: url(banner-3.png) no-repeat;
+}
+
+#release {
+    background: url(banner-4.png) no-repeat;
+}
+
+#choose img,
+#reserve img,
+#queue img,
+#release img {
     width: 100%;
     height: 100%;
 }
 
 .banner-overlay {
     position: absolute;
-    top: 20%;
+    top: 10%;
     width: 100%;
 }
 
 .banner-overlay .display-1 {
-    font-size: 4.5em;
+    font-size: 3em;
     color: #fff;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.banner-overlay .overlay-text {
+    font-size: 1.6em;
+    line-height: 1.6em;
+    width: 72%;
+    color: #e9e9e9;
+}
+
+.pokeballs-grid {
+    width: 74%;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 400px;
+    overflow: auto;
+}
+
+.pokeballs-grid li {
+    flex: 1 0 100%;
+    border-bottom: 1px solid #ccc;
+}
+
+.pokeballs-grid a {
+    display: block;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    /* margin: 8px 2px; */
+    padding: 8px 2px;
+}
+
+.pokeballs-grid a:hover {
+    background: #ccc;
 }
 
 
@@ -435,7 +494,7 @@ article {
     flex: 1 0 80%;
     display: flex;
     flex-direction: column;
-    margin: 5%;
+    margin: 10px;
     border-radius: 0.25em;
 }
 
@@ -523,7 +582,7 @@ article {
     flex: 1 0 80%;
     display: flex;
     flex-direction: column;
-    margin: 5%;
+    margin: 10px;
     border-radius: 0.25em;
 }
 
@@ -722,7 +781,7 @@ article {
 
 .modal-content {
     width: 100%;
-    margin: 10% auto;
+    margin: 50px auto;
     background: #fefefe;
     padding: 26px;
     box-sizing: border-box;
@@ -850,16 +909,38 @@ article {
 
 @media screen and (min-width: 320px) {}
 
+@media screen and (min-width: 480px) {
+    .pokeballs-grid li {
+        flex: 1 0 48%;
+        border: 1px solid #ccc;
+    }
+    .banner-overlay .overlay-text {
+        width: 66%;
+    }
+    .banner-overlay .display-1 {
+        font-size: 3.5em;
+    }
+}
+
 @media screen and (min-width: 576px) {
+    .banner-overlay .display-1 {
+        font-size: 4em;
+    }
+    .banner-overlay .overlay-text {
+        font-size: 2em;
+        width: 60%;
+    }
     .modal-content {
         width: 80%;
     }
 }
 
 @media screen and (min-width: 768px) {
+    .pokeballs-grid li {
+        flex: 1 0 32%;
+    }
     .card {
         flex: 0 1 48%;
-        margin: 1%;
     }
     #burger-nav {
         display: none;
@@ -909,17 +990,23 @@ article {
 }
 
 @media screen and (min-width: 992px) {
+    .pokeballs-grid li {
+        flex: 1 0 24%;
+        border: 1px solid #ccc;
+    }
     .card-tl {
         flex: 0 1 48%;
-        margin: 1%;
     }
     .card {
         flex: 0 1 31%;
-        margin: 1%;
     }
 }
 
 @media screen and (min-width: 1200px) {
+    .pokeballs-grid li {
+        flex: 1 0 19%;
+        border: 1px solid #ccc;
+    }
     .card {
         flex: 0 1 23%;
     }
