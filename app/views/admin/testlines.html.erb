@@ -18,6 +18,37 @@
 					<% end %>
 					<div class="card-deck"> 	 
 						<% @testlines.each do |testline| %>
+							<%= content_tag :div, :class => "modal", :id => testline.id do -%>
+								<div class="container reservation-form">  
+									<div class="modal-content">
+										<%= form_for(testline, :html => {:class => "reserve"}) do |f| %>
+											<div class="modal-header">
+												<%= content_tag :span, 'x', :class => "close", :onclick => "deactivate_modal(#{testline.id})" %>
+												<h3>Edit testline</h3>
+											</div>
+											<fieldset>
+												<%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required" %>
+											</fieldset>
+
+											<fieldset>
+												<%= f.text_field :ip_address, :placeholder => "IP Address", :tabindex => "2", :required => "required" %>
+											</fieldset>
+
+											<fieldset>
+												<%= f.text_field :port_number, :placeholder => "Port Number", :tabindex => "3", :required => "required" %>
+											</fieldset>
+											<fieldset>
+												<p>Under Maintenance?
+													<%= f.check_box :isMaintenance, :tabindex => "4" %>
+												</p>
+											</fieldset>
+											<fieldset>
+												<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Edit testline</button>
+											</fieldset>
+										<% end %>
+									</div>
+								</div>
+							<% end %>
 							<div class="card">
 								<div class="card-header bg-green">
 									<i class="fa fa-server fa-white icon-lg"></i>
@@ -26,7 +57,7 @@
 
 			                    <div class="card-content">
 			                    	<div class="card-title-admin">
-										<%= button_to 'Edit', edit_testline_path(testline), :class => "card-btn-admin" %>
+										<%= content_tag :button, 'Edit', :onclick => "activate_modal(#{testline.id})", :class => "card-btn-admin" %>
 									 	<%= button_to 'Destroy', testline, method: :delete, data: { confirm: 'Are you sure?' }, :class => "card-btn-admin" %>
 			                          </div>		                       
 								</div>
