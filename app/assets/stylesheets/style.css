@@ -313,7 +313,7 @@ article {
 
 #available,
 #in-use,
-#maintenance
+#maintenance,
 #no-use {
     margin: 2% 0;
     border-top: 1px solid #999;
