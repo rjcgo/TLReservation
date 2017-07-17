@@ -32,7 +32,7 @@ class TestlinesController < ApplicationController
 
     respond_to do |format|
       if @testline.save
-        format.html { redirect_to admin_testlines_path, notice: 'Testline was successfully created.' }
+        format.html { redirect_to admin_testlines_path, notice: 'Test line was successfully created.' }
         format.json { render :show, status: :created, location: @testline }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class TestlinesController < ApplicationController
   def update
     respond_to do |format|
       if @testline.update(testline_params)
-        format.html { redirect_to admin_testlines_path, notice: 'Testline was successfully updated.' }
+        format.html { redirect_to admin_testlines_path, notice: 'Test line was successfully updated.' }
         format.json { render :show, status: :ok, location: @testline }
       else
         format.html { render :edit }
