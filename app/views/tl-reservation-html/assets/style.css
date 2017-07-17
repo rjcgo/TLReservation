@@ -397,14 +397,16 @@ article {
 
 #available,
 #in-use,
-#maintenance {
+#maintenance,
+#no-use {
     margin: 2% 0;
     border-top: 1px solid #999;
 }
 
 #available h2,
 #in-use h2,
-#maintenance h2 {
+#maintenance h2,
+#no-use h2 {
     position: relative;
     top: -15px;
     width: 200px;
@@ -721,6 +723,17 @@ article {
     background: #616161;
 }
 
+.list-item .badge {
+    float: none;
+    display: inline-block;
+}
+
+.list-item .title::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
 
 /* ******************** Dropdown ******************** */
 
@@ -850,7 +863,7 @@ article {
     clear: both;
 }
 
-.modal-body-as{
+.modal-body-as {
     padding: 1px 14px;
 }
 
@@ -869,33 +882,38 @@ article {
     flex: 1 0 50%;
 }
 
-.modal-body-as a {
+.modal-body-as button[type="button"],
+.modal-body-as button[type="submit"] {
     display: block;
     color: #000;
+    width: 100%;
+    border: 0;
+    background: transparent;
     text-decoration: none;
     text-align: center;
     /* margin: 8px 2px; */
     padding: 8px 2px;
 }
 
-.modal-body-as a:hover {
+.modal-body-as button[type="button"]:hover,
+.modal-body-as button[type="submit"]:hover {
     border: 1px solid #ccc;
 }
 
-.modal-body-as .modal-text{
+.modal-body-as .modal-text {
     text-align: center;
     font-size: 16px;
     color: #555;
 }
 
-.modal-footer-as{
+.modal-footer-as {
     border-bottom-left-radius: 0.25em;
     border-bottom-right-radius: 0.25em;
     text-align: center;
     padding: 1px 14px 14px 14px;
 }
 
-.modal-footer-as .modal-btn-as{
+.modal-footer-as .modal-btn-as {
     border: 1px solid #000;
     border-radius: 0.25em;
     background: transparent;
@@ -903,6 +921,7 @@ article {
     padding: 6px 16px;
     font-family: Raleway;
 }
+
 
 /* ******************** bg-color ******************** */
 
@@ -922,6 +941,10 @@ article {
     border: 1px solid #f0ad4e !important;
     background: #f0ad4e !important;
     color: #fff;
+}
+
+.bg-blue {
+    background: #2987C7;
 }
 
 
