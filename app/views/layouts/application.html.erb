@@ -29,21 +29,21 @@
                 <span class="bar3"></span>
             </button>
             <a href="/" class="navbar-brand">
-            <i class="fa fa-thermometer icon-lg" id="logo"></i>
+            <i class="fa fa-server icon-lg" id="logo"></i>
             <h1>Test Line Reservation</h1>
         </a>
             <div class="navbar-nav">
                 <h2>Main Navigation</h2>
                 <ul>
                     <li><%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path %></li>
-                    <li><a href="/testlines/reservations"><i class="fa fa-user"></i>    Reservations</a></li>
+                    <li><a href="/testlines/reservations"><i class="fa fa-calendar-check-o"></i>    Reservations</a></li>
                     <% if user_signed_in? %>
                         <% if current_user.isAdmin? %>
-                            <li><a href="/admin/home"><i class="fa fa-user"></i> Administrator</a></li>
+                            <li><a href="/admin/home"><i class="fa fa-cogs"></i> Administrator</a></li>
                         <% end %>
-                        <li><%= link_to '<i class="fa fa-user"></i> Logout'.html_safe, destroy_user_session_path, method: :delete %></li>
+                        <li><%= link_to '<i class="fa fa-sign-out"></i> Logout'.html_safe, destroy_user_session_path, method: :delete %></li>
                     <% else %>
-                        <li><a href="/users/sign_in"><i class="fa fa-user"></i> Login</a></li>
+                        <li><a href="/users/sign_in"><i class="fa fa-sign-in"></i> Login</a></li>
                     <% end %>
                 </ul>
             </div>
@@ -64,8 +64,24 @@
 </html>
 
 <style type="text/css">
+    .slide_left:hover {
+      -webkit-transition: ease-out 0.4s;
+      -moz-transition: ease-out 0.4s;
+      transition: ease-out 0.4s;
+      box-shadow: inset 400px 0 0 0 #9eba93;
+    }
+
     .wrapper-greeting{
         padding: 10px;
+    }
+
+    .card-description{
+      padding: 0 10px;
+    }
+
+    .card-description-content{
+      height: 100px;
+      text-align: justify;
     }
 
     .card-deck {
@@ -74,13 +90,7 @@
         justify-content: center;
     }
 
-    .card .card-btn-admin:hover {
-        background: #ccc;
-    }
-
-
     .card-content-admin{
-        flex: 1 1 auto;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -90,7 +100,8 @@
     }
 
     .card-title-admin{
-        padding: 10px;
+        padding: 0 10px;
+        padding-top: 15px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
@@ -103,7 +114,6 @@
         border: 1px solid #000;
         border-radius: 0.25em;
         padding: 8px 16px;
-        align-self: inline-block;
     }
 
     .alert {

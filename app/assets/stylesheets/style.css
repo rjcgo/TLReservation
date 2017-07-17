@@ -313,14 +313,16 @@ article {
 
 #available,
 #in-use,
-#maintenance {
+#maintenance,
+#no-use {
     margin: 2% 0;
     border-top: 1px solid #999;
 }
 
 #available h2,
 #in-use h2,
-#maintenance h2 {
+#maintenance h2,
+#no-use h2 {
     position: relative;
     top: -15px;
     width: 200px;
@@ -417,7 +419,7 @@ article {
 .card-header {
     display: block;
     color: #fff;
-    padding: 4%;
+    padding: 10px;
     text-align: center;
     border-top-left-radius: 0.25em;
     border-top-right-radius: 0.25em;
@@ -430,7 +432,7 @@ article {
     flex-direction: column;
     justify-content: space-between;
     background: #fff;
-    padding: 4%;
+    padding: 10px;
     border-bottom-left-radius: 0.25em;
     border-bottom-right-radius: 0.25em;
 }
@@ -570,9 +572,13 @@ article {
 
 .list-item {
     box-sizing: border-box;
-    padding: 4%;
+    padding: 10px;
     background: #616161;
     position: relative;
+}
+
+.list-item:first-of-type{
+    /*font-size: 2em;*/
 }
 
 .list-item:nth-of-type(odd) {
@@ -584,6 +590,18 @@ article {
     /* color: #555; */
     color: #e1e1e1;
     font-size: 1.5em;
+    display: inline-block;
+}
+
+.list-item .badge{
+    float: none;
+    display: inline-block;
+}
+
+.list-item .title::after{
+    content: "";
+    display: block;
+    clear: both;
 }
 
 .list-item .subtitle {
@@ -607,6 +625,7 @@ article {
     padding: 0.6em 1em;
     border: 0;
     background: #d9534f;
+    border-radius: 0;
 }
 
 .list-item .release:hover {
@@ -621,7 +640,7 @@ article {
     padding: 8px 16px;
     /* border: 1px solid #000; */
     border: 1px solid #fff;
-    border-radius: 0.25em;
+    /*border-radius: 0.25em;*/
 }
 
 .list-item a:hover {
@@ -763,16 +782,21 @@ article {
     flex: 1 0 20%;
 }
 
-.modal-body-as a {
+.modal-body-as button[type="button"],
+.modal-body-as button[type="submit"] {
     display: block;
     color: #000;
+    width: 100%;
+    border: 0;
+    background: transparent;
     text-decoration: none;
     text-align: center;
     /* margin: 8px 2px; */
     padding: 8px 2px;
 }
 
-.modal-body-as a:hover {
+.modal-body-as button[type="button"]:hover,
+.modal-body-as button[type="submit"]:hover {
     border: 1px solid #ccc;
 }
 
@@ -789,6 +813,9 @@ article {
 
 .bg-yellow {
     background: #f0ad4e;
+}
+.bg-blue {
+    background: #2987C7;
 }
 
 

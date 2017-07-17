@@ -49,7 +49,7 @@
 										</fieldset>
 										
 										<fieldset>
-											<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+											<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Reserve now!</button>
 										</fieldset>
 									<% end %>
 								</div>
@@ -67,7 +67,6 @@
 								<% if user_signed_in? %>
 									<%= submit_tag "Reserve now!", :type => "button", :id => testline.id, :class => "card-btn", :onclick => "activate_modal(#{testline.id})" %>
 								<% end %>
-								<br/>
 							</div>
 						</div>
 					<% end %>
@@ -106,7 +105,7 @@
 										</fieldset>
 										
 										<fieldset>
-											<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+											<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Reserve now!</button>
 										</fieldset>
 									<% end %>
 								</div>
@@ -140,7 +139,6 @@
 								<% if user_signed_in? %>
 									<%= submit_tag "Reserve now!", :type => "button", :id => testline.id, :class => "card-btn", :onclick => "activate_modal(#{testline.id})" %>
 								<% end %>
-								<p></p>
 							</div>
 						</div>
 					<% end %>
@@ -160,12 +158,18 @@
 								<h3><%= testline.name %></h3>
 							</div>
 							<div class="card-content">
+								<p class="card-text">This testline is under maintenance.</p>
 							</div>
 						</div>
 					<% end %>
 				<% end %>
 			</div>
 		</section> 
+	<% end %>
+	<% if @mytestlines.count == 0 %>
+		<section id="no-use">
+			<h2>No Testlines Available</h2>
+		</section>
 	<% end %>
 </main> 
 
