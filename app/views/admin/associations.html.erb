@@ -1,86 +1,82 @@
 <% if user_signed_in? %>
-  <% balls = pokelist %>
-  <main class="wrapper">
-    <article>
-      <%= render 'sidenav' %>
-      <section class="tabcontent">
-        <h2>
-          <i class="fa fa-navicon sidenav-toggle"></i> Associations
-        </h2>
-        <div class="card-deck">
-          <% @testlines.each do |testline| %>
-            <div class="modal-as" id="<%= testline.id %>">
-              <div class="modal-content-as">
-                <div class="modal-header-as">
-                  <h4 class="modal-title-as">Add team to <%= testline.name %></h4>
-                  <button type="button" class="modal-close-as" onclick="deactivate_modal(<%= testline.id %>)">&times;</button>
-                </div>
-                <div class="modal-body-as">
-                  <ul>
-                    <% t = false %>
-                    <% @teams.each do |team| %>
-                      <% if !TeamTestline.exists?(team_id: team.id, testline_id: testline.id) %>
-                        <li>
-                          <%= form_for(@team_testline) do |f| %>
-                            <%= f.hidden_field :team_id, :value => team.id %>
-                            <%= f.hidden_field :testline_id, :value => testline.id %>
-                            <button type="submit"><span class="<%= balls[team.id % 20] %>"></span><%= team.name %></button>
-                          <% end %>
-                          <% t = true %>
-                        </li>
+  <% if current_user.isAdmin? %>
+    <% balls = pokelist %>
+    <main class="wrapper">
+      <article>
+        <%= render 'sidenav' %>
+        <section class="tabcontent">
+          <h2>
+            <i class="fa fa-navicon sidenav-toggle"></i> Associations
+          </h2>
+          <div class="card-deck">
+            <% @testlines.each do |testline| %>
+              <div class="modal-as" id="<%= testline.id %>">
+                <div class="modal-content-as">
+                  <div class="modal-header-as">
+                    <h4 class="modal-title-as">Add team to <%= testline.name %></h4>
+                    <button type="button" class="modal-close-as" onclick="deactivate_modal(<%= testline.id %>)">&times;</button>
+                  </div>
+                  <div class="modal-body-as">
+                    <ul>
+                      <% t = false %>
+                      <% @teams.each do |team| %>
+                        <% if !TeamTestline.exists?(team_id: team.id, testline_id: testline.id) %>
+                          <li>
+                            <%= form_for(@team_testline) do |f| %>
+                              <%= f.hidden_field :team_id, :value => team.id %>
+                              <%= f.hidden_field :testline_id, :value => testline.id %>
+                              <button type="submit"><span class="<%= balls[team.id % 20] %>"></span><%= team.name %></button>
+                            <% end %>
+                            <% t = true %>
+                          </li>
+                        <% end %>
                       <% end %>
-                    <% end %>
-                  </ul>
-                  <div>
-                    <% if t == false %>
-                      <p class="card-text">All teams are able to use this testline.</p>
-                    <% end %>
+                    </ul>
+                    <div>
+                      <% if t == false %>
+                        <p class="card-text">All teams are able to use this testline.</p>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="card-tl">
-              <div class="card-header bg-green">
-                <h3 class="card-tl-title"><%= testline.name %></h3>
-                <button class="card-tl-add" id="modal-btn" onclick="activate_modal(<%= testline.id %>)">
-                  <i class="fa fa-plus"></i>
-                </button>
-              </div>
-              <div class="card-content">
-                <ul class="card-teams">
-                  <% @teams.each do |team| %>
-                    <% @team_testlines.each do |team_testline| %>
-                      <% if team_testline.testline_id == testline.id && team.id == team_testline.team_id %>
-                        <li class="card-team-icon">
-                          <span class="<%= balls[team.id % 20] %>"></span><%= team.name %>
-                          <%= button_to 'x', team_testline, method: :delete, data: { confirm: "Are you sure you want to remove #{team.name}\'s access from this testline?" }, :class => "card-team-close" %>
-                        </li>
+              <div class="card-tl">
+                <div class="card-header bg-green">
+                  <h3 class="card-tl-title"><%= testline.name %></h3>
+                  <button class="card-tl-add" id="modal-btn" onclick="activate_modal(<%= testline.id %>)">
+                    <i class="fa fa-plus"></i>
+                  </button>
+                </div>
+                <div class="card-content">
+                  <ul class="card-teams">
+                    <% @teams.each do |team| %>
+                      <% @team_testlines.each do |team_testline| %>
+                        <% if team_testline.testline_id == testline.id && team.id == team_testline.team_id %>
+                          <li class="card-team-icon">
+                            <span class="<%= balls[team.id % 20] %>"></span><%= team.name %>
+                            <%= button_to 'x', team_testline, method: :delete, data: { confirm: "Are you sure you want to remove #{team.name}\'s access from this testline?" }, :class => "card-team-close" %>
+                          </li>
+                        <% end %>
                       <% end %>
                     <% end %>
-                  <% end %>
-                </ul>
+                  </ul>
+                </div>
               </div>
-            </div>
-          <% end %>
-        </div>
-      </section>
-    </article>
-  </main>
-
-<% if current_user.isAdmin? %>
-
-
+            <% end %>
+          </div>
+        </section>
+      </article>
+    </main>
+  <% else %>
+  	<div class="wrapper-greeting">
+      <div class="alert alert-success alert-danger" role="alert">
+        <h4 class="alert-heading">Sorry, you need to be an admin to view this page.</h4>
+        <h3 class="alert-heading">Please contact the administrator if you want to be one.</h3>
+      </div>
+    </div>
+  <% end %>
 <% else %>
-	
-	<h1>Sorry, you need to be an admin to view this page.</h1>
-	<p>Please contact the administrator if you want to be one.</p>
-
-<% end %>
-
-<% else %>
-
-<h1>Sorry, you need to be logged-in to view this page.</h1>
-
+  <h1>Sorry, you need to be logged-in to view this page.</h1>
 <% end %>
 
 <script>
