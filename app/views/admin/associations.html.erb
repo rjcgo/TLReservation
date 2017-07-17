@@ -53,7 +53,7 @@
                       <% if team_testline.testline_id == testline.id && team.id == team_testline.team_id %>
                         <li class="card-team-icon">
                           <span class="<%= balls[team.id % 20] %>"></span><%= team.name %>
-                          <%= button_to 'x', team_testline, method: :delete, data: { confirm: 'Are you sure?' }, :class => "card-team-close" %>
+                          <%= button_to 'x', team_testline, method: :delete, data: { confirm: "Are you sure you want to remove #{team.name}\'s access from this testline?" }, :class => "card-team-close" %>
                         </li>
                       <% end %>
                     <% end %>

@@ -313,14 +313,16 @@ article {
 
 #available,
 #in-use,
-#maintenance {
+#maintenance
+#no-use {
     margin: 2% 0;
     border-top: 1px solid #999;
 }
 
 #available h2,
 #in-use h2,
-#maintenance h2 {
+#maintenance h2,
+#no-use h2 {
     position: relative;
     top: -15px;
     width: 200px;
@@ -575,6 +577,10 @@ article {
     position: relative;
 }
 
+.list-item:first-of-type{
+    /*font-size: 2em;*/
+}
+
 .list-item:nth-of-type(odd) {
     /* background: #f1f1f1; */
     background: #424242;
@@ -584,6 +590,18 @@ article {
     /* color: #555; */
     color: #e1e1e1;
     font-size: 1.5em;
+    display: inline-block;
+}
+
+.list-item .badge{
+    float: none;
+    display: inline-block;
+}
+
+.list-item .title::after{
+    content: "";
+    display: block;
+    clear: both;
 }
 
 .list-item .subtitle {
@@ -607,6 +625,7 @@ article {
     padding: 0.6em 1em;
     border: 0;
     background: #d9534f;
+    border-radius: 0;
 }
 
 .list-item .release:hover {
@@ -621,7 +640,7 @@ article {
     padding: 8px 16px;
     /* border: 1px solid #000; */
     border: 1px solid #fff;
-    border-radius: 0.25em;
+    /*border-radius: 0.25em;*/
 }
 
 .list-item a:hover {

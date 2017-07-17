@@ -26,10 +26,10 @@
 
 						<div class="card-deck">
 							<% balls = pokelist %>
-							<% @teams.each_with_index do |team, index| %>
+							<% @teams.each do |team| %>
 								<div class="card">
 									<div class="card-header bg-green">
-										<i class="<%= balls[index % 20] %>"></i>
+										<i class="<%= balls[team.id % 20] %>"></i>
 										<h3><%= team.name %></h3>
 									</div>
 
@@ -51,14 +51,14 @@
 						<%= form_for(@team, :html => {:class => "reserve"}) do |f| %>
 							<div class="modal-header">
 								<%= content_tag :span, 'x', :class => "close", :onclick => "deactivate_modal(0)" %>
-								<h3>Add New Team</h3>
+								<h3>Add new team</h3>
 							</div>
 							<fieldset>
 								<%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required" %>
 							</fieldset>
 							
 							<fieldset>
-								<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+								<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Add team</button>
 							</fieldset>
 						<% end %>
 					</div>

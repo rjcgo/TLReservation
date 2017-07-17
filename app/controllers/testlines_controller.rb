@@ -80,7 +80,7 @@ class TestlinesController < ApplicationController
   end
 
   def reservations
-    @testlines = Testline.all
+    @testlines = Testline.order(:name)
     @reservations = Reservation.all
     @teams = Team.all
 

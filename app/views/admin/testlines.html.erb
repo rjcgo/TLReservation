@@ -41,7 +41,7 @@
 						<%= form_for(@testline, :html => {:class => "reserve"}) do |f| %>
 							<div class="modal-header">
 								<%= content_tag :span, 'x', :class => "close", :onclick => "deactivate_modal(0)" %>
-								<h3>Add New Testline</h3>
+								<h3>Add new testline</h3>
 							</div>
 							<fieldset>
 								<%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required" %>
@@ -60,7 +60,7 @@
 								</p>
 							</fieldset>
 							<fieldset>
-								<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+								<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Add testline</button>
 							</fieldset>
 						<% end %>
 					</div>
