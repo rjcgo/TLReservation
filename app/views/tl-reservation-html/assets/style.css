@@ -1026,7 +1026,7 @@ article {
     .sidenav .closebtn {
         display: none;
     }
-    .modal-content {
+    .modal-content-as {
         width: 60%;
     }
 }
