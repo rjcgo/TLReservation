@@ -30,7 +30,7 @@ class TeamTestlinesController < ApplicationController
 
     respond_to do |format|
       if @team_testline.save
-        format.html { redirect_to admin_associations_path, notice: 'Team testline was successfully created.' }
+        format.html { redirect_to admin_associations_path, notice: 'Association was successfully established.' }
         format.json { render :show, status: :created, location: @team_testline }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class TeamTestlinesController < ApplicationController
   def update
     respond_to do |format|
       if @team_testline.update(team_testline_params)
-        format.html { redirect_to admin_associations_path, notice: 'Team testline was successfully updated.' }
+        format.html { redirect_to admin_associations_path, notice: 'Association was successfully updated.' }
         format.json { render :show, status: :ok, location: @team_testline }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class TeamTestlinesController < ApplicationController
   def destroy
     @team_testline.destroy
     respond_to do |format|
-      format.html { redirect_to admin_associations_path, notice: 'Team testline was successfully destroyed.' }
+      format.html { redirect_to admin_associations_path, notice: 'Association was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
