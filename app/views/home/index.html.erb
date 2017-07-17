@@ -8,9 +8,9 @@
 		<div class="dropdown-triangle"></div>
 		<ul class="dropdown-content">
 			<% ball = pokelist %>
-			<% @teams.each_with_index do |team, index| %>
+			<% @teams.each do |team| %>
 				<li>
-					<a href="/teams/show/<%= team.id %>"><%= content_tag :span, '', :class => ball[index % 20] %> <%= team.name %></a>
+					<a href="/teams/show/<%= team.id %>"><%= content_tag :span, '', :class => ball[team.id % 20] %> <%= team.name %></a>
 				</li>
 			<% end %>
 		</ul>

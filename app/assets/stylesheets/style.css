@@ -126,7 +126,7 @@ h4 {
 }
 
 .navbar-nav.open {
-    height: 160px;
+    height: 80px;
     margin-top: 8px;
 }
 
@@ -200,11 +200,6 @@ h4 {
 
 #sub-nav .dropdown-content li {
     width: 33%;
-    display: flex;
-}
-
-#sub-nav .dropdown-content a {
-    flex: 1 1 auto;
 }
 
 #sub-nav .dropdown-content a:hover {
@@ -294,7 +289,7 @@ h4 {
     background-position: -50px -150px !important;
 }
 
-.team-brand.nest-ball {
+.team-brand.net-ball {
     background-position: -100px -150px !important;
 }
 
@@ -337,7 +332,9 @@ article {
 }
 
 .tabcontent {
+    /* display: none; */
     padding: 0 2%;
+    flex: 1 1 0;
 }
 
 .tabcontent h2 {
@@ -420,7 +417,7 @@ article {
 .card-header {
     display: block;
     color: #fff;
-    padding: 10px;
+    padding: 4%;
     text-align: center;
     border-top-left-radius: 0.25em;
     border-top-right-radius: 0.25em;
@@ -465,7 +462,7 @@ article {
     background: #fff;
     border: 1px solid #000;
     border-radius: 0.25em;
-    padding: 8px 16px;
+    padding: 0.25em 0.5em;
     align-self: flex-end;
 }
 
@@ -494,6 +491,53 @@ article {
     background: #ccc;
 }
 
+/* ******************** Card TL ******************** */
+
+.card-tl{
+    flex: 1 0 80%;
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+    border-radius: 0.25em;
+}
+
+.card-tl-title {
+    float: left;
+}
+
+.card-tl-add{
+    background: transparent;
+    color: #fff;
+    border: 0;
+    float: right;
+    font-size: 1.6em;
+    cursor: pointer;
+}
+
+.card-teams{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card-team-icon{
+    flex: 0 1 32%;
+    text-align: center;
+    color: #000;
+    text-decoration: none;
+    position: relative;
+    /* padding: 0.8rem; */
+}
+
+.card-team-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    border: 0;
+    font-size: 1em;
+    cursor: pointer;
+}
 
 /* ******************** Badges ******************** */
 
@@ -526,8 +570,9 @@ article {
 
 .list-item {
     box-sizing: border-box;
-    padding: 5%;
+    padding: 4%;
     background: #616161;
+    position: relative;
 }
 
 .list-item:nth-of-type(odd) {
@@ -552,6 +597,20 @@ article {
     color: #e1e1e1;
     font-size: 14px;
     line-height: 1.6em;
+}
+
+.list-item .release {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    padding: 0.6em 1em;
+    border: 0;
+    background: #d9534f;
+}
+
+.list-item .release:hover {
+    background: #a94442 !important;
 }
 
 .list-item a {
@@ -613,6 +672,111 @@ article {
 }
 
 
+/* ******************** modal ******************** */
+
+.modal-as {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+.modal-as.show{
+    display: block;
+}
+
+.modal-content-as {
+    width: 100%;
+    margin: 10% auto;
+    background: #fefefe;
+    padding: 26px;
+    box-sizing: border-box;
+    border: 1px solid #888;
+    border-radius: 0.25em;
+    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top: -300px; opacity: 0} 
+    to {top: 0; opacity: 1}
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+.modal-header-as {
+    margin-bottom: 10px;
+}
+
+.modal-header-as .modal-title-as {
+    float: left;
+    font-size: 1.6em;
+}
+
+.modal-close-as {
+    border: 0;
+    background: transparent;
+    font-size: 1.6em;
+    float: right;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.modal-close-as{
+    color: #000;
+}
+
+.modal-header-as::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.modal-body-as ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.modal-body-as ul::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.modal-body-as li {
+    flex: 1 0 20%;
+}
+
+.modal-body-as a {
+    display: block;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    /* margin: 8px 2px; */
+    padding: 8px 2px;
+}
+
+.modal-body-as a:hover {
+    border: 1px solid #ccc;
+}
+
+
 /* ******************** bg-color ******************** */
 
 .bg-green {
@@ -645,12 +809,16 @@ article {
 
 @media screen and (min-width: 320px) {}
 
-@media screen and (min-width: 576px) {}
+@media screen and (min-width: 576px) {
+    .modal-content-as{
+        width: 80%;
+    }
+}
 
 @media screen and (min-width: 768px) {
     .card {
-        flex: 0 1 46%;
-        margin: 2%;
+        flex: 0 1 48%;
+        margin: 1%;
     }
     #burger-nav {
         display: none;
@@ -680,9 +848,6 @@ article {
         display: block;
         clear: both;
     }
-    .tabcontent {
-        flex: 1 1 0;
-    }
     .sidenav,
     .sidenav.toggle {
         position: static;
@@ -697,9 +862,16 @@ article {
     .sidenav .closebtn {
         display: none;
     }
+    .modal-content-as{
+        width: 60%;
+    }
 }
 
 @media screen and (min-width: 992px) {
+    .card-tl{
+        flex: 0 1 48%;
+        margin: 1%;
+    }
     .card {
         flex: 0 1 31%;
         margin: 1%;
@@ -712,30 +884,30 @@ article {
     }
 }
 
+
 /* Reservation Form */
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
-
-.reservation-form, .reservation-form * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-font-smoothing: antialiased;
-  -o-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+.reservation-form,
+.reservation-form * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
     border-radius: 25px;
 }
 
-
 .container {
-  max-width: 400px;
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
 }
 
 .reserve input[type="text"],
@@ -744,36 +916,36 @@ article {
 .reserve input[type="url"],
 .reserve textarea,
 .reserve button[type="submit"] {
-  font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+    font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
 }
 
 .reserve {
-  background: #F9F9F9;
-  padding: 25px;
-  margin: 150px 0;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    background: #F9F9F9;
+    padding: 25px;
+    margin: 150px 0;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .reserve h3 {
-  display: block;
-  font-size: 30px;
-  font-weight: 300;
-  margin-bottom: 10px;
+    display: block;
+    font-size: 30px;
+    font-weight: 300;
+    margin-bottom: 10px;
 }
 
 .reserve h4 {
-  margin: 5px 0 15px;
-  display: block;
-  font-size: 13px;
-  font-weight: 400;
+    margin: 5px 0 15px;
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
 }
 
 fieldset {
-  border: medium none !important;
-  margin: 0 0 10px;
-  min-width: 100%;
-  padding: 0;
-  width: 100%;
+    border: medium none !important;
+    margin: 0 0 10px;
+    min-width: 100%;
+    padding: 0;
+    width: 100%;
 }
 
 .reserve input[type="text"],
@@ -785,14 +957,14 @@ fieldset {
 .reserve button,
 .reserve textarea {
     border-radius: 0;
-  width: 100%;
-  border: 1px solid #ccc;
-  background: #FFF;
-  margin: 0 0 5px;
-  padding: 10px;
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
-  font-weight: 100;
-  font-size: 12px;
+    width: 100%;
+    border: 1px solid #ccc;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    font-size: 12px;
 }
 
 .reserve input[type="text"]:hover,
@@ -800,62 +972,62 @@ fieldset {
 .reserve input[type="tel"]:hover,
 .reserve input[type="url"]:hover,
 .reserve textarea:hover {
-  -webkit-transition: border-color 0.3s ease-in-out;
-  -moz-transition: border-color 0.3s ease-in-out;
-  transition: border-color 0.3s ease-in-out;
-  border: 1px solid #aaa;
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #aaa;
 }
 
 .reserve textarea {
-  height: 100px;
-  max-width: 100%;
-  resize: none;
+    height: 100px;
+    max-width: 100%;
+    resize: none;
 }
 
 .reserve button[type="submit"] {
-  cursor: pointer;
-  width: 100%;
-  border: none;
-  background: #4CAF50;
-  color: #FFF;
-  margin: 0 0 5px;
-  padding: 10px;
-  font-size: 15px;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: #4CAF50;
+    color: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+    font-size: 15px;
 }
 
 .reserve button[type="submit"]:hover {
-  background: #43A047;
-  -webkit-transition: background 0.3s ease-in-out;
-  -moz-transition: background 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out;
+    background: #43A047;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .reserve button[type="submit"]:active {
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .copyright {
-  text-align: center;
+    text-align: center;
 }
 
 .reserve input:focus,
 .reserve textarea:focus {
-  outline: 0;
-  border: 1px solid #aaa;
+    outline: 0;
+    border: 1px solid #aaa;
 }
 
 ::-webkit-input-placeholder {
-  color: #888;
+    color: #888;
 }
 
 :-moz-placeholder {
-  color: #888;
+    color: #888;
 }
 
 ::-moz-placeholder {
-  color: #888;
+    color: #888;
 }
 
 :-ms-input-placeholder {
-  color: #888;
+    color: #888;
 }
