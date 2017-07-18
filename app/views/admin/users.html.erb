@@ -4,14 +4,14 @@
 			<%= render partial: 'sidenav', :locals => {:sect => "users"} %>
 			<section id="milo" class="tabcontent">
 				<h2>
-					<i class="fa fa-users sidenav-toggle"></i> Users
+					<i class="fa fa-user-circle sidenav-toggle"></i> Users
 				</h2>
 				<ul>
 					<% @users.each do |user| %>
 						<li class="list-item" style="padding: 2%;">
 							<div style="float: left;">
 								<h3 class="title" style="font-size: 1.4em;">
-									<i class="fa fa-user fa-white"></i> <%= user.email %>
+									<i class="fa fa-user"></i> <%= user.email %>
 								</h3>
 							</div>
 							<div style="float: right;">

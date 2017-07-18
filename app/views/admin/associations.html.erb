@@ -5,9 +5,9 @@
       <%= render partial: 'sidenav', :locals => {:sect => "associations"} %>
       <section class="tabcontent">
         <h2>
-          <i class="fa fa-navicon sidenav-toggle"></i> Associations
+          <i class="fa fa-exchange sidenav-toggle"></i> Associations
         </h2>
-        <div class="card-deck">
+        <div class="card-deck card-deck-special">
           <% @testlines.each do |testline| %>
             <div class="modal-as" id="<%= testline.id %>">
               <div class="modal-content-as">

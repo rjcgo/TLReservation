@@ -6,8 +6,10 @@
 		<article>
 			<%= render partial: 'sidenav', :locals => {:sect => "testlines"} %>
 			<section id="testlines" class="tabcontent">
-				<h2 id="testlines-label"><i class="fa fa-server sidenav-toggle"></i> Testlines</h2>
-				<h2 id="add-testline" style="cursor: pointer;"><i class="fa fa-plus fa-white"></i><%= content_tag :a, ' New Testline', :class=> "new-testline-link", :onclick => "activate_modal(0)" %></h2>
+				<div class="tabcontent-header">
+					<h2 id="testlines-label"><i class="fa fa-server sidenav-toggle"></i> Testlines</h2>
+					<h2 id="add-testline" style="cursor: pointer;"><i class="fa fa-plus"></i><%= content_tag :a, ' New Testline', :class=> "new-testline-link", :onclick => "activate_modal(0)" %></h2>
+				</div>
 				<% if @testlines.empty? %>
 					<div class="wrappergreeting-">
 						<div class="alert alert-success alert-dismissible" role="alert">
@@ -15,7 +17,7 @@
 						</div>
 					</div>
 				<% end %>
-				<div class="card-deck"> 	 
+				<div class="card-deck card-deck-special"> 	 
 					<% @testlines.each do |testline| %>
 						<%= content_tag :div, :class => "modal", :id => testline.id do -%>
 							<div class="container reservation-form">  
@@ -142,24 +144,25 @@
 
 	#testlines{
 		border-top: 1px solid #999;
-		padding: 2%;
+		/*padding: 2%;*/
 		margin: 0 auto;
 	}
 
-	#testlines-label{
+	/*#testlines-label{
 		width: 50%;
 		display:inline-block;
+	}*/
+	.tabcontent-header{
+		position: relative;
 	}
-
-	#add-testline{		
-		display:inline-block;
-		text-align:right;
-		float: right;
-		color:white;
+	#add-testline{
+		position: absolute;
+		right: 0;
+		top: 0;
+		color:#000;
 	}
-
 	.new-testline-link{
-		color: white;
+		color: #000;
 		text-decoration: none;
 	}
 
