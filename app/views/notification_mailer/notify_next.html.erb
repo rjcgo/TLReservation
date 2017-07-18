@@ -4,12 +4,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h5>Hi <%= @email %></h5>
+    <p>Hi <%= @email %>,</p>
     <p>
-      The testline you are next in line for (<%= @testline.name %>) has been released. You can now use this testline.
-    </p>
-    <p>
-      Please release the testline once you are done. Thanks!
+      The testline you are next in line for (<%= @testline.name %>) has been released. In effect, you are now its current user. Please release the testline once you are done using it. Thanks!
     </p>
   </body>
 </html>
