@@ -1,6 +1,75 @@
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="home.js"></script>
+<style>
+	/* The Modal (background) */
+	.modal {
+	    display: none; /* Hidden by default */
+	    position: fixed; /* Stay in place */
+	    z-index: 1; /* Sit on top */
+	    padding-top: 100px; /* Location of the box */
+	    left: 0;
+	    top: 0;
+	    width: 100%; /* Full width */
+	    height: 100%; /* Full height */
+	    overflow: auto; /* Enable scroll if needed */
+	    background-color: rgb(0,0,0); /* Fallback color */
+	    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	}
+
+	/* Modal Content */
+	.modal-content {
+	    position: relative;
+	    background-color: #fefefe;
+	    margin: auto;
+	    -webkit-animation-name: animatetop;
+	    -webkit-animation-duration: 0.4s;
+	    animation-name: animatetop;
+	    animation-duration: 0.4s
+	}
+
+	/* Add Animation */
+	@-webkit-keyframes animatetop {
+	    from {top:-300px; opacity:0} 
+	    to {top:0; opacity:1}
+	}
+
+	@keyframes animatetop {
+	    from {top:-300px; opacity:0}
+	    to {top:0; opacity:1}
+	}
+
+	/* The Close Button */
+	.close {
+	    color: black;
+	    float: right;
+	    font-size: 28px;
+	    font-weight: bold;
+	}
+
+	.close:hover,
+	.close:focus {
+	    color: #ccc;
+	    text-decoration: none;
+	    cursor: pointer;
+	}
+	.modal-header {
+	    padding: 2px 16px;
+	}
+
+	.modal-body {padding: 2px 16px;}
+</style>
+<script>
+	function activate_modal(id) {
+		var s = document.getElementById(id);
+	    s.style.display = "block";
+	}
+
+	function deactivate_modal(id) {
+		var s = document.getElementById(id);
+	    s.style.display = "none";
+	}
+</script>
+
 <% if user_signed_in? && current_user.isAdmin? %>
 	<main class="wrapper">
 		<article>
@@ -80,7 +149,7 @@
 		                    </div>
 
 		                    <div class="card-content">
-		                    	<div class="card-title-admin" style="padding-top: 0;">
+		                    	<div class="card-title-admin">
 									<h3 class="card-text"><%= testline.ip_address %>:<%= testline.port_number %></h3>
 									<%= content_tag :button, 'Edit', :onclick => "activate_modal(#{testline.id})", :class => "card-btn-admin" %>
 									<%= content_tag :button, 'Delete', :onclick => "activate_modal(-#{testline.id})", :class => "card-btn-admin" %>
@@ -126,239 +195,3 @@
 <% else %>
 	<%= render 'error' %>
 <% end %>
-
-<style type="text/css">
-
-	.row {
-	  width: 100%;
-	}
-
-	.wrapper-greeting{
-		padding: 10px;
-	}
-
-	main h1 {
-	    margin: 20px 0;
-	    color: #fff;
-	    text-transform: uppercase;
-	}
-
-	#testlines{
-		border-top: 1px solid #999;
-		/*padding: 2%;*/
-		margin: 0 auto;
-	}
-
-	/*#testlines-label{
-		width: 50%;
-		display:inline-block;
-	}*/
-	.tabcontent-header{
-		position: relative;
-	}
-	#add-testline{
-		position: absolute;
-		right: 0;
-		top: 0;
-		color:#000;
-	}
-	.new-testline-link{
-		color: #000;
-		text-decoration: none;
-	}
-
-	.card-content-admin{
-		flex: 1 1 auto;
-	    display: flex;
-	    flex-direction: column;
-	    justify-content: space-between;
-	    padding: 10px;
-	    background: #fff;
-	    border-bottom-left-radius: 0.25em;
-	    border-bottom-right-radius: 0.25em;
-	}
-
-	.card-title-admin{
-		padding: 10px;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-	}
-
-	.card-btn-admin {
-	    width: 100%;
-	    color: #000;
-	    background: #fff;
-	    border: 1px solid #000;
-	    border-radius: 0.25em;
-	    padding: 8px 16px;
-	    align-self: flex-end;
-	    margin-top: 5px;
-	}
-
-	.card .card-btn-admin:hover {
-   		background: #ccc;
-	}
-
-
-	.card .dropbtn {
-	    position: absolute;
-	    right: 0;
-	    top: -5px;
-	    padding: 10px 16px;
-	    cursor: pointer;
-	    font-size: 2.5em;
-	}
-
-	.alert {
-	  padding: 15px;
-	  margin-bottom: 20px;
-	  border: 1px solid transparent; 
-	  border-radius: 4px;
-	}
-	.alert h4 {
-	  margin-top: 0;
-	  color: inherit;
-	}
-	.alert .alert-link {
-	  font-weight: bold;
-	}
-	.alert > p,
-	.alert > ul {
-	  margin-bottom: 0;
-	}
-	.alert > p + p {
-	  margin-top: 5px;
-	}
-	.alert-dismissable,
-	.alert-dismissible {
-	  padding-right: 35px;
-	}
-	.alert-dismissable .close,
-	.alert-dismissible .close {
-	  position: relative;
-	  top: -2px;
-	  right: -21px;
-	  color: inherit;
-	}
-	.alert-success {
-	  color: #3c763d;
-	  background-color: #dff0d8;
-	  border-color: #d6e9c6;
-	}
-	.alert-success hr {
-	  border-top-color: #c9e2b3;
-	}
-	.alert-success .alert-link {
-	  color: #2b542c;
-	}
-	.alert-info {
-	  color: #31708f;
-	  background-color: #d9edf7;
-	  border-color: #bce8f1;
-	}
-	.alert-info hr {
-	  border-top-color: #a6e1ec;
-	}
-	.alert-info .alert-link {
-	  color: #245269;
-	}
-	.alert-warning {
-	  color: #8a6d3b;
-	  background-color: #fcf8e3;
-	  border-color: #faebcc;
-	}
-	.alert-warning hr {
-	  border-top-color: #f7e1b5;
-	}
-	.alert-warning .alert-link {
-	  color: #66512c;
-	}
-	.alert-danger {
-	  color: #a94442;
-	  background-color: #f2dede;
-	  border-color: #ebccd1;
-	}
-	.alert-danger hr {
-	  border-top-color: #e4b9c0;
-	}
-	.alert-danger .alert-link {
-	  color: #843534;
-	}
-	button.close {
-	  -webkit-appearance: none;
-	  padding: 0;
-	  cursor: pointer;
-	  background: transparent;
-	  border: 0;
-	}
-</style>
-<style>
-	/* The Modal (background) */
-	.modal {
-	    display: none; /* Hidden by default */
-	    position: fixed; /* Stay in place */
-	    z-index: 1; /* Sit on top */
-	    padding-top: 100px; /* Location of the box */
-	    left: 0;
-	    top: 0;
-	    width: 100%; /* Full width */
-	    height: 100%; /* Full height */
-	    overflow: auto; /* Enable scroll if needed */
-	    background-color: rgb(0,0,0); /* Fallback color */
-	    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-	}
-
-	/* Modal Content */
-	.modal-content {
-	    position: relative;
-	    background-color: #fefefe;
-	    margin: auto;
-	    -webkit-animation-name: animatetop;
-	    -webkit-animation-duration: 0.4s;
-	    animation-name: animatetop;
-	    animation-duration: 0.4s
-	}
-
-	/* Add Animation */
-	@-webkit-keyframes animatetop {
-	    from {top:-300px; opacity:0} 
-	    to {top:0; opacity:1}
-	}
-
-	@keyframes animatetop {
-	    from {top:-300px; opacity:0}
-	    to {top:0; opacity:1}
-	}
-
-	/* The Close Button */
-	.close {
-	    color: black;
-	    float: right;
-	    font-size: 28px;
-	    font-weight: bold;
-	}
-
-	.close:hover,
-	.close:focus {
-	    color: #ccc;
-	    text-decoration: none;
-	    cursor: pointer;
-	}
-	.modal-header {
-	    padding: 2px 16px;
-	}
-
-	.modal-body {padding: 2px 16px;}
-</style>
-<script>
-	function activate_modal(id) {
-		var s = document.getElementById(id);
-	    s.style.display = "block";
-	}
-
-	function deactivate_modal(id) {
-		var s = document.getElementById(id);
-	    s.style.display = "none";
-	}
-</script>

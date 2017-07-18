@@ -8,15 +8,15 @@
 				</h2>
 				<ul>
 					<% @users.each do |user| %>
-						<li class="list-item" style="padding: 2%;">
-							<div style="float: left;">
-								<h3 class="title" style="font-size: 1.4em;">
+						<li class="list-item list-item-user">
+							<div class="user-email">
+								<h3 class="title">
 									<i class="fa fa-user"></i> <%= user.email %>
 								</h3>
 							</div>
-							<div style="float: right;">
+							<div class="user-classification">
 								<% if user.isAdmin? %>
-									<small class="badge badge-current" style="font-size: 0.9em;">
+									<small class="badge badge-current-user">
 										<i class="fa fa-cogs"></i> Administrator
 									</small>
 								<% else %>
