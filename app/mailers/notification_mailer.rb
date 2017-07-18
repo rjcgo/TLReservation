@@ -1,5 +1,4 @@
 class NotificationMailer < ApplicationMailer
-  default from: "tlreservation.nokinterns@gmail.com"
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -8,6 +7,8 @@ class NotificationMailer < ApplicationMailer
   def notify_next(email, testline)
     @email = email
     @testline = testline
-    mail(to: @email, subject: '#{<=% @testline.name %>} has been released.')
+    mail(   :to      => @email,
+            :from    => "tlreservation.nokinterns@outlook.com",
+            :subject => @testline.name+" has been released")
   end
 end
