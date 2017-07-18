@@ -64,6 +64,7 @@
 								<h3><%= testline.name %></h3>
 							</div>
 							<div class="card-content">
+								<p class="card-text">IP: <%= testline.ip_address %> Port:<%= testline.port_number %></p>
 								<% if user_signed_in? %>
 									<%= submit_tag "Reserve now!", :type => "button", :id => testline.id, :class => "card-btn", :onclick => "activate_modal(#{testline.id})" %>
 								<% end %>
@@ -121,6 +122,7 @@
 							</div>
 							<div class="card-content">
 								<% userQueue = 1 %>
+								<p class="card-text">IP: <%= testline.ip_address %> Port:<%= testline.port_number %> </p>
 								<% @reservations.each do |reserve| %>
 									<% if testline.id == reserve.testline_id  %>
 										<% if userQueue == 1 %>
@@ -158,6 +160,7 @@
 								<h3><%= testline.name %></h3>
 							</div>
 							<div class="card-content">
+								<p class="card-text">IP: <%= testline.ip_address %> Port:<%= testline.port_number %></p>
 								<p class="card-text">This testline is under maintenance.</p>
 							</div>
 						</div>
