@@ -61,7 +61,7 @@
 														<button type="button" class="modal-close-as bg-red" onclick="deactivate_modal(-<%= reserve.id %>)">&times;</button>
 													</div>
 													<div class="modal-body-as">
-														<p class="modal-text">Are you sure you want to release your reservation?</p>
+														<p class="modal-text">Are you sure you want to release this testline? Releasing may take a while. Please wait.</p>
 													</div>
 													<div class="modal-footer-as">
 														<%= link_to 'Yes', [reserve.testline,reserve], method: :delete, :class => "modal-btn-as bg-red" %>
