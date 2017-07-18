@@ -34,18 +34,27 @@
         </a>
             <div class="navbar-nav">
                 <h2>Main Navigation</h2>
-                <ul>
-                    <li><%= link_to '<i class="fa fa-home"></i> Home'.html_safe, root_path %></li>
-                    <li><a href="/testlines/reservations"><i class="fa fa-calendar-check-o"></i>    Reservations</a></li>
-                    <% if user_signed_in? %>
-                        <% if current_user.isAdmin? %>
-                            <li><a href="/admin/home"><i class="fa fa-cogs"></i> Administrator</a></li>
-                        <% end %>
-                        <li><%= link_to '<i class="fa fa-sign-out"></i> Logout'.html_safe, destroy_user_session_path, method: :delete %></li>
-                    <% else %>
-                        <li><a href="/users/sign_in"><i class="fa fa-sign-in"></i> Login</a></li>
-                    <% end %>
-                </ul>
+                  <% if user_signed_in? %>
+                  <ul>
+                      <% if current_user.isAdmin? %>
+                        <li><a href="/testlines/reservations"><i class="fa fa-calendar-check-o"></i>    Reservations</a></li>
+                        <li><a href="/admin/home"><i class="fa fa-cogs"></i> Administrator</a></li>
+                      <% end %>
+                      <li><%= link_to '<i class="fa fa-sign-out"></i> Logout'.html_safe, destroy_user_session_path, method: :delete %></li>
+                  </ul>
+                  <% else %>
+                      <%= form_for("user", :url => user_session_path) do |f| %>
+                      <div class="input-group">
+                        <span class="fa fa-user input-addon"></span>
+                        <%= f.email_field :email, :placeholder => "Email" %>
+                      </div>
+                      <div class="input-group">
+                        <span class="fa fa-key input-addon"></span>
+                        <%= f.password_field :password, :placeholder => "password" %>
+                      </div>
+                        <%= f.submit 'Sign in', :class => "form-submit" %>
+                      <% end %>
+                  <% end %>
             </div>
         </div>
     </nav>
@@ -64,6 +73,48 @@
 </html>
 
 <style type="text/css">
+    .navbar-nav input[type="email"],
+    .navbar-nav input[type="password"]{
+      display: table-cell;
+      padding: 6px 8px;
+      border-top-right-radius: 0.25em;
+      border-bottom-right-radius: 0.25em;
+      border: 0;
+      font-size: 14px;
+      width: 160px;
+      line-height: 1.68em;
+    }
+
+    .input-group .input-addon{
+      display: table-cell;
+      background: #f1f1f1;
+      line-height: 1.4em;
+      padding: 6px 14px;
+      border-top-left-radius: 0.25em;
+      border-bottom-left-radius: 0.25em;
+    }
+
+    .input-group{
+      display: table;
+      float: left;
+      margin-right: 10px;
+    }
+
+    .form-submit{
+      padding: 6px 14px;
+      background: transparent;
+      font-size: 14px;
+      line-height: 1.6em;
+      border: 1px solid #fff;
+      color: #fff;
+      border-radius: 0.25em;
+    }
+
+    .form-submit:hover{
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+
     .slide_left:hover {
       -webkit-transition: ease-out 0.4s;
       -moz-transition: ease-out 0.4s;
