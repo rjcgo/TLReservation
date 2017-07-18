@@ -20,7 +20,7 @@
 
 </head>
 <body>
-<nav id="main-nav">
+<nav id="main-nav" style="position: fixed; width: 100%;">
 
         <div class="wrapper">
             <button type="button" id="burger-nav">
@@ -57,9 +57,9 @@
         </div>
     </div>
     <% end %>
-
+<div style="position: relative; top: 68px;">
 <%= yield %>
-
+</div>
 </body>
 </html>
 
