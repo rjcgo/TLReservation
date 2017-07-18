@@ -8,6 +8,8 @@ class ReservationsController < ApplicationController
     def destroy
         @testline = Testline.find(params[:testline_id])
         @reservation = @testline.reservations.find(params[:id])
+        @email = @reservation.email
+        #NotificationMailer.notify_next(@email, @testline).deliver_now
         @reservation.destroy
         redirect_to(:back)
     end
