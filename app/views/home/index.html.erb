@@ -1,21 +1,51 @@
-<div id="sub-nav" class="wrapper">
-	<h1>Welcome</h1>
-	<div class="dropdown">
-		<button class="dropbtn">
-			<i class="fa fa-th fa-white"></i>
-			Teams
-		</button>
-		<div class="dropdown-triangle"></div>
-		<ul class="dropdown-content">
-			<% ball = pokelist %>
-			<% @teams.each do |team| %>
-				<li>
-					<a href="/teams/show/<%= team.id %>"><%= content_tag :span, '', :class => ball[team.id % 20] %> <%= team.name %></a>
-				</li>
-			<% end %>
-		</ul>
-	</div>
-</div>
+
+<main>
+    <section id="choose">
+        <!-- <img src="assets/banner-1.png" alt="banner-1"> -->
+        <div class="banner-overlay">
+            <div class="wrapper">
+                <h2 class="display-1">Choose a Team</h2>
+                <ul class="pokeballs-grid">
+	                <% ball = pokelist %>
+					<% @teams.each do |team| %>
+						<li>
+							<a href="/teams/show/<%= team.id %>"><%= content_tag :span, '', :class => ball[team.id % 20] %> <%= team.name %></a>
+						</li>
+					<% end %>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section id="reserve">
+        <!-- <img src="assets/banner-2.png" alt="banner-2"> -->
+        <div class="banner-overlay">
+            <div class="wrapper">
+                <h2 class="display-1">Reserve a Testline</h2>
+                <p class="overlay-text">Don't know how to reserve for a testline? <br> On your team's page, just click "Use Now" or "Reserve Now" on the testlines that are available or in-use</p>
+            </div>
+        </div>
+    </section>
+    <section id="queue">
+        <!-- <img src="assets/banner-3.png" alt="banner-3"> -->
+        <div class="banner-overlay">
+            <div class="wrapper">
+                <h2 class="display-1">Who's in queue?</h2>
+                <p class="overlay-text">Want to keep track of who's in line? <br> Click the reservations button on the navbar and select the testline you
+                        want to know who's in line for.</p>
+            </div>
+        </div>
+    </section>
+    <section id="release">
+        <!-- <img src="assets/banner-4.png" alt="banner-4"> -->
+        <div class="banner-overlay">
+            <div class="wrapper">
+                <h2 class="display-1">Release a Testline</h2>
+                <p class="overlay-text">To release a testline you're using or cancel a reservation, click the reservations button in the navbar,
+                    select the testline, and click release.</p>
+            </div>
+        </div>
+    </section>
+</main>
 
 <script>
 
