@@ -1,11 +1,6 @@
 <% if user_signed_in? && current_user.isAdmin? %>
-	<div class="wrapper-greeting">
-		<div class="alert alert-success alert-dismissible" role="alert">
-		  	<h4 class="alert-heading">Welcome, admin!</h4>
-		</div>
-	</div>
 
-	<main class="wrapper">
+	<main class="wrapper" style="position: relative; top: 20px;">
 		<div class="card-deck">
 			<div class="card">
 				<div class="card-header bg-blue">
@@ -53,7 +48,7 @@
 
 			<div class="card">
 				<div class="card-header bg-blue">
-					<i class="fa fa-share-alt  fa-white icon-lg"></i>
+					<i class="fa fa-exchange  fa-white icon-lg"></i>
 				</div>
 				<div class="card-content-admin">
 					<div class="card-title-admin">
@@ -74,7 +69,7 @@
 			</div>
 			<div class="card">
 				<div class="card-header bg-blue">
-					<i class="fa fa-group fa-white icon-lg"></i>
+					<i class="fa fa-user-circle fa-white icon-lg"></i>
 				</div>
 				<div class="card-content-admin">
 					<div class="card-title-admin">

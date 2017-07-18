@@ -9,11 +9,11 @@
 			<%= render partial: 'sidenav', :locals => {:sect => "teams"} %>
 
 			<section id="testlines" class="tabcontent">
+				<div class="tabcontent-header">
+					<h2 id="testlines-label"><i class="fa fa-users sidenav-toggle"></i> Teams</h2>
 
-				<h2 id="testlines-label"><i class="fa fa-users sidenav-toggle"></i> Teams</h2>
-
-				<h2 id="add-testline" style="cursor: pointer;"><i class="fa fa-plus fa-white"></i><%= content_tag :a, ' New Team', :class=> "new-testline-link", :onclick => "activate_modal(0)" %></h2>
-
+					<h2 id="add-testline" style="cursor: pointer;"><i class="fa fa-plus"></i><%= content_tag :a, ' New Team', :class=> "new-testline-link", :onclick => "activate_modal(0)" %></h2>
+				</div>
 				<% if @teams.blank? %>
 					<div class="wrapper-greeting">
 						<div class="alert alert-success alert-dismissible" role="alert">
@@ -23,11 +23,11 @@
 
 				<% end %>
 
-				<div class="card-deck">
+				<div class="card-deck card-deck-special">
 					<% balls = pokelist %>
 					<% @teams.each do |team| %>
 						<div class="card">
-							<div class="card-header bg-green">
+							<div class="card-header bg-blue">
 								<i class="<%= balls[team.id % 20] %>"></i>
 								<h3><%= team.name %></h3>
 							</div>
@@ -131,24 +131,25 @@
 
 	#testlines{
 		border-top: 1px solid #999;
-		padding: 2%;
+		/*padding: 2%;*/
 		margin: 0 auto;
 	}
 
-	#testlines-label{
+	/*#testlines-label{
 		width: 50%;
 		display:inline-block;
+	}*/
+	.tabcontent-header{
+		position: relative;
 	}
-
-	#add-testline{		
-		display:inline-block;
-		text-align:right;
-		float: right;
-		color:white;
+	#add-testline{
+		position: absolute;
+		right: 0;
+		top: 0;
+		color:#000;
 	}
-
 	.new-testline-link{
-		color: white;
+		color: #000;
 		text-decoration: none;
 	}
 
