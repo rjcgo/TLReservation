@@ -1,252 +1,245 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Test Line Reservation</title>
-  
-    <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-    
-    
+	<head>
+		<title>Test Line Reservation</title>
+		<%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+		<meta name="viewport" content="width=device-width">
 
-    
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <!-- font-awesome CSS-->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-      crossorigin="anonymous">
-    
-    <%= stylesheet_link_tag "style" %>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+		crossorigin="anonymous">
 
-</head>
-<body>
-<nav id="main-nav" style="position: fixed; width: 100%;">
+		<%= stylesheet_link_tag "style" %>
 
-        <div class="wrapper">
-            <button type="button" id="burger-nav">
-                <span class="bar1"></span>
-                <span class="bar2"></span>
-                <span class="bar3"></span>
-            </button>
-            <a href="/" class="navbar-brand">
-            <i class="fa fa-server icon-lg" id="logo"></i>
-            <h1>Test Line Reservation</h1>
-        </a>
-            <div class="navbar-nav">
-                <h2>Main Navigation</h2>
-                  <% if user_signed_in? %>
-                  <ul>
-                      <% if current_user.isAdmin? %>
-                        <li><a href="/testlines/reservations"><i class="fa fa-calendar-check-o"></i>    Reservations</a></li>
-                        <li><a href="/admin/home"><i class="fa fa-cogs"></i> Administrator</a></li>
-                      <% end %>
-                      <li><%= link_to '<i class="fa fa-sign-out"></i> Logout'.html_safe, destroy_user_session_path, method: :delete %></li>
-                  </ul>
-                  <% else %>
-                      <%= form_for("user", :url => user_session_path) do |f| %>
-                      <div class="input-group">
-                        <span class="fa fa-user input-addon"></span>
-                        <%= f.email_field :email, :placeholder => "Email" %>
-                      </div>
-                      <div class="input-group">
-                        <span class="fa fa-key input-addon"></span>
-                        <%= f.password_field :password, :placeholder => "password" %>
-                      </div>
-                        <%= f.submit 'Sign in', :class => "form-submit" %>
-                      <% end %>
-                  <% end %>
-            </div>
-        </div>
-    </nav>
+		<style type="text/css">
+			.navbar-nav input[type="email"],
+			.navbar-nav input[type="password"]{
+				display: table-cell;
+				padding: 6px 8px;
+				border-top-right-radius: 0.25em;
+				border-bottom-right-radius: 0.25em;
+				border: 0;
+				font-size: 14px;
+				width: 160px;
+				line-height: 1.68em;
+			}
 
-    <% if !notice.blank? %>
-    <div class="wrapper-greeting">
-        <div class="alert alert-success alert-dismissible" role="alert" id="notice">
-            <h4 class="alert-heading"><%= notice %></h4>
-        </div>
-    </div>
-    <% end %>
-<div style="position: relative; top: 68px;">
-<%= yield %>
-</div>
-</body>
+			.input-group .input-addon{
+				display: table-cell;
+				background: #f1f1f1;
+				line-height: 1.4em;
+				padding: 6px 14px;
+				border-top-left-radius: 0.25em;
+				border-bottom-left-radius: 0.25em;
+			}
+
+			.input-group{
+				display: table;
+				float: left;
+				margin-right: 10px;
+			}
+
+			.form-submit{
+				padding: 6px 14px;
+				background: transparent;
+				font-size: 14px;
+				line-height: 1.6em;
+				border: 1px solid #fff;
+				color: #fff;
+				border-radius: 0.25em;
+			}
+
+			.form-submit:hover{
+				background: rgba(255, 255, 255, 0.1);
+			}
+
+
+			.slide_left:hover {
+				-webkit-transition: ease-out 0.4s;
+				-moz-transition: ease-out 0.4s;
+				transition: ease-out 0.4s;
+				box-shadow: inset 400px 0 0 0 #9eba93;
+			}
+
+			.wrapper-greeting{
+				padding: 10px;
+			}
+
+			.card-description{
+				padding: 0 10px;
+			}
+
+			.card-description-content{
+				height: 100px;
+				text-align: justify;
+			}
+
+			.card-deck {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+
+			.card-content-admin{
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				background: #fff;
+				border-bottom-left-radius: 0.25em;
+				border-bottom-right-radius: 0.25em;
+			}
+
+			.card-title-admin{
+				padding: 0 10px;
+				padding-top: 15px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+			}
+
+			.card-btn-admin {
+				width: 100%;
+				color: #000;
+				background: #fff;
+				border: 1px solid #000;
+				border-radius: 0.25em;
+				padding: 8px 16px;
+			}
+
+			.alert {
+				padding: 15px;
+				margin-bottom: 20px;
+				border: 1px solid transparent;
+				border-radius: 4px;
+			}
+			.alert h4 {
+				margin-top: 0;
+				color: inherit;
+			}
+			.alert .alert-link {
+				font-weight: bold;
+			}
+			.alert > p,
+			.alert > ul {
+				margin-bottom: 0;
+			}
+			.alert > p + p {
+			margin-top: 5px;
+			}
+			.alert-dismissable,
+			.alert-dismissible {
+				padding-right: 35px;
+			}
+			.alert-dismissable .close,
+			.alert-dismissible .close {
+				position: relative;
+				top: -2px;
+				right: -21px;
+				color: inherit;
+			}
+			.alert-success {
+				color: #3c763d;
+				background-color: #dff0d8;
+				border-color: #d6e9c6;
+			}
+			.alert-success hr {
+				border-top-color: #c9e2b3;
+			}
+			.alert-success .alert-link {
+				color: #2b542c;
+			}
+			.alert-info {
+				color: #31708f;
+				background-color: #d9edf7;
+				border-color: #bce8f1;
+			}
+			.alert-info hr {
+				border-top-color: #a6e1ec;
+			}
+			.alert-info .alert-link {
+				color: #245269;
+			}
+			.alert-warning {
+				color: #8a6d3b;
+				background-color: #fcf8e3;
+				border-color: #faebcc;
+			}
+			.alert-warning hr {
+				border-top-color: #f7e1b5;
+			}
+			.alert-warning .alert-link {
+				color: #66512c;
+			}
+			.alert-danger {
+				color: #a94442;
+				background-color: #f2dede;
+				border-color: #ebccd1;
+			}
+			.alert-danger hr {
+				border-top-color: #e4b9c0;
+			}
+			.alert-danger .alert-link {
+				color: #843534;
+			}
+			button.close {
+				-webkit-appearance: none;
+				padding: 0;
+				cursor: pointer;
+				background: transparent;
+				border: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<nav id="main-nav" style="position: fixed; width: 100%;">
+			<div class="wrapper">
+				<button type="button" id="burger-nav">
+					<span class="bar1"></span>
+					<span class="bar2"></span>
+					<span class="bar3"></span>
+				</button>
+				<a href="/" class="navbar-brand">
+					<i class="fa fa-server icon-lg" id="logo"></i>
+					<h1>Test Line Reservation</h1>
+				</a>
+				<div class="navbar-nav">
+					<h2>Main Navigation</h2>
+					<% if user_signed_in? %>
+						<ul>
+							<% if current_user.isAdmin? %>
+								<li><a href="/testlines/reservations"><i class="fa fa-calendar-check-o"></i>    Reservations</a></li>
+								<li><a href="/admin/home"><i class="fa fa-cogs"></i> Administrator</a></li>
+							<% end %>
+							<li><%= link_to '<i class="fa fa-sign-out"></i> Logout'.html_safe, destroy_user_session_path, method: :delete %></li>
+						</ul>
+					<% else %>
+						<%= form_for("user", :url => user_session_path) do |f| %>
+							<div class="input-group">
+								<span class="fa fa-user input-addon"></span>
+								<%= f.email_field :email, :placeholder => "Email" %>
+							</div>
+							<div class="input-group">
+								<span class="fa fa-key input-addon"></span>
+								<%= f.password_field :password, :placeholder => "password" %>
+							</div>
+							<%= f.submit 'Sign in', :class => "form-submit" %>
+						<% end %>
+					<% end %>
+				</div>
+			</div>
+		</nav>
+
+		<% if !notice.blank? %>
+			<div class="wrapper-greeting">
+				<div class="alert alert-success alert-dismissible" role="alert" id="notice">
+					<h4 class="alert-heading"><%= notice %></h4>
+				</div>
+			</div>
+		<% end %>
+		<div style="position: relative; top: 68px;">
+			<%= yield %>
+		</div>
+	</body>
 </html>
-
-<style type="text/css">
-    .navbar-nav input[type="email"],
-    .navbar-nav input[type="password"]{
-      display: table-cell;
-      padding: 6px 8px;
-      border-top-right-radius: 0.25em;
-      border-bottom-right-radius: 0.25em;
-      border: 0;
-      font-size: 14px;
-      width: 160px;
-      line-height: 1.68em;
-    }
-
-    .input-group .input-addon{
-      display: table-cell;
-      background: #f1f1f1;
-      line-height: 1.4em;
-      padding: 6px 14px;
-      border-top-left-radius: 0.25em;
-      border-bottom-left-radius: 0.25em;
-    }
-
-    .input-group{
-      display: table;
-      float: left;
-      margin-right: 10px;
-    }
-
-    .form-submit{
-      padding: 6px 14px;
-      background: transparent;
-      font-size: 14px;
-      line-height: 1.6em;
-      border: 1px solid #fff;
-      color: #fff;
-      border-radius: 0.25em;
-    }
-
-    .form-submit:hover{
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-
-    .slide_left:hover {
-      -webkit-transition: ease-out 0.4s;
-      -moz-transition: ease-out 0.4s;
-      transition: ease-out 0.4s;
-      box-shadow: inset 400px 0 0 0 #9eba93;
-    }
-
-    .wrapper-greeting{
-        padding: 10px;
-    }
-
-    .card-description{
-      padding: 0 10px;
-    }
-
-    .card-description-content{
-      height: 100px;
-      text-align: justify;
-    }
-
-    .card-deck {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .card-content-admin{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        background: #fff;
-        border-bottom-left-radius: 0.25em;
-        border-bottom-right-radius: 0.25em;
-    }
-
-    .card-title-admin{
-        padding: 0 10px;
-        padding-top: 15px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-    }
-
-    .card-btn-admin {
-        width: 100%;
-        color: #000;
-        background: #fff;
-        border: 1px solid #000;
-        border-radius: 0.25em;
-        padding: 8px 16px;
-    }
-
-    .alert {
-      padding: 15px;
-      margin-bottom: 20px;
-      border: 1px solid transparent;
-      border-radius: 4px;
-    }
-    .alert h4 {
-      margin-top: 0;
-      color: inherit;
-    }
-    .alert .alert-link {
-      font-weight: bold;
-    }
-    .alert > p,
-    .alert > ul {
-      margin-bottom: 0;
-    }
-    .alert > p + p {
-      margin-top: 5px;
-    }
-    .alert-dismissable,
-    .alert-dismissible {
-      padding-right: 35px;
-    }
-    .alert-dismissable .close,
-    .alert-dismissible .close {
-      position: relative;
-      top: -2px;
-      right: -21px;
-      color: inherit;
-    }
-    .alert-success {
-      color: #3c763d;
-      background-color: #dff0d8;
-      border-color: #d6e9c6;
-    }
-    .alert-success hr {
-      border-top-color: #c9e2b3;
-    }
-    .alert-success .alert-link {
-      color: #2b542c;
-    }
-    .alert-info {
-      color: #31708f;
-      background-color: #d9edf7;
-      border-color: #bce8f1;
-    }
-    .alert-info hr {
-      border-top-color: #a6e1ec;
-    }
-    .alert-info .alert-link {
-      color: #245269;
-    }
-    .alert-warning {
-      color: #8a6d3b;
-      background-color: #fcf8e3;
-      border-color: #faebcc;
-    }
-    .alert-warning hr {
-      border-top-color: #f7e1b5;
-    }
-    .alert-warning .alert-link {
-      color: #66512c;
-    }
-    .alert-danger {
-      color: #a94442;
-      background-color: #f2dede;
-      border-color: #ebccd1;
-    }
-    .alert-danger hr {
-      border-top-color: #e4b9c0;
-    }
-    .alert-danger .alert-link {
-      color: #843534;
-    }
-    button.close {
-      -webkit-appearance: none;
-      padding: 0;
-      cursor: pointer;
-      background: transparent;
-      border: 0;
-    }
-</style>
