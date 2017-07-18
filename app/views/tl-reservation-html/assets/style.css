@@ -311,7 +311,22 @@ h4 {
     width: 100%;
     height: 100%;
     position: relative;
-    background-position: 74% top !important;
+}
+
+#choose,
+#queue {
+    background-position: 75% top !important;
+}
+
+#reserve,
+#release {
+    background-position: 25% top !important;
+    text-align: right;
+}
+
+#reserve p,
+#release p {
+    float: right;
 }
 
 #choose {
@@ -319,7 +334,7 @@ h4 {
 }
 
 #reserve {
-    background: url(banner-2.png) no-repeat;
+    background: url(banner-2-flip.png) no-repeat;
 }
 
 #queue {
@@ -327,7 +342,7 @@ h4 {
 }
 
 #release {
-    background: url(banner-4.png) no-repeat;
+    background: url(banner-4-flip.png) no-repeat;
 }
 
 #choose img,
