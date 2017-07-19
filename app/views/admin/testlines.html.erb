@@ -86,6 +86,15 @@
 						</div>
 					</div>
 				<% end %>
+
+				<% if !notice.blank? %>
+					<div class="wrapper-greeting">
+						<div class="alert" role="alert" id="notice">
+							<h4 class="alert-heading"><%= notice %></h4>
+							</div>
+					</div>
+				<% end %>
+				
 				<div class="card-deck card-deck-special"> 	 
 					<% @testlines.each do |testline| %>
 						<%= content_tag :div, :class => "modal", :id => testline.id do -%>

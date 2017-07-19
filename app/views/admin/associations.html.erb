@@ -7,6 +7,15 @@
         <h2>
           <i class="fa fa-exchange sidenav-toggle"></i> Associations
         </h2>
+        
+        <% if !notice.blank? %>
+          <div class="wrapper-greeting">
+            <div class="alert" role="alert" id="notice">
+              <h4 class="alert-heading"><%= notice %></h4>
+              </div>
+          </div>
+        <% end %>
+
         <div class="card-deck card-deck-special">
           <% @testlines.each do |testline| %>
             <div class="modal-as" id="<%= testline.id %>">
