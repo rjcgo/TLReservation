@@ -12,7 +12,7 @@
             <div class="modal-as" id="<%= testline.id %>">
               <div class="modal-content-as">
                 <div class="modal-header-as">
-                  <h4 class="modal-title-as">Add team to <%= testline.name %></h4>
+                  <h4 class="modal-title-as">Allow team to access <%= testline.name %></h4>
                   <button type="button" class="modal-close-as" onclick="deactivate_modal(<%= testline.id %>)">&times;</button>
                 </div>
                 <div class="modal-body-as">
@@ -60,7 +60,7 @@
                                 <button type="button" class="modal-close-as bg-red" onclick="deactivate_modal(-<%= team_testline.id %>)">&times;</button>
                               </div>
                               <div class="modal-body-as">
-                                <p class="modal-text">Are you sure you want to remove this <%= team.name %>'s access from this testline?</p>
+                                <p class="modal-text">Are you sure you want to remove <%= team.name %>'s access from this testline?</p>
                               </div>
                               <div class="modal-footer-as">
                                 <%= link_to 'Remove access', team_testline, method: :delete, :class => "modal-btn-as bg-red" %>
