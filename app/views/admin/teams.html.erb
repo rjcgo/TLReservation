@@ -39,7 +39,7 @@
 
 							<div class="card-content">
 								<div class="card-title-admin" style="padding-top: 0;">
-								<%= content_tag :button, 'Edit', :onclick => "activate_modal(#{team.id})", :class => "card-btn-admin" %>
+								<%= content_tag :button, 'Rename', :onclick => "activate_modal(#{team.id})", :class => "card-btn-admin" %>
 								<%= content_tag :button, 'Delete', :onclick => "activate_modal(-#{team.id})", :class => "card-btn-admin" %>
 								</div>
 							</div>
@@ -50,14 +50,14 @@
 									<%= form_for(team, :html => {:class => "reserve"}) do |f| %>
 										<div class="modal-header">
 											<%= content_tag :span, 'x', :class => "close", :onclick => "deactivate_modal(#{team.id})" %>
-											<h3>Edit Team</h3>
+											<h3>Rename Team</h3>
 										</div>
 										<fieldset>
 											<%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required" %>
 										</fieldset>
 										
 										<fieldset>
-											<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Edit team</button>
+											<button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Save</button>
 										</fieldset>
 									<% end %>
 								</div>
