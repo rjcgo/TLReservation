@@ -43,7 +43,7 @@ h4 {
 
 #main-nav {
     background: #34495e;
-    padding: 10px;
+    padding: 10px 0;
     z-index: 1;
     box-shadow: 0 3px 10px #333;
 }
@@ -110,7 +110,7 @@ h4 {
 
 .navbar-brand h1 {
     float: left;
-    width: 160px;
+    width: 110px;
     font-size: 1.2em;
 }
 
@@ -132,7 +132,6 @@ h4 {
 
 .navbar-nav.open {
     height: auto;
-    margin-top: 8px;
 }
 
 .navbar-nav h2 {
@@ -149,6 +148,51 @@ h4 {
 
 .navbar-nav a:hover {
     background: #42A5F5;
+}
+
+.navbar-nav input[type="email"],
+.navbar-nav input[type="password"] {
+    display: table-cell;
+    padding: 6px 8px;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 100%;
+    line-height: 1.72em;
+    box-sizing: border-box;
+}
+
+.navbar-nav .input-group .input-addon {
+    display: table-cell;
+    background: #eee;
+    border: 1px solid #ccc;
+    line-height: 1.4em;
+    padding: 4px 14px;
+    border-top-left-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
+    width: 1%;
+}
+
+.navbar-nav .input-group {
+    display: table;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.navbar-nav .form-submit {
+    padding: 6px 14px;
+    background: transparent;
+    font-size: 14px;
+    line-height: 1.6em;
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 0.25em;
+    margin-top: 8px;
+}
+
+.navbar-nav .form-submit:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 
@@ -317,6 +361,7 @@ h4 {
     height: 100vh;
     position: relative;
     background-position: 74% top !important;
+    background-size: cover !important;
 }
 
 #choose,
@@ -334,7 +379,6 @@ h4 {
 #release p {
     float: right;
 }
-
 
 #choose {
     background: url(banner-1.png) no-repeat;
@@ -458,7 +502,7 @@ article {
 /* ******************** Sidenav ******************** */
 
 .sidenav {
-     background: #333645; 
+    background: #333645;
     /*background: #60646D;*/
     height: 100%;
     width: 0;
@@ -476,7 +520,7 @@ article {
 }
 
 .sidenav .tablinks {
-     color: #fff; 
+    color: #fff;
     /*color: #fff;*/
     text-decoration: none;
     padding: 1em 0;
@@ -487,11 +531,11 @@ article {
 
 .sidenav .tablinks.active {
     /*background: #444;*/
-     background: #1E202C; 
+    background: #1E202C;
 }
 
 .sidenav .tablinks:hover {
-     background: #252734; 
+    background: #252734;
     /*background: #444;*/
 }
 
@@ -698,11 +742,11 @@ article {
 }
 
 .list-item:nth-of-type(odd) {
-     background: #F7F6F2; 
+    background: #F7F6F2;
 }
 
 .list-item .title {
-    color: #555; 
+    color: #555;
     font-size: 1.5em;
 }
 
@@ -1025,6 +1069,11 @@ article {
     .modal-body-as li {
         flex: 1 0 33%;
     }
+    .navbar-nav .input-group {
+        float: left;
+        width: 48%;
+        margin-right: 1%;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -1042,10 +1091,18 @@ article {
     }
     .navbar-nav,
     .navbar-nav.open {
-        margin-top: 6px;
         height: auto;
         float: right;
         clear: none;
+    }
+    .navbar-nav .input-group {
+        width: auto;
+        margin-right: 8px;
+    }
+    .navbar-nav input[type="email"],
+    .navbar-nav input[type="password"],
+    .navbar-nav .input-group .input-addon {
+        width: auto;
     }
     .navbar-nav li {
         float: left;
@@ -1261,4 +1318,119 @@ fieldset {
 
 :-ms-input-placeholder {
     color: #888;
+}
+
+.slide_left:hover {
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+    box-shadow: inset 400px 0 0 0 #ccc;
+}
+
+.wrapper-greeting {
+    padding: 0 10px;
+    padding-top: 15px;
+    z-index: 1;
+    background-color: #EAEAE2;
+}
+
+.card-description {
+    padding: 0 10px;
+}
+
+.card-description-content {
+    height: 100px;
+    text-align: justify;
+}
+
+.card-content-admin {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #fff;
+    border-bottom-left-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+    padding-top: 15px;
+}
+
+.card-title-admin {
+    padding: 0 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.card-btn-admin {
+    width: 100%;
+    color: #000;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 0.25em;
+    padding: 8px 16px;
+    align-self: flex-end;
+    margin-top: 5px;
+}
+
+.card .card-btn-admin:hover {
+    background: #ccc;
+}
+
+.alert {
+    padding: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #BDC3C7;
+}
+
+.alert h4 {
+    margin-top: 0;
+    color: inherit;
+}
+
+button.close {
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+}
+
+#testlines {
+    border-top: 1px solid #999;
+    /*padding: 2%;*/
+    margin: 0 auto;
+}
+
+.tabcontent-header {
+    position: relative;
+}
+
+#add-testline {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #000;
+}
+
+.new-testline-link {
+    color: #000;
+    text-decoration: none;
+}
+
+.user-classification {
+    float: right;
+}
+
+.user-email {
+    float: left;
+    font-size: 0.9em;
+}
+
+.badge-current-user {
+    background: #0275d8;
+    font-size: 0.9em;
+}
+
+.list-item-user {
+    padding: 2%;
 }
