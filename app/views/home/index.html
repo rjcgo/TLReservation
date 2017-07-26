@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test Line Reservation</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/stylesheets/application.css">
+    <link rel="stylesheet" href="assets/stylesheets/home.css">
+</head>
+
+<body>
+    <nav id="main-nav">
+        <div class="wrapper">
+            <button type="button" id="burger-nav">
+                <span class="bar1"></span>
+                <span class="bar2"></span>
+                <span class="bar3"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+                <i class="fa fa-server icon-lg" id="logo"></i>
+                <h1>Test Line Reservation</h1>
+            </a>
+            <div class="navbar-nav">
+                <h2>Main Navigation</h2>
+                <form>
+                    <div class="input-group">
+                        <span class="fa fa-user input-addon"></span>
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <div class="input-group">
+                        <span class="fa fa-key input-addon"></span>
+                        <input type="password" placeholder="Password">
+                    </div>
+                    <button type="submit" class="form-submit">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="rails-container">
+        <main>
+            <section id="choose">
+                <div class="banner-overlay">
+                    <div class="wrapper">
+                        <h2 class="display-1">Choose a Team</h2>
+                        <p class="overlay-text">Click your team to start making reservations, or scroll further down for a walkthrough.</p>
+                    </div>
+                </div>
+            </section>
+            <section id="reserve">
+                <div class="banner-overlay">
+                    <div class="wrapper">
+                        <h2 class="display-1">Reserve a Testline</h2>
+                        <p class="overlay-text">On your team's page, just click<br><b>Use Now</b> or <b>Reserve Now</b> on the<br>testlines that
+                            are available or in-use</p>
+                    </div>
+                </div>
+            </section>
+            <section id="queue">
+                <div class="banner-overlay">
+                    <div class="wrapper">
+                        <h2 class="display-1">Who's in queue?</h2>
+                        <p class="overlay-text">Want to keep track of who's in line? <br> Click the <b>reservations</b> button on the navbar and
+                            select the testline you want to know who's in line for.</p>
+                    </div>
+                </div>
+            </section>
+            <section id="release">
+                <div class="banner-overlay">
+                    <div class="wrapper">
+                        <h2 class="display-1">Release a Testline</h2>
+                        <p class="overlay-text">To <b>release a testline</b> you're currently using or <b>cancel a reservation</b>, click the reservations
+                            button in the navbar, select your testline, then click <b>release</b>.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/javascripts/application.js"></script>
+</body>
+
+</html>

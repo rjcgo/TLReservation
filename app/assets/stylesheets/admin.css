@@ -1,0 +1,261 @@
+/* ******************** Section ******************** */
+
+#users-admin,
+#teams-admin,
+#testlines-admin,
+#associations-admin {
+    background: #dadada;
+    min-height: 100%;
+    transition: 0.5s;
+    box-sizing: border-box;
+}
+
+#users-admin h2,
+#teams-admin h2,
+#testlines-admin h2,
+#associations-admin h2 {
+    display: inline-block;
+    margin: 15px 0;
+    color: #34495e;
+}
+
+#teams-admin .add-btn,
+#testlines-admin .add-btn {
+    float: right;
+    width: 32px;
+    overflow: hidden;
+    white-space: nowrap;
+    background: transparent;
+    border: 0;
+    font-family: Raleway;
+    font-size: 1.5em;
+    padding: 2px 6px;
+    margin: 15px 0;
+    margin-right: 10px;
+    color: #34495e;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+#teams-admin header::after,
+#testlines-admin header::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+/* ******************** List item ******************** */
+
+.list-item {
+    box-sizing: border-box;
+    padding: 10px;
+    background: #fafafa;
+    position: relative;
+    /* margin: 20px 10px;  */
+    border-left: 5px solid #ccc;
+}
+
+.list-item .make-admin-btn {
+    float: right;
+    background: transparent;
+    color: #34495e;
+    text-decoration: none;
+    border: 1px solid #34495e;
+    padding: 6px 14px;
+    border-radius: 0.25em;
+    transition: 0.3s;
+    font-family: Raleway;
+    font-size: 14px;
+}
+
+.list-item .make-admin-btn:hover {
+    background: #34495e;
+    color: #fff;
+}
+
+.list-item::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+/* ******************** pokeballs grid ******************** */
+
+.pokeballs-grid li .release {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 31px;
+    height: 31px;
+    color: #fff;
+    padding: 0.4em 0.8em;
+    border: 0;
+    background: #d9534f;
+    transition: 0.5s;
+}
+
+.pokeballs-grid li .rename {
+    display: block;
+    color: #0275d8;
+    text-decoration: none;
+    margin: 10px auto;
+    width: fit-content;
+    font-size: 16px;
+    padding: 10px 2px;
+}
+
+.pokeballs-grid li .rename:hover {
+    border-bottom: 1px solid #0275d8;
+    background: transparent;
+}
+
+
+/* ******************** Card header ******************** */
+
+.card-header .card-header-overlay .add-rel {
+    background: transparent;
+    border: 1px solid #c1c1c1;
+    padding: 8px 14px;
+    color: #fff;
+    border-radius: 0.25em;
+    font-family: Raleway;
+    font-size: 1em;
+}
+
+
+/* ******************** Card body ******************** */
+
+.card-body li .delete-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    border: 0;
+    background: #d9534f;
+    color: #fff;
+    font-family: Raleway;
+    font-size: 14px;
+    width: 100%;
+    transition: 0.5s ease-out;
+}
+
+.card-body li:hover .delete-overlay {
+    left: 0;
+}
+
+
+/* ******************** Card footer ******************** */
+
+.card-link {
+    display: inline-block;
+    margin: 0 10px;
+    color: #000;
+    font-size: 1.2em;
+    text-decoration: none;
+    border-bottom: 1px dotted #000;
+}
+
+
+/* ******************** Admin Panel ******************** */
+
+#admin-panel {
+    padding: 4% 0;
+}
+
+#admin-panel h2 {
+    font-size: 2em;
+    font-weight: 300;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 1px solid #000;
+    padding-bottom: 6px;
+    margin: 20px;
+}
+
+#admin-panel ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#admin-panel li {
+    flex: 1 1 80%;
+    border-bottom: 1px solid #000;
+}
+
+#admin-panel a {
+    color: #000;
+    text-decoration: none;
+    display: block;
+    padding: 20px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+#admin-panel a:hover {
+    background: #acc3d8;
+}
+
+#admin-panel a:hover .icon-circle {
+    box-shadow: 0 2px 4px #888, 0 -2px 4px #888;
+}
+
+#admin-panel h3 {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#admin-panel p {
+    text-align: center;
+    line-height: 1.6em;
+}
+
+.icon-circle {
+    background: #53648F;
+    border-radius: 75px;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    margin: 20px auto;
+}
+
+.icon-lg {
+    font-size: 5em;
+    line-height: 150px;
+}
+
+.text-white {
+    color: #fff !important;
+}
+
+
+/* ******************** media queries ******************** */
+
+@media screen and (min-width: 480px) {
+    #teams-admin .add-btn,
+    #testlines-admin .add-btn {
+        width: auto;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    #admin-panel li {
+        flex: 1 1 46%;
+    }
+    #admin-panel li:nth-child(odd) {
+        border-right: 1px solid #000;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    #admin-panel li {
+        flex: 1 1 24%;
+        border-right: 1px solid #000;
+        border-bottom: 0;
+    }
+    #admin-panel li:last-child {
+        border: 0;
+    }
+}

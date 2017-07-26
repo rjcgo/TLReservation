@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test Line Reservation</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/stylesheets/application.css">
+    <link rel="stylesheet" href="../assets/stylesheets/admin.css">
+</head>
+
+<body>
+    <nav id="main-nav">
+        <div class="wrapper">
+            <button type="button" id="burger-nav">
+                <span class="bar1"></span>
+                <span class="bar2"></span>
+                <span class="bar3"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+                <i class="fa fa-server icon-lg" id="logo"></i>
+                <h1>Test Line Reservation</h1>
+            </a>
+            <div class="navbar-nav">
+                <h2>Main Navigation</h2>
+                <ul>
+                    <li><a href=""><i class="fa fa-calendar-check-o"></i> Teams</a></li>
+                    <li><a href=""><i class="fa fa-calendar-check-o"></i> Reservations</a></li>
+                    <li><a href=""><i class="fa fa-sign-out"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="rails-container">
+        <main class="wrapper">
+            <section id="admin-panel">
+                <h2>Admin Panel</h2>
+                <ul>
+                    <li>
+                        <a href="">
+                            <div class="icon-circle">
+                                <i class="fa fa-group icon-lg text-white"></i>
+                            </div>
+                            <h3>Manage Teams</h3>
+                            <p>Add, rename, or delete a team from the database.</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div class="icon-circle">
+                                <i class="fa fa-server icon-lg text-white"></i>
+                            </div>
+                            <h3>Manage Testlines</h3>
+                            <p>Add a new test line, edit a test line's name, IP address, and port number, tag a testline under
+                                maintenance, or delete a test line from the database.</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div class="icon-circle">
+                                <i class="fa fa-exchange icon-lg text-white"></i>
+                            </div>
+                            <h3>Testline Ownerships</h3>
+                            <p>Add, or remove restrictions for the teams on what test lines they are allowed to use.</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div class="icon-circle">
+                                <i class="fa fa-user-circle icon-lg text-white"></i>
+                            </div>
+                            <h3>User Privileges</h3>
+                            <p>Allow users admistrator privileges for this system.</p>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../assets/javascripts/application.js"></script>
+</body>
+
+</html>

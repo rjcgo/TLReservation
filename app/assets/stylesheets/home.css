@@ -1,0 +1,84 @@
+/* ******************** Home / Welcome ******************** */
+
+#choose,
+#reserve,
+#queue,
+#release {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-position: 74% top !important;
+    background-size: cover !important;
+}
+
+#choose,
+#queue {
+    background-position: 75% top !important;
+}
+
+#reserve,
+#release {
+    background-position: 25% top !important;
+    text-align: right;
+}
+
+#reserve p,
+#release p {
+    float: right;
+}
+
+#choose {
+    background: url(../images/banner-1.png) no-repeat;
+}
+
+#reserve {
+    background: url(../images/banner-2-flip.png) no-repeat;
+}
+
+#queue {
+    background: url(../images/banner-3.png) no-repeat;
+}
+
+#release {
+    background: url(../images/banner-4-flip.png) no-repeat;
+}
+
+#choose img,
+#reserve img,
+#queue img,
+#release img {
+    width: 100%;
+    height: 100%;
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 10%;
+    width: 100%;
+}
+
+.banner-overlay .display-1 {
+    font-size: 3em;
+    color: #fff;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.banner-overlay .overlay-text {
+    font-size: 1.6em;
+    line-height: 1.6em;
+    width: 75%;
+    color: #e9e9e9;
+}
+
+
+/* ******************** Media Queries ******************** */
+
+@media screen and (min-width: 480px) {
+    .banner-overlay .overlay-text {
+        font-size: 2em;
+    }
+    .banner-overlay .display-1 {
+        font-size: 4em;
+    }
+}

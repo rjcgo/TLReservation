@@ -1,17 +1,1187 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
-/* ********************* Body **********************/
+/* ******************** Body ******************** */
 
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: #bdc3c7;
+    font-family: Raleway, sans-serif;
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+}
+
+.wrapper {
+    width: 96%;
+    max-width: 1400px;
+    padding: 0 2%;
+    margin: 0 auto;
+}
+
+.rails-container {
+    padding-top: 68px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+
+/* ******************** bg-color ******************** */
+
+.bg-green {
+    border: 1px solid #5cb85c !important;
+    background: #2ecc71 !important;
+    color: #fff !important;
+}
+
+.bg-red {
+    border: 1px solid #a94442 !important;
+    background: #c0392b !important;
+    color: #fff !important;
+}
+
+.bg-yellow {
+    border: 1px solid #f0ad4e !important;
+    background: #e67e22 !important;
+    color: #fff !important;
+}
+
+.bg-blue {
+    border: 1px solid #53648F !important;
+    background: #53648F !important;
+    color: #fff !important;
+}
+
+
+/* ******************** text-color ******************** */
+
+.text-green {
+    color: #2ecc71 !important;
+    border-color: #2ecc71 !important;
+}
+
+.text-red {
+    color: #c0392b !important;
+    border-color: #c0392b !important;
+}
+
+.text-yellow {
+    color: #e67e22 !important;
+    border-color: #e67e22 !important;
+}
+
+.text-blue {
+    color: #53648F !important;
+    border-color: #53648F !important;
+}
+
+
+/* ******************** Badge ******************** */
+
+.badge {
+    padding: 3px;
+    border-radius: 0.25em;
+    text-transform: uppercase;
+}
+
+.badge.badge-primary {
+    background: #0275d8 !important;
+    color: #fff !important;
+    font-size: 0.9em;
+}
+
+.badge.badge-next {
+    background: #18a3fa !important;
+    color: #fff !important;
+    font-size: 0.6em;
+}
+
+.badge.badge-pending {
+    background: #999 !important;
+    color: #fff !important;
+    font-size: 0.6em;
+}
+
+
+/* ******************** Nav ******************** */
+
+#main-nav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background: #34495e;
+    padding: 10px 0;
+    z-index: 4;
+    box-shadow: 0 3px 10px #333;
+}
+
+
+/* ******************** Burger Nav ******************** */
+
+#burger-nav {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    float: right;
+    margin-top: 5px;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+    display: block;
+    width: 32px;
+    height: 4px;
+    background: #fff;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+
+/* ******************** Rotate first bar ******************** */
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-6px, 6px);
+    transform: rotate(-45deg) translate(-6px, 6px);
+}
+
+
+/* ******************** Fade out the second bar ******************** */
+
+.change .bar2 {
+    opacity: 0;
+}
+
+
+/* ******************** Rotate last bar ******************** */
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+}
+
+
+/* ******************** navbar brand ******************** */
+
+.navbar-brand {
+    color: #fff;
+    text-decoration: none;
+    float: left;
+}
+
+#logo {
+    float: left;
+    margin-right: 10px;
+    line-height: 1.2em;
+    font-size: 2.5em;
+}
+
+.navbar-brand h1 {
+    float: left;
+    width: 110px;
+    font-size: 1.2em;
+}
+
+.navbar-brand::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+/* ******************** navbar nav ******************** */
+
+.navbar-nav {
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.navbar-nav.open {
+    height: auto;
+}
+
+.navbar-nav h2 {
+    display: none;
+}
+
+.navbar-nav li {
+    margin-top: 6px;
+}
+
+.navbar-nav a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    font-size: 1em;
+}
+
+.navbar-nav a:hover {
+    background: #42A5F5;
+}
+
+
+/* ******************** Navbar Form ******************** */
+
+.navbar-nav input[type="email"],
+.navbar-nav input[type="password"] {
+    display: table-cell;
+    padding: 6px 8px;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+    border: 0;
+    font-size: 14px;
+    width: 100%;
+    line-height: 1.6em;
+    box-sizing: border-box;
+}
+
+.navbar-nav .input-group .input-addon {
+    display: table-cell;
+    background: #eee;
+    border: 1px solid #ccc;
+    line-height: 1.4em;
+    padding: 4px 14px;
+    box-sizing: border-box;
+    border-top-left-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
+    width: 1%;
+}
+
+.navbar-nav .input-group {
+    display: table;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.navbar-nav .form-submit {
+    padding: 6px 14px;
+    background: transparent;
+    font-size: 14px;
+    line-height: 1.6em;
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 0.25em;
+    margin-top: 8px;
+}
+
+.navbar-nav .form-submit:hover {
+    background: #fff;
+    color: #34495e;
+    border-color: #34495e;
+    transition: 0.3s;
+}
+
+
+/* ******************** Sidenav ******************** */
+
+#sidenav-container {
+    position: relative;
+    height: 100%;
+}
+
+.sidenav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: z-index 0.5s 0.5s;
+}
+
+.sidenav>.wrapper {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.sidenav ul {
+    position: relative;
+    background: #333645;
+    height: 100%;
+    width: 0;
+    padding-top: 70px;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+#sidenav-container.toggle .sidenav {
+    z-index: 5;
+    transition: z-index 0s;
+}
+
+#sidenav-container.toggle .sidenav ul {
+    width: 100%;
+}
+
+.sidenav .sidenav-links {
+    color: #fff;
+    text-decoration: none;
+    padding: 1em 0;
+    display: block;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.sidenav .sidenav-links.active {
+    background: #1E202C;
+}
+
+.sidenav .sidenav-links:hover {
+    background: #252734;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 36px;
+    padding: 4px 12px 6px 12px;
+    line-height: 1.2em;
+    color: #fff;
+}
+
+.sidenav-toggler {
+    background: transparent;
+    border: 1px solid #34495e;
+    border-radius: 0.25em;
+    padding: 2px 8px;
+    margin-right: 4px;
+    margin-left: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #34495e;
+}
+
+#sidenav-container.toggle .sidenav-toggler .show-left,
+#sidenav-container .sidenav-toggler .show-right {
+    display: none;
+}
+
+#sidenav-container .sidenav-toggler .show-left,
+#sidenav-container.toggle .sidenav-toggler .show-right {
+    display: inline;
+}
+
+
+/* ******************** pokeballs grid ******************** */
+
+.outer-border-hidden {
+    overflow: hidden;
+    height: 100%;
+}
+
+.pokeballs-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 -2px -2px 0;
+}
+
+.pokeballs-grid li {
+    flex: 1 0 100%;
+    border-bottom: 1px solid #aaa;
+    text-align: center;
+    font-size: 1.4em;
+    position: relative;
+}
+
+.pokeballs-grid a {
+    display: block;
+    color: #000;
+    text-decoration: none;
+    padding: 16px 2px;
+}
+
+.pokeballs-grid a:hover {
+    background: #e2e2e2;
+}
+
+
+/* ******************** Card-deck ******************** */
+
+.card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+
+/* ******************** Card ******************** */
+
+.card {
+    flex: 0 1 90%;
+    margin: 20px;
+    position: relative;
+    max-width: 496px;
+}
+
+.card-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ******************** Card header ******************** */
+
+.card-header {
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.card-header .status-circle {
+    position: absolute;
+    top: -20px;
+    left: -15px;
+    z-index: 2;
+    border: 1px solid #aaa;
+    background: #f1f1f1;
+    color: #555;
+    border-radius: 25px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+}
+
+.card-header .status-circle i {
+    font-size: 2em;
+    line-height: 50px;
+}
+
+.testline-icon {
+    font-size: 4.5em;
+    line-height: 120px;
+    height: 120px;
+    text-align: right;
+    display: block;
+}
+
+.text-white {
+    color: #fff !important;
+}
+
+.card-header .card-header-overlay {
+    position: absolute;
+    top: 35px;
+    color: #fff;
+}
+
+.card-header .card-header-overlay h3 {
+    margin-bottom: 20px;
+}
+
+.card-header .card-header-overlay .show-diagram,
+.card-header .card-header-overlay .show-description {
+    color: #eee;
+    font-size: 14px;
+    line-height: 1.6em;
+    text-decoration: none;
+    border-bottom: 1px dotted #eee;
+}
+
+
+/* ******************** Card body ******************** */
+
+.card-body {
+    flex: 1 1 auto;
+    background: #f9f9f9;
+    padding: 12px;
+}
+
+.card-body li {
+    padding: 10px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-body li .card-text {
+    float: left;
+    margin: 0;
+    font-size: 14px;
+}
+
+.card-body li:first-child .card-text {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.card-body li .badge {
+    float: right;
+}
+
+.card-body li::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+/* ******************** Card footer ******************** */
+
+.card-footer {
+    background: #f9f9f9;
+    text-align: center;
+    padding: 0 12px 20px 12px;
+}
+
+.card-btn {
+    background: transparent;
+    border-radius: 0.25em;
+    border: 1px solid #000;
+    width: 100%;
+    font-size: 16px;
+    font-family: Raleway;
+    padding: 6px 14px;
+}
+
+
+/* ******************** List Group ******************** */
+
+.list-group {
+    position: relative;
+}
+
+
+/* ******************** List item ******************** */
+
+.list-item:nth-last-of-type(odd) {
+    background: #eee;
+}
+
+.list-item.list-item-primary {
+    border-left: 5px solid #0275d8 !important;
+}
+
+.list-item.list-item-pending {
+    border-left: 5px solid #aaa !important;
+}
+
+.list-item .title {
+    float: left;
+    color: #111;
+    font-size: 1.2em;
+    line-height: 1.6em;
+}
+
+.list-item .subtitle {
+    clear: both;
+    float: left;
+    margin: 0;
+    color: #333;
+    font-style: italic;
+}
+
+
+/* ******************** Team-brand-sm ******************** */
+
+.team-brand {
+    background: url(../images/pokeballs.png) no-repeat center;
+    background-size: 250px 200px;
+    display: block;
+    margin: 5px auto;
+    width: 48px;
+    height: 50px;
+}
+
+
+/* ******************** Poke-balls-sm ******************** */
+
+.team-brand.poke-ball {
+    background-position: 0 0 !important;
+}
+
+.team-brand.premier-ball {
+    background-position: -50px 0 !important;
+}
+
+.team-brand.great-ball {
+    background-position: -98px 0 !important;
+}
+
+.team-brand.ultra-ball {
+    background-position: -148px 0 !important;
+}
+
+.team-brand.master-ball {
+    background-position: -198px 0 !important;
+}
+
+.team-brand.safari-ball {
+    background-position: 0 -50px !important;
+}
+
+.team-brand.level-ball {
+    background-position: -50px -50px !important;
+}
+
+.team-brand.lure-ball {
+    background-position: -100px -50px !important;
+}
+
+.team-brand.moon-ball {
+    background-position: -150px -50px !important;
+}
+
+.team-brand.friend-ball {
+    background-position: -200px -50px !important;
+}
+
+.team-brand.love-ball {
+    background-position: 0 -100px !important;
+}
+
+.team-brand.heavy-ball {
+    background-position: -50px -100px !important;
+}
+
+.team-brand.fast-ball {
+    background-position: -100px -100px !important;
+}
+
+.team-brand.sports-ball {
+    background-position: -150px -100px !important;
+}
+
+.team-brand.repeat-ball {
+    background-position: -200px -100px !important;
+}
+
+.team-brand.timer-ball {
+    background-position: 0 -150px !important;
+}
+
+.team-brand.nest-ball {
+    background-position: -50px -150px !important;
+}
+
+.team-brand.net-ball {
+    background-position: -100px -150px !important;
+}
+
+.team-brand.dive-ball {
+    background-position: -150px -150px !important;
+}
+
+.team-brand.luxury-ball {
+    background-position: -200px -150px !important;
+}
+
+
+/* ******************** Team-brand-lg ******************** */
+
+.team-brand-lg {
+    background: url(../images/pokeballs.png) no-repeat;
+    display: block;
+    margin: 5px auto;
+    width: 144px;
+    height: 150px;
+}
+
+
+/* ******************** Poke-balls-lg ******************** */
+
+.team-brand-lg.poke-ball-lg {
+    background-position: -2px -4px !important;
+}
+
+.team-brand-lg.premier-ball-lg {
+    background-position: -150px -4px !important;
+}
+
+.team-brand-lg.great-ball-lg {
+    background-position: -296px -4px !important;
+}
+
+.team-brand-lg.ultra-ball-lg {
+    background-position: -442px -4px !important;
+}
+
+.team-brand-lg.master-ball-lg {
+    background-position: -590px -4px !important;
+}
+
+.team-brand-lg.safari-ball-lg {
+    background-position: -4px -154px !important;
+}
+
+.team-brand-lg.level-ball-lg {
+    background-position: -154px -154px !important;
+}
+
+.team-brand-lg.lure-ball-lg {
+    background-position: -300px -154px !important;
+}
+
+.team-brand-lg.moon-ball-lg {
+    background-position: -446px -154px !important;
+}
+
+.team-brand-lg.friend-ball-lg {
+    background-position: -596px -154px !important;
+}
+
+.team-brand-lg.love-ball-lg {
+    background-position: -4px -300px !important;
+}
+
+.team-brand-lg.heavy-ball-lg {
+    background-position: -150px -300px !important;
+}
+
+.team-brand-lg.fast-ball-lg {
+    background-position: -300px -300px !important;
+}
+
+.team-brand-lg.sports-ball-lg {
+    background-position: -446px -300px !important;
+}
+
+.team-brand-lg.repeat-ball-lg {
+    background-position: -596px -300px !important;
+}
+
+.team-brand-lg.timer-ball-lg {
+    background-position: -6px -446px !important;
+}
+
+.team-brand-lg.nest-ball-lg {
+    background-position: -155px -446px !important;
+}
+
+.team-brand-lg.net-ball-lg {
+    background-position: -305px -446px !important;
+}
+
+.team-brand-lg.dive-ball-lg {
+    background-position: -450px -446px !important;
+}
+
+.team-brand-lg.luxury-ball-lg {
+    background-position: -596px -446px !important;
+}
+
+
+/* ******************** modal ******************** */
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Black w/ opacity */
+}
+
+.modal.show {
+    display: block;
+}
+
+.modal-content {
+    width: 98%;
+    margin: 0 auto;
+    padding: 14px 20px;
+    background: #fefefe;
+    box-sizing: border-box;
+    border-radius: 0.25em;
+    position: relative;
+    top: 10%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+.modal-confirm {
+    width: 98%;
+    margin: 0 auto;
+    padding: 14px 20px;
+    background: #fefefe;
+    box-sizing: border-box;
+    border-radius: 0.25em;
+    position: relative;
+    top: 10%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+
+/* Add Animation */
+
+@-webkit-keyframes animatetop {
+    from {
+        top: 0;
+        opacity: 0
+    }
+    to {
+        top: 10%;
+        opacity: 1
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: 0;
+        opacity: 0
+    }
+    to {
+        top: 10%;
+        opacity: 1
+    }
+}
+
+
+/* ******************** modal header ******************** */
+
+.modal-header {
+    position: relative;
+    margin: 14px 14px 0;
+    padding-bottom: 14px;
+    border-top-left-radius: 0.25em;
+    border-top-right-radius: 0.25em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.modal-header .modal-title {
+    margin-left: 6px;
+    font-size: 1.6em;
+}
+
+.modal-close {
+    border: 0;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.6em;
+    cursor: pointer;
+    color: #000;
+}
+
+
+/* ******************** modal body ******************** */
+
+.modal-body {
+    padding: 14px;
+}
+
+.modal-body .modal-text {
+    line-height: 1.6em;
+    text-align: justify;
+}
+
+
+/* ******************** modal footer ******************** */
+
+.modal-footer {
+    border-bottom-left-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    padding-top: 14px;
+    margin: 0 14px 14px 14px;
+}
+
+.modal-footer .modal-btn:hover {
+    border: 1px solid #000;
+    transition: 0.7s;
+}
+
+.modal-footer .modal-btn {
+    display: block;
+    color: #000;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 0.25em;
+    background: transparent;
+    font-size: 1.2em;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding: 6px 16px;
+    font-family: Raleway;
+    text-decoration: none;
+}
+
+
+/* ******************** modal img ******************** */
+
+.modal>.modal-close {
+    color: #fff;
+    font-size: 3em;
+    padding: 4px 16px;
+}
+
+.modal img {
+    max-width: 100%;
+    display: block;
+    margin: 10% auto;
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+}
+
+
+/* ******************** form control ******************** */
+
+label {
+    display: inline-block;
+    margin-bottom: 7.5px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    border-radius: 0.25em;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    font-size: 1em;
+    line-height: 1.25em;
+    padding: 8px 14px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+textarea {
+    max-width: 100%;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"]+label::before {
+    font-family: "FontAwesome";
+    content: "\f096";
+    padding-top: 1px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin-right: 10px;
+    font-size: 1.2em;
+    margin-bottom: 2px;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked+label::before {
+    font-family: "FontAwesome";
+    content: "\f046";
+}
+
+
+/* ******************** Media Queries ******************** */
+
+@media screen and (min-width: 480px) {
+    .pokeballs-grid li {
+        flex: 1 0 48%;
+        border-right: 1px solid #aaa;
+    }
+    .card {
+        flex: 0 1 80%;
+    }
+    .card-header {
+        padding: 20px 40px;
+    }
+    .card-body {
+        padding: 20px;
+    }
+    .modal-confirm,
+    .modal-content {
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .navbar-nav .input-group {
+        float: left;
+        width: 48%;
+        margin-right: 1%;
+    }
+    .card-deck {
+        justify-content: space-around;
+    }
+    .card {
+        flex: 1 1 48%;
+    }
+    .card-header {
+        padding: 20px;
+    }
+    .card-body {
+        padding: 12px;
+    }
+    .modal-confirm,
+    .modal-content {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #burger-nav {
+        display: none;
+    }
+    .navbar-nav,
+    .navbar-nav.open {
+        height: auto;
+        float: right;
+        clear: none;
+    }
+    .navbar-nav .input-group {
+        width: auto;
+        margin-right: 8px;
+    }
+    .navbar-nav input[type="email"],
+    .navbar-nav input[type="password"],
+    .navbar-nav .input-group .input-addon {
+        width: auto;
+    }
+    .navbar-nav li {
+        float: left;
+        border-right: 1px solid #fff;
+    }
+    .navbar-nav a {
+        padding: 10px 40px;
+    }
+    .navbar-nav li:last-child {
+        border: 0;
+    }
+    #main-nav::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .sidenav>.wrapper {
+        padding: 0 2%;
+        width: 96%;
+    }
+    .sidenav .closebtn {
+        display: none;
+    }
+    #sidenav-container .sidenav,
+    #sidenav-container.toggle .sidenav {
+        z-index: 0;
+    }
+    #sidenav-container .sidenav ul {
+        width: 250px;
+        padding-top: 100px;
+    }
+    #sidenav-container.toggle .sidenav ul {
+        width: 0;
+    }
+    #sidenav-container #users-admin,
+    #sidenav-container #teams-admin,
+    #sidenav-container #testlines-admin,
+    #sidenav-container #associations-admin,
+    #sidenav-container #reservations {
+        position: absolute;
+        top: 0;
+        left: 2%;
+        right: 2%;
+        z-index: 1;
+        margin-left: 250px;
+    }
+    #sidenav-container.toggle #users-admin,
+    #sidenav-container.toggle #teams-admin,
+    #sidenav-container.toggle #testlines-admin,
+    #sidenav-container.toggle #associations-admin,
+    #sidenav-container.toggle #reservations {
+        margin-left: 0;
+        z-index: 1;
+    }
+    .pokeballs-grid li {
+        flex: 1 0 32%;
+    }
+    .pokeballs-grid-sm li {
+        min-width: 120px;
+    }
+    .pokeballs-grid-lg li {
+        min-width: 160px;
+    }
+    .card {
+        flex: 1 1 46%;
+        min-width: 300px;
+        margin: 20px 10px;
+    }
+    .card-header {
+        padding: 20px 40px;
+    }
+    .card-body {
+        padding: 20px;
+    }
+    .card-body li .card-text {
+        font-size: 1em;
+    }
+    .card-body li:first-child .card-text {
+        font-size: 1.2em;
+    }
+    .modal-confirm .modal-content {
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    #sidenav-container .sidenav ul {
+        width: 300px;
+    }
+    #sidenav-container #users-admin,
+    #sidenav-container #teams-admin,
+    #sidenav-container #testlines-admin,
+    #sidenav-container #associations-admin,
+    #sidenav-container #reservations {
+        margin-left: 300px;
+    }
+    .pokeballs-grid li {
+        flex: 1 0 24%;
+    }
+    .card {
+        flex: 0 1 31%;
+        position: relative;
+        margin: 20px 5px;
+    }
+    .card-header .card-header-overlay h3 {
+        font-size: 1.4em;
+    }
+    .card-header .card-header-overlay .show-diagram,
+    .card-header .card-header-overlay .show-description {
+        font-size: 1em;
+    }
+    .modal-content {
+        max-width: 696px;
+    }
+    .list-group::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    .modal-content {
+        max-width: 696px;
+    }
+    .modal-confirm {
+        max-width: 496px;
+    }
+}
