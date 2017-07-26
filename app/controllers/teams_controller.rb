@@ -64,6 +64,7 @@ class TeamsController < ApplicationController
   # DELETE /teams/1
   # DELETE /teams/1.json
   def destroy
+    @team = Team.find(params[:id])
 
     # Delete associations of all testlines to this team
     @myassociations = TeamTestline.where(team_id: params[:id])

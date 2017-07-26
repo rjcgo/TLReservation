@@ -1,96 +1,48 @@
 <% if user_signed_in? && current_user.isAdmin? %>
-	<main class="wrapper" style="position: relative; top: 20px;">
-		<div class="card-deck">
-			<div class="card">
-				<div class="card-header bg-blue">
-					<i class="fa fa-group fa-white icon-lg"></i>
-				</div>
-				<div class="card-content-admin">
-					<div class="card-title-admin">
-						<a href="/admin/teams">
-							<button class="card-btn-admin slide_left" id="manage-teams">
-								<h3>Manage Teams</h3>
-							</button>
-						</a>
-					</div>
-					<div class="card-description" id="manage-teams-description">
-						<div class="card-description-content">
-							<p>
-								Add, rename, or delete a team from the database.
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="card">
-				<div class="card-header bg-blue">
-					<i class="fa fa-server fa-white icon-lg"></i>
-				</div>
-				<div class="card-content-admin">
-					<div class="card-title-admin">
-						<a href="/admin/testlines">
-							<button class="card-btn-admin slide_left" id="manage-testlines">
-								<h3>Manage Testlines</h3>
-							</button>
-						</a>
-					</div>
-					<div class="card-description" id="manage-testlines-description">
-						<div class="card-description-content">
-							<p>
-								Add a new test line, edit a test line’s name, IP address, and port number, tag a testline under maintenance, or delete a test line from the database.
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="card">
-				<div class="card-header bg-blue">
-					<i class="fa fa-exchange  fa-white icon-lg"></i>
-				</div>
-				<div class="card-content-admin">
-					<div class="card-title-admin">
-						<a href="/admin/associations">
-							<button class="card-btn-admin slide_left" id="manage-associations">
-								<h3>Testline Ownerships</h3>
-							</button>
-						</a>
-					</div>
-					<div class="card-description" id="manage-associations-description">
-						<div class="card-description-content">
-							<p>
-								Add, or remove restrictions for the teams on what test lines they are allowed to use.
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="card">
-				<div class="card-header bg-blue">
-					<i class="fa fa-user-circle fa-white icon-lg"></i>
-				</div>
-				<div class="card-content-admin">
-					<div class="card-title-admin">
-						<a href="/admin/users">
-							<button class="card-btn-admin slide_left" id="manage-users">
-								<h3>User Privileges</h3>
-							</button>
-						</a>
-					</div>
-					<div class="card-description" id="manage-users-description">
-						<div class="card-description-content">
-							<p>
-								Allow users admistrator privileges for this system.
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</main>
+    <main class="wrapper">
+        <section id="admin-panel">
+            <h2>Admin Panel</h2>
+            <ul>
+                <li>
+                    <a href="/admin/teams">
+                        <div class="icon-circle">
+                            <i class="fa fa-group icon-lg text-white"></i>
+                        </div>
+                        <h3>Manage Teams</h3>
+                        <p>Add, rename, or delete a team from the database.</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/testlines">
+                        <div class="icon-circle">
+                            <i class="fa fa-server icon-lg text-white"></i>
+                        </div>
+                        <h3>Manage Testlines</h3>
+                        <p>Add a new test line, edit a test line's name, IP address, and port number, tag a testline under maintenance,
+                            or delete a test line from the database.</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/associations">
+                        <div class="icon-circle">
+                            <i class="fa fa-exchange icon-lg text-white"></i>
+                        </div>
+                        <h3>Testline Ownerships</h3>
+                        <p>Add, or remove restrictions for the teams on what test lines they are allowed to use.</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/users">
+                        <div class="icon-circle">
+                            <i class="fa fa-user-circle icon-lg text-white"></i>
+                        </div>
+                        <h3>User Privileges</h3>
+                        <p>Allow users admistrator privileges for this system.</p>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </main>
 <% else %>
-	<%= render 'error' %>
+    <%= render 'error' %>
 <% end %>
-
