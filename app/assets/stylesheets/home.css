@@ -28,19 +28,19 @@
 }
 
 #choose {
-    background: url(../images/banner-1.png) no-repeat;
+    background: url(banner-1.png) no-repeat;
 }
 
 #reserve {
-    background: url(../images/banner-2-flip.png) no-repeat;
+    background: url(banner-2-flip.png) no-repeat;
 }
 
 #queue {
-    background: url(../images/banner-3.png) no-repeat;
+    background: url(banner-3.png) no-repeat;
 }
 
 #release {
-    background: url(../images/banner-4-flip.png) no-repeat;
+    background: url(banner-4-flip.png) no-repeat;
 }
 
 #choose img,

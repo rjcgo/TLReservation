@@ -1,241 +1,198 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Test Line Reservation</title>
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="../assets/stylesheets/application.css">
-    <link rel="stylesheet" href="../assets/stylesheets/admin.css">
-</head>
-
-<body>
-    <nav id="main-nav">
+<main class="wrapper" id="sidenav-container">
+    <aside class="sidenav">
         <div class="wrapper">
-            <button type="button" id="burger-nav">
-                <span class="bar1"></span>
-                <span class="bar2"></span>
-                <span class="bar3"></span>
-            </button>
-            <a href="/" class="navbar-brand">
-                <i class="fa fa-server icon-lg" id="logo"></i>
-                <h1>Test Line Reservation</h1>
-            </a>
-            <div class="navbar-nav">
-                <h2>Main Navigation</h2>
-                <ul>
-                    <li><a href=""><i class="fa fa-calendar-check-o"></i> Teams</a></li>
-                    <li><a href=""><i class="fa fa-calendar-check-o"></i> Reservations</a></li>
-                    <li><a href=""><i class="fa fa-sign-out"></i> Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="rails-container">
-        <main class="wrapper" id="sidenav-container">
-            <aside class="sidenav">
-                <div class="wrapper">
-                    <ul>
-                        <li>
-                            <a href="" class="closebtn"><i class="fa fa-times"></i></a>
-                        </li>
-                        <li>
-                            <a href="" class="sidenav-links">
+            <ul>
+                <li>
+                    <a href="" class="closebtn"><i class="fa fa-times"></i></a>
+                </li>
+                <li>
+                    <a href="" class="sidenav-links">
                                 <i class="fa fa-users"></i> Manage Teams
                             </a>
-                        </li>
-                        <li>
-                            <a href="" class="sidenav-links">
+                </li>
+                <li>
+                    <a href="" class="sidenav-links">
                                 <i class="fa fa-server"></i> Manage Test Lines
                             </a>
-                        </li>
-                        <li>
-                            <a href="" class="sidenav-links">
+                </li>
+                <li>
+                    <a href="" class="sidenav-links">
                                 <i class="fa fa-exchange"></i> Test Line Ownerships
                             </a>
-                        </li>
-                        <li>
-                            <a href="" class="sidenav-links">
+                </li>
+                <li>
+                    <a href="" class="sidenav-links">
                                 <i class="fa fa-user-circle"></i> User Privileges
                             </a>
-                        </li>
-                    </ul>
-                </div>
-            </aside>
+                </li>
+            </ul>
+        </div>
+    </aside>
 
-            <section id="teams-admin">
-                <header>
-                    <button type="button" class="sidenav-toggler">
+    <section id="teams-admin">
+        <header>
+            <button type="button" class="sidenav-toggler">
                         <i class="fa fa-caret-left show-left"></i> 
                         <i class="fa fa-navicon"></i> 
                         <i class="fa fa-caret-right show-right"></i>
                     </button>
-                    <h2>Teams <i class="fa fa-users"></i></h2>
-                    <button type="button" class="add-btn show-add-modal">
+            <h2>Teams <i class="fa fa-users"></i></h2>
+            <button type="button" class="add-btn show-add-modal">
                         <i class="fa fa-plus"></i> New Team
                     </button>
-                </header>
-                <div class="outer-border-hidden">
-                    <ul class="pokeballs-grid pokeballs-grid-lg">
-                        <li>
-                            <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
-                            <span class="team-brand-lg poke-ball-lg"></span>poke-ball
-                            <a href="" class="rename edit-link show-edit-modal">Rename</a>
-                        </li>
-                        <li>
-                            <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
-                            <span class="team-brand-lg premier-ball-lg"></span>premier-ball
-                            <a href="" class="rename edit-link show-edit-modal">Rename</a>
-                        </li>
-                        <li>
-                            <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
-                            <span class="team-brand-lg great-ball-lg"></span>great-ball
-                            <a href="" class="rename edit-link show-edit-modal">Rename</a>
-                        </li>
-                        <li>
-                            <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
-                            <span class="team-brand-lg ultra-ball-lg"></span>ultra-ball
-                            <a href="" class="rename edit-link show-edit-modal">Rename</a>
-                        </li>
-                        <li>
-                            <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
-                            <span class="team-brand-lg master-ball-lg"></span>master-ball
-                            <a href="" class="rename edit-link show-edit-modal">Rename</a>
-                        </li>
-                        <li>
-                            <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
-                            <span class="team-brand-lg safari-ball-lg"></span>safari-ball
-                            <a href="" class="rename edit-link show-edit-modal">Rename</a>
-                        </li>
-                        <li>
-                            <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
-                            <span class="team-brand-lg level-ball-lg"></span>level-ball
-                            <a href="" class="rename edit-link show-edit-modal">Rename</a>
-                        </li>
-                        <li>
-                            <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
-                            <span class="team-brand-lg lure-ball-lg"></span>lure-ball
-                            <a href="" class="rename edit-link show-edit-modal">Rename</a>
-                        </li>
-                        <li>
-                            <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
-                            <span class="team-brand-lg moon-ball-lg"></span>moon-ball
-                            <a href="" class="rename edit-link show-edit-modal">Rename</a>
-                        </li>
-                        <li>
-                            <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
-                            <span class="team-brand-lg friend-ball-lg"></span>friend-ball
-                            <a href="" class="rename edit-link show-edit-modal">Rename</a>
-                        </li>
-                        <li>
-                            <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
-                            <span class="team-brand-lg love-ball-lg"></span>love-ball
-                            <a href="" class="rename edit-link show-edit-modal">Rename</a>
-                        </li>
-                        <li>
-                            <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
-                            <span class="team-brand-lg heavy-ball-lg"></span>heavy-ball
-                            <a href="" class="rename edit-link show-edit-modal">Rename</a>
-                        </li>
-                        <li>
-                            <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
-                            <span class="team-brand-lg fast-ball-lg"></span>fast-ball
-                            <a href="" class="rename edit-link show-edit-modal">Rename</a>
-                        </li>
-                        <li>
-                            <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
-                            <span class="team-brand-lg sports-ball-lg"></span>sports-ball
-                            <a href="" class="rename edit-link show-edit-modal">Rename</a>
-                        </li>
-                        <li>
-                            <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
-                            <span class="team-brand-lg repeat-ball-lg"></span>repeat-ball
-                            <a href="" class="rename edit-link show-edit-modal">Rename</a>
-                        </li>
-                        <li>
-                            <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
-                            <span class="team-brand-lg timer-ball-lg"></span>timer-ball
-                            <a href="" class="rename edit-link show-edit-modal">Rename</a>
-                        </li>
-                        <li>
-                            <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
-                            <span class="team-brand-lg nest-ball-lg"></span>nest-ball
-                            <a href="" class="rename edit-link show-edit-modal">Rename</a>
-                        </li>
-                        <li>
-                            <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
-                            <span class="team-brand-lg net-ball-lg"></span>net-ball
-                            <a href="" class="rename edit-link show-edit-modal">Rename</a>
-                        </li>
-                        <li>
-                            <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
-                            <span class="team-brand-lg dive-ball-lg"></span>dive-ball
-                            <a href="" class="rename edit-link show-edit-modal">Rename</a>
-                        </li>
-                        <li>
-                            <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
-                            <span class="team-brand-lg luxury-ball-lg"></span>luxury-ball
-                            <a href="" class="rename edit-link show-edit-modal">Rename</a>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-        </main>
-        <div class="modal" id="delete-modal">
-            <div class="modal-confirm">
-                <div class="modal-header">
-                    <button type="button" class="modal-close">&times;</button>
-                    <h3 class="modal-title"><i class="fa fa-trash"></i> Delete</h3>
-                </div>
-                <div class="modal-body">
-                    <p class="modal-text">Are you sure you want to delete Apple?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="modal-btn bg-red">Delete</button>
-                    <button type="button" class="modal-btn">Cancel</button>
-                </div>
-            </div>
+        </header>
+        <div class="outer-border-hidden">
+            <ul class="pokeballs-grid pokeballs-grid-lg">
+                <li>
+                    <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
+                    <span class="team-brand-lg poke-ball-lg"></span>poke-ball
+                    <a href="" class="rename edit-link show-edit-modal">Rename</a>
+                </li>
+                <li>
+                    <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
+                    <span class="team-brand-lg premier-ball-lg"></span>premier-ball
+                    <a href="" class="rename edit-link show-edit-modal">Rename</a>
+                </li>
+                <li>
+                    <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
+                    <span class="team-brand-lg great-ball-lg"></span>great-ball
+                    <a href="" class="rename edit-link show-edit-modal">Rename</a>
+                </li>
+                <li>
+                    <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
+                    <span class="team-brand-lg ultra-ball-lg"></span>ultra-ball
+                    <a href="" class="rename edit-link show-edit-modal">Rename</a>
+                </li>
+                <li>
+                    <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
+                    <span class="team-brand-lg master-ball-lg"></span>master-ball
+                    <a href="" class="rename edit-link show-edit-modal">Rename</a>
+                </li>
+                <li>
+                    <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
+                    <span class="team-brand-lg safari-ball-lg"></span>safari-ball
+                    <a href="" class="rename edit-link show-edit-modal">Rename</a>
+                </li>
+                <li>
+                    <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
+                    <span class="team-brand-lg level-ball-lg"></span>level-ball
+                    <a href="" class="rename edit-link show-edit-modal">Rename</a>
+                </li>
+                <li>
+                    <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
+                    <span class="team-brand-lg lure-ball-lg"></span>lure-ball
+                    <a href="" class="rename edit-link show-edit-modal">Rename</a>
+                </li>
+                <li>
+                    <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
+                    <span class="team-brand-lg moon-ball-lg"></span>moon-ball
+                    <a href="" class="rename edit-link show-edit-modal">Rename</a>
+                </li>
+                <li>
+                    <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
+                    <span class="team-brand-lg friend-ball-lg"></span>friend-ball
+                    <a href="" class="rename edit-link show-edit-modal">Rename</a>
+                </li>
+                <li>
+                    <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
+                    <span class="team-brand-lg love-ball-lg"></span>love-ball
+                    <a href="" class="rename edit-link show-edit-modal">Rename</a>
+                </li>
+                <li>
+                    <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
+                    <span class="team-brand-lg heavy-ball-lg"></span>heavy-ball
+                    <a href="" class="rename edit-link show-edit-modal">Rename</a>
+                </li>
+                <li>
+                    <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
+                    <span class="team-brand-lg fast-ball-lg"></span>fast-ball
+                    <a href="" class="rename edit-link show-edit-modal">Rename</a>
+                </li>
+                <li>
+                    <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
+                    <span class="team-brand-lg sports-ball-lg"></span>sports-ball
+                    <a href="" class="rename edit-link show-edit-modal">Rename</a>
+                </li>
+                <li>
+                    <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
+                    <span class="team-brand-lg repeat-ball-lg"></span>repeat-ball
+                    <a href="" class="rename edit-link show-edit-modal">Rename</a>
+                </li>
+                <li>
+                    <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
+                    <span class="team-brand-lg timer-ball-lg"></span>timer-ball
+                    <a href="" class="rename edit-link show-edit-modal">Rename</a>
+                </li>
+                <li>
+                    <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
+                    <span class="team-brand-lg nest-ball-lg"></span>nest-ball
+                    <a href="" class="rename edit-link show-edit-modal">Rename</a>
+                </li>
+                <li>
+                    <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
+                    <span class="team-brand-lg net-ball-lg"></span>net-ball
+                    <a href="" class="rename edit-link show-edit-modal">Rename</a>
+                </li>
+                <li>
+                    <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
+                    <span class="team-brand-lg dive-ball-lg"></span>dive-ball
+                    <a href="" class="rename edit-link show-edit-modal">Rename</a>
+                </li>
+                <li>
+                    <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i></button>
+                    <span class="team-brand-lg luxury-ball-lg"></span>luxury-ball
+                    <a href="" class="rename edit-link show-edit-modal">Rename</a>
+                </li>
+            </ul>
         </div>
-        <div class="modal" id="add-modal">
-            <div class="modal-content">
-                <form>
-                    <div class="modal-header">
-                        <span class="modal-close">&times;</span>
-                        <h3>Add new team</h3>
-                    </div>
-                    <div class="modal-body">
-                        <label for="team-name">Team Name:</label>
-                        <input type="text" placeholder="name" id="team-name" class="form-control" required>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="modal-btn bg-blue">Add team</button>
-                    </div>
-                </form>
-            </div>
+    </section>
+</main>
+<div class="modal" id="delete-modal">
+    <div class="modal-confirm">
+        <div class="modal-header">
+            <button type="button" class="modal-close">&times;</button>
+            <h3 class="modal-title"><i class="fa fa-trash"></i> Delete</h3>
         </div>
-        <div class="modal" id="edit-modal">
-            <div class="modal-content">
-                <form>
-                    <div class="modal-header">
-                        <span class="modal-close">&times;</span>
-                        <h3>Edit team</h3>
-                    </div>
-                    <div class="modal-body">
-                        <label for="team-name">Team Name:</label>
-                        <input type="text" placeholder="name" id="team-name" class="form-control" required>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="modal-btn bg-green">Save Changes</button>
-                    </div>
-                </form>
-            </div>
+        <div class="modal-body">
+            <p class="modal-text">Are you sure you want to delete Apple?</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="modal-btn bg-red">Delete</button>
+            <button type="button" class="modal-btn">Cancel</button>
         </div>
     </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="../assets/javascripts/application.js"></script>
-</body>
-
-</html>
+</div>
+<div class="modal" id="add-modal">
+    <div class="modal-content">
+        <form>
+            <div class="modal-header">
+                <span class="modal-close">&times;</span>
+                <h3>Add new team</h3>
+            </div>
+            <div class="modal-body">
+                <label for="team-name">Team Name:</label>
+                <input type="text" placeholder="name" id="team-name" class="form-control" required>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="modal-btn bg-blue">Add team</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal" id="edit-modal">
+    <div class="modal-content">
+        <form>
+            <div class="modal-header">
+                <span class="modal-close">&times;</span>
+                <h3>Edit team</h3>
+            </div>
+            <div class="modal-body">
+                <label for="team-name">Team Name:</label>
+                <input type="text" placeholder="name" id="team-name" class="form-control" required>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="modal-btn bg-green">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</div>

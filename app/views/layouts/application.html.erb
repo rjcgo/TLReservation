@@ -2,16 +2,14 @@
 <html>
 	<head>
 		<title>Test Line Reservation</title>
-		<%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-		<%= csrf_meta_tags %>
 		<meta name="viewport" content="width=device-width">
-
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-		crossorigin="anonymous">
+			crossorigin="anonymous">
+		<%= csrf_meta_tags %>
 
-		<%= stylesheet_link_tag "style" %>
+		<%= stylesheet_link_tag    'application', controller_name, media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', controller_name, 'data-turbolinks-track': 'reload' %>
 	</head>
 	<body>
 		<nav id="main-nav" style="width: 100%;">
@@ -51,7 +49,28 @@
 				</div>
 			</div>
 		</nav>
-		<div>
+		<!-- <nav id="main-nav">
+			<div class="wrapper">
+				<a type="a" id="burger-nav">
+					<span class="bar1"></span>
+					<span class="bar2"></span>
+					<span class="bar3"></span>
+				</a>
+				<a href="/" class="navbar-brand">
+					<i class="fa fa-server icon-lg" id="logo"></i>
+					<h1>Test Line Reservation</h1>
+				</a>
+				<div class="navbar-nav">
+					<h2>Main Navigation</h2>
+					<ul>
+						<li><a href=""><i class="fa fa-calendar-check-o"></i> Teams</a></li>
+						<li><a href=""><i class="fa fa-calendar-check-o"></i> Reservations</a></li>
+						<li><a href=""><i class="fa fa-sign-out"></i> Logout</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="rails-container"> -->
 			<%= yield %>
 		</div>
 	</body>
