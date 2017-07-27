@@ -23,6 +23,7 @@ class AdminController < ApplicationController
     @teams = Team.all
     @testlines = Testline.all
     @testline = Testline.new
+    @reservations = Reservation.all
   end
 
   def users

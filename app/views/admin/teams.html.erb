@@ -13,6 +13,20 @@
 	            <button type="button" class="add-btn show-add-modal" onclick="activate_modal(0)">
 	                <i class="fa fa-plus"></i> New Team
 	            </button>
+
+	            <% if (@teams.empty? && !notice.blank?)%>
+					<div class="notice-wrapper">
+    					<h4>Team was successfully removed. Wala na ubos na. </h4>
+    				</div>
+				<% elsif !notice.blank? %>
+					<div class="notice-wrapper">
+						<h4> <%= notice %> </h4>
+					</div>
+				<% elsif @teams.empty? %>
+					<div class="notice-wrapper">
+    					<h4>There are no teams yet. </h4>
+    				</div>
+				<% end %>
 	        </header>
 
 
@@ -98,3 +112,14 @@
 	    s.style.display = "none";
 	}
 </script>
+
+<style>
+	.notice-wrapper{
+		margin: 0 10px;
+		margin-bottom: 15px;
+		background-color: #cee5ce;
+		padding: 10px;
+		border-radius: 5px;
+		box-shadow: 0px 1px 10px #878888;
+	}
+</style>

@@ -413,7 +413,7 @@ h4 {
     flex: 1 0 100%;
     border-bottom: 1px solid #aaa;
     text-align: center;
-    font-size: 1.4em;
+    /*font-size: 1.4em;*/
     position: relative;
 }
 
@@ -422,6 +422,17 @@ h4 {
     color: #000;
     text-decoration: none;
     padding: 16px 2px;
+}
+
+.pokeballs-item{
+    background: transparent;
+    border: 0;
+    width: 100%;
+    font-family: Raleway;
+}
+
+.pokeballs-item:hover{
+    background: #e2e2e2;
 }
 
 .pokeballs-grid a:hover {

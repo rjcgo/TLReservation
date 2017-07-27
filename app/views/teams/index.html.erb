@@ -1,25 +1,18 @@
-<h1>Listing Teams</h1>
+<% if user_signed_in? && current_user.isAdmin? %>
+  <% balls = pokelist_lg %>
+  <main class="wrapper">
+      <section id="teams">
+          <h2>Select Your Team</h2>
+          <div class="outer-border-hidden">
+              <ul class="pokeballs-grid pokeballs-grid-lg">
+                <% @teams.each do |team| %>
+                  <li>
+                      <a href="<%= "/teams/show/#{team.id}"%>"><span class="<%= balls[team.id % 20] %>"></span><%= team.name %> </a>
+                  </li>
+                <% end %>
+              </ul>
+          </div>
+      </section>
+  </main>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @teams.each do |team| %>
-      <tr>
-        <td><%= team.name %></td>
-        <td><%= link_to 'Show', team %></td>
-        <td><%= link_to 'Edit', edit_team_path(team) %></td>
-        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Team', new_team_path %>
+<% end %>
