@@ -78,7 +78,10 @@
 												 <span class="time-used" id="<%= --testline.id %>"><i class="fa fa-clock-o"></i></span>
 											<% end %>
 						                </div>
-						                <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i> Release</button>
+						                <% if current_user.isAdmin? || (current_user.email == reserve.email )%>
+						                	<!--<button type="button" class="release show-delete-modal"><i class="fa fa-times"></i> Release</button>-->
+						                	<%= button_to [reserve.testline,reserve], method: :delete, :class => "release show-delete-modal" do %><i class="fa fa-times"></i> Release <% end %>
+						               	<% end %>
 						            </li>
 						        <% currentReserve += 1 %>
 				            <% end %>

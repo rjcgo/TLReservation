@@ -83,8 +83,6 @@ class TestlinesController < ApplicationController
     @testlines = Testline.order(:name)
     @reservations = Reservation.all
     @teams = Team.all
-
-
   end
 
   private

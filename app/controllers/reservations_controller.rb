@@ -2,6 +2,7 @@ require 'logger'
 
 class ReservationsController < ApplicationController
     before_action :authenticate_user!, except: [:index]
+
     def create
         @testline = Testline.find(params[:testline_id])
         @reservation = @testline.reservations.create(params[:reservation].permit(:name, :released, :team_name, :description, :email))
@@ -22,8 +23,7 @@ class ReservationsController < ApplicationController
     def destroy
         @testline = Testline.find(params[:testline_id]) # The testline reserved
         @reservation = @testline.reservations.find(params[:id]) # The reservation to be deleted
-
-         #logger = Logger.new("#{$ROOT_PATH}/log/errors.log", 'daily')  
+        
         logger = Logger.new('public/reservations.log', 'daily')
         logger.level = Logger::INFO
         logger.datetime_format = '%Y-%m-%d %H:%M:%S'
