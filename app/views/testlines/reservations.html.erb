@@ -19,23 +19,19 @@
 	        	<ul>
 		        	<% @testlines.each do |testline| %>
 		        		<% if ( testline.reservations.count !=0) %>
-		        			<% if testline.id == reserve1 %>
-								<a href="javascript:void(0)" class="tablinks active" onclick="openReservation(-<%= testline.id%>)">
-							<% else %>
-								<a href="javascript:void(0)" class="tablinks" onclick="openReservation(-<%= testline.id%>)">
-							<% end %>
-			                <li>
-			                    <a href="" class="closebtn"><i class="fa fa-times"></i></a>
-			                </li>
-			                <li>
-			                    <a href="" class="sidenav-links">
-			                        <i class="fa fa-server"></i> <%= testline.name %>
-			                    </a>
-			                </li>
+		        			<li>
+		        				<% if testline.id == reserve1 %>
+									<a href="javascript:void(0)" class="sidenav-links active" onclick="openReservation(event, '<%= -testline.id %>')">
+								<% else %>
+									<a href="javascript:void(0)" class="sidenav-links" onclick="openReservation(event, '<%= -testline.id %>')">
+								<% end %>
+		                        		<i class="fa fa-server"></i> <%= testline.name %>
+		                        	</a>
+		                    </li>
 				    	<% end %>     	
 				    <% end %>
 			    </ul>
-			      		
+			   
 	        </div>
 	    </aside>
 	    <section id="reservations">
@@ -51,10 +47,10 @@
 				<% else %>
 					<ul id="<%= -testline.id %>" class="list-group" style="display: none;">
 				<% end %>
+						<div class="vertical-bar"></div>
 						<% currentReserve = 0 %>
 						<% @reservations.each do |reserve| %>
 							<% if testline.id == reserve.testline_id %>
-					            <div class="vertical-bar"></div>
 					            <% if currentReserve == 0 %>
 									<li class="list-item list-item-primary">
 					                	<small class="badge badge-primary"><i class="fa fa-star"></i> Current</small>
@@ -83,7 +79,7 @@
 						                </div>
 						                <button type="button" class="release show-delete-modal"><i class="fa fa-times"></i> Release</button>
 						            </li>
-
+						        <% currentReserve += 1 %>
 				            <% end %>
 				        
 				    	<% end %>
@@ -121,23 +117,23 @@
 	    s.style.display = "none";
 	}
 
-	function openReservation(id) {
-		alert(id);
-	    // Get all elements with class="tabcontent" and hide them
-	    var listgroup = document.getElementsByClassName("list-group");
-	    for (var i = 0; i < listgroup.length; i++) {
-	        listgroup[i].style.display = "none";
+	function openReservation(evt, cityName) {
+	    var i, listgroups, sidenavlinks;
+
+	    listgroups = document.getElementsByClassName("list-group");
+	    for (i = 0; i < listgroups.length; i++) {
+	        listgroups[i].style.display = "none";
 	    }
-	    /*
+
 	    // Get all elements with class="tablinks" and remove the class "active"
-	    tablinks = document.getElementsByClassName("tablinks");
-	    for (i = 0; i < tablinks.length; i++) {
-	        tablinks[i].className = tablinks[i].className.replace(" active", "");
-	    }*/
+	    sidenavlinks = document.getElementsByClassName("sidenav-links");
+	    for (i = 0; i < sidenavlinks.length; i++) {
+	        sidenavlinks[i].className = sidenavlinks[i].className.replace(" active", "");
+	    }
 
 	    // Show the current tab, and add an "active" class to the link that opened the tab
-	    document.getElementById(id).style.display = "block";
-	    //evt.currentTarget.className += " active";
+	    document.getElementById(cityName).style.display = "block";
+	    evt.currentTarget.className += " active";
 	}
 </script>
 
@@ -169,7 +165,7 @@
 
 
 <style>
-/* ******************** Reservations ******************** */
+	/* ******************** Reservations ******************** */
 
 	#reservations {
 	    background: #dadada;
@@ -185,7 +181,7 @@
 	}
 
 
-/* ******************** List Group ******************** */
+	/* ******************** List Group ******************** */
 
 	.list-group .vertical-bar {
 	    position: absolute;
@@ -212,7 +208,7 @@
 	}
 
 
-/* ******************** List item ******************** */
+	/* ******************** List item ******************** */
 
 	.list-item {
 	    box-sizing: border-box;
