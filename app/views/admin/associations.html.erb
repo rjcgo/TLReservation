@@ -42,7 +42,7 @@
                                 <% @team_testlines.each do |team_testline| %>
                                    <% if team_testline.testline_id == testline.id && team.id == team_testline.team_id %>
                                       <li>
-                                        <%= button_to team_testline, method: :delete, :class => "release show-delete-modal" , :type => "button", form: {:onsubmit => "return ask_modal(-#{team_testline.id});"}, :id => "-#{team_testline.id}" do %><i class="fa fa-times"></i><% end %>
+                                        <%= button_to team_testline, method: :delete, :class => "release show-delete-modal" , :type => "button", form: {:onsubmit => "return ask_modal(-#{team_testline.id});", :id => "-#{team_testline.id}"} do %><i class="fa fa-times"></i><% end %>
                                           <span class="<%= balls[team.id % 20] %>"></span><%= team.name %>
                                       </li>
                                     <% end %>
@@ -111,7 +111,6 @@
 
 <script>
   var delete_id = 0;
-  var temp_id = 0;
 
   function activate_modal(id) {
     document.getElementById(id).style.display = "block";
@@ -125,17 +124,16 @@
     if (id == delete_id)
       return true;
     document.getElementById("remove_access").style.display = "block";
-    temp_id = id;
+    delete_id = id;
     return false;
   }
 
   function confirm_modal() {
-    delete_id = temp_id;
-    document.getElementById(delete_id).click();
+    document.getElementById(delete_id).submit();
   }
 
   function cancel_modal() {
-    delete_id = temp_id = 0;
+    delete_id = 0;
     document.getElementById("remove_access").style.display = "none";
   }
 </script>
