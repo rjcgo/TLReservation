@@ -198,22 +198,16 @@ h4 {
 }
 
 #logo {
-    float: left;
+    display: inline-block;
     margin-right: 10px;
     line-height: 1.2em;
     font-size: 2.5em;
 }
 
 .navbar-brand h1 {
-    float: left;
+    display: inline-block;
     width: 110px;
     font-size: 1.2em;
-}
-
-.navbar-brand::after {
-    content: "";
-    display: block;
-    clear: both;
 }
 
 
@@ -424,14 +418,14 @@ h4 {
     padding: 16px 2px;
 }
 
-.pokeballs-item{
+.pokeballs-item {
     background: transparent;
     border: 0;
     width: 100%;
     font-family: Raleway;
 }
 
-.pokeballs-item:hover{
+.pokeballs-item:hover {
     background: #e2e2e2;
 }
 
@@ -1069,14 +1063,25 @@ input[type="checkbox"]:checked+label::before {
 }
 
 @media screen and (min-width: 768px) {
+    .rails-container {
+        padding-top: 114px;
+    }
     #burger-nav {
         display: none;
+    }
+    .navbar-brand,
+    .navbar-nav,
+    .navbar-nav.open {
+        float: none;
+        display: block;
+        margin: 0 auto;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
     }
     .navbar-nav,
     .navbar-nav.open {
         height: auto;
-        float: right;
-        clear: none;
     }
     .navbar-nav .input-group {
         width: auto;
@@ -1172,6 +1177,17 @@ input[type="checkbox"]:checked+label::before {
 }
 
 @media screen and (min-width: 992px) {
+    .rails-container {
+        padding-top: 68px;
+    }
+    .navbar-brand {
+        float: left;
+    }
+    .navbar-nav,
+    .navbar-nav.open {
+        clear: none;
+        float: right;
+    }
     #sidenav-container .sidenav ul {
         width: 300px;
     }

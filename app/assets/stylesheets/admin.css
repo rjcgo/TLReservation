@@ -101,6 +101,8 @@
     color: #0275d8;
     text-decoration: none;
     margin: 10px auto;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     font-size: 16px;
     padding: 10px 2px;

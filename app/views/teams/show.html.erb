@@ -8,11 +8,11 @@
         <div class="dropdown-triangle team-dropdown-triangle"></div>
         <div class="dropdown-content team-dropdown-content">
             <div class="outer-border-hidden">
-                <ul class="pokeballs-grid">
+                <ul class="pokeballs-grid pokeballs-grid-lg">
                 	<% ball = pokelist %>
 					<% @teams.each do |team| %>
 	                    <li>
-	                        <a href="/teams/show/<%= team.id %>""><%= content_tag :span, '', :class => ball[team.id % 20] %> <%= team.name %></a>
+	                        <a href="/teams/show/<%= team.id %>"><%= content_tag :span, '', :class => ball[team.id % 20] %> <%= team.name %></a>
 	                    </li>
 	                <% end %>
                 </ul>
