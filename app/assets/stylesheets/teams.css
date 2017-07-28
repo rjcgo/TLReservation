@@ -39,6 +39,10 @@ header h1 {
     margin-left: 20px;
 }
 
+header .team-dropdown {
+    float: right;
+}
+
 header::after {
     content: "";
     display: block;
@@ -46,34 +50,28 @@ header::after {
 }
 
 
-/* ******************** header Dropdown ******************** */
+/* ******************** team dropdown ******************** */
 
-header .team-dropbtn {
-    float: right;
+.team-dropdown .team-dropbtn {
     font-size: 1.5em;
 }
 
-header .team-dropdown-triangle {
-    right: 100px;
+.team-dropdown .team-dropdown-triangle {
+    right: 90px;
 }
 
-header .team-dropdown-content {
+.team-dropdown .team-dropdown-content {
     width: 258px;
     padding: 10px;
     max-height: 370px;
     overflow-y: auto;
 }
 
-header .team-dropdown-content.show,
-header .dropdown-triangle.show {
-    display: block;
-}
-
-header .team-dropdown-content li {
+.team-dropdown .team-dropdown-content li {
     width: 33%;
 }
 
-header .dropdown-content a:hover {
+.team-dropdown .dropdown-content a:hover {
     background: #ccc;
 }
 
@@ -121,22 +119,32 @@ header .dropdown-content a:hover {
     text-decoration: none;
     text-align: center;
     padding: 8px 0;
-    /* margin: 8px 2px; */
     font-size: 14px;
     overflow: hidden;
     overflow-wrap: break-word;
 }
 
+.dropdown input[type="checkbox"]+label::before {
+    content: "";
+    display: none;
+}
+
+.dropdown input[type="checkbox"]:checked~.dropdown-content,
+.dropdown input[type="checkbox"]:checked~.dropdown-triangle {
+    display: block;
+}
+
+
 /* ******************** media queries ******************** */
 
 @media screen and (min-width: 480px) {
-    header .team-dropdown-content {
+    .team-dropdown .team-dropdown-content {
         width: 280px;
     }
 }
 
 @media screen and (min-width: 768px) {
-    header .team-dropdown-content {
+    .team-dropdown .team-dropdown-content {
         width: 500px;
     }
 }
