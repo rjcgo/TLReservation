@@ -74,7 +74,7 @@ class TestlinesController < ApplicationController
     # Delete the testline
     @testline.destroy
     respond_to do |format|
-      format.html { redirect_to admin_testlines_path, notice: 'Testline was successfully destroyed.' }
+      format.html { redirect_to admin_testlines_path, notice: 'Test line was successfully deleted.' }
       format.json { head :no_content }
     end
   end
