@@ -42,23 +42,8 @@
                                 <% @team_testlines.each do |team_testline| %>
                                    <% if team_testline.testline_id == testline.id && team.id == team_testline.team_id %>
                                       <li>
-                                          <button type="button" class="release show-delete-modal" onclick="activate_modal(-<%= team_testline.id %>)"><i class="fa fa-times"></i></button>
+                                        <%= button_to team_testline, method: :delete, :class => "release show-delete-modal" , :type => "button", form: {:onsubmit => "return ask_modal(-#{team_testline.id});"}, :id => "-#{team_testline.id}" do %><i class="fa fa-times"></i><% end %>
                                           <span class="<%= balls[team.id % 20] %>"></span><%= team.name %>
-                                          <div class="modal" id="-<%= team_testline.id %>">
-                                            <div class="modal-confirm">
-                                                <div class="modal-header">
-                                                    <button type="button" class="modal-close" onclick="deactivate_modal(-<%= team_testline.id %>)">&times;</button>
-                                                    <h3 class="modal-title"><i class="fa fa-trash"></i> Delete</h3>
-                                                </div>
-                                                <div class="modal-body">
-                                                  <p class="modal-text">Are you sure you want to remove <%= team.name %>'s access from this testline?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                  <%= button_to 'Remove access', team_testline, method: :delete, :class => "modal-btn bg-red" , :type => "button"%>
-                                                  <button type="button" class="modal-btn" onclick="deactivate_modal(-<%= team_testline.id %>)">Cancel</button>
-                                                </div>
-                                            </div>
-                                        </div>
                                       </li>
                                     <% end %>
                                   <% end %>
@@ -108,15 +93,50 @@
   <%= render 'error' %>
 <% end %>
 
+<div class="modal" id="remove_access">
+    <div class="modal-confirm">
+      <div class="modal-header">
+          <button type="button" class="modal-close" onclick="cancel_modal()">&times;</button>
+          <h3 class="modal-title"><i class="fa fa-trash"></i> Delete</h3>
+      </div>
+      <div class="modal-body">
+        <p class="modal-text">Are you sure you want to remove this team's access from this testline?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="modal-btn bg-red" onclick="confirm_modal()">Delete</button>
+        <button type="button" class="modal-btn" onclick="cancel_modal()">Cancel</button>
+      </div>
+  </div>
+</div>
+
 <script>
+  var delete_id = 0;
+  var temp_id = 0;
+
   function activate_modal(id) {
-    var s = document.getElementById(id);
-      s.style.display = "block";
+    document.getElementById(id).style.display = "block";
   }
 
   function deactivate_modal(id) {
-    var s = document.getElementById(id);
-      s.style.display = "none";
+    document.getElementById(id).style.display = "none";
+  }
+
+  function ask_modal(id) {
+    if (id == delete_id)
+      return true;
+    document.getElementById("remove_access").style.display = "block";
+    temp_id = id;
+    return false;
+  }
+
+  function confirm_modal() {
+    delete_id = temp_id;
+    document.getElementById(delete_id).click();
+  }
+
+  function cancel_modal() {
+    delete_id = temp_id = 0;
+    document.getElementById("remove_access").style.display = "none";
   }
 </script>
 

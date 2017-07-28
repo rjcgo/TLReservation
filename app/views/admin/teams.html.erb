@@ -16,7 +16,7 @@
 
 	            <% if (@teams.empty? && !notice.blank?)%>
 					<div class="notice-wrapper">
-    					<h4>Team was successfully removed. Wala na ubos na. </h4>
+    					<h4>All teams have been removed. </h4>
     				</div>
 				<% elsif !notice.blank? %>
 					<div class="notice-wrapper">
@@ -32,12 +32,12 @@
 
 	        <div class="outer-border-hidden">
 	            <ul class="pokeballs-grid pokeballs-grid-lg">
-	            	<% balls = pokelist %>
+	            	<% balls = pokelist_lg %>
 					<% @teams.each do |team| %>
 		                <li>
 		                    <button type="button" class="release show-delete-modal" onclick = "activate_modal(-<%= team.id %>)"><i class="fa fa-times"></i></button>
 		                    <span class="<%= balls[team.id % 20] %>"></span><%= team.name %>
-		                    <%= content_tag :a, 'Rename', :onclick => "activate_modal(#{team.id})", :class => "rename edit-link show-edit-modal" %>
+		                    <%= content_tag :a, 'Rename', :href => "javascript:void(0)", :onclick => "activate_modal(#{team.id})", :class => "rename edit-link show-edit-modal" %>
 		                </li>
 						<%= content_tag :div, :class => "modal", :id => team.id do -%>
 							<div class="modal-content">

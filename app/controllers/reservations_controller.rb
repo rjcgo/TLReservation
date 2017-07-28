@@ -1,3 +1,5 @@
+require 'logger'
+
 class ReservationsController < ApplicationController
     before_action :authenticate_user!, except: [:index]
     def create
@@ -51,7 +53,6 @@ class ReservationsController < ApplicationController
     end
 
     def download_log_file
-      send_file("#{Rails.root}/public/reservations.log", filename: "reservations.log", type: "log")
-      #redirect_to(:back)
+      send_file("public/reservations.log", filename: "reservations.log", type: "log")
     end
 end

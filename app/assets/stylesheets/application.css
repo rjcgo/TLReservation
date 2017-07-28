@@ -891,9 +891,11 @@ main {
     border-top-left-radius: 0.25em;
     border-top-right-radius: 0.25em;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+
 }
 
 .modal-header .modal-title {
+    text-align: left;
     margin-left: 6px;
     font-size: 1.6em;
 }
