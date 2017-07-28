@@ -53,6 +53,10 @@ h4 {
     box-sizing: border-box;
 }
 
+main {
+    height: 100%;
+}
+
 
 /* ******************** bg-color ******************** */
 
@@ -77,6 +81,10 @@ h4 {
 .bg-blue {
     border: 1px solid #53648F !important;
     background: #53648F !important;
+    color: #fff !important;
+}
+
+.text-white {
     color: #fff !important;
 }
 
@@ -301,7 +309,6 @@ h4 {
 
 #sidenav-container {
     position: relative;
-    height: 100%;
 }
 
 .sidenav {
@@ -493,10 +500,6 @@ h4 {
     height: 120px;
     text-align: right;
     display: block;
-}
-
-.text-white {
-    color: #fff !important;
 }
 
 .card-header .card-header-overlay {
@@ -981,6 +984,7 @@ label {
     width: 100%;
     border-radius: 0.25em;
     border: 1px solid rgba(0, 0, 0, 0.15);
+    font-family: Raleway;
     font-size: 1em;
     line-height: 1.25em;
     padding: 8px 14px;
