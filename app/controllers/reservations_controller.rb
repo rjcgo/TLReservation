@@ -53,6 +53,6 @@ class ReservationsController < ApplicationController
     end
 
     def download_log_file
-      send_file("/public/reservations.log", filename: "reservations.log", type: "log")
+      send_file("public/reservations.log", filename: "reservations.log", type: "log")
     end
 end
