@@ -12,7 +12,7 @@
                 	<% ball = pokelist %>
 					<% @teams.each do |team| %>
 	                    <li>
-	                        <a href="/teams/show/<%= team.id %>"><%= content_tag :span, '', :class => ball[team.id % 20] %> <%= team.name %></a>
+                        <a href="/teams/<%= team.id %>"><%= content_tag :span, '', :class => ball[team.id % 20] %> <%= team.name %></a>
 	                    </li>
 	                <% end %>
                 </ul>

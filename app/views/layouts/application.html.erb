@@ -27,7 +27,7 @@
 					<h2>Main Navigation</h2>
 					<% if user_signed_in? %>
 						<ul>
-							<li><a href="/teams/index"><i class="fa fa-users"></i> Teams</a></li>
+							<li><a href="/teams/"><i class="fa fa-users"></i> Teams</a></li>
 							<li><a href="/testlines/reservations"><i class="fa fa-calendar-check-o"></i>    Reservations</a></li>
 							<% if current_user.isAdmin? %>
 								<li><a href="/admin/home"><i class="fa fa-cogs"></i> Administrator</a></li>

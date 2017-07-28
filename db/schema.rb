@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170713060108) do
+ActiveRecord::Schema.define(version: 20170728033824) do
 
 # Could not dump table "reservations" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass

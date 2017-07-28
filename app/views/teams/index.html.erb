@@ -7,7 +7,7 @@
               <ul class="pokeballs-grid pokeballs-grid-lg">
                 <% @teams.each do |team| %>
                   <li>
-                      <a href="<%= "/teams/show/#{team.id}"%>"><span class="<%= balls[team.id % 20] %>"></span><%= team.name %> </a>
+                      <a href="<%= "/teams/#{team.id}"%>"><span class="<%= balls[team.id % 20] %>"></span><%= team.name %> </a>
                   </li>
                 <% end %>
               </ul>
