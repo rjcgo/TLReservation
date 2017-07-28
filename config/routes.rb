@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   get 'admin/users'
   get 'testlines/reservations'
   get 'testlines/index'
-  get 'teams/index'
-  get 'teams/show/:id' => 'teams#show'
+  get 'teams' => 'teams#index'
+  get 'teams/:id' => 'teams#show'
   post 'teams/:id/edit' => 'teams#edit'
   post 'testlines/:id/edit' => 'testlines#edit'
   resources :team_testlines, except: [:index]
