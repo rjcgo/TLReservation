@@ -40,9 +40,9 @@
 						                <label for="title">Title:</label>
 						                <%= f.text_field :name, :placeholder => "Title", :tabindex => "1", :required => "required" , :class => "form-control"%>
 						                <label for="team-name">Team Name:</label>
-						                <%= f.text_field :team_name, :value => @team.name, :tabindex => "3", :readonly => true , :class => "form-control"%>
+						                <%= f.text_field :team_name, :value => @team.name, :tabindex => "2", :readonly => true , :class => "form-control"%>
 						                <label for="email">Email:</label>
-						                <%= f.email_field :email, :value => current_user.email, :tabindex => "2", :readonly => true , :class => "form-control"%>
+						                <%= f.email_field :email, :value => current_user.email, :tabindex => "3", :readonly => true , :class => "form-control"%>
 						                <label for="description">Description:</label>
 						                <%= f.text_area :description, :placeholder => "Description", :tabindex => "4", :required => "required", :class => "form-control" %>
 						            </div>
@@ -135,26 +135,7 @@
 			                        </div>
 			                    </div>
 			                    <div class="card-body">
-			                    	<% userQueue = 1 %>
-			                        <ul>
-				                        <% @reservations.each do |reserve| %>
-											<% if testline.id == reserve.testline_id  %>
-												<li>
-													<% if userQueue == 1 %>
-														<p class="card-text"><%= reserve.team_name %></p>
-				                            		    <small class="badge badge-primary">Current</small>
-				                            		<% elsif userQueue == 2 %>
-														<p class="card-text"><%= reserve.team_name %></p>
-				                             		   <small class="badge badge-primary">Next in Line</small>
-				                            		<% elsif userQueue == 3 || userQueue == 4 %>
-				                               			<p class="card-text"><%= reserve.team_name %></p>
-				                                		<small class="badge badge-pending">Pending</small>
-													<% end %>
-													<% userQueue += 1 %>
-			                            		</li>
-			                            	<% end %>
-			                            <% end %>
-			                        </ul>
+			                    	<%= card_body testline %>
 			                    </div>
 			                   	<div class="card-footer">
 						             <% if user_signed_in? %>
@@ -200,7 +181,6 @@
 			                        </ul>
 			                    </div>
 			                    <div class="card-footer">
-			                        <!--<button class="card-btn reserve-btn show-add-modal">Reserve Now!</button>-->
 			                    </div>
 			                </div>
 			                <!-- <div class="card-overlay">
@@ -218,7 +198,7 @@
 
 <div class="modal" id="img-modal">
     <button type="button" class="modal-close">&times;</button>
-    <img src="assets/images/long-html-img.jpg" alt="long img" class="modal-img">
+    <%= image_tag "long-html-img.jpg", :class => "modal-img", :alt => "long img" %>
 </div>
 
 <div class="modal" id="description-modal">

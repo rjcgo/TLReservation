@@ -14,7 +14,7 @@
 	<body>
 		<nav id="main-nav" style="width: 100%;">
 			<div class="wrapper">
-				<button type="button" id="burger-nav">
+				<button type="button" id="burger-nav" onclick="toggleMainNav()">
 					<span class="bar1"></span>
 					<span class="bar2"></span>
 					<span class="bar3"></span>
@@ -50,27 +50,6 @@
 				</div>
 			</div>
 		</nav>
-		<!-- <nav id="main-nav">
-			<div class="wrapper">
-				<a type="a" id="burger-nav">
-					<span class="bar1"></span>
-					<span class="bar2"></span>
-					<span class="bar3"></span>
-				</a>
-				<a href="/" class="navbar-brand">
-					<i class="fa fa-server icon-lg" id="logo"></i>
-					<h1>Test Line Reservation</h1>
-				</a>
-				<div class="navbar-nav">
-					<h2>Main Navigation</h2>
-					<ul>
-						<li><a href=""><i class="fa fa-calendar-check-o"></i> Teams</a></li>
-						<li><a href=""><i class="fa fa-calendar-check-o"></i> Reservations</a></li>
-						<li><a href=""><i class="fa fa-sign-out"></i> Logout</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>-->
 		<div class="rails-container"> 
 			<%= yield %>
 		</div>

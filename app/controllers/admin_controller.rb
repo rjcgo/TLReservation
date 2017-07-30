@@ -7,21 +7,21 @@ class AdminController < ApplicationController
   def teams
   	@team_testlines = TeamTestline.all
     @teams = Team.order(:name)
-    @testlines = Testline.all
+    @testlines = Testline.order(:name)
     @team = Team.new
   end
 
   def associations
   	@team_testlines = TeamTestline.all
     @teams = Team.order(:name)
-    @testlines = Testline.all
+    @testlines = Testline.order(:name)
     @team_testline = TeamTestline.new
   end
 
   def testlines
   	@team_testlines = TeamTestline.all
     @teams = Team.all
-    @testlines = Testline.all
+    @testlines = Testline.order(:name)
     @testline = Testline.new
     @reservations = Reservation.all
   end

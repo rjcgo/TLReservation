@@ -31,4 +31,24 @@ module AdminHelper
 	    end
 	    tag.html_safe
 	end
+
+	def option_testline(testline)
+        content_tag(:a, 'Edit Testline', :href => "", :class => "card-link" )+
+        link_to('Delete', testline, method: :delete, :class => "card-link text-red show-delete-modal" , :type => "button", :onclick => "if (ask_modal(-#{testline.id})) return; else {event.stopPropagation(); event.preventDefault();};", :id => "-#{testline.id}")
+    end
+
+    def admin_notice(arr, cont, notice)
+    	tag2 = ""
+    	tag1 = content_tag :div, '', :class => "notice-wrapper" do
+	    	if cont.empty? && !notice.blank?
+	    		tag2 = content_tag :h4, "All #{cont} have been removed."
+	    	elsif !notice.blank?
+	    		tag2 = content_tag :h4, notice
+	    	elsif cont.empty?
+	    		tag2 = content_tag :h4, "There are no #{cont} yet."
+	    	end
+	    end
+	    tag2.empty? ? "" : tag1.html_safe
+	end
+
 end
