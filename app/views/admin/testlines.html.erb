@@ -9,15 +9,7 @@
                     <i class="fa fa-caret-right show-right"></i>
                 </button>
                 <h2>Testline <i class="fa fa-users"></i></h2>
-<<<<<<< HEAD
-           		<button type="button" class="add-btn show-add-modal" onclick="activate_modal(0)">
-                    <i class="fa fa-plus"></i> New Testline
-                </button>
-=======
-
                 <%= link_to('<i class="fa fa-plus"></i> New Testline'.html_safe, new_testline_path, :class => "add-btn") %>
-
->>>>>>> 020263fc26cabe9a1833b0f9171976c148832d51
                 <%= admin_notice(@testlines, "testlines", notice) %>
             </header>
 
