@@ -67,17 +67,36 @@ module TeamsHelper
 		end
 	end
 
-	def card_header_content(testline)
-		content_tag(:h3, testline.name) +
-		content_tag(:a, 'Show Diagram', :href => "javascript:void(0)", :class => 'show-diagram show-img-modal', :onclick => "activate_modal(\'img-#{testline.id}\')") +
-		tag(:br) +
-		content_tag(:a, 'Show Description', :href => "javascript:void(0)", :class => 'show-description show-description-modal', :onclick => "activate_modal(\'desc-#{testline.id}\')")
-	end
-
-	def modal_img(testline)
+	def img_modal(testline)
 		content_tag(:div, "", :class => "modal", :id => "img-#{testline.id}") do
 			content_tag(:button, '&times;'.html_safe, :class => "modal-close", :type => "button", :onclick => "deactivate_modal(\'img-#{testline.id}\')") +
-			image_tag("long-html-img.jpg", :class => "modal-img", :alt => "long-html-img.jpg")
+			image_tag(testline.diagram, :class => "modal-img", :alt => "No diagram available")
+		end
+	end
+
+	def desc_modal(testline)
+		content_tag(:div, "", :class => "modal", :id => "desc-#{testline.id}") do
+			content_tag(:div, "", :class => "modal-content") do
+				content_tag(:div, "", :class => "modal-header") do
+					content_tag(:button)
+				end
+			end
+		end
+	end
+
+	def card_footer(testline)
+		content_tag(:div, "", :class => "card-footer") do
+			if user_signed_in?
+				submit_tag("Reserve now!", :type => "button", :id => testline.id, :class => "card-btn", :onclick => "activate_modal(#{testline.id})")
+			end
+		end
+	end
+
+	def desc(text)
+		if text.blank?
+			return "No description available"
+		else
+			return text.html_safe
 		end
 	end
 end

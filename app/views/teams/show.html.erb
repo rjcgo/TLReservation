@@ -16,7 +16,6 @@
         </div>
     </div>
 </header>
-
 <main class="wrapper">
 	<% if @mytestlines.count == 0 %>
 		<div class="notice-wrapper">
@@ -30,27 +29,15 @@
 	        	<% @mytestlines.each do |testline| %>
 					<% if ( testline.reservations.count ==0) && !testline.isMaintenance? %>
 		        		<%= reserve_modal testline %>
+						<%= img_modal testline %>
+						<%= render partial: 'description', locals: {:testline => testline} %>
 			            <div class="card">
 			                <div class="card-content">
-			                    <div class="card-header bg-blue">
-			                        <div class="status-circle bg-green">
-			                            <i class="fa fa-check fa-white"></i>
-			                        </div>
-			                        <i class="fa fa-server testline-icon text-white"></i>
-			                        <div class="card-header-overlay">
-			                        	<%= card_header_content testline %>
-			                        </div>
-			                    </div>
-			                  	<div class="card-body"></div>
-			                    <div class="card-footer">
-						             <% if user_signed_in? %>
-										<%= submit_tag "Reserve now!", :type => "button", :id => testline.id, :class => "card-btn", :onclick => "activate_modal(#{testline.id})" %>
-									<% end %>
-			                    </div>
+	                        	<%= card_header testline %>
+	                        	<%= card_footer testline %>
 			                </div>
 			            </div>
 			        <% end %>
-					<%= modal_img testline %>
 		        <% end %> 
 	        </div>
 	    </section>
@@ -62,29 +49,16 @@
 	        	<% @mytestlines.each do |testline| %>
 					<% if ( testline.reservations.count !=0) && !testline.isMaintenance? %>
 		        		<%= reserve_modal testline %> 
+						<%= img_modal testline %>
+			            <%= render partial: 'description', locals: {:testline => testline} %>
 			            <div class="card">
 			                <div class="card-content">
-			                    <div class="card-header bg-blue">
-			                        <div class="status-circle bg-red">
-			                            <i class="fa fa-times fa-white"></i>
-			                        </div>
-			                        <i class="fa fa-server testline-icon text-white"></i>
-			                        <div class="card-header-overlay">
-			                        	<%= card_header_content testline %>
-			                        </div>
-			                    </div>
-			                    <div class="card-body">
-			                    	<%= card_body testline %>
-			                    </div>
-			                   	<div class="card-footer">
-						             <% if user_signed_in? %>
-										<%= submit_tag "Reserve now!", :type => "button", :id => testline.id, :class => "card-btn", :onclick => "activate_modal(#{testline.id})" %>
-									<% end %>
-			                    </div>
+	                        	<%= card_header testline %>
+		                    	<%= card_body testline %>
+			                   	<%= card_footer testline %>
 			                </div>
 			            </div>
 			        <% end %>
-					<%= modal_img testline %>
 			    <% end %>
 	        </div>
 	    </section>
@@ -95,74 +69,19 @@
 	        <div class="card-deck">
 	        	<% @mytestlines.each do |testline| %>
 					<% if testline.isMaintenance? %>
+						<%= img_modal testline %>
+			            <%= render partial: 'description', locals: {:testline => testline} %>
 			            <div class="card">
 			                <div class="card-content">
-			                    <div class="card-header bg-blue">
-			                        <div class="status-circle bg-yellow">
-			                            <i class="fa fa-exclamation-triangle fa-white"></i>
-			                        </div>
-			                        <i class="fa fa-server testline-icon text-white"></i>
-			                        <div class="card-header-overlay">
-			                        	<%= card_header_content testline %>
-			                        </div>
-			                    </div>
+	                        	<%= card_header testline %>
 			                    <div class="card-body">
-			                        <ul>
-			                            <li>
-			                                <p class="card-text">This testline is under maintenance.</p>
-			                            </li>
-			                        </ul>
-			                    </div>
-			                    <div class="card-footer">
+	                                <p class="card-text">This testline is under maintenance.</p>
 			                    </div>
 			                </div>
 			            </div>
 			        <% end %>
-					<%= modal_img testline %>
 			    <% end %>
 	        </div>
 	    </section>
 	<% end %>
 </main>
-
-<div class="modal" id="description-modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" onclick="deactivate_modal('img-modal')" class="modal-close">&times;</button>
-            <h3 class="modal-title">Description</h3>
-        </div>
-        <div class="modal-body">
-            <p class="modal-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vel ligula tortor. Suspendisse eu odio nunc. Praesent
-                sagittis feugiat neque id ultricies. Aliquam lectus ex, luctus eu volutpat a, consequat sit amet sapien.
-                Nunc eget tincidunt elit. Duis et odio feugiat, finibus arcu ut, porta enim. Praesent mattis lorem ut erat
-                sagittis ullamcorper. Pellentesque auctor pulvinar eros, at venenatis ante scelerisque a. Sed at iaculis
-                risus, vitae auctor velit. Proin tempor augue ut nisi pellentesque pretium. Morbi in condimentum arcu, at
-                tempus arcu. Etiam ac urna egestas, fermentum quam vitae, consequat nunc. In sed velit tellus. Sed turpis
-                libero, dapibus quis sem eget, aliquam eleifend nisi. Aliquam porta a justo sit amet ornare.</p>
-            <p class="modal-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vel ligula tortor. Suspendisse eu odio nunc. Praesent
-                sagittis feugiat neque id ultricies. Aliquam lectus ex, luctus eu volutpat a, consequat sit amet sapien.
-                Nunc eget tincidunt elit. Duis et odio feugiat, finibus arcu ut, porta enim. Praesent mattis lorem ut erat
-                sagittis ullamcorper. Pellentesque auctor pulvinar eros, at venenatis ante scelerisque a. Sed at iaculis
-                risus, vitae auctor velit. Proin tempor augue ut nisi pellentesque pretium. Morbi in condimentum arcu, at
-                tempus arcu. Etiam ac urna egestas, fermentum quam vitae, consequat nunc. In sed velit tellus. Sed turpis
-                libero, dapibus quis sem eget, aliquam eleifend nisi. Aliquam porta a justo sit amet ornare.</p>
-            <p class="modal-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vel ligula tortor. Suspendisse eu odio nunc. Praesent
-                sagittis feugiat neque id ultricies. Aliquam lectus ex, luctus eu volutpat a, consequat sit amet sapien.
-                Nunc eget tincidunt elit. Duis et odio feugiat, finibus arcu ut, porta enim. Praesent mattis lorem ut erat
-                sagittis ullamcorper. Pellentesque auctor pulvinar eros, at venenatis ante scelerisque a. Sed at iaculis
-                risus, vitae auctor velit. Proin tempor augue ut nisi pellentesque pretium. Morbi in condimentum arcu, at
-                tempus arcu. Etiam ac urna egestas, fermentum quam vitae, consequat nunc. In sed velit tellus. Sed turpis
-                libero, dapibus quis sem eget, aliquam eleifend nisi. Aliquam porta a justo sit amet ornare.</p>
-            <p class="modal-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vel ligula tortor. Suspendisse eu odio nunc. Praesent
-                sagittis feugiat neque id ultricies. Aliquam lectus ex, luctus eu volutpat a, consequat sit amet sapien.
-                Nunc eget tincidunt elit. Duis et odio feugiat, finibus arcu ut, porta enim. Praesent mattis lorem ut erat
-                sagittis ullamcorper. Pellentesque auctor pulvinar eros, at venenatis ante scelerisque a. Sed at iaculis
-                risus, vitae auctor velit. Proin tempor augue ut nisi pellentesque pretium. Morbi in condimentum arcu, at
-                tempus arcu. Etiam ac urna egestas, fermentum quam vitae, consequat nunc. In sed velit tellus. Sed turpis
-                libero, dapibus quis sem eget, aliquam eleifend nisi. Aliquam porta a justo sit amet ornare.</p>
-        </div>
-        <div class="modal-footer" onclick="close_desc()">
-            <button name="submit" type="submit" class="modal-btn">Close</button>
-        </div>
-    </div>
-</div>

@@ -21,29 +21,10 @@
             	<% @testlines.each do |testline| %>
     	            <div class="card">
     	                <div class="card-content">
-    	                    <div class="card-header bg-blue">
-    	                        <div class="status-circle bg-green">
-    	                            <i class="fa fa-check fa-white"></i>
-    	                        </div>
-    	                        <i class="fa fa-server testline-icon text-white"></i>
-    	                        <div class="card-header-overlay">
-    	                            <h3><%= testline.name %></h3>
-    	                            <a href="" class="show-diagram show-img-modal">Show Diagram</a><br>
-    	                            <a href="" class="show-description show-description-modal">Show Description</a>
-    	                        </div>
-    	                    </div>
-    	                    <div class="card-body">
-    	                        <%= card_body testline %>
-    	                    </div>
-    	                    <div class="card-footer">
-                                <%= option_testline testline %>
-    	                    </div>
-    	                </div><!-- 
-    	                <div class="card-overlay">
-    	                                <p class="card-overlay-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vel ligula tortor. Suspendisse eu
-    	                                    odio nunc. Praesent sagittis feugiat neque id ultricies. </p>
-    	                                <a href="" class="card-overlay-hide">Hide Description</a>
-    	                            </div> -->
+                            <%= card_header testline %>
+	                        <%= card_body testline %>
+                            <%= option_testline testline %>
+    	                </div>
     	            </div>
     	        <% end %>   
             </div>

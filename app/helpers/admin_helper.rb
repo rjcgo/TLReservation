@@ -16,25 +16,33 @@ module AdminHelper
 	def show_associations_teams(testline)
 		balls = pokelist
 		tag = ""
-		@teams.each do |team|
-	        @team_testlines.each do |team_testline|
-	        	if team_testline.testline_id == testline.id && team.id == team_testline.team_id
-	            	tag += content_tag :li, "" do
-	                	tag1 = button_to team_testline, method: :delete, :class => "release show-delete-modal", :type => "button", form: {:onsubmit => "return ask_modal(-#{team_testline.id});", :id => team_testline.id} do
-	                		content_tag :i, "", :class => "fa fa-times"
-	                	end
-	                	tag2 = content_tag(:span, "", :class => balls[team.id % 20]) + team.name
-	                	(tag1 + tag2)
-	                end
-	           	end
-	        end
-	    end
-	    tag.html_safe
+		tag1 = content_tag(:div, "", :class => "outer-border-hidden") do
+			content_tag(:ul, "", :class => "pokeballs-grid pokeballs-grid-sm") do
+				@teams.each do |team|
+			        @team_testlines.each do |team_testline|
+			        	if team_testline.testline_id == testline.id && team.id == team_testline.team_id
+			            	tag += content_tag :li, "" do
+			                	tag1 = button_to team_testline, method: :delete, :class => "release show-delete-modal", :type => "button", form: {:onsubmit => "return ask_modal(-#{team_testline.id});", :id => team_testline.id} do
+			                		content_tag :i, "", :class => "fa fa-times"
+			                	end
+			                	tag2 = content_tag(:span, "", :class => balls[team.id % 20]) + team.name
+			                	(tag1 + tag2)
+			                end
+			           	end
+			        end
+			    end
+			    tag.html_safe
+			end
+		end
+
+		return tag.blank? ? content_tag(:p, "No team can currently use this testline", :class => "card-text") : tag1.html_safe
 	end
 
 	def option_testline(testline)
-        content_tag(:a, 'Edit Testline', :href => "", :class => "card-link" )+
-        link_to('Delete', testline, method: :delete, :class => "card-link text-red show-delete-modal" , :type => "button", :onclick => "if (ask_modal(-#{testline.id})) return; else {event.stopPropagation(); event.preventDefault();};", :id => "-#{testline.id}")
+		content_tag(:div, "", :class => "card-footer") do
+	        content_tag(:a, 'Edit Testline', :href => "", :class => "card-link" )+
+	        link_to('Delete', testline, method: :delete, :class => "card-link text-red show-delete-modal" , :type => "button", :onclick => "if (ask_modal(-#{testline.id})) return; else {event.stopPropagation(); event.preventDefault();};", :id => "-#{testline.id}")
+	    end
     end
 
     def admin_notice(arr, cont, notice)

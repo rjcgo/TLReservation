@@ -41,7 +41,7 @@ class TeamsController < ApplicationController
         format.html { redirect_to admin_teams_path, notice: 'Team was successfully created.' }
         format.json { render :show, status: :created, location: @team }
       else
-        format.html { render :new }
+        format.html { redirect_to admin_teams_path, notice: @team.errors }
         format.json { render json: @team.errors, status: :unprocessable_entity }
       end
     end
