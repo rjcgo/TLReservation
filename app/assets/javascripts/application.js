@@ -191,22 +191,6 @@ function toggleSideNav() {
     }
 }
 
-document.onclick = function (event) {
-    if (event.target.classList.contains("modal-submit")) {
-        var modal = event.target.closest(".modal");
-        modal.classList.remove("show");
-        document.getElementById("" + main_id).submit();
-    } else if (event.target.classList.contains("modal")) {
-        var modal = event.target;
-        modal.classList.remove("show");
-    } else if (event.target.classList.contains("modal-close") ||
-        event.target.classList.contains("modal-btn")) {
-        var modal = event.target.closest(".modal");
-        modal.classList.remove("show");
-    }
-    main_id = 0;
-}
-
 function openReservation(evt, cityName) {
     var i, listgroups, sidenavlinks;
 
@@ -242,4 +226,38 @@ function secToTime(time) {
   min = (min < 10) ? "0" + min : min.toString();
   var hr = Math.floor(time/3600);
   return hr + ":" + min + ":" + sec;
+}
+
+var delete_id = 0;
+var temp_id = 0;
+
+function activate_modal(id) {
+  document.getElementById(id).style.display = "block";
+}
+
+function deactivate_modal(id) {
+  document.getElementById(id).style.display = "none";
+}
+
+function ask_modal(id) {
+  if (id == delete_id)
+    return true;
+  document.getElementById("remove_access").style.display = "block";
+  temp_id = id;
+  return false;
+}
+
+function confirm_modal() {
+    delete_id = temp_id;
+    document.getElementById(delete_id).click();
+}
+
+function cancel_modal() {
+  delete_id = temp_id = 0;
+  document.getElementById("remove_access").style.display = "none";
+}
+
+document.onclick = function(event) {
+  if (event.target.classList.contains("modal"))
+    event.target.style.display = "none";
 }
