@@ -33,7 +33,7 @@ class TeamTestlinesController < ApplicationController
         format.html { redirect_to admin_associations_path, notice: 'Association was successfully established.' }
         format.json { render :show, status: :created, location: @team_testline }
       else
-        format.html { render :new }
+        format.html { redirect_to admin_associations_path, notice: parse_notice(@team_testline.errors) }
         format.json { render json: @team_testline.errors, status: :unprocessable_entity }
       end
     end
@@ -47,7 +47,7 @@ class TeamTestlinesController < ApplicationController
         format.html { redirect_to admin_associations_path, notice: 'Association was successfully updated.' }
         format.json { render :show, status: :ok, location: @team_testline }
       else
-        format.html { render :edit }
+        format.html { redirect_to admin_associations_path, notice: parse_notice(@team_testline.errors) }
         format.json { render json: @team_testline.errors, status: :unprocessable_entity }
       end
     end

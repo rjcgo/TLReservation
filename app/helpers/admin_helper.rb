@@ -48,14 +48,15 @@ module AdminHelper
     def admin_notice(arr, cont, notice)
     	tag2 = ""
     	tag1 = content_tag :div, '', :class => "notice-wrapper" do
-	    	if cont.empty? && !notice.blank?
+	    	if arr.empty? && !notice.blank?
 	    		tag2 = content_tag :h4, "All #{cont} have been removed."
 	    	elsif !notice.blank?
 	    		tag2 = content_tag :h4, notice
-	    	elsif cont.empty? || arr.empty?
+	    	elsif arr.empty?
 	    		tag2 = content_tag :h4, "There are no #{cont} yet."
 	    	end
 	    end
+	    
 	    tag2.empty? ? "" : tag1.html_safe
 	end
 
@@ -77,5 +78,4 @@ module AdminHelper
 		end
 		tag.html_safe
 	end
-
 end

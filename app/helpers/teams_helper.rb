@@ -74,16 +74,6 @@ module TeamsHelper
 		end
 	end
 
-	def desc_modal(testline)
-		content_tag(:div, "", :class => "modal", :id => "desc-#{testline.id}") do
-			content_tag(:div, "", :class => "modal-content") do
-				content_tag(:div, "", :class => "modal-header") do
-					content_tag(:button)
-				end
-			end
-		end
-	end
-
 	def card_footer(testline)
 		content_tag(:div, "", :class => "card-footer") do
 			if user_signed_in?

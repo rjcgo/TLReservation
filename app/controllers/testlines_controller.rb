@@ -35,7 +35,7 @@ class TestlinesController < ApplicationController
         format.html { redirect_to admin_testlines_path, notice: 'Test line was successfully created.' }
         format.json { render :show, status: :created, location: @testline }
       else
-        format.html { render :new }
+        format.html { redirect_to admin_testlines_path, notice: parse_notice(@testline.errors) }
         format.json { render json: @testline.errors, status: :unprocessable_entity }
       end
     end
@@ -49,7 +49,7 @@ class TestlinesController < ApplicationController
         format.html { redirect_to admin_testlines_path, notice: 'Test line was successfully updated.' }
         format.json { render :show, status: :ok, location: @testline }
       else
-        format.html { render :edit }
+        format.html { redirect_to admin_testlines_path, notice: parse_notice(@testline.errors) }
         format.json { render json: @testline.errors, status: :unprocessable_entity }
       end
     end
