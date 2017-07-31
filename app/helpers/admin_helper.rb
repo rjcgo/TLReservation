@@ -51,4 +51,23 @@ module AdminHelper
 	    tag2.empty? ? "" : tag1.html_safe
 	end
 
+	def teams_without_access(testline)
+		balls = pokelist
+		tag = ""
+		@teams.each do |team|
+			if not TeamTestline.exists?(team_id: team.id, testline_id: testline.id)
+				tag += content_tag(:li, "") do
+					form_for(@team_testline) do |f|
+						f.hidden_field(:team_id, :value => team.id) +
+						f.hidden_field(:testline_id, :value => testline.id) +
+						content_tag(:button, "", :type => "submit", :class => "pokeballs-item") do
+							content_tag(:span, "", :class => balls[team.id % 20]) + team.name
+						end
+					end
+				end
+			end
+		end
+		tag.html_safe
+	end
+
 end
