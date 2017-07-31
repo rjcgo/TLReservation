@@ -26,7 +26,6 @@
 		                    </li>
 				    	<% end %>     	
 				    <% end %>
-				     <%= link_to 'Download log file', reservations_download_log_file_path, :target => '_blank'%>	
 			    </ul>
 			   
 	        </div>
@@ -38,9 +37,13 @@
 	            <i class="fa fa-caret-right show-right"></i>
 	        </button>
 	        <h2>Reservations</h2>
+	        <div class="download-log-file-button">
+	        	<i class="fa fa-download" aria-hidden="true"></i>
+	        	<%= link_to 'Download log file', reservations_download_log_file_path, :target => '_blank', :class => "download-log-file-text"%>	
+	        </div>
 	        <% @testlines.each do |testline| %>
 				<% if testline.id == reserve1 %>
-					<ul id="<%= -testline.id %>" class="list-group" style="display: block;">
+					<ul id="<%= -testline.id %>" class="list-group" style="display: block; ">
 				<% else %>
 					<ul id="<%= -testline.id %>" class="list-group" style="display: none;">
 				<% end %>
@@ -313,5 +316,34 @@ function cancel_modal() {
 	    border-radius: 0;
 	    /* top: 0; */
 	    right: 0;
+	}
+
+	.download-log-file-button{
+		float: right;
+		width: 32px;
+		overflow: hidden;
+		white-space: nowrap;
+		background: transparent;
+		border: 0;
+		font-family: Raleway;
+		font-size: 1.5em;
+		padding: 2px 6px;
+		margin: 15px 0;
+		    margin-right: 0px;
+		margin-right: 10px;
+		color: #34495e;
+		box-sizing: border-box;
+		cursor: pointer;
+		width: auto;
+		text-decoration: none;
+	}
+
+	.download-log-file-text{
+		text-decoration: none;
+		color: #34495e;
+	}
+
+	.download-log-file-text:hover{
+		text-decoration: underline;
 	}
 </style>
