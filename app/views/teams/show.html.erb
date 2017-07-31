@@ -19,10 +19,16 @@
                 </ul>
             </div>
         </div>
+
     </div>
 </header>
 
 <main class="wrapper">
+	 <% if @mytestlines.count == 0 %>
+			<div class="notice-wrapper">
+				<h2>No Testlines Available</h2>
+			</div>
+		<% end %>
 	<% if available %>
 	    <section id="available">
 	        <h2>Available</h2>
