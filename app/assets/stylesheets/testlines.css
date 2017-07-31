@@ -5,20 +5,17 @@
     border-radius: 5px;
     box-shadow: 0px 1px 10px #878888;
 }
-<<<<<<< HEAD
+
 /* ******************** Reservations ******************** */
 
 #reservations {
-=======
 #add-testline {
->>>>>>> 1104c2b45175d05e1fb9dfb6c40798142ca83946
     background: #dadada;
     min-height: 100%;
     transition: 0.5s;
     box-sizing: border-box;
 }
 
-<<<<<<< HEAD
 #reservations h2 {
     display: inline-block;
     margin: 15px 0;
@@ -232,5 +229,4 @@
     .footer-panel {
         width: 26%;
     }
->>>>>>> 1104c2b45175d05e1fb9dfb6c40798142ca83946
 }
