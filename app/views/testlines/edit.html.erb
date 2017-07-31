@@ -1,9 +1,12 @@
 <% if user_signed_in? %>
 
 	<% if current_user.isAdmin? %>
-	
-		<%= render 'form' %>
-
+		<main class="wrapper">
+		    <div id="add-testline">
+		    <h2>Edit TestLine</h2>
+			<%= render 'form' %>
+			</div>
+		</main>
 	<% else %>
 		<div class="wrapper-greeting">
 			<div class="alert alert-success alert-dismissible">

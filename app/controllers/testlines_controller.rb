@@ -93,6 +93,6 @@ class TestlinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def testline_params
-    params.require(:testline).permit(:name, :ip_address, :port_number, :isMaintenance, :description, :diagram)
+    params.require(:testline).permit(:name, :ip_address, :port_number, :isMaintenance, :description, :diagram, :remove_diagram)
     end
 end
