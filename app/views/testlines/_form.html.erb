@@ -15,31 +15,42 @@
 
   <% end %>
 
-<div class="container reservation-form">  
-  <%= form_for((@testline), :html => {:class => "reserve"}) do |f| %>
-    <h3>Create New Testline </h3>
-    <fieldset>
-      <%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required" %>
-    </fieldset>
 
-    <fieldset>
-      <%= f.text_field :ip_address, :placeholder => "IP Address", :tabindex => "2", :required => "required" %>
-    </fieldset>
+        
+<%= form_for((@testline), :html => {:class => "reserve"}) do |f| %>
 
-    <fieldset>
-      <%= f.text_field :port_number, :placeholder => "Port Number", :tabindex => "3", :required => "required" %>
-    </fieldset>
+    <div class="side-panel">
 
-    <% if current_user.isAdmin? %>
-    <fieldset>
-      <p>Under Maintenance?
-      <%= f.check_box :isMaintenance, :tabindex => "4" %>
-      </p>
-    </fieldset>
-    <%end%>
+        <label for="tl-name">Testline Name:</label>
+        <%= f.text_field :name, :placeholder => "Name", :required => "required", :id => "tl-name", :class => "form-control" %>
+        <label for="ip-address">IP Address:</label>
+        <%= f.text_field :ip_address, :placeholder => "127.0.0.1", :required => "required", :id => "ip-address", :class => "form-control" %>
+        <label for="port">Port:</label>
+        <%= f.text_field :port_number, :placeholder => "8080", :required => "required", :id => "port", :class => "form-control" %>
+        
+        <label for="diagram">Diagram:</label><br>
+        <% if @testline.diagram? %>
+          <%= image_tag(@testline.diagram_url, :size => '50x50') %>
+          <%= f.check_box :remove_diagram %>
+          <%= f.label :remove_diagram, "Remove this uploaded image?" %>
+        <% end %>
+        <%= f.file_field :diagram, :id => "diagram", :class => "form-control" %>
 
-    <fieldset>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-    </fieldset>
-  <% end %>
-</div>
+        <%= f.check_box :isMaintenance, :id => "maintenance" %>
+        <label for="maintenance">Under maintenance</label>
+
+    </div>
+
+    <div class="description-panel">
+        <label>Testline Description:</label>
+        <%= f.text_area :description, :class => "tinymce", :rows => 20, :cols => 120 %>
+        <%= tinymce %>
+    </div>
+
+    <div class="footer-panel">
+        <%= f.submit :class => "add-testline-btn bg-green" %>
+        <!-- <button type="button" class="add-testline-btn bg-green">Save</button> -->
+        <a href="/admin/testlines" class="cancel-link">Cancel</a>
+    </div>
+
+<% end %>

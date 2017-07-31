@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require tinymce
 // var ready = function () {
 
 // $("#burger-nav").on("click", function (event) {
