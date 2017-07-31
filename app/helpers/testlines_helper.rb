@@ -8,7 +8,7 @@ module TestlinesHelper
 					@testlines.each do |testline|
 						tag += content_tag(:li, "") do
 							content_tag(:a, "", :href => "javascript:void(0)", :class => "sidenav-links #{isActive[testline]}", :onclick => "openReservation(event, \'tl-#{testline.id}\')") do
-								content_tag(:i, "", :class => "fa fa-server") + " " + testline.name
+								content_tag(:i, "", :class => "fa fa-server") + " " + testline.name + " " + content_tag(:span, "3", :class => "badge badge-pill bg-yellow", :style => "float: right;")
 							end
 						end
 					end

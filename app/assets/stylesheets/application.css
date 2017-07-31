@@ -74,7 +74,7 @@ main {
 
 .bg-yellow {
     border: 1px solid #f0ad4e !important;
-    background: #e67e22 !important;
+    background: #f0ad4e !important;
     color: #fff !important;
 }
 
@@ -115,9 +115,23 @@ main {
 /* ******************** Badge ******************** */
 
 .badge {
-    padding: 3px;
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
     border-radius: 0.25em;
     text-transform: uppercase;
+}
+
+.badge.badge-pill{
+    border-radius: 10rem;
+    padding-left: 0.6em;
+    padding-right: 0.6em;
 }
 
 .badge.badge-primary {
