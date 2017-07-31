@@ -52,9 +52,9 @@ module TeamsHelper
 						content_tag(:label, "Title:") + 
 						f.text_field(:name, :placeholder => "Title", :tabindex => 1, :required => true, :class => "form-control") +
 						content_tag(:label, "Team Name:") + 
-						f.text_field(:team_name, :value => @team.name, :tabindex => 2, :required => true, :class => "form-control") +
+						f.text_field(:team_name, :value => @team.name, :tabindex => 2, :readonly => true, :required => true, :class => "form-control") +
 						content_tag(:label, "Email:") + 
-						f.email_field(:email, :value => current_user.email, :tabindex => 3, :required => true, :class => "form-control") +
+						f.email_field(:email, :value => current_user.email, :tabindex => 3, :readonly => true, :required => true, :class => "form-control") +
 						content_tag(:label, "Description:") + 
 						f.text_area(:description, :placeholder => "Title", :tabindex => 4, :required => true, :class => "form-control")
 					end
