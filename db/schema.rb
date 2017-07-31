@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20170728033824) do
     t.string   "ip_address"
     t.integer  "port_number"
     t.boolean  "isMaintenance", default: false
+    t.string   "diagram"
+    t.text     "description"
   end
 
   create_table "users", force: :cascade do |t|
