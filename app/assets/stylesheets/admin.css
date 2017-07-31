@@ -129,20 +129,6 @@
 }
 
 
-
-
-/* ******************** Card footer ******************** */
-
-.card-link {
-    display: inline-block;
-    margin: 0 10px;
-    color: #000;
-    font-size: 1.2em;
-    text-decoration: none;
-    border-bottom: 1px dotted #000;
-}
-
-
 /* ******************** Admin Panel ******************** */
 
 #admin-panel {

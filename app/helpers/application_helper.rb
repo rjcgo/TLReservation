@@ -8,7 +8,7 @@ module ApplicationHelper
 		            if testline.id == reserve.testline_id 
 		            	if currentReserve < 4
 			                tag += content_tag(:li, "") do
-			                	tag1 = reserve.team_name.html_safe
+			                	tag1 = content_tag(:p, reserve.team_name.html_safe, :class => "card-text")
 								if currentReserve == 0
 									tag1 += content_tag(:small, "Current", :class => "badge badge-primary") 
 								elsif currentReserve == 1 
@@ -17,7 +17,7 @@ module ApplicationHelper
 									tag1 += content_tag(:small, "Pending", :class => "badge badge-next")
 								end 
 									
-								tag1 + content_tag(:button, "", :class => "delete-overlay show-delete-modal") do
+								tag1 + content_tag(:span, "", :class => "delete-overlay") do
 									content_tag(:i, "", :class => "fa fa-calendar-check-o") + " #{reserve.email}"
 			                	end
 			                end
