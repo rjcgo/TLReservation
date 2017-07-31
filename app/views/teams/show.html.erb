@@ -1,5 +1,5 @@
 <header class="wrapper">
-    <h1><%= @team.name %></h1>
+	<%= content_tag :h1, @team.name %>
     <div class="dropdown team-dropdown">
 		<input type="checkbox" id="dropbtn">
 		<label for="dropbtn" class="dropbtn team-dropbtn">
@@ -10,12 +10,7 @@
         <div class="dropdown-content team-dropdown-content">
             <div class="outer-border-hidden">
                 <ul class="pokeballs-grid pokeballs-grid-lg">
-                	<% ball = pokelist %>
-					<% @teams.each do |team| %>
-	                    <li>
-                        <a href="/teams/<%= team.id %>"><%= content_tag :span, '', :class => ball[team.id % 20] %> <%= team.name %></a>
-	                    </li>
-	                <% end %>
+                	<%= drop_down_teams pokelist %>
                 </ul>
             </div>
         </div>
@@ -23,38 +18,18 @@
 </header>
 
 <main class="wrapper">
+	<% if @mytestlines.count == 0 %>
+		<div class="notice-wrapper">
+			<h2>No Testlines Available</h2>
+		</div>
+	<% end %>
 	<% if available %>
 	    <section id="available">
 	        <h2>Available</h2>
 	        <div class="card-deck">
 	        	<% @mytestlines.each do |testline| %>
-	        		<% if user_signed_in? %>
-		        		<%= content_tag :div, :class => "modal", :id => testline.id do -%>
-						    <div class="modal-content">
-						        <%= form_for([testline,testline.reservations.build]) do |f| %>
-						            <div class="modal-header">
-						            	<%= content_tag :button, 'x',  :class => "modal-close", :onclick => "deactivate_modal(#{testline.id})" %>
-						                <h3 class="modal-title"><%= testline.name %></h3>
-						            </div>
-						            <div class="modal-body">
-						                <label for="title">Title:</label>
-						                <%= f.text_field :name, :placeholder => "Title", :tabindex => "1", :required => "required" , :class => "form-control"%>
-						                <label for="team-name">Team Name:</label>
-						                <%= f.text_field :team_name, :value => @team.name, :tabindex => "3", :readonly => true , :class => "form-control"%>
-						                <label for="email">Email:</label>
-						                <%= f.email_field :email, :value => current_user.email, :tabindex => "2", :readonly => true , :class => "form-control"%>
-						                <label for="description">Description:</label>
-						                <%= f.text_area :description, :placeholder => "Description", :tabindex => "4", :required => "required", :class => "form-control" %>
-						            </div>
-						            <div class="modal-footer">
-						                <button name="submit" class="modal-btn" type="submit" id="contact-submit" data-submit="...Sending">Reserve now!</button>
-						            </div>
-						        <% end %>
-						    </div>
-						<% end %>
-					<% end %> 
-
 					<% if ( testline.reservations.count ==0) && !testline.isMaintenance? %>
+		        		<%= reserve_modal testline %>
 			            <div class="card">
 			                <div class="card-content">
 			                    <div class="card-header bg-blue">
@@ -63,24 +38,16 @@
 			                        </div>
 			                        <i class="fa fa-server testline-icon text-white"></i>
 			                        <div class="card-header-overlay">
-			                            <h3><%= testline.name %></h3>
-			                            <a href="" class="show-diagram show-img-modal">Show Diagram</a><br>
-			                            <a href="" class="show-description show-description-modal">Show Description</a>
+			                        	<%= card_header_content testline %>
 			                        </div>
 			                    </div>
-			                  	<div class="card-body">
-	    	                    </div>
+			                  	<div class="card-body"></div>
 			                    <div class="card-footer">
 						             <% if user_signed_in? %>
 										<%= submit_tag "Reserve now!", :type => "button", :id => testline.id, :class => "card-btn", :onclick => "activate_modal(#{testline.id})" %>
 									<% end %>
 			                    </div>
 			                </div>
-			                <!-- <div class="card-overlay">
-			                            <p class="card-overlay-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vel ligula tortor. Suspendisse eu
-			                                odio nunc. Praesent sagittis feugiat neque id ultricies. </p>
-			                            <a href="" class="card-overlay-hide">Hide Description</a>
-			                        </div> -->
 			            </div>
 			        <% end %>
 		        <% end %> 
@@ -92,35 +59,8 @@
 	        <h2>In Use</h2>
 	        <div class="card-deck">
 	        	<% @mytestlines.each do |testline| %>
-	        		<% if user_signed_in? %>
-		        		<%= content_tag :div, :class => "modal", :id => testline.id do -%>
-						    <div class="modal-content">
-						        <%= form_for([testline,testline.reservations.build]) do |f| %>
-						            <div class="modal-header">
-						            	<%= content_tag :button, 'x',  :class => "modal-close", :onclick => "deactivate_modal(#{testline.id})" %>
-						                <h3 class="modal-title"><%= testline.name %></h3>
-						            </div>
-						            <div class="modal-body">
-						                <label for="title">Title:</label>
-						                <%= f.text_field :name, :placeholder => "Title", :tabindex => "1", :required => "required" , :class => "form-control"%>
-						                <label for="team-name">Team Name:</label>
-						                <%= f.text_field :team_name, :value => @team.name, :tabindex => "3", :readonly => true , :class => "form-control"%>
-						                <label for="email">Email:</label>
-						                <%= f.email_field :email, :value => current_user.email, :tabindex => "2", :readonly => true , :class => "form-control"%>
-						                <label for="description">Description:</label>
-						                <%= f.text_area :description, :placeholder => "Description", :tabindex => "4", :required => "required", :class => "form-control" %>
-						            </div>
-						            <div class="card-footer">
-							             <% if user_signed_in? %>
-											<%= submit_tag "Reserve now!", :type => "button", :id => testline.id, :class => "card-btn", :onclick => "activate_modal(#{testline.id})" %>
-										<% end %>
-			                 	   </div>
-						        <% end %>
-						    </div>
-						<% end %>
-					<% end %> 
-
 					<% if ( testline.reservations.count !=0) && !testline.isMaintenance? %>
+		        		<%= reserve_modal testline %> 
 			            <div class="card">
 			                <div class="card-content">
 			                    <div class="card-header bg-blue">
@@ -129,32 +69,11 @@
 			                        </div>
 			                        <i class="fa fa-server testline-icon text-white"></i>
 			                        <div class="card-header-overlay">
-			                            <h3><%= testline.name %></h3>
-			                            <a href="" class="show-diagram show-img-modal">Show Diagram</a><br>
-			                            <a href="" class="show-description show-description-modal">Show Description</a>
+			                        	<%= card_header_content testline %>
 			                        </div>
 			                    </div>
 			                    <div class="card-body">
-			                    	<% userQueue = 1 %>
-			                        <ul>
-				                        <% @reservations.each do |reserve| %>
-											<% if testline.id == reserve.testline_id  %>
-												<li>
-													<% if userQueue == 1 %>
-														<p class="card-text"><%= reserve.team_name %></p>
-				                            		    <small class="badge badge-primary">Current</small>
-				                            		<% elsif userQueue == 2 %>
-														<p class="card-text"><%= reserve.team_name %></p>
-				                             		   <small class="badge badge-primary">Next in Line</small>
-				                            		<% elsif userQueue == 3 || userQueue == 4 %>
-				                               			<p class="card-text"><%= reserve.team_name %></p>
-				                                		<small class="badge badge-pending">Pending</small>
-													<% end %>
-													<% userQueue += 1 %>
-			                            		</li>
-			                            	<% end %>
-			                            <% end %>
-			                        </ul>
+			                    	<%= card_body testline %>
 			                    </div>
 			                   	<div class="card-footer">
 						             <% if user_signed_in? %>
@@ -187,9 +106,7 @@
 			                        </div>
 			                        <i class="fa fa-server testline-icon text-white"></i>
 			                        <div class="card-header-overlay">
-			                            <h3><%= testline.name %></h3>
-			                            <a href="" class="show-diagram show-img-modal">Show Diagram</a><br>
-			                            <a href="" class="show-description show-description-modal">Show Description</a>
+			                        	<%= card_header_content testline %>
 			                        </div>
 			                    </div>
 			                    <div class="card-body">
@@ -200,7 +117,6 @@
 			                        </ul>
 			                    </div>
 			                    <div class="card-footer">
-			                        <!--<button class="card-btn reserve-btn show-add-modal">Reserve Now!</button>-->
 			                    </div>
 			                </div>
 			                <!-- <div class="card-overlay">
@@ -217,14 +133,14 @@
 </main>
 
 <div class="modal" id="img-modal">
-    <button type="button" class="modal-close">&times;</button>
-    <img src="assets/images/long-html-img.jpg" alt="long img" class="modal-img">
+    <button type="button" class="modal-close" onclick="close_img()">&times;</button>
+    <%= image_tag "long-html-img.jpg", :class => "modal-img", :alt => "long img" %>
 </div>
 
 <div class="modal" id="description-modal">
     <div class="modal-content">
         <div class="modal-header">
-            <button type="button" class="modal-close">&times;</button>
+            <button type="button" onclick="close_desc()" class="modal-close">&times;</button>
             <h3 class="modal-title">Description</h3>
         </div>
         <div class="modal-body">
@@ -261,6 +177,23 @@
             <button name="submit" type="submit" class="modal-btn" id="contact-submit" data-submit="...Sending">Close</button>
         </div>
     </div>
+</div>
+
+<div class="modal" id="remove_access">
+    <div class="modal-confirm">
+      <div class="modal-header">
+          <button type="button" class="modal-close" onclick="cancel_modal()">&times;</button>
+          <h3 class="modal-title"><i class="fa fa-trash"></i> Delete</h3>
+      </div>
+      <div class="modal-body">
+        <p class="modal-text">Are you sure y
+        ou want to remove this team's access from this testline?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="modal-btn bg-red" onclick="confirm_modal()">Delete</button>
+        <button type="button" class="modal-btn" onclick="cancel_modal()">Cancel</button>
+      </div>
+  </div>
 </div>
 
 <script>

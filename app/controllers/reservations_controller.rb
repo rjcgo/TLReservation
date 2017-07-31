@@ -43,7 +43,10 @@ class ReservationsController < ApplicationController
         else
             @reservation.destroy
         end
-        redirect_to(:back)
+        respond_to do |format|
+          format.html { redirect_to :back, notice: 'Reservation was successfully deleted.' }
+          format.json { head :no_content }
+        end
     end
     def edit
     

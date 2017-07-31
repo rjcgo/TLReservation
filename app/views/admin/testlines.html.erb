@@ -13,19 +13,8 @@
                     <i class="fa fa-plus"></i> New Testline
                 </button>
 
-                <% if (@testlines.empty? && !notice.blank?)%>
-                    <div class="notice-wrapper">
-                        <h4>All testlines have been removed.</h4>
-                    </div>
-                <% elsif !notice.blank? %>
-                    <div class="notice-wrapper">
-                        <h4> <%= notice %> </h4>
-                    </div>
-                <% elsif @testlines.empty? %>
-                    <div class="notice-wrapper">
-                        <h4>There are no testlines yet. </h4>
-                    </div>
-                <% end %>
+                <%= admin_notice(@testlines, "testlines", notice) %>
+
             </header>
 
             <div class="card-deck">
@@ -44,34 +33,13 @@
     	                        </div>
     	                    </div>
     	                    <div class="card-body">
-    	                        <ul>
-                                    <% currentReserve = 0 %>
-                                    <% @reservations.each do |reserve| %>
-                                        <% if testline.id == reserve.testline_id %>
-            	                            <li>
-            	                                <p class="card-text"><%= reserve.team_name %></p>
-                                                <% if currentReserve == 0 %>
-            	                                   <small class="badge badge-primary">Current</small>
-                                                <% elsif currentReserve == 1 %>
-                                                    <small class="badge badge-next">Next in Line</small>
-                                                <% else %>
-                                                    <small class="badge badge-pending">Pending</small>
-                                                <% end %>
-            	                                <button class="delete-overlay show-delete-modal"><i class="fa fa-times"></i> Delete</button>
-            	                            </li>
-                                            <% currentReserve+=1 %>
-                                        <% end %>
-                                    <% end %>
-    	                        </ul>
+    	                        <%= card_body testline %>
     	                    </div>
     	                    <div class="card-footer">
-                                <%= content_tag :a, 'Edit Testline', :onclick => "activate_modal(#{testline.id})", :class => "card-link" %>
-                                <%#= content_tag :a, 'Delete', :onclick => "activate_modal(-#{testline.id})", :class => "card-link text-red show-delete-modal"%>
-                                <%= button_to testline, method: :delete, :class => "card-link text-red show-delete-modal" , :type => "button", form: {:onsubmit => "return ask_modal(-#{testline.id});", :id => "-#{testline.id}"} do %><a class="card-link text-red show-delete-modal">Delete</a><% end %>
-                        
+                                <%= option_testline testline %>
     	                    </div>
-    	                </div>
-    	                <!-- <div class="card-overlay">
+    	                </div><!-- 
+    	                <div class="card-overlay">
     	                                <p class="card-overlay-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vel ligula tortor. Suspendisse eu
     	                                    odio nunc. Praesent sagittis feugiat neque id ultricies. </p>
     	                                <a href="" class="card-overlay-hide">Hide Description</a>
@@ -80,46 +48,33 @@
     	        <% end %>   
             </div>
         </section>
-        <%= content_tag :div, :class => "modal", :id => "0" do -%>
-            <div class="modal-content">
-                <%= form_for(@testline) do |f| %>
-                    <div class="modal-header">
-                        <button type="button" class="modal-close">&times;</button>
-                        <h3 class="modal-title">Add testline</h3>
-                    </div>
-                    <div class="modal-body">
-                        <label for="tl-name">Testline Name:</label>
-                        <%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required" , :class => "form-control"%>
-                        <label for="ip-address">IP Address:</label>
-                        <%= f.text_field :ip_address, :placeholder => "127.0.0.1", :tabindex => "2", :required => "required", :class => "form-control" %>
-                        <label for="port">Port:</label>
-                        <%= f.text_field :port_number, :placeholder => "8080", :tabindex => "3", :required => "required", :class => "form-control" %>
-                        
-                        <%= f.check_box :isMaintenance, :tabindex => "4" , :id => "maintenance"%>
-                        <label for="maintenance">Under maintenance</label>
-                    </div>
-                    <div class="modal-footer">
-                        <button name="submit" type="submit" class="modal-btn" id="contact-submit" data-submit="...Sending">Add testline</button>
-                    </div>
-                <% end %>
-            </div>
-        <% end %>
     </main>
-    <div class="modal" id="remove_access">
-        <div class="modal-confirm">
-            <div class="modal-header">
-                <button type="button" class="modal-close" onclick="cancel_modal()">&times;</button>
-                <h3 class="modal-title"><i class="fa fa-trash"></i> Delete</h3>
-            </div>
-            <div class="modal-body">
-                <p class="modal-text">Are you sure you want to delete this testline?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="modal-btn bg-red" onclick="confirm_modal()">Delete</button>
-                <button type="button" class="modal-btn" onclick="cancel_modal()">Cancel</button>
-            </div>
+
+    <div class="modal" id="0">
+        <div class="modal-content">
+            <%= form_for(@testline) do |f| %>
+                <div class="modal-header">
+                    <button type="button" class="modal-close" onclick="deactivate_modal(0)">&times;</button>
+                    <h3 class="modal-title">Add testline</h3>
+                </div>
+                <div class="modal-body">
+                    <label for="tl-name">Testline Name:</label>
+                    <%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required" , :class => "form-control"%>
+                    <label for="ip-address">IP Address:</label>
+                    <%= f.text_field :ip_address, :placeholder => "127.0.0.1", :tabindex => "2", :required => "required", :class => "form-control" %>
+                    <label for="port">Port:</label>
+                    <%= f.text_field :port_number, :placeholder => "8080", :tabindex => "3", :required => "required", :class => "form-control" %>
+                    
+                    <%= f.check_box :isMaintenance, :tabindex => "4" , :id => "maintenance"%>
+                    <label for="maintenance">Under maintenance</label>
+                </div>
+                <div class="modal-footer">
+                    <button name="submit" type="submit" class="modal-btn" id="contact-submit" data-submit="...Sending">Add testline</button>
+                </div>
+            <% end %>
         </div>
     </div>
+
     <div class="modal" id="remove_access">
         <div class="modal-confirm">
             <div class="modal-header">
@@ -135,6 +90,7 @@
             </div>
         </div>
     </div>
+
 <% else %>
     <%= render 'error' %>
 <% end %>
@@ -142,7 +98,6 @@
 <div class="modal" id="img-modal">
     <button type="button" class="modal-close">&times;</button>
     <%= image_tag "long-html-img.jpg", :class => "modal-img", :alt => "long img" %>
-    <!-- <img src="long-html-img.jpg" alt="long img" class="modal-img"> -->
 </div>
 
 <div class="modal" id="description-modal">
@@ -186,33 +141,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    function activate_modal(id) {
-        var s = document.getElementById(id);
-        s.style.display = "block";
-    }
-
-    function deactivate_modal(id) {
-        var s = document.getElementById(id);
-        s.style.display = "none";
-    }
-
-    document.onclick = function() {
-        let s = document.getElementsByClass("modal");
-        for (i = 0; i < s.length; i++)
-        s[i].style.display = "none";
-    };
-</script>
-
-<style>
-    .notice-wrapper{
-        margin: 0 10px;
-        margin-bottom: 15px;
-        background-color: #cee5ce;
-        padding: 10px;
-        border-radius: 5px;
-        box-shadow: 0px 1px 10px #878888;
-    }
-</style>
-

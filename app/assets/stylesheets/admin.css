@@ -129,25 +129,6 @@
 }
 
 
-/* ******************** Card body ******************** */
-
-.card-body li .delete-overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -100%;
-    border: 0;
-    background: #d9534f;
-    color: #fff;
-    font-family: Raleway;
-    font-size: 14px;
-    width: 100%;
-    transition: 0.5s ease-out;
-}
-
-.card-body li:hover .delete-overlay {
-    left: 0;
-}
 
 
 /* ******************** Card footer ******************** */
@@ -270,7 +251,6 @@
     text-align: center;
 }
 
-
 /* ******************** media queries ******************** */
 
 @media screen and (min-width: 480px) {
@@ -333,4 +313,13 @@
     .footer-panel {
         width: 26%;
     }
+}
+
+.notice-wrapper{
+    margin: 0 10px;
+    margin-bottom: 15px;
+    background-color: #cee5ce;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 10px #878888;
 }

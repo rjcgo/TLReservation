@@ -17,7 +17,7 @@ function ask_modal(id) {
 }
 
 function confirm_modal() {
-  document.getElementById(delete_id).submit();
+  document.getElementById(delete_id).click();
 }
 
 function cancel_modal() {

@@ -1,18 +1,12 @@
 <% if user_signed_in?%>
-  <% balls = pokelist_lg %>
   <main class="wrapper">
-      <section id="teams">
-          <h2>Select Your Team</h2>
-          <div class="outer-border-hidden">
-              <ul class="pokeballs-grid pokeballs-grid-lg">
-                <% @teams.each do |team| %>
-                  <li>
-                      <a href="<%= "/teams/#{team.id}"%>"><span class="<%= balls[team.id % 20] %>"></span><%= team.name %> </a>
-                  </li>
-                <% end %>
-              </ul>
-          </div>
-      </section>
+    <section id="teams">
+      <h2>Select Your Team</h2>
+      <div class="outer-border-hidden">
+        <ul class="pokeballs-grid pokeballs-grid-lg">
+          <%= drop_down_teams pokelist_lg %>
+        </ul>
+      </div>
+    </section>
   </main>
-
 <% end %>
