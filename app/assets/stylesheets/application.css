@@ -332,7 +332,7 @@ main {
     background: #333645;
     height: 100%;
     width: 0;
-    padding-top: 70px;
+    padding-top: 100px;
     overflow: hidden;
     transition: 0.5s;
 }
@@ -400,13 +400,17 @@ main {
 .outer-border-hidden {
     overflow: hidden;
     height: 100%;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0 auto;
 }
 
 .pokeballs-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 0 -2px -2px 0;
+    margin: -2px;
 }
 
 .pokeballs-grid li {
@@ -429,6 +433,8 @@ main {
     border: 0;
     width: 100%;
     font-family: Raleway;
+    font-size: 1em;
+    padding: 16px 2px;
 }
 
 .pokeballs-item:hover {
@@ -718,7 +724,7 @@ main {
 }
 
 .team-brand.timer-ball {
-    background-position: 0 -150px !important;
+    background-position: 0 -148px !important;
 }
 
 .team-brand.nest-ball {
@@ -1059,6 +1065,7 @@ input[type="checkbox"]:checked+label::before {
     .pokeballs-grid li {
         flex: 1 0 48%;
         border-right: 1px solid #aaa;
+        border-left: 1px solid #aaa;
     }
     .card {
         flex: 0 1 80%;
@@ -1148,7 +1155,7 @@ input[type="checkbox"]:checked+label::before {
     }
     #sidenav-container .sidenav ul {
         width: 250px;
-        padding-top: 120px;
+        padding-top: 150px;
     }
     #sidenav-container.toggle .sidenav ul {
         width: 0;
@@ -1177,10 +1184,10 @@ input[type="checkbox"]:checked+label::before {
         flex: 1 0 32%;
     }
     .pokeballs-grid-sm li {
-        min-width: 120px;
+        min-width: 160px;
     }
     .pokeballs-grid-lg li {
-        min-width: 160px;
+        min-width: 250px;
     }
     .card {
         flex: 1 1 46%;
@@ -1212,6 +1219,7 @@ input[type="checkbox"]:checked+label::before {
     }
     #sidenav-container .sidenav ul {
         width: 300px;
+        padding-top: 100px;
     }
     #sidenav-container #users-admin,
     #sidenav-container #teams-admin,
@@ -1249,4 +1257,13 @@ input[type="checkbox"]:checked+label::before {
     .modal-confirm {
         max-width: 496px;
     }
+}
+
+.notice-wrapper {
+    margin: 0 10px;
+    margin-bottom: 15px;
+    background-color: #cee5ce;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 10px #878888;
 }

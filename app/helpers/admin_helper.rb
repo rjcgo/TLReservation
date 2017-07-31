@@ -35,7 +35,7 @@ module AdminHelper
 			end
 		end
 
-		return tag.blank? ? content_tag(:p, "No team can currently use this testline", :class => "card-text") : tag1.html_safe
+		return tag.blank? ? content_tag(:p, "No team can currently use this testline", :style => "text-align: center;") : tag1.html_safe
 	end
 
 	def option_testline(testline)

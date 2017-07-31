@@ -24,9 +24,12 @@ module ApplicationHelper
 			            end
 						currentReserve += 1
 		            end 
-		        end 
-		        tag.html_safe
+				end
 		    end
+			if currentReserve == 0
+				tag += content_tag(:p, "There is currently no reservations for this testline.", :style => "text-align: center;")
+			end
+			tag.html_safe
 	    end
     end
 

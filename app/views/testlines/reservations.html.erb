@@ -31,16 +31,17 @@
 	        </div>
 	    </aside>
 	    <section id="reservations">
-	        <button type="button" class="sidenav-toggler" onclick="toggleSideNav()">
-	            <i class="fa fa-caret-left show-left"></i> 
-	            <i class="fa fa-navicon"></i> 
-	            <i class="fa fa-caret-right show-right"></i>
-	        </button>
-	        <h2>Reservations</h2>
-	        <div class="download-log-file-button">
-	        	<i class="fa fa-download" aria-hidden="true"></i>
-	        	<%= link_to 'Download log file', reservations_download_log_file_path, :target => '_blank', :class => "download-log-file-text"%>	
-	        </div>
+			<header>
+				<button type="button" class="sidenav-toggler" onclick="toggleSideNav()">
+					<i class="fa fa-caret-left show-left"></i> 
+					<i class="fa fa-navicon"></i> 
+					<i class="fa fa-caret-right show-right"></i>
+				</button>
+				<h2>Reservations</h2>
+				<%= link_to reservations_download_log_file_path, :class => "download-link" do %>
+					<i class="fa fa-download" aria-hidden="true"></i> Download log file
+				<% end %>
+			</header>
 	        <% @testlines.each do |testline| %>
 				<% if testline.id == reserve1 %>
 					<ul id="<%= -testline.id %>" class="list-group" style="display: block; ">
@@ -141,32 +142,32 @@
 </script>
 
 <script type="text/javascript">
-var delete_id = 0;
+	var delete_id = 0;
 
-function activate_modal(id) {
-  document.getElementById(id).style.display = "block";
-}
+	function activate_modal(id) {
+	document.getElementById(id).style.display = "block";
+	}
 
-function deactivate_modal(id) {
-  document.getElementById(id).style.display = "none";
-}
+	function deactivate_modal(id) {
+	document.getElementById(id).style.display = "none";
+	}
 
-function ask_modal(id) {
-  if (id == delete_id)
-    return true;
-  document.getElementById("remove_access").style.display = "block";
-  delete_id = id;
-  return false;
-}
+	function ask_modal(id) {
+	if (id == delete_id)
+		return true;
+	document.getElementById("remove_access").style.display = "block";
+	delete_id = id;
+	return false;
+	}
 
-function confirm_modal() {
-  document.getElementById(delete_id).click();
-}
+	function confirm_modal() {
+	document.getElementById(delete_id).click();
+	}
 
-function cancel_modal() {
-  delete_id = 0;
-  document.getElementById("remove_access").style.display = "none";
-}
+	function cancel_modal() {
+	delete_id = 0;
+	document.getElementById("remove_access").style.display = "none";
+	}
 
 </script>
 
@@ -192,158 +193,4 @@ function cancel_modal() {
 		var hr = Math.floor(time/3600);
 		return hr + ":" + min + ":" + sec;
 	}
-	
 </script>
-
-
-<style>
-	/* ******************** Reservations ******************** */
-
-	#reservations {
-	    background: #dadada;
-	    min-height: 100%;
-	    transition: 0.5s;
-	    box-sizing: border-box;
-	}
-
-	#reservations h2 {
-	    display: inline-block;
-	    margin: 15px 0;
-	    color: #34495e;
-	}
-
-
-	/* ******************** List Group ******************** */
-
-	.list-group .vertical-bar {
-	    position: absolute;
-	    top: 0;
-	    bottom: 0;
-	    left: 0;
-	    right: 0;
-	    margin: 0 auto;
-	    width: 1rem;
-	    border: 1px solid #888;
-	    background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-	    background-size: 1rem 1rem;
-	    background-color: #0275d8;
-	    animation: progress-bar-stripes 1s linear infinite;
-	}
-
-	@keyframes progress-bar-stripes {
-	    0% {
-	        background-position: 1rem 0;
-	    }
-	    100% {
-	        background-position: 0 0;
-	    }
-	}
-
-
-	/* ******************** List item ******************** */
-
-	.list-item {
-	    box-sizing: border-box;
-	    padding: 10px;
-	    background: #fafafa;
-	    position: relative;
-	    margin: 20px 15px;
-	    border-left: 5px solid #ccc;
-	}
-
-	.list-item .badge {
-	    position: absolute;
-	    top: -12px;
-	    font-size: 0.75em;
-	}
-
-	.list-item .badge.badge-primary {
-	    font-size: 0.96em;
-	}
-
-	.list-item .timestamp {
-	    float: right;
-	    margin-top: 10px;
-	}
-
-	.list-item .description {
-	    color: #555;
-	    font-size: 14px;
-	    line-height: 1.6em;
-	}
-
-	.list-item .user {
-	    float: left;
-	}
-
-	.list-item .time-used {
-	    float: right;
-	    font-size: 1.2em;
-	}
-
-	.list-item .user::before {
-	    content: '\2014 \00A0';
-	}
-
-	.list-item .list-item-header::after,
-	.list-item .list-item-footer::after {
-	    content: "";
-	    display: block;
-	    clear: both;
-	}
-
-	.list-item .release {
-	    position: absolute;
-	    top: -12px;
-	    right: -9px;
-	    width: 31px;
-	    height: 31px;
-	    overflow: hidden;
-	    color: #fff;
-	    white-space: nowrap;
-	    letter-spacing: 5px;
-	    padding: 0.4em 0.8em;
-	    border: 0;
-	    border-radius: 18px;
-	    background: #d9534f;
-	    transition: 0.5s;
-	}
-
-	.list-item .release:hover {
-	    background: #a94442 !important;
-	    width: 100px;
-	    letter-spacing: normal;
-	    border-radius: 0;
-	    /* top: 0; */
-	    right: 0;
-	}
-
-	.download-log-file-button{
-		float: right;
-		width: 32px;
-		overflow: hidden;
-		white-space: nowrap;
-		background: transparent;
-		border: 0;
-		font-family: Raleway;
-		font-size: 1.5em;
-		padding: 2px 6px;
-		margin: 15px 0;
-		    margin-right: 0px;
-		margin-right: 10px;
-		color: #34495e;
-		box-sizing: border-box;
-		cursor: pointer;
-		width: auto;
-		text-decoration: none;
-	}
-
-	.download-log-file-text{
-		text-decoration: none;
-		color: #34495e;
-	}
-
-	.download-log-file-text:hover{
-		text-decoration: underline;
-	}
-</style>
