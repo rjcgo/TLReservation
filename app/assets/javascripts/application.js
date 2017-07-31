@@ -206,3 +206,40 @@ document.onclick = function (event) {
     }
     main_id = 0;
 }
+
+function openReservation(evt, cityName) {
+    var i, listgroups, sidenavlinks;
+
+    listgroups = document.getElementsByClassName("list-group");
+    for (i = 0; i < listgroups.length; i++) {
+        listgroups[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    sidenavlinks = document.getElementsByClassName("sidenav-links");
+    for (i = 0; i < sidenavlinks.length; i++) {
+        sidenavlinks[i].className = sidenavlinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the link that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+function startTime() {
+  for (let i = 0; i < timers.length; i++) {
+      var myDate = secToTime(Math.floor((new Date().getTime()) / 1000) + t[timers[i]] - pt);
+    document.getElementById(timers[i]).innerHTML = myDate;
+  }
+
+  setTimeout(startTime, 1000);
+}
+
+function secToTime(time) {
+  var sec = time % 60;
+  sec = (sec < 10) ? "0" + sec : sec.toString();
+  var min = Math.floor(time/60) % 60;
+  min = (min < 10) ? "0" + min : min.toString();
+  var hr = Math.floor(time/3600);
+  return hr + ":" + min + ":" + sec;
+}
