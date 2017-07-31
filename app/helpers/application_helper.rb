@@ -2,8 +2,9 @@ module ApplicationHelper
 	def card_body(testline)
         currentReserve = 0
         tag = ""
+        tag2 = ""
         content_tag(:div, :class => "card-body") do
-	        content_tag(:ul, "") do
+	        tag2 = content_tag(:ul, "") do
 		        @reservations.each do |reserve| 
 		            if testline.id == reserve.testline_id 
 		            	if currentReserve < 4
@@ -25,11 +26,12 @@ module ApplicationHelper
 						currentReserve += 1
 		            end 
 				end
+				tag.html_safe
 		    end
 			if currentReserve == 0
-				tag += content_tag(:p, "There is currently no reservations for this testline.", :style => "text-align: center;")
+				tag2 += content_tag(:p, "There is currently no reservations for this testline.", :style => "text-align: center;")
 			end
-			tag.html_safe
+			tag2.html_safe
 	    end
     end
 
