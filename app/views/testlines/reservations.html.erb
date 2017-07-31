@@ -21,37 +21,37 @@
 	    	<% if testline.reservations.count == 0 %>
 	    		<%= reserve_notice %>
 	    	<% else %>
-					<div class="vertical-bar"></div>
+				<div class="vertical-bar"></div>
 	    	<% end %>
-				<% pos, sym, info, currentReserve = reserve_init %>
-				<% @reservations.each do |reserve| %>
-					<% if testline.id == reserve.testline_id %>
-						<%= tag = content_tag :li, "", :class => "list-item list-item-#{pos[currentReserve]}" do %>
-							<%= content_tag :small, "", :class => "badge badge-#{pos[currentReserve]}" do %>
-								<i class="fa fa-sym[currentReserve]"></i><%= info[currentReserve] %></small>
-							<% end %>
-							<%= reserve_header reserve %>
-							<%= content_tag :p, reserve.description, :class => "description" %>
-			                <div class="list-item-footer">
-			                	<%= content_tag :small, "Reserved by #{reserve.email}", :class => "user" %>
-			                    <% if currentReserve == 0 %>
-									<script>
-										t["tm-<%= testline.id%>"] = <%= (Time.now.minus_with_coercion(reserve.start_time)).to_i %>;
-									</script>
-									<%= content_tag :span, "", :class => "time-used", :id => "tm-#{testline.id}" do %>
-										<i class="fa fa-clock-o"></i>
-									<% end %>
+			<% pos, sym, info, currentReserve = reserve_init %>
+			<% @reservations.each do |reserve| %>
+				<% if testline.id == reserve.testline_id %>
+					<%= tag = content_tag :li, "", :class => "list-item list-item-#{pos[currentReserve]}" do %>
+						<%= content_tag :small, "", :class => "badge badge-#{pos[currentReserve]}" do %>
+							<i class="fa fa-sym[currentReserve]"></i><%= info[currentReserve] %></small>
+						<% end %>
+						<%= reserve_header reserve %>
+						<%= content_tag :p, reserve.description, :class => "description" %>
+		                <div class="list-item-footer">
+		                	<%= content_tag :small, "Reserved by #{reserve.email}", :class => "user" %>
+		                    <% if currentReserve == 0 %>
+								<script>
+									t["tm-<%= testline.id%>"] = <%= (Time.now.minus_with_coercion(reserve.start_time)).to_i %>;
+								</script>
+								<%= content_tag :span, "", :class => "time-used", :id => "tm-#{testline.id}" do %>
+									<i class="fa fa-clock-o"></i>
 								<% end %>
-			                </div>
-			                <% if current_user.isAdmin? || (current_user.email == reserve.email )%>
-			                	<%= button_to [reserve.testline,reserve], method: :delete, :class => "release show-delete-modal", form: {:onsubmit => "return ask_modal(-#{reserve.id});"}, :id => "-#{reserve.id}" do %><i class="fa fa-times"></i> Release <% end %>
-			               	<% end %>
-				        <% end %>
-				        <% currentReserve += 1 %>
-		          <% end %> 
-		    	<% end %>
-		  <% end %>
+							<% end %>
+		                </div>
+		                <% if current_user.isAdmin? || (current_user.email == reserve.email )%>
+		                	<%= button_to [reserve.testline,reserve], method: :delete, :class => "release show-delete-modal", form: {:onsubmit => "return ask_modal(-#{reserve.id});"}, :id => "-#{reserve.id}" do %><i class="fa fa-times"></i> Release <% end %>
+		               	<% end %>
+			        <% end %>
+			        <% currentReserve += 1 %>
+	        	<% end %> 
+	    	<% end %>
 		<% end %>
+	<% end %>
   </section>
 </main>
 
