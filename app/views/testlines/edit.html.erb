@@ -2,34 +2,7 @@
 
 	<% if current_user.isAdmin? %>
 	
-		<div class="container reservation-form">  
-		  <%= form_for((@testline), :html => {:class => "reserve"}) do |f| %>
-		    <h3>Edit Testline </h3>
-		    <fieldset>
-		      <%= f.text_field :name, :placeholder => "Name", :tabindex => "1", :required => "required" %>
-		    </fieldset>
-
-		    <fieldset>
-		      <%= f.text_field :ip_address, :placeholder => "IP Address", :tabindex => "2", :required => "required" %>
-		    </fieldset>
-
-		    <fieldset>
-		      <%= f.text_field :port_number, :placeholder => "Port Number", :tabindex => "3", :required => "required" %>
-		    </fieldset>
-
-		    <% if current_user.isAdmin? %>
-		    <fieldset>
-		      <p>Under Maintenance?
-		      <%= f.check_box :isMaintenance, :tabindex => "4" %>
-		      </p>
-		    </fieldset>
-		    <%end%>
-
-		    <fieldset>
-		      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-		    </fieldset>
-		  <% end %>
-		</div>
+		<%= render 'form' %>
 
 	<% else %>
 		<div class="wrapper-greeting">

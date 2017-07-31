@@ -33,7 +33,7 @@ module AdminHelper
 	end
 
 	def option_testline(testline)
-        content_tag(:a, 'Edit Testline', :href => "", :class => "card-link" )+
+        content_tag(:a, 'Edit Testline', :href => "/testlines/#{testline.id}/edit", :class => "card-link" )+
         link_to('Delete', testline, method: :delete, :class => "card-link text-red show-delete-modal" , :type => "button", :onclick => "if (ask_modal(-#{testline.id})) return; else {event.stopPropagation(); event.preventDefault();};", :id => "-#{testline.id}")
     end
 
