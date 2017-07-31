@@ -9,14 +9,13 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/stylesheets/application.css">
     <link rel="stylesheet" href="../assets/stylesheets/admin.css">
-     <script src="js/tinymce/tinymce.min.js"></script>
+    <script src="js/tinymce/tinymce.min.js"></script>
     <script>
         tinymce.init({
             selector: 'textarea',
-            skin: 'lightgray',
-            height: 700
+            min_height: 300
         });
-    </script> 
+    </script>
 </head>
 
 <body>
@@ -36,43 +35,39 @@
                 <ul>
                     <li><a href=""><i class="fa fa-calendar-check-o"></i> Teams</a></li>
                     <li><a href=""><i class="fa fa-calendar-check-o"></i> Reservations</a></li>
+                    <li><a href=""><i class="fa fa-calendar-check-o"></i> Administrator</a></li>
                     <li><a href=""><i class="fa fa-sign-out"></i> Logout</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <div class="rails-container">
-        <main class="wrapper" id="sidenav-container">
-            <form id="add-testline">
-                <button type="button" class="add-panel-toggler">
-                    <i class="fa fa-plus"></i>
-                </button>
-                <div class="tinymce">
-                    <textarea>Next, get a free TinyMCE Cloud API key!</textarea>
-                </div>
-                <div class="add-panel">
-                    <a href="" class="closebtn"><i class="fa fa-times"></i></a>
-                    <h2>Add New TestLine</h2>
-                    <label for="tl-name">Testline Name:</label>
-                    <input type="text" placeholder="Name" class="form-control" id="tl-nname" required>
-                    <label for="ip-address">IP Address:</label>
-                    <input type="text" placeholder="127.0.0.1" class="form-control" id="ip-address" required>
-                    <label for="port">Port:</label>
-                    <input type="text" placeholder="8080" class="form-control" id="port" required>
-                    <label for="diagram">Diagram:</label>
-                    <input type="file" class="form-control" id="diagram">
-                    <div class="preview-img">
-                        <img src="../assets/images/pokeballs.png" alt="preview">
-                        <div class="preview-overlay">
-                            <span>Preview Only</span>
-                        </div>
+        <main class="wrapper">
+            <div id="add-testline">
+                <h2>Add New TestLine</h2>
+                <form>
+                    <div class="side-panel">
+                        <label for="tl-name">Testline Name:</label>
+                        <input type="text" placeholder="Name" class="form-control" id="tl-name" required>
+                        <label for="ip-address">IP Address:</label>
+                        <input type="text" placeholder="127.0.0.1" class="form-control" id="ip-address" required>
+                        <label for="port">Port:</label>
+                        <input type="text" placeholder="8080" class="form-control" id="port" required>
+                        <label for="diagram">Diagram:</label>
+                        <input type="file" class="form-control" id="diagram">
+                        <input type="checkbox" id="maintenance">
+                        <label for="maintenance">Under maintenance</label>
                     </div>
-                    <input type="checkbox" id="maintenance">
-                    <label for="maintenance">Under maintenance</label>
-                    <button type="button" class="add-testline-btn">Save</button>
-                    <a href="" class="cancel-link">Cancel</a>
-                </div>
-            </form>
+                    <div class="description-panel">
+                        <label>Testline Description:</label>
+                        <textarea>Next, get a free TinyMCE Cloud API key!</textarea>
+                    </div>
+                    <div class="footer-panel">
+                        <button type="button" class="add-testline-btn bg-green">Save</button>
+                        <a href="" class="cancel-link">Cancel</a>
+                    </div>
+                </form>
+            </div>
         </main>
     </div>
 
