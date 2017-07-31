@@ -25,18 +25,7 @@ function cancel_modal() {
   document.getElementById("remove_access").style.display = "none";
 }
 
-function show_img(id) {
-  document.getElementById("img-modal").style.display = "block";
-}
-
-function close_img(id) {
-  document.getElementById("img-modal").style.display = "none";
-}
-
-function show_desc(id) {
-  document.getElementById("description-modal").style.display = "block";
-}
-
-function close_desc(id) {
-  document.getElementById("description-modal").style.display = "none";
+document.onclick = function(event) {
+  if (event.target.classList.contains("modal"))
+    event.target.style.display = "none";
 }

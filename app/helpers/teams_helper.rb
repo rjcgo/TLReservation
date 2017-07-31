@@ -69,8 +69,15 @@ module TeamsHelper
 
 	def card_header_content(testline)
 		content_tag(:h3, testline.name) +
-		content_tag(:a, 'Show Diagram', :href => "javascript:void(0)", :class => 'show-diagram show-img-modal', :onclick => "show_img(\'img-#{testline.id}\')") +
+		content_tag(:a, 'Show Diagram', :href => "javascript:void(0)", :class => 'show-diagram show-img-modal', :onclick => "activate_modal(\'img-#{testline.id}\')") +
 		tag(:br) +
-		content_tag(:a, 'Show Description', :href => "javascript:void(0)", :class => 'show-description show-description-modal', :onclick => "show_desc(\'desc-#{testline.id}\')")
+		content_tag(:a, 'Show Description', :href => "javascript:void(0)", :class => 'show-description show-description-modal', :onclick => "activate_modal(\'desc-#{testline.id}\')")
+	end
+
+	def modal_img(testline)
+		content_tag(:div, "", :class => "modal", :id => "img-#{testline.id}") do
+			content_tag(:button, '&times;'.html_safe, :class => "modal-close", :type => "button", :onclick => "deactivate_modal(\'img-#{testline.id}\')") +
+			image_tag("long-html-img.jpg", :class => "modal-img", :alt => "long-html-img.jpg")
+		end
 	end
 end
