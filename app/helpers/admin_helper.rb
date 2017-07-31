@@ -44,7 +44,7 @@ module AdminHelper
 	    		tag2 = content_tag :h4, "All #{cont} have been removed."
 	    	elsif !notice.blank?
 	    		tag2 = content_tag :h4, notice
-	    	elsif cont.empty?
+	    	elsif cont.empty? || arr.empty?
 	    		tag2 = content_tag :h4, "There are no #{cont} yet."
 	    	end
 	    end

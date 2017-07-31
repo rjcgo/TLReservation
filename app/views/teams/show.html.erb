@@ -76,11 +76,6 @@
 									<% end %>
 			                    </div>
 			                </div>
-			                <!-- <div class="card-overlay">
-			                            <p class="card-overlay-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vel ligula tortor. Suspendisse eu
-			                                odio nunc. Praesent sagittis feugiat neque id ultricies. </p>
-			                            <a href="" class="card-overlay-hide">Hide Description</a>
-			                        </div> -->
 			            </div>
 			        <% end %>
 		        <% end %> 
@@ -94,6 +89,7 @@
 	        	<% @mytestlines.each do |testline| %>
 	        		<% if user_signed_in? %>
 		        		<%= content_tag :div, :class => "modal", :id => testline.id do -%>
+
 						    <div class="modal-content">
 						        <%= form_for([testline,testline.reservations.build]) do |f| %>
 						            <div class="modal-header">
@@ -110,13 +106,14 @@
 						                <label for="description">Description:</label>
 						                <%= f.text_area :description, :placeholder => "Description", :tabindex => "4", :required => "required", :class => "form-control" %>
 						            </div>
-						            <div class="card-footer">
+						            <div class="modal-footer">
 							             <% if user_signed_in? %>
-											<%= submit_tag "Reserve now!", :type => "button", :id => testline.id, :class => "card-btn", :onclick => "activate_modal(#{testline.id})" %>
+											<button name="submit" class="modal-btn" type="submit" id="contact-submit" data-submit="...Sending">Reserve now!</button>
 										<% end %>
 			                 	   </div>
 						        <% end %>
 						    </div>
+
 						<% end %>
 					<% end %> 
 
@@ -241,6 +238,23 @@
             <button name="submit" type="submit" class="modal-btn" id="contact-submit" data-submit="...Sending">Close</button>
         </div>
     </div>
+</div>
+
+<div class="modal" id="remove_access">
+    <div class="modal-confirm">
+      <div class="modal-header">
+          <button type="button" class="modal-close" onclick="cancel_modal()">&times;</button>
+          <h3 class="modal-title"><i class="fa fa-trash"></i> Delete</h3>
+      </div>
+      <div class="modal-body">
+        <p class="modal-text">Are you sure y
+        ou want to remove this team's access from this testline?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="modal-btn bg-red" onclick="confirm_modal()">Delete</button>
+        <button type="button" class="modal-btn" onclick="cancel_modal()">Cancel</button>
+      </div>
+  </div>
 </div>
 
 <script>

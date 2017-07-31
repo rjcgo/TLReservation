@@ -10,11 +10,7 @@
 	          <i class="fa fa-caret-right show-right"></i>
           </button>
           <h2>Associations <i class="fa fa-exchange"></i></h2>
-          <% if !notice.blank? %>
-            <div class="notice-wrapper">
-              <h4> <%= notice %> </h4>
-            </div>
-          <% end %>
+          <%= admin_notice(@team_testlines, "associations", notice) %>
         </header>
           <div class="card-deck">
             <% @testlines.each do |testline| %>
