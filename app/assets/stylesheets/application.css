@@ -349,10 +349,9 @@ main {
 .sidenav .sidenav-links {
     color: #fff;
     text-decoration: none;
-    padding: 1em 0;
+    padding: 1em;
     display: block;
     white-space: nowrap;
-    text-align: center;
 }
 
 .sidenav .sidenav-links.active {
@@ -563,11 +562,13 @@ main {
     bottom: 0;
     left: -100%;
     border: 0;
-    background: #d9534f;
+    background: #0275d8;
     color: #fff;
     font-family: Raleway;
     font-size: 14px;
+    line-height: 40px;
     width: 100%;
+    text-align: center;
     transition: 0.5s ease-out;
 }
 
@@ -575,12 +576,14 @@ main {
     left: 0;
 }
 
+
 /* ******************** Card footer ******************** */
 
 .card-footer {
     background: #f9f9f9;
     text-align: center;
-    padding: 0 12px 20px 12px;
+    padding: 16px 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .card-btn {
@@ -591,6 +594,15 @@ main {
     font-size: 16px;
     font-family: Raleway;
     padding: 6px 14px;
+}
+
+.card-link {
+    display: inline-block;
+    margin: 0 10px;
+    color: #0275d8;
+    font-size: 1.2em;
+    text-decoration: none;
+    border-bottom: 1px dotted #0275d8;
 }
 
 
@@ -908,7 +920,6 @@ main {
     border-top-left-radius: 0.25em;
     border-top-right-radius: 0.25em;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-
 }
 
 .modal-header .modal-title {
@@ -984,6 +995,9 @@ main {
     max-width: 100%;
     display: block;
     margin: 10% auto;
+    text-align: center;
+    color: #fff;
+    font-size: 4em;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
@@ -1052,9 +1066,6 @@ input[type="checkbox"]:checked+label::before {
     .card-header {
         padding: 20px 40px;
     }
-    .card-body {
-        padding: 20px;
-    }
     .modal-confirm,
     .modal-content {
         width: 80%;
@@ -1073,19 +1084,13 @@ input[type="checkbox"]:checked+label::before {
     .card {
         flex: 1 1 48%;
     }
-    .card-header {
-        padding: 20px;
-    }
-    .card-body {
-        padding: 12px;
-    }
     .modal-confirm,
     .modal-content {
         width: 70%;
     }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 768px) {
     .rails-container {
         padding-top: 114px;
     }
@@ -1143,7 +1148,7 @@ input[type="checkbox"]:checked+label::before {
     }
     #sidenav-container .sidenav ul {
         width: 250px;
-        padding-top: 100px;
+        padding-top: 120px;
     }
     #sidenav-container.toggle .sidenav ul {
         width: 0;
@@ -1182,12 +1187,6 @@ input[type="checkbox"]:checked+label::before {
         min-width: 300px;
         margin: 20px 10px;
     }
-    .card-header {
-        padding: 20px 40px;
-    }
-    .card-body {
-        padding: 20px;
-    }
     .card-body li .card-text {
         font-size: 1em;
     }
@@ -1225,7 +1224,7 @@ input[type="checkbox"]:checked+label::before {
         flex: 1 0 24%;
     }
     .card {
-        flex: 0 1 31%;
+        flex: 1 1 31%;
         position: relative;
         margin: 20px 5px;
     }

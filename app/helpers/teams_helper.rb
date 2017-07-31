@@ -87,14 +87,15 @@ module TeamsHelper
 	def card_footer(testline)
 		content_tag(:div, "", :class => "card-footer") do
 			if user_signed_in?
-				submit_tag("Reserve now!", :type => "button", :id => testline.id, :class => "card-btn", :onclick => "activate_modal(#{testline.id})")
+				content_tag(:a, "Reserve now!", :href => "javascript:void(0)", 
+					:class => "card-link", :onclick => "activate_modal(#{testline.id})")
 			end
 		end
 	end
 
 	def desc(text)
 		if text.blank?
-			return "No description available"
+			return content_tag(:p, "No description available", :class => "modal-text")
 		else
 			return text.html_safe
 		end
