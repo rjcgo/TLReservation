@@ -60,3 +60,4 @@ gem 'jquery-rails'
 gem "devise_ldap_authenticatable"
 
 gem "carrierwave", "~>1.0"
+gem 'tinymce-rails'
