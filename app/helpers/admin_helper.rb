@@ -22,7 +22,7 @@ module AdminHelper
 			        @team_testlines.each do |team_testline|
 			        	if team_testline.testline_id == testline.id && team.id == team_testline.team_id
 			            	tag += content_tag :li, "" do
-			                	tag1 = button_to team_testline, method: :delete, :class => "release show-delete-modal", :type => "button", form: {:onsubmit => "return ask_modal(-#{team_testline.id});", :id => team_testline.id} do
+			                	tag1 = button_to team_testline, method: :delete, :class => "release show-delete-modal", :type => "button", form: {:onsubmit => "return ask_modal(-#{team_testline.id});"}, :id => -team_testline.id do
 			                		content_tag :i, "", :class => "fa fa-times"
 			                	end
 			                	tag2 = content_tag(:span, "", :class => balls[team.id % 20]) + team.name

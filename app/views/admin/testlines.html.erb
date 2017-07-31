@@ -9,11 +9,9 @@
                     <i class="fa fa-caret-right show-right"></i>
                 </button>
                 <h2>Testline <i class="fa fa-users"></i></h2>
-
                 <%= link_to('<i class="fa fa-plus"></i> New Testline'.html_safe, new_testline_path, :class => "add-btn") %>
 
                 <%= admin_notice(@testlines, "testlines", notice) %>
-
             </header>
 
             <div class="card-deck">
@@ -29,7 +27,6 @@
             </div>
         </section>
     </main>
-
     <div class="modal" id="0">
         <div class="modal-content">
             <%= form_for(@testline) do |f| %>
@@ -54,7 +51,6 @@
             <% end %>
         </div>
     </div>
-
     <div class="modal" id="remove_access">
         <div class="modal-confirm">
             <div class="modal-header">
@@ -70,54 +66,6 @@
             </div>
         </div>
     </div>
-
 <% else %>
     <%= render 'error' %>
 <% end %>
-
-<div class="modal" id="img-modal">
-    <button type="button" class="modal-close">&times;</button>
-    <%= image_tag "long-html-img.jpg", :class => "modal-img", :alt => "long img" %>
-</div>
-
-<div class="modal" id="description-modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="modal-close">&times;</button>
-            <h3 class="modal-title">Description</h3>
-        </div>
-        <div class="modal-body">
-            <p class="modal-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vel ligula tortor. Suspendisse eu odio nunc. Praesent
-                sagittis feugiat neque id ultricies. Aliquam lectus ex, luctus eu volutpat a, consequat sit amet sapien.
-                Nunc eget tincidunt elit. Duis et odio feugiat, finibus arcu ut, porta enim. Praesent mattis lorem ut erat
-                sagittis ullamcorper. Pellentesque auctor pulvinar eros, at venenatis ante scelerisque a. Sed at iaculis
-                risus, vitae auctor velit. Proin tempor augue ut nisi pellentesque pretium. Morbi in condimentum arcu, at
-                tempus arcu. Etiam ac urna egestas, fermentum quam vitae, consequat nunc. In sed velit tellus. Sed turpis
-                libero, dapibus quis sem eget, aliquam eleifend nisi. Aliquam porta a justo sit amet ornare.</p>
-            <p class="modal-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vel ligula tortor. Suspendisse eu odio nunc. Praesent
-                sagittis feugiat neque id ultricies. Aliquam lectus ex, luctus eu volutpat a, consequat sit amet sapien.
-                Nunc eget tincidunt elit. Duis et odio feugiat, finibus arcu ut, porta enim. Praesent mattis lorem ut erat
-                sagittis ullamcorper. Pellentesque auctor pulvinar eros, at venenatis ante scelerisque a. Sed at iaculis
-                risus, vitae auctor velit. Proin tempor augue ut nisi pellentesque pretium. Morbi in condimentum arcu, at
-                tempus arcu. Etiam ac urna egestas, fermentum quam vitae, consequat nunc. In sed velit tellus. Sed turpis
-                libero, dapibus quis sem eget, aliquam eleifend nisi. Aliquam porta a justo sit amet ornare.</p>
-            <p class="modal-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vel ligula tortor. Suspendisse eu odio nunc. Praesent
-                sagittis feugiat neque id ultricies. Aliquam lectus ex, luctus eu volutpat a, consequat sit amet sapien.
-                Nunc eget tincidunt elit. Duis et odio feugiat, finibus arcu ut, porta enim. Praesent mattis lorem ut erat
-                sagittis ullamcorper. Pellentesque auctor pulvinar eros, at venenatis ante scelerisque a. Sed at iaculis
-                risus, vitae auctor velit. Proin tempor augue ut nisi pellentesque pretium. Morbi in condimentum arcu, at
-                tempus arcu. Etiam ac urna egestas, fermentum quam vitae, consequat nunc. In sed velit tellus. Sed turpis
-                libero, dapibus quis sem eget, aliquam eleifend nisi. Aliquam porta a justo sit amet ornare.</p>
-            <p class="modal-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vel ligula tortor. Suspendisse eu odio nunc. Praesent
-                sagittis feugiat neque id ultricies. Aliquam lectus ex, luctus eu volutpat a, consequat sit amet sapien.
-                Nunc eget tincidunt elit. Duis et odio feugiat, finibus arcu ut, porta enim. Praesent mattis lorem ut erat
-                sagittis ullamcorper. Pellentesque auctor pulvinar eros, at venenatis ante scelerisque a. Sed at iaculis
-                risus, vitae auctor velit. Proin tempor augue ut nisi pellentesque pretium. Morbi in condimentum arcu, at
-                tempus arcu. Etiam ac urna egestas, fermentum quam vitae, consequat nunc. In sed velit tellus. Sed turpis
-                libero, dapibus quis sem eget, aliquam eleifend nisi. Aliquam porta a justo sit amet ornare.</p>
-        </div>
-        <div class="modal-footer">
-            <button name="submit" type="submit" class="modal-btn" id="contact-submit" data-submit="...Sending">Close</button>
-        </div>
-    </div>
-</div>
