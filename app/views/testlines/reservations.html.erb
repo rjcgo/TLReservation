@@ -12,10 +12,9 @@
         <i class="fa fa-caret-right show-right"></i>
     </button>
     <h2>Reservations</h2>
-    <div class="download-log-file-button">
-    	<i class="fa fa-download" aria-hidden="true"></i>
-    	<%= link_to 'Download log file', reservations_download_log_file_path, :target => '_blank', :class => "download-log-file-text"%>	
-    </div>
+	<%= link_to reservations_download_log_file_path, :class => "download-link" do %>
+		<i class="fa fa-download" aria-hidden="true"></i> Download log file
+	<% end %>
     <% @testlines.each do |testline| %>
     	<%= content_tag :ul, "", :id => "tl-#{testline.id}", :class => "list-group", :style => "display: #{reserve_active(testline.id)}" do %>
 	    	<% if testline.reservations.count == 0 %>
