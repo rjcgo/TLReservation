@@ -9,7 +9,6 @@
 /* ******************** Reservations ******************** */
 
 #reservations {
-#add-testline {
     background: #dadada;
     min-height: 100%;
     transition: 0.5s;
@@ -155,7 +154,7 @@
 
 .download-log-file-text:hover{
 	text-decoration: underline;
-=======
+}
 /* ******************** Add Testline ******************** */
 
 .side-panel,
