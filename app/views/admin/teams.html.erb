@@ -32,7 +32,7 @@
 				        <%= form_for(team) do |f| %>
 			            <div class="modal-header">
 			              <%= content_tag :span, 'x', :class => "modal-close", :onclick => "deactivate_modal(#{team.id})" %>
-			              <h3>Rename team</h3>
+			              <h3 class="modal-title">Rename team</h3>
 			            </div>
 			            <div class="modal-body">
 			              <label for="team-name">Team Name:</label>
@@ -54,7 +54,7 @@
 			<%= form_for(@team, :html => {:class => "reserve"}) do |f| %>
 		    <div class="modal-header">
 			    <span class="modal-close" onclick="deactivate_modal(0)">&times;</span>
-			    <h3>Add new team</h3>
+			    <h3 class="modal-title">Add new team</h3>
 		    </div>
 		    <div class="modal-body">
 	        <label for="team-name">Team Name:</label>

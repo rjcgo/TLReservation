@@ -54,10 +54,10 @@ module ApplicationHelper
 			end
 			tag += content_tag(:i, "", :class => "fa fa-server testline-icon text-white")
 			tag + content_tag(:div, "", :class => "card-header-overlay") do
-				content_tag(:h3, testline.name) +
-				content_tag(:a, 'Show Diagram', :href => "javascript:void(0)", :class => 'show-diagram show-img-modal', :onclick => "activate_modal(\'img-#{testline.id}\')") +
+				content_tag(:h3, testline.name, :class => 'card-title') +
+				content_tag(:a, 'Show Diagram', :href => "javascript:void(0)", :class => 'card-header-link show-img-modal', :onclick => "activate_modal(\'img-#{testline.id}\')") +
 				tag(:br) +
-				content_tag(:a, 'Show Description', :href => "javascript:void(0)", :class => 'show-description show-description-modal', :onclick => "activate_modal(\'desc-#{testline.id}\')")
+				content_tag(:a, 'Show Description', :href => "javascript:void(0)", :class => 'card-header-link show-description-modal', :onclick => "activate_modal(\'desc-#{testline.id}\')")
 			end
 		end
 	end

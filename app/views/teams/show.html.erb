@@ -1,22 +1,23 @@
-<header class="wrapper">
-	<%= content_tag :h1, @team.name %>
-    <div class="dropdown team-dropdown">
-		<input type="checkbox" id="dropbtn">
-		<label for="dropbtn" class="dropbtn team-dropbtn">
-			<i class="fa fa-th fa-midnightblue"></i>
-			Teams
-		</label>
-        <div class="dropdown-triangle team-dropdown-triangle"></div>
-        <div class="dropdown-content team-dropdown-content">
-            <div class="outer-border-hidden">
-                <ul class="pokeballs-grid pokeballs-grid-sm">
-                	<%= drop_down_teams pokelist %>
-                </ul>
-            </div>
-        </div>
-    </div>
-</header>
+
 <main class="wrapper">
+	<header class="team-header">
+		<%= content_tag :h1, @team.name %>
+		<div class="dropdown team-dropdown">
+			<input type="checkbox" id="dropbtn">
+			<label for="dropbtn" class="dropbtn team-dropbtn">
+				<i class="fa fa-th fa-midnightblue"></i>
+				Teams
+			</label>
+			<div class="dropdown-triangle team-dropdown-triangle"></div>
+			<div class="dropdown-content team-dropdown-content">
+				<div class="outer-border-hidden">
+					<ul class="pokeballs-grid pokeballs-grid-sm">
+						<%= drop_down_teams pokelist %>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header>
 	<% if @mytestlines.count == 0 %>
 		<div class="notice-wrapper">
 			<h2>There are no testlines available for this team.	</h2>

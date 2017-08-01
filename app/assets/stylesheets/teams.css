@@ -27,23 +27,23 @@
 
 /* ******************** header ******************** */
 
-header {
-    margin-top: 20px !important;
+.team-header {
+    padding-top: 20px;
     line-height: 2em;
 }
 
-header h1 {
+.team-header h1 {
     float: left;
     color: #2c3e50;
     text-transform: uppercase;
-    margin-left: 10px;
+    margin: 0;
 }
 
-header .team-dropdown {
+.team-header .team-dropdown {
     float: right;
 }
 
-header::after {
+.team-header::after {
     content: "";
     display: block;
     clear: both;
@@ -89,7 +89,6 @@ header::after {
     text-transform: uppercase;
     font-weight: 300;
     cursor: pointer;
-    margin-right: 10px;
 }
 
 .dropdown-triangle {

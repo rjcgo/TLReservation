@@ -17,7 +17,6 @@
 #associations-admin h2,
 #add-testline h2 {
     display: inline-block;
-    margin: 15px 0;
     color: #34495e;
 }
 
@@ -32,7 +31,7 @@
     font-family: Raleway;
     font-size: 1.5em;
     padding: 2px 6px;
-    margin: 15px 0;
+    margin: 20px 0;
     margin-right: 10px;
     color: #34495e;
     box-sizing: border-box;
@@ -142,10 +141,12 @@
     text-transform: uppercase;
     border-bottom: 1px solid #000;
     padding-bottom: 6px;
-    margin: 20px;
 }
 
 #admin-panel ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

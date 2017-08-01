@@ -9,7 +9,6 @@
 #reservations h2,
 #add-testline h2 {
     display: inline-block;
-    margin: 15px 0;
     color: #34495e;
 }
 
@@ -125,7 +124,7 @@
     overflow: hidden;
     white-space: nowrap;
     font-size: 1.5em;
-    margin: 15px 0;
+    margin: 20px 0;
     margin-right: 10px;
     color: #34495e;
     text-decoration: none;

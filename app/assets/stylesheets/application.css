@@ -27,19 +27,6 @@ body {
     margin: 0;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-h1,
-h2,
-h3,
-h4 {
-    margin: 0;
-}
-
 .wrapper {
     width: 96%;
     max-width: 1400px;
@@ -128,7 +115,7 @@ main {
     text-transform: uppercase;
 }
 
-.badge.badge-pill{
+.badge.badge-pill {
     border-radius: 10rem;
     padding-left: 0.6em;
     padding-right: 0.6em;
@@ -227,6 +214,7 @@ main {
 }
 
 .navbar-brand h1 {
+    margin: 0;
     display: inline-block;
     width: 110px;
     font-size: 1.2em;
@@ -247,7 +235,14 @@ main {
 }
 
 .navbar-nav h2 {
+    margin: 0;
     display: none;
+}
+
+.navbar-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 .navbar-nav li {
@@ -342,6 +337,9 @@ main {
 }
 
 .sidenav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
     position: relative;
     background: #333645;
     height: 100%;
@@ -421,10 +419,12 @@ main {
 }
 
 .pokeballs-grid {
+    list-style-type: none;
+    padding: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: -2px;
+    margin: -2px !important;
 }
 
 .pokeballs-grid li {
@@ -527,12 +527,11 @@ main {
     color: #fff;
 }
 
-.card-header .card-header-overlay h3 {
-    margin-bottom: 20px;
+.card-header .card-header-overlay .card-title {
+    margin-top: 0;
 }
 
-.card-header .card-header-overlay .show-diagram,
-.card-header .card-header-overlay .show-description {
+.card-header .card-header-overlay .card-header-link {
     color: #eee;
     font-size: 14px;
     line-height: 1.6em;
@@ -547,6 +546,12 @@ main {
     flex: 1 1 auto;
     background: #f9f9f9;
     padding: 12px;
+}
+
+.card-body ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 .card-body li {
@@ -630,6 +635,9 @@ main {
 
 .list-group {
     position: relative;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 
@@ -652,6 +660,7 @@ main {
     color: #111;
     font-size: 1.2em;
     line-height: 1.6em;
+    margin: 0;
 }
 
 .list-item .subtitle {
@@ -944,7 +953,7 @@ main {
 
 .modal-header .modal-title {
     text-align: left;
-    margin-left: 6px;
+    margin: 0 6px;
     font-size: 1.6em;
 }
 
@@ -1079,7 +1088,7 @@ input[type="checkbox"]:checked+label::before {
     .pokeballs-grid li {
         flex: 1 0 48%;
         border-right: 1px solid #aaa;
-        border-left: 1px solid #aaa;
+        /* border-left: 1px solid #aaa; */
     }
     .card {
         flex: 0 1 80%;
@@ -1250,11 +1259,10 @@ input[type="checkbox"]:checked+label::before {
         position: relative;
         margin: 20px 5px;
     }
-    .card-header .card-header-overlay h3 {
+    .card-header .card-header-overlay .card-title {
         font-size: 1.4em;
     }
-    .card-header .card-header-overlay .show-diagram,
-    .card-header .card-header-overlay .show-description {
+    .card-header .card-header-overlay .card-header-link {
         font-size: 1em;
     }
     .modal-content {
@@ -1280,4 +1288,8 @@ input[type="checkbox"]:checked+label::before {
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0px 1px 10px #878888;
+}
+
+.notice-wrapper h4{
+    margin: 0;
 }
