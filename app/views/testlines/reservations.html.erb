@@ -6,15 +6,17 @@
 <main class="wrapper" id="sidenav-container">
   <%= testline_sidenav %>
   <section id="reservations">
-    <button type="button" class="sidenav-toggler" onclick="toggleSideNav()">
-        <i class="fa fa-caret-left show-left"></i> 
-        <i class="fa fa-navicon"></i> 
-        <i class="fa fa-caret-right show-right"></i>
-    </button>
-    <h2>Reservations</h2>
-	<%= link_to reservations_download_log_file_path, :class => "download-link", target: :_blank do %>
-		<i class="fa fa-download" aria-hidden="true"></i> Download log file
-	<% end %>
+	<header>
+		<button type="button" class="sidenav-toggler" onclick="toggleSideNav()">
+			<i class="fa fa-caret-left show-left"></i> 
+			<i class="fa fa-navicon"></i> 
+			<i class="fa fa-caret-right show-right"></i>
+		</button>
+		<h2>Reservations</h2>
+		<%= link_to reservations_download_log_file_path, :class => "download-link", target: :_blank do %>
+			<i class="fa fa-download" aria-hidden="true"></i> Download log file
+		<% end %>
+	</header>
 	<% if @testlines.count == 0  %>
 		<%= no_testline_notice %>
 	<% else %>

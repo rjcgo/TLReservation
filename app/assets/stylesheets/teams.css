@@ -9,11 +9,11 @@
     border-top: 1px solid #34495e;
 }
 
-#teams h2,
-#available h2,
-#in-use h2,
-#maintenance h2,
-#no-use h2 {
+#teams>h2,
+#available>h2,
+#in-use>h2,
+#maintenance>h2,
+#no-use>h2 {
     position: relative;
     top: -15px;
     width: 200px;
@@ -149,7 +149,7 @@
     }
 }
 
-.notice-wrapper{
+.notice-wrapper {
     margin: 20px 0px;
     background-color: #cee5ce;
     padding: 10px;
