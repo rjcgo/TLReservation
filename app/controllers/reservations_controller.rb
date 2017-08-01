@@ -10,10 +10,12 @@ class ReservationsController < ApplicationController
         if @reservation == @testline.reservations.first
             @reservation.start_time = DateTime.now
             @reservation.save
-            #logger = Logger.new("#{$ROOT_PATH}/log/errors.log", 'daily')  
-            logger = Logger.new('public/reservations.log', 'daily')
-            logger.level = Logger::INFO
+            logger = Logger.new('public/reservations.log', 'weekly')
             logger.datetime_format = '%Y-%m-%d %H:%M:%S'
+            logger.level = Logger::INFO
+            logger.formatter = proc do |severity, datetime, progname, msg|
+              "#{datetime}: #{msg}\n"
+            end
 
             logger.info(@testline.name + " used by " + @reservation.email + " of team " + @reservation.team_name)
             logger.close()
@@ -24,9 +26,12 @@ class ReservationsController < ApplicationController
         @testline = Testline.find(params[:testline_id]) # The testline reserved
         @reservation = @testline.reservations.find(params[:id]) # The reservation to be deleted
         
-        logger = Logger.new('public/reservations.log', 'daily')
-        logger.level = Logger::INFO
+        logger = Logger.new('public/reservations.log', 'weekly')
         logger.datetime_format = '%Y-%m-%d %H:%M:%S'
+        logger.level = Logger::INFO
+        logger.formatter = proc do |severity, datetime, progname, msg|
+          "#{datetime}: #{msg}\n"
+        end
 
         if @reservation == @testline.reservations.first
             logger.info(@testline.name + " released by " + @reservation.email + " of team " + @reservation.team_name)
