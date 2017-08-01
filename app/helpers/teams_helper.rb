@@ -90,4 +90,10 @@ module TeamsHelper
 			return text.html_safe
 		end
 	end
+
+	def teams_notice
+		content_tag :div, '', :class => "notice-wrapper" do
+    		content_tag :h4, "There are no teams yet."
+	    end
+	end 
 end

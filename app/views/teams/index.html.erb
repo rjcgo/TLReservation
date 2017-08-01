@@ -1,12 +1,16 @@
 <% if user_signed_in?%>
   <main class="wrapper">
-    <section id="teams">
-      <h2>Select Your Team</h2>
-      <div class="outer-border-hidden">
-        <ul class="pokeballs-grid pokeballs-grid-lg">
-          <%= drop_down_teams pokelist_lg %>
-        </ul>
-      </div>
-    </section>
+    <% if @teams.count != 0 %>
+      <section id="teams">
+        <h2>Select Your Team</h2>
+        <div class="outer-border-hidden">
+          <ul class="pokeballs-grid pokeballs-grid-lg">
+            <%= drop_down_teams pokelist_lg %>
+          </ul>
+        </div>
+      </section>
+    <% else %> 
+      <%= teams_notice %>
+    <% end %>
   </main>
 <% end %>

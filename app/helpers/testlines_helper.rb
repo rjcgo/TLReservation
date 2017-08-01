@@ -38,7 +38,13 @@ module TestlinesHelper
 
     def reserve_notice
     	content_tag :div, '', :class => "notice-wrapper" do
-    		content_tag :h4, "This testline is currently not in use."
+    		content_tag :h4, "This test line is currently not in use."
+	    end
+	end
+
+	def no_testline_notice
+		content_tag :div, '', :class => "notice-wrapper" do
+    		content_tag :h4, "There are no test lines yet."
 	    end
 	end
 end

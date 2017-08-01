@@ -49,7 +49,8 @@ module AdminHelper
     	tag2 = ""
     	tag1 = content_tag :div, '', :class => "notice-wrapper" do
 	    	if arr.empty? && !notice.blank?
-	    		tag2 = content_tag :h4, "All #{cont} have been removed."
+	    		#tag2 = content_tag :h4, "All #{cont} have been removed."
+	    		tag2 = content_tag :h4, notice;
 	    	elsif !notice.blank?
 	    		tag2 = content_tag :h4, notice
 	    	elsif arr.empty?
