@@ -29,6 +29,7 @@ class ReservationsController < ApplicationController
         logger.datetime_format = '%Y-%m-%d %H:%M:%S'
 
         if @reservation == @testline.reservations.first
+            logger.info(@testline.name + " released by " + @reservation.email + " of team " + @reservation.team_name)
             @reservation.destroy # Delete reservation
             @nextreservation = @testline.reservations.first # The next reservation
             if !@nextreservation.blank?

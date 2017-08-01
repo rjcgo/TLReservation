@@ -8,7 +8,7 @@ module TestlinesHelper
 					@testlines.each do |testline|
 						tag += content_tag(:li, "") do
 							content_tag(:a, "", :href => "javascript:void(0)", :class => "sidenav-links #{isActive[testline]}", :onclick => "openReservation(event, \'tl-#{testline.id}\')") do
-								content_tag(:i, "", :class => "fa fa-server") + " " + testline.name + " " + content_tag(:span, "3", :class => "badge badge-pill bg-yellow", :style => "float: right;")
+								content_tag(:i, "", :class => "fa fa-server") + " " + testline.name + " " + content_tag(:span, testline.reservations.count, :class => "badge badge-pill bg-yellow", :style => "float: right;")
 							end
 						end
 					end
@@ -38,7 +38,11 @@ module TestlinesHelper
 
     def reserve_notice
     	content_tag :div, '', :class => "notice-wrapper" do
-    		content_tag :h4, "This test line is currently not in use."
+    		#if !notice.blank?
+    		#	content_tag :h4, notice
+    		#else
+    			content_tag :h4, "This test line is currently not in use."
+    		#end
 	    end
 	end
 
