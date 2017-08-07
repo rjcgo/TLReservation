@@ -22,6 +22,7 @@
 
 #teams-admin .add-btn,
 #testlines-admin .add-btn {
+    text-decoration: none;
     float: right;
     width: 32px;
     overflow: hidden;

@@ -1265,16 +1265,13 @@ input[type="checkbox"]:checked+label::before {
     .card-header .card-header-overlay .card-header-link {
         font-size: 1em;
     }
-    .modal-content {
-        max-width: 696px;
-    }
     .list-group::after {
         content: "";
         display: block;
         clear: both;
     }
     .modal-content {
-        max-width: 696px;
+        max-width: 1000px;
     }
     .modal-confirm {
         max-width: 496px;

@@ -50,17 +50,21 @@ module TeamsHelper
 					end
 					tag += content_tag(:div, "", :class => "modal-body") do
 						content_tag(:label, "Title:") + 
-						f.text_field(:name, :placeholder => "Title", :tabindex => 1, :required => true, :class => "form-control") +
+						f.text_field(:name, :placeholder => "Test title", :tabindex => 1, :required => true, :class => "form-control") +
 						content_tag(:label, "Team Name:") + 
 						f.text_field(:team_name, :value => @team.name, :tabindex => 2, :readonly => true, :required => true, :class => "form-control") +
 						content_tag(:label, "Email:") + 
 						f.email_field(:email, :value => current_user.email, :tabindex => 3, :readonly => true, :required => true, :class => "form-control") +
 						content_tag(:label, "Description:") + 
-						f.text_area(:description, :placeholder => "Title", :tabindex => 4, :required => true, :class => "form-control")
+						f.text_area(:description, :placeholder => "Test description", :tabindex => 4, :required => true, :class => "form-control")
 					end
 
 					tag + content_tag(:div, "", :class => "modal-footer") do
-						content_tag(:button, "Reserve now!", :class => "modal-btn", :type => "submit")
+						if testline.reservations.size == 1
+							content_tag(:button, "Use now!", :class => "modal-btn", :type => "submit")
+						else
+							content_tag(:button, "Reserve now!", :class => "modal-btn", :type => "submit")
+						end
 					end
 				end
 			end
@@ -77,8 +81,13 @@ module TeamsHelper
 	def card_footer(testline)
 		content_tag(:div, "", :class => "card-footer") do
 			if user_signed_in?
-				content_tag(:a, "Reserve now!", :href => "javascript:void(0)", 
-					:class => "card-link", :onclick => "activate_modal(#{testline.id})")
+				if testline.reservations.size == 1
+					content_tag(:a, "Use now!", :href => "javascript:void(0)", 
+						:class => "card-link", :onclick => "activate_modal(#{testline.id})")
+				else
+					content_tag(:a, "Reserve now!", :href => "javascript:void(0)", 
+						:class => "card-link", :onclick => "activate_modal(#{testline.id})")
+				end
 			end
 		end
 	end
