@@ -29,9 +29,7 @@
 	        <div class="card-deck">
 	        	<% @mytestlines.each do |testline| %>
 					<% if ( testline.reservations.count ==0) && !testline.isMaintenance? %>
-		        		<%= reserve_modal testline %>
-						<%= img_modal testline %>
-						<%= render partial: 'description', locals: {:testline => testline} %>
+						<%= reserve_modal testline %>
 			            <div class="card">
 			                <div class="card-content">
 	                        	<%= card_header testline %>
@@ -50,8 +48,6 @@
 	        	<% @mytestlines.each do |testline| %>
 					<% if ( testline.reservations.count !=0) && !testline.isMaintenance? %>
 		        		<%= reserve_modal testline %> 
-						<%= img_modal testline %>
-			            <%= render partial: 'description', locals: {:testline => testline} %>
 			            <div class="card">
 			                <div class="card-content">
 	                        	<%= card_header testline %>
@@ -70,8 +66,6 @@
 	        <div class="card-deck">
 	        	<% @mytestlines.each do |testline| %>
 					<% if testline.isMaintenance? %>
-						<%= img_modal testline %>
-			            <%= render partial: 'description', locals: {:testline => testline} %>
 			            <div class="card">
 			                <div class="card-content">
 	                        	<%= card_header testline %>
@@ -86,3 +80,5 @@
 	    </section>
 	<% end %>
 </main>
+
+<%= testlines_info @mytestlines %>

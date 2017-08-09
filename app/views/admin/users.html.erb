@@ -22,41 +22,28 @@
 		                        <i class="fa fa-cogs"></i> Administrator
 		                    </small>
 		                <% else %>
-		                	<button class="make-admin-btn show-confirm-modal" onclick="activate_modal('confirm-admin-modal')"><i class="fa fa-lock"></i> Make Admin</button>
-
-		                	<div class="modal" id="confirm-admin-modal">
-							    <div class="modal-confirm">
-							        <div class="modal-header">
-							            <button type="button" class="modal-close" onclick="deactivate_modal('confirm-admin-modal')">&times;</button>
-							            <h3 class="modal-title">Make Admin</h3>
-							        </div>
-							        <div class="modal-body">
-							            <p class="modal-text">Are you sure you want to make this user an admin?</p>
-							        </div>
-							        <div class="modal-footer">
-							         	<%= button_to "Make Admin", admin_makeAdmin_path(user), method: :post ,:class => "modal-btn bg-blue"%>
-							            <button type="button" class="modal-btn" onclick="deactivate_modal('confirm-admin-modal')">Cancel</button>
-							        </div>
-							    </div>
-							</div>
+		                	<%= user_btn user %>
 		                <% end %>
 		            </li>
 		        <% end %>
 	        </ul>
 	    </section>
 	</main>
+	<div class="modal" id="remove_access">
+	    <div class="modal-confirm">
+	    	<div class="modal-header">
+		        <button type="button" class="modal-close" onclick="cancel_modal()">&times;</button>
+		        <h3 class="modal-title"><i class="fa fa-trash"></i> Make Admin</h3>
+		    </div>
+		    <div class="modal-body">
+		        <p class="modal-text">Are you sure you want to make this user an admin?</p>
+		    </div>
+		    <div class="modal-footer">
+		        <button type="button" class="modal-btn bg-blue" onclick="confirm_modal()">Make Admin</button>
+		        <button type="button" class="modal-btn" onclick="cancel_modal()">Cancel</button>
+		    </div>
+		</div>
+	</div>
 <% else %>
 	<%= render 'error' %>
 <% end %>
-
-	<script>
-  function activate_modal(id) {
-    var s = document.getElementById(id);
-      s.style.display = "block";
-  }
-
-  function deactivate_modal(id) {
-    var s = document.getElementById(id);
-      s.style.display = "none";
-  }
-</script>

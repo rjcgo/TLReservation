@@ -30,11 +30,11 @@
               </div>
             </div>
           </div>
-          <%= content_tag :div, "", :class => "modal", :id => testline.id do %>
+          <%= content_tag :div, :class => "modal", :id => testline.id do %>
             <div class="modal-content">
               <div class="modal-header">
                 <h4 class="modal-title">Pick a Team</h4>
-                <%= content_tag :button, "", :class => "modal-close", :onclick => "deactivate_modal(#{testline.id})", :type => "button" do %>&times;<% end %>
+                <%= content_tag :button, '&times;'.html_safe, :class => "modal-close", :onclick => "deactivate_modal(#{testline.id})", :type => "button" %>
               </div>
               <div class="modal-body" >
 								<div class="outer-border-hidden">
@@ -44,7 +44,7 @@
 								</div>
                 <div>
                	  <% if t.blank? %>
-                    <p class="card-text">All teams are able to use this testline.</p>
+                    <p class="card-text">All teams are already able to use this testline.</p>
                   <% end %>
                 </div>
               </div>
