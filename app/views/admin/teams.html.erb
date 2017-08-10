@@ -3,12 +3,7 @@
     <%= render partial: 'sidenav', :locals => {:sect => "teams"} %>
     <section id="teams-admin">
       <header>
-        <button type="button" class="sidenav-toggler" onclick="toggleSideNav()">
-          <i class="fa fa-caret-left show-left"></i> 
-          <i class="fa fa-navicon"></i> 
-          <i class="fa fa-caret-right show-right"></i>
-        </button>
-        <h2>Teams <i class="fa fa-users"></i></h2>
+	    <%= render partial: 'header', :locals => header("Teams") %>
         <button type="button" class="add-btn show-add-modal" onclick="activate_modal(0)">
           <i class="fa fa-plus"></i> New Team
         </button>
@@ -50,21 +45,7 @@
 			<% end %>
 		</div>
 	</div>
-	<div class="modal" id="remove_access">
-	    <div class="modal-confirm">
-	    	<div class="modal-header">
-		        <button type="button" class="modal-close" onclick="cancel_modal()">&times;</button>
-		        <h3 class="modal-title"><i class="fa fa-trash"></i> Delete</h3>
-		    </div>
-		    <div class="modal-body">
-		        <p class="modal-text">Are you sure you want to delete this team?</p>
-		    </div>
-		    <div class="modal-footer">
-		        <button type="button" class="modal-btn bg-red" onclick="confirm_modal()">Delete</button>
-		        <button type="button" class="modal-btn" onclick="cancel_modal()">Cancel</button>
-		    </div>
-		</div>
-	</div>
+	<%= render partial: 'confirm', locals: modal_content("teams") %>
 <% else %>
 	<%= render 'error' %>
 <% end %>

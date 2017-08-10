@@ -242,7 +242,7 @@ function deactivate_modal(id) {
 function ask_modal(id) {
   if (id == delete_id)
     return true;
-  document.getElementById("remove_access").style.display = "block";
+  document.getElementById("confirm-modal").style.display = "block";
   temp_id = id;
   return false;
 }
@@ -254,7 +254,7 @@ function confirm_modal() {
 
 function cancel_modal() {
   delete_id = temp_id = 0;
-  document.getElementById("remove_access").style.display = "none";
+  document.getElementById("confirm-modal").style.display = "none";
 }
 
 document.onclick = function(event) {

@@ -1,18 +1,8 @@
-<script type="text/javascript">
-	var t = new Object();
-	var pt =  Math.floor(new Date().getTime() / 1000);
-</script>
-
 <main class="wrapper" id="sidenav-container">
   <%= testline_sidenav %>
-  <section id="reservations">
+  <section id="reservations">  
 	<header>
-		<button type="button" class="sidenav-toggler" onclick="toggleSideNav()">
-			<i class="fa fa-caret-left show-left"></i> 
-			<i class="fa fa-navicon"></i> 
-			<i class="fa fa-caret-right show-right"></i>
-		</button>
-		<h2>Reservations</h2>
+		<%= render partial: "header", :locals => header("Reservations") %>
 		<%= link_to reservations_download_log_file_path, :class => "download-link", target: :_blank do %>
 			<i class="fa fa-download" aria-hidden="true"></i> Download log file
 		<% end %>
@@ -21,7 +11,7 @@
 		<%= no_testline_notice %>
 	<% else %>
 	    <% @testlines.each do |testline| %>
-	    	<%= content_tag :ul, "", :id => "tl-#{testline.id}", :class => "list-group", :style => "display: #{reserve_active(testline.id)}" do %>
+	    	<%= content_tag :ul, "", :id => "tl-#{testline.id}", :class => "list-group", :style => reserve_active(testline.id) do %>
 		    	<% if testline.reservations.count == 0 %>
 		    		<%= reserve_notice %>
 		    	<% else %>
@@ -40,12 +30,10 @@
 			                <div class="list-item-footer">
 			                	<%= content_tag :small, "Reserved by #{reserve.email}", :class => "user" %>
 			                    <% if currentReserve == 0 %>
-									<script>
-										t["tm-<%= testline.id%>"] = <%= (Time.now.minus_with_coercion(reserve.start_time)).to_i %>;
-									</script>
-									<%= content_tag :span, "", :class => "time-used", :id => "tm-#{testline.id}" do %>
+									<span class="time-used">
 										<i class="fa fa-clock-o"></i>
-									<% end %>
+										<%= content_tag :a, "", :id => "tm-#{testline.id}" %>
+									</span>
 								<% end %>
 			                </div>
 			                <% if current_user.isAdmin? || (current_user.email == reserve.email )%>
@@ -64,25 +52,13 @@
 	<% end %>
   </section>
 </main>
-
-<div class="modal" id="remove_access">
-	<div class="modal-confirm">
-		<div class="modal-header">
-			<button type="button" class="modal-close" onclick="cancel_modal()">&times;</button>
-			<h3 class="modal-title"><i class="fa fa-trash"></i> Delete reservation</h3>
-		</div>
-		<div class="modal-body">
-			<p class="modal-text">Releasing a testline might take a while. Click OK to proceed and please wait for the page to load before closing the page.</p>
-			<p class="modal-text">Canceling a reservation however shall be quick.</p>
-		</div>
-		<div class="modal-footer">
-			<button type="button" class="modal-btn bg-red" onclick="confirm_modal()">OK</button>
-			<button type="button" class="modal-btn" onclick="cancel_modal()">Cancel</button>
-		</div>
-	</div>
-</div>
-
+<%= render partial: "confirm", :locals => modal_content("reservations") %>
 <script type="text/javascript">
+	var t = new Object();
+	var pt =  Math.floor(new Date().getTime() / 1000);
+
+	<%= timer_script @testlines %>
+
 	var timers = Object.keys(t);
 	startTime();
 </script>
