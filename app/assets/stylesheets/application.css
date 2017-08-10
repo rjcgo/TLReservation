@@ -106,6 +106,12 @@ main {
 
 /* ******************** Badge ******************** */
 
+.badge-sidenav {  
+    position: relative;
+    top: -19px;
+    float: right;
+}
+
 .badge {
     display: inline-block;
     padding: .25em .4em;

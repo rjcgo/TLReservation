@@ -82,6 +82,7 @@
 	<% end %>
 </main>
 <%= testlines_info @mytestlines %>
+<%= render partial: "confirm", :locals => modal_content("reservations") %>
 <script type="text/javascript">
 	var t = new Object();
 	var pt =  Math.floor(new Date().getTime() / 1000);

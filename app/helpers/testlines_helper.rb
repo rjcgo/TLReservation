@@ -5,8 +5,7 @@ module TestlinesHelper
 		empty = ""
 		aside_class = "sidenav"
 		div_class = "wrapper"
-		span_class = "badge badge-pill bg-yellow"
-		style = "float: right;"
+		span_class = "badge badge-sidenav badge-pill bg-blue"
 		i_class = "fa fa-server"
 		href = "javascript:void(0)"
 
@@ -18,7 +17,7 @@ module TestlinesHelper
 							content_tag(:a, :href => href, :class => "sidenav-links #{isActive[testline]}", :onclick => "openReservation(event, \'tl-#{testline.id}\')") do
 								content_tag(:i, empty, :class => i_class) +
 								" #{testline.name} " + 
-								content_tag(:span, testline.reservations.count, :class => span_class, :style => span_class)
+								content_tag(:span, testline.reservations.count, :class => span_class)
 							end
 						end
 					end
