@@ -1,26 +1,18 @@
-  <% if @testline.errors.any? %>
-
-    <div class="wrapper-greeting">
-      <div class="alert alert-danger alert-dismissible" role="alert" id="notice">
-        <h4 class="alert-heading">
-          <b><%= pluralize(@testline.errors.count, "error") %> prohibited this testline from being saved:</b>
-        </h4>
-          <ul>
-            <% @testline.errors.full_messages.each do |message| %>
-              <li>&emsp;<%= message %></li>
-            <% end %>
-          </ul>
-      </div>
-    </div>
-
-  <% end %>
-
-
+<% if @testline.errors.any? %>
+  <div class="notice-wrapper">
+    <h4 class="alert-heading">
+      <b><%= pluralize(@testline.errors.count, "error") %> prohibited this testline from being saved:</b>
+    </h4>
+    <ul>
+      <% @testline.errors.full_messages.each do |message| %>
+        <li>&emsp;<%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
         
 <%= form_for((@testline), :html => {:class => "reserve"}) do |f| %>
-
     <div class="side-panel">
-
         <label for="tl-name">Testline Name:</label>
         <%= f.text_field :name, :placeholder => "Name", :required => "required", :id => "tl-name", :class => "form-control" %>
         <label for="ip-address">IP Address:</label>
@@ -38,7 +30,6 @@
 
         <%= f.check_box :isMaintenance, :id => "maintenance" %>
         <label for="maintenance">Under maintenance</label>
-
     </div>
 
     <div class="description-panel">
@@ -49,8 +40,6 @@
 
     <div class="footer-panel">
         <%= f.submit :class => "add-testline-btn bg-green" %>
-        <!-- <button type="button" class="add-testline-btn bg-green">Save</button> -->
         <a href="/admin/testlines" class="cancel-link">Cancel</a>
     </div>
-
 <% end %>
