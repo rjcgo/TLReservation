@@ -9,8 +9,8 @@
                     <i class="fa fa-caret-right show-right"></i>
                 </button>
                 <h2>Testline <i class="fa fa-users"></i></h2>
-                <%= link_to('<i class="fa fa-plus"></i> New Testline'.html_safe, new_testline_path, :class => "add-btn") %>
 
+                <%= new_testline_link %>
                 <%= admin_notice(@testlines, "testlines", notice) %>
             </header>
 
@@ -27,10 +27,9 @@
             </div>
         </section>
     </main>
-    <% @testlines.each do |testline| %>
-        <%= render partial: 'description', locals: {:testline => testline} %>
-        <%= img_modal testline %>
-    <% end %>
+    
+    <%= testlines_info @testlines %>
+
     <div class="modal" id="remove_access">
         <div class="modal-confirm">
             <div class="modal-header">

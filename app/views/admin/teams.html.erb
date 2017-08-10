@@ -18,33 +18,17 @@
       <div class="outer-border-hidden">
         <ul class="pokeballs-grid pokeballs-grid-lg">
         	<% balls = pokelist_lg %>
-					<% @teams.each do |team| %>
-            <li>
-            	<%= button_to team, method: :delete, :class => "release show-delete-modal" , :type => "button", form: {:onsubmit => "return ask_modal(-#{team.id});"}, :id => "-#{team.id}" do %>
-            		<i class="fa fa-times"></i>
-            	<% end %>
-            	<%= content_tag :span, "", :class => balls[team.id % 20] %>
-            	<%= team.name %>
-              <%= content_tag :a, 'Rename', :href => "javascript:void(0)", :onclick => "activate_modal(#{team.id})", :class => "rename edit-link show-edit-modal" %>
-            </li>
-						<%= content_tag :div, :class => "modal", :id => team.id do -%>
-							<div class="modal-content">
-				        <%= form_for(team) do |f| %>
-			            <div class="modal-header">
-			              <%= content_tag :span, 'x', :class => "modal-close", :onclick => "deactivate_modal(#{team.id})" %>
-			              <h3 class="modal-title">Rename team</h3>
-			            </div>
-			            <div class="modal-body">
-			              <label for="team-name">Team Name:</label>
-			              <%= f.text_field :name, :tabindex => "1", :required => "required" ,:class=>"form-control"%>
-			            </div>
-			            <div class="modal-footer">
-			              <button name="submit" type="submit" id="contact-submit" data-submit="...Sending" class="modal-btn bg-green">Save Changes</button>
-			            </div>
-				        <% end %>
-						  </div>
-						<% end %>
-          <% end %>
+			<% @teams.each do |team| %>
+	            <li>
+	            	<%= button_to team, method: :delete, :class => "release show-delete-modal", :type => "button", form: {:onsubmit => "return ask_modal(-#{team.id});"}, :id => "-#{team.id}" do %>
+	            		<i class="fa fa-times"></i>
+	            	<% end %>
+	            	<%= content_tag :span, "", :class => balls[team.id % 20] %>
+	            	<%= team.name %>
+	            	<%= content_tag :a, 'Rename', :href => "javascript:void(0)", :onclick => "activate_modal(#{team.id})", :class => "rename edit-link show-edit-modal" %>
+	            </li>
+	            <%= render partial: 'modal', :locals => {:team => team} %>		
+        	<% end %>
         </ul>
       </div>
     </section>
@@ -52,19 +36,19 @@
 	<div class="modal" id="0">
 		<div class="modal-content">
 			<%= form_for(@team, :html => {:class => "reserve"}) do |f| %>
-		    <div class="modal-header">
-			    <span class="modal-close" onclick="deactivate_modal(0)">&times;</span>
-			    <h3 class="modal-title">Add new team</h3>
-		    </div>
-		    <div class="modal-body">
-	        <label for="team-name">Team Name:</label>
-	        <%= f.text_field :name, :required => "required", :class=> "form-control" %>
-		    </div>
-		    <div class="modal-footer">
-	        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending" class="modal-btn bg-blue">Add team</button>
-		    </div>
+			    <div class="modal-header">
+				    <span class="modal-close" onclick="deactivate_modal(0)">&times;</span>
+				    <h3 class="modal-title">Add new team</h3>
+			    </div>
+			    <div class="modal-body">
+		        	<label for="team-name">Team Name:</label>
+		        	<%= f.text_field :name, :required => "required", :class=> "form-control" %>
+			    </div>
+			    <div class="modal-footer">
+		        	<button name="submit" type="submit" id="contact-submit" data-submit="...Sending" class="modal-btn bg-blue">Add team</button>
+			    </div>
 			<% end %>
-	  </div>
+		</div>
 	</div>
 	<div class="modal" id="remove_access">
 	    <div class="modal-confirm">
