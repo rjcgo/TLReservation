@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get 'teams' => 'teams#index'
   get 'teams/:id' => 'teams#show'
   
-  post 'teams/:id/edit' => 'teams#edit'
   post 'testlines/:id/edit' => 'testlines#edit'
 
   get 'login' => 'home#login'
