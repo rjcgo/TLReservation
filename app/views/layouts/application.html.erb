@@ -27,12 +27,26 @@
 					<h2>Main Navigation</h2>
 					<% if user_signed_in? %>
 						<ul>
-							<li><a href="/teams/"><i class="fa fa-users"></i> Teams</a></li>
-							<li><a href="/testlines/reservations"><i class="fa fa-calendar-check-o"></i>    Reservations</a></li>
+							<li>
+								<a href="/teams/">
+									<i class="fa fa-users"></i> Teams
+								</a>
+							</li>
+							<li>
+								<a href="/testlines/reservations">
+									<i class="fa fa-calendar-check-o"></i>    Reservations
+								</a>
+							</li>
 							<% if current_user.isAdmin? %>
-								<li><a href="/admin/home"><i class="fa fa-cogs"></i> Administrator</a></li>
+								<li>
+									<a href="/admin/home">
+										<i class="fa fa-cogs"></i> Administrator
+									</a>
+								</li>
 							<% end %>
-							<li><%= link_to '<i class="fa fa-sign-out"></i> Logout'.html_safe, destroy_user_session_path, method: :delete %></li>
+							<li>
+								<%= link_to '<i class="fa fa-sign-out"></i> Logout'.html_safe, destroy_user_session_path, method: :delete %>	
+							</li>
 						</ul>
 					<% else %>
 						<%= form_for("user", :url => user_session_path) do |f| %>

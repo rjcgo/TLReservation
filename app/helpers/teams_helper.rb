@@ -43,15 +43,35 @@ module TeamsHelper
 	end
 
 	def reserve_modal(testline)
-		div_class = ["modal", "modal-content", "modal-header", "modal-body", "modal-footer"]
+		if !(testline.reservations.find_by email: current_user.email).nil?
+			return ""
+		end
+		div_class = [
+			"modal", 
+			"modal-content",
+			"modal-header",
+			"modal-body",
+			"modal-footer"
+		]
 		empty = ""
-		label = ["Title:", "Team Name:", "Email:", "Description:"]
-		placeholder = ["Test title", "Test description"]
+		label = [
+			"Title:",
+			"Team Name:",
+			"Email:",
+			"Description:"
+		]
+		placeholder = [
+			"Test title",
+			"Test description"
+		]
 
 		button_close = '&times;'.html_safe
 		button_message = testline.reservations.empty? ? "Use now!" : "Reserve now!"
 
-		button_class =["modal-close", "modal-btn"]
+		button_class = [
+			"modal-close",
+			"modal-btn"
+		]
 
 		field_class = "form-control"
 
@@ -115,7 +135,11 @@ module TeamsHelper
 
 		content_tag(:div, :class => div_class) do
 			if user_signed_in?
-				content_tag(:a, message, :href => href, :class => a_class, :onclick => onclick)
+				if (testline.reservations.find_by email: current_user.email).nil?
+					content_tag(:a, message, :href => href, :class => a_class, :onclick => onclick)
+				else
+					"You already reserved this testline."
+				end
 			end
 		end
 	end

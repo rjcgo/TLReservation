@@ -1,8 +1,6 @@
 <div class="container reservation-form">
 <%= form_for(@team_testline) do |f| %>
-
   <% if @team_testline.errors.any? %>
-
   <div class="wrapper-greeting">
       <div class="alert alert-danger alert-dismissible" role="alert" id="notice">
           <h4 class="alert-heading">
@@ -15,7 +13,6 @@
           </ul>
       </div>
   </div>
-
   <% end %>
 
   <div class="field">

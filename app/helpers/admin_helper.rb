@@ -70,7 +70,6 @@ module AdminHelper
     end
 
     def admin_notice(arr, option, notice)
-    	tag2 = ""
     	empty = ""
     	div_class = "notice-wrapper"
 

@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def parse_notice(error)
-		error_messages = "Error occurred:"
+		error_messages = "Error:"
 		error.full_messages.each do |message|
 			error_messages += " #{message}."
 		end
