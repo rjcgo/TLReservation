@@ -29,7 +29,7 @@ module TestlinesHelper
 	end
 
 	def reserve_active(id)
-		id == @testlines[0].id ? "block" : "none"
+		id == @testlines[0].id ? "display: block;" : "display: none;"
 	end
 
 	def reserve_header(reserve)

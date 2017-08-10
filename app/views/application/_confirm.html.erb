@@ -1,0 +1,15 @@
+<div class="modal" id="confirm-modal">
+	<div class="modal-confirm">
+		<div class="modal-header">
+			<button type="button" class="modal-close" onclick="cancel_modal()">&times;</button>
+			<h3 class="modal-title"><i class="fa fa-trash"></i> <%= modal_title %></h3>
+		</div>
+		<div class="modal-body">
+			<%= content_tag :p, modal_text, :class => "modal-text" %>
+		</div>
+		<div class="modal-footer">
+			<%= content_tag :button, modal_btn, :type => "button", :class => "modal-btn bg-#{color}", :onclick => "confirm_modal()" %>
+			<button type="button" class="modal-btn" onclick="cancel_modal()">Cancel</button>
+		</div>
+	</div>
+</div>

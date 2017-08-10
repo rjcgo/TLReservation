@@ -3,12 +3,7 @@
     <%= render partial: 'sidenav', :locals => {:sect => "associations"} %>
     <section id="associations-admin">
       <header>
-        <button type="button" class="sidenav-toggler" onclick="toggleSideNav()">
-          <i class="fa fa-caret-left show-left"></i> 
-          <i class="fa fa-navicon"></i> 
-          <i class="fa fa-caret-right show-right"></i>
-        </button>
-        <h2>Associations <i class="fa fa-exchange"></i></h2>
+        <%= render partial: 'header', :locals => header("Associations") %>
         <%= admin_notice(@team_testlines, "associations", notice) %>
       </header>
       <div class="card-deck">
@@ -54,21 +49,7 @@
       </div>
     </section>
   </main>
-	<div class="modal" id="remove_access">
-	    <div class="modal-confirm">
-	      <div class="modal-header">
-	          <button type="button" class="modal-close" onclick="cancel_modal()">&times;</button>
-	          <h3 class="modal-title"><i class="fa fa-trash"></i> Delete</h3>
-	      </div>
-	      <div class="modal-body">
-	        <p class="modal-text">Are you sure you want to remove this team's access from this testline?</p>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="modal-btn bg-red" onclick="confirm_modal()">Delete</button>
-	        <button type="button" class="modal-btn" onclick="cancel_modal()">Cancel</button>
-	      </div>
-	  </div>
-	</div>
+  <%= render partial: 'confirm', locals: modal_content("associations") %>
 <% else %>
   <%= render 'error' %>
 <% end %>

@@ -1,15 +1,9 @@
 <% if user_signed_in? && current_user.isAdmin? %>
 	<main class="wrapper" id="sidenav-container">
 	    <%= render partial: 'sidenav', :locals => {:sect => "users"} %>
-
 	    <section id="users-admin">
 			<header>
-				<button type="button" class="sidenav-toggler" onclick="toggleSideNav()">
-					<i class="fa fa-caret-left show-left"></i> 
-					<i class="fa fa-navicon"></i> 
-					<i class="fa fa-caret-right show-right"></i>
-				</button>
-				<h2>Users <i class="fa fa-user-circle"></i></h2>
+		    	<%= render partial: 'header', :locals => header("Users") %>
 			</header>
 	        <ul class="list-group">
 	        	<% @users.each do |user| %>
@@ -22,28 +16,14 @@
 		                        <i class="fa fa-cogs"></i> Administrator
 		                    </small>
 		                <% else %>
-		                	<%= user_btn user %>
+		                	<%= make_admin_btn user %>
 		                <% end %>
 		            </li>
 		        <% end %>
 	        </ul>
 	    </section>
 	</main>
-	<div class="modal" id="remove_access">
-	    <div class="modal-confirm">
-	    	<div class="modal-header">
-		        <button type="button" class="modal-close" onclick="cancel_modal()">&times;</button>
-		        <h3 class="modal-title"><i class="fa fa-trash"></i> Make Admin</h3>
-		    </div>
-		    <div class="modal-body">
-		        <p class="modal-text">Are you sure you want to make this user an admin?</p>
-		    </div>
-		    <div class="modal-footer">
-		        <button type="button" class="modal-btn bg-blue" onclick="confirm_modal()">Make Admin</button>
-		        <button type="button" class="modal-btn" onclick="cancel_modal()">Cancel</button>
-		    </div>
-		</div>
-	</div>
+	<%= render partial: 'confirm', locals: modal_content("users") %>
 <% else %>
 	<%= render 'error' %>
 <% end %>
