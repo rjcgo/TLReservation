@@ -1,3 +1,8 @@
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
+//= require tinymce
+
 function toggleMainNav() {
     var burgerNav = document.getElementById("burger-nav");
     var navbarNav = document.getElementsByClassName("navbar-nav");

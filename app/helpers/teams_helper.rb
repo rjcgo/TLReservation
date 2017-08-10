@@ -122,7 +122,7 @@ module TeamsHelper
 
 		content_tag(:div, :class => div_class, :id => id) do
 			content_tag(:button, button, :class => button_class, :type => type, :onclick => onclick) +
-			image_tag(src, :class => img_class, :alt => alt, :title => alt)
+			image_tag(src, :class => img_class, :alt => alt, :title => testline.name)
 		end
 	end
 

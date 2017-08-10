@@ -25,3 +25,10 @@
 <% else %>
     <%= render 'error' %>
 <% end %>
+<script type="text/javascript">
+    var t = new Object();
+    var pt =  Math.floor(new Date().getTime() / 1000);
+    <%= timer_script @testlines %>
+    var timers = Object.keys(t);
+    startTime();
+</script>

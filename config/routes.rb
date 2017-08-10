@@ -1,33 +1,36 @@
 Rails.application.routes.draw do
   
-  get 'home/index'
-
-  get 'admin/home'
+  get 'admin' => 'admin#home'
   get 'admin/teams'
   get 'admin/associations'
   get 'admin/testlines'
-  get 'admin/home'
   get 'admin/users'
-  get 'testlines/reservations'
-  get 'testlines/index'
+
+  get 'reservations' => 'testlines#reservations'
   get 'teams' => 'teams#index'
   get 'teams/:id' => 'teams#show'
+  
   post 'teams/:id/edit' => 'teams#edit'
   post 'testlines/:id/edit' => 'testlines#edit'
+
+  get 'login' => 'home#login'
+
+  get 'reservations/download_log_file'
+  root 'home#index'
+  post 'admin/makeAdmin'
+
   resources :team_testlines, except: [:index]
   devise_for :users
   resources :teams, except: [:index]
   resources :testlines, except: [:index] do
     resources :reservations
   end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  get 'reservations/download_log_file'
-  root 'home#index'
-  post 'admin/makeAdmin'
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

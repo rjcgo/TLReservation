@@ -43,10 +43,13 @@ module TestlinesHelper
 	def reserve_init
 		[["primary", "next", "pending", "pending"],
 		["star", "fast-forward", "hourglass-1", "hourglass-1"],
-		[" Current", " Next in Line", " Pending", " Pending"], 0]
+		[" Current", " Next in Line", " Pending", " Pending"]]
 	end
 
-    def reserve_notice
+    def reserve_notice count
+    	if count != 0
+    		return content_tag(:div, "", :class => "vertical-bar")
+    	end
     	content_tag(:div, :class => "notice-wrapper") do
 			content_tag(:h4, "This test line is currently not in use.")
 	    end

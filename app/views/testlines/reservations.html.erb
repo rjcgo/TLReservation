@@ -10,18 +10,15 @@
 	<% if @testlines.count == 0  %>
 		<%= no_testline_notice %>
 	<% else %>
+		<% pos, sym, info = reserve_init %>
 	    <% @testlines.each do |testline| %>
-	    	<%= content_tag :ul, "", :id => "tl-#{testline.id}", :class => "list-group", :style => reserve_active(testline.id) do %>
-		    	<% if testline.reservations.count == 0 %>
-		    		<%= reserve_notice %>
-		    	<% else %>
-					<div class="vertical-bar"></div>
-		    	<% end %>
-				<% pos, sym, info, currentReserve = reserve_init %>
+	    	<%= content_tag :ul, :id => "tl-#{testline.id}", :class => "list-group", :style => reserve_active(testline.id) do %>
+	    		<%= reserve_notice testline.reservations.count %>
+		    	<% currentReserve = 0 %>
 				<% @reservations.each do |reserve| %>
 					<% if testline.id == reserve.testline_id %>
 						<%= tag = content_tag :li, "", :class => "list-item list-item-#{pos[currentReserve]}" do %>
-							<%= content_tag :small, "", :class => "badge badge-#{pos[currentReserve]}" do %>
+							<%= content_tag :small, :class => "badge badge-#{pos[currentReserve]}" do %>
 								<%= content_tag :i, "", :class => "fa fa-#{sym[currentReserve]}" %>
 								<%= info[currentReserve] %>
 							<% end %>
