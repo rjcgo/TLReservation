@@ -46,12 +46,20 @@
 	        <div class="card-deck">
 	        	<% @mytestlines.each do |testline| %>
 					<% if ( testline.reservations.count !=0) && !testline.isMaintenance? %>
-		        		<%= reserve_modal testline %> 
+						<% if (testline.reservations.find_by email: current_user.email).nil? %>
+		        			<%= reserve_modal testline %>
+		        		<% end %> 
+						<%= img_modal testline %>
+			            <%= render partial: 'description', locals: {:testline => testline} %>
 			            <div class="card">
 			                <div class="card-content">
 	                        	<%= card_header testline %>
 		                    	<%= card_body testline %>
-			                   	<%= card_footer testline %>
+		                    	<% if (testline.reservations.find_by email: current_user.email).nil? %>
+			                   		<%= card_footer testline %>
+			                   	<% else %>
+			                   		<div class="card-footer"> You already reserved this testline. </div>
+			                    <% end %>
 			                </div>
 			            </div>
 			        <% end %>
@@ -83,9 +91,7 @@
 <script type="text/javascript">
 	var t = new Object();
 	var pt =  Math.floor(new Date().getTime() / 1000);
-
 	<%= timer_script @mytestlines %>
-
 	var timers = Object.keys(t);
 	startTime();
 </script>
