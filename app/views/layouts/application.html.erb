@@ -23,6 +23,7 @@
 					<i class="fa fa-server icon-lg" id="logo"></i>
 					<h1>Test Line Reservation</h1>
 				</a>
+				<% if request.original_fullpath != "/login" %>
 				<div class="navbar-nav">
 					<h2>Main Navigation</h2>
 					<% if user_signed_in? %>
@@ -62,6 +63,7 @@
 						<% end %>
 					<% end %>
 				</div>
+				<% end %>
 			</div>
 		</nav>
 		<div class="rails-container"> 

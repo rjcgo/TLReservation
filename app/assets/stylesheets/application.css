@@ -108,9 +108,10 @@ main {
 /* ******************** Badge ******************** */
 
 .badge-sidenav {
-    position: relative;
-    top: -21px;
-    float: right;
+    position: absolute;
+    top: 50%;
+    right: 1em;
+    transform: translateY(-50%);
 }
 
 .badge {
@@ -324,6 +325,7 @@ main {
     padding: 1em;
     display: block;
     white-space: nowrap;
+    position: relative;
 }
 
 .sidenav .sidenav-links.active {

@@ -100,6 +100,7 @@
 }
 
 .login-card .login-text h2 {
+    margin: 0;
     position: relative;
     top: -0.75em;
     display: inline-block;
