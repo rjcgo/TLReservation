@@ -3,33 +3,31 @@
         window.location.href = '/';
     </script>
 <% else %>
-    <div class="rails-container">
-        <main>
-            <div class="login-card">
-                <i class="fa fa-5x fa-user-circle login-icon"></i>
-                <div class="login-form">
-                    <div class="login-text">
-                        <h2>Log in</h2>
-                    </div>
-                    <!-- insert alerts here -->
-                    <div class="notice-wrapper bg-red">
-                        <i class="fa fa-exclamation-triangle"></i> Invalid username and password
-                    </div>
-                    <!-- end -->
-                    <!-- login form -->
-                    <%= form_for("user", :url => user_session_path) do |f| %>
-                        <div class="input-group">
-                            <span class="fa fa-user input-addon"></span>
-                            <%= f.email_field :email, :class => "has-error", :placeholder => "Email" %>
-                        </div>
-                        <div class="input-group">
-                            <span class="fa fa-key input-addon"></span>
-                            <%= f.password_field :password, :class => "has-error", :placeholder => "Password" %>
-                        </div>
-                        <%= f.submit 'Sign in', :class => "login-button" %>
-                    <% end %>
+    <main>
+        <div class="login-card">
+            <i class="fa fa-5x fa-user-circle login-icon"></i>
+            <div class="login-form">
+                <div class="login-text">
+                    <h2>Log in</h2>
                 </div>
+                <!-- insert alerts here -->
+                <div class="notice-wrapper bg-red">
+                    <i class="fa fa-exclamation-triangle"></i> Invalid username and password
+                </div>
+                <!-- end -->
+                <!-- login form -->
+                <%= form_for("user", :url => user_session_path) do |f| %>
+                    <div class="input-group">
+                        <span class="fa fa-user input-addon"></span>
+                        <%= f.email_field :email, :class => "has-error", :placeholder => "Email" %>
+                    </div>
+                    <div class="input-group">
+                        <span class="fa fa-key input-addon"></span>
+                        <%= f.password_field :password, :class => "has-error", :placeholder => "Password" %>
+                    </div>
+                    <%= f.submit 'Sign in', :class => "login-button" %>
+                <% end %>
             </div>
-        </main>
-    </div>
+        </div>
+    </main>
 <% end %>
