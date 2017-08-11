@@ -1,2 +1,75 @@
-<p>doi
-</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test Line Reservation</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/stylesheets/application.css">
+    <link rel="stylesheet" href="assets/stylesheets/home.css">
+</head>
+
+<body>
+    <nav id="main-nav">
+        <div class="wrapper">
+            <button type="button" id="burger-nav">
+                <span class="bar1"></span>
+                <span class="bar2"></span>
+                <span class="bar3"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+                <i class="fa fa-server icon-lg" id="logo"></i>
+                <h1>Test Line Reservation</h1>
+            </a>
+            <div class="navbar-nav">
+                <h2>Main Navigation</h2>
+                <form>
+                    <div class="input-group">
+                        <span class="fa fa-user input-addon"></span>
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <div class="input-group">
+                        <span class="fa fa-key input-addon"></span>
+                        <input type="password" placeholder="Password">
+                    </div>
+                    <button type="submit" class="form-submit">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="rails-container">
+        <main>
+            <div class="login-card">
+                <i class="fa fa-5x fa-user-circle login-icon"></i>
+                <div class="login-form">
+                    <div class="login-text">
+                        <h2>Log in</h2>
+                    </div>
+                    <!-- insert alerts here -->
+                    <div class="notice-wrapper bg-red">
+                        <i class="fa fa-exclamation-triangle"></i> Invalid username and password
+                    </div>
+                    <!-- end -->
+                    <!-- login form -->
+                    <form>
+                        <div class="input-group">
+                            <span class="fa fa-user input-addon"></span>
+                            <input type="email" class="has-error" placeholder="Email" autofocus>
+                        </div>
+                        <div class="input-group">
+                            <span class="fa fa-key input-addon"></span>
+                            <input type="password" class="has-error" placeholder="Password">
+                        </div>
+                        <button type="submit" class="login-button">Sign in</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/javascripts/application.js"></script>
+</body>
+
+</html>

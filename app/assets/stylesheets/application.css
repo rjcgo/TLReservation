@@ -19,6 +19,7 @@
     right: 40px;
 }
 
+
 /* ******************** Body ******************** */
 
 html,
@@ -106,7 +107,7 @@ main {
 
 /* ******************** Badge ******************** */
 
-.badge-sidenav {  
+.badge-sidenav {
     position: relative;
     top: -21px;
     float: right;
@@ -270,58 +271,6 @@ main {
 
 .navbar-nav a:hover {
     background: #42A5F5;
-}
-
-
-/* ******************** Navbar Form ******************** */
-
-.navbar-nav input[type="email"],
-.navbar-nav input[type="password"] {
-    display: table-cell;
-    padding: 6px 8px;
-    border-top-right-radius: 0.25em;
-    border-bottom-right-radius: 0.25em;
-    border: 0;
-    font-size: 14px;
-    width: 100%;
-    line-height: 1.6em;
-    box-sizing: border-box;
-}
-
-.navbar-nav .input-group .input-addon {
-    display: table-cell;
-    background: #eee;
-    border: 1px solid #ccc;
-    line-height: 1.4em;
-    padding: 4px 14px;
-    box-sizing: border-box;
-    border-top-left-radius: 0.25em;
-    border-bottom-left-radius: 0.25em;
-    width: 1%;
-}
-
-.navbar-nav .input-group {
-    display: table;
-    width: 100%;
-    margin-top: 8px;
-}
-
-.navbar-nav .form-submit {
-    padding: 6px 14px;
-    background: transparent;
-    font-size: 14px;
-    line-height: 1.6em;
-    border: 1px solid #fff;
-    color: #fff;
-    border-radius: 0.25em;
-    margin-top: 8px;
-}
-
-.navbar-nav .form-submit:hover {
-    background: #fff;
-    color: #34495e;
-    border-color: #34495e;
-    transition: 0.3s;
 }
 
 
@@ -1065,6 +1014,10 @@ label {
     margin-bottom: 15px;
 }
 
+.has-error {
+    border: 1px solid #d38e99 !important;
+}
+
 textarea {
     max-width: 100%;
 }
@@ -1090,6 +1043,55 @@ input[type="checkbox"]+label::before {
 input[type="checkbox"]:checked+label::before {
     font-family: "FontAwesome";
     content: "\f046";
+}
+
+.input-group input[type="email"],
+.input-group input[type="password"] {
+    display: table-cell;
+    padding: 6px 8px;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
+    border: 1px solid #c2c2c2;
+    font-size: 14px;
+    width: 100%;
+    line-height: 1.6em;
+    box-sizing: border-box;
+}
+
+.input-group .input-addon {
+    display: table-cell;
+    background: #eee;
+    border: 1px solid #ccc;
+    line-height: 1.4em;
+    padding: 4px 14px;
+    box-sizing: border-box;
+    border-top-left-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
+    width: 1%;
+}
+
+.input-group {
+    display: table;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.form-submit {
+    padding: 6px 14px;
+    background: transparent;
+    font-size: 14px;
+    line-height: 1.6em;
+    border: 1px solid #fff;
+    color: #fff;
+    border-radius: 0.25em;
+    margin-top: 8px;
+}
+
+.form-submit:hover {
+    background: #fff;
+    color: #34495e;
+    border-color: #34495e;
+    transition: 0.3s;
 }
 
 
@@ -1298,6 +1300,6 @@ input[type="checkbox"]:checked+label::before {
     box-shadow: 0px 1px 10px #878888;
 }
 
-.notice-wrapper h4{
+.notice-wrapper h4 {
     margin: 0;
 }
