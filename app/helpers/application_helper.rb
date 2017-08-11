@@ -105,10 +105,11 @@ module ApplicationHelper
     		"reservations" => "Release"
     	}
 
+
     	modal_btn = page == "reservations" ? "Confirm" : modal_title[page]
     	color = page == "users" ? "blue" : "red"
-
-    	return {:modal_text => modal_text[page], :modal_title => modal_title[page], :color => color, :modal_btn => modal_btn}
+    	icon = page == "users" ? "fa fa-cogs" : "fa fa-trash"
+    	return {:icon => icon, :modal_text => modal_text[page], :modal_title => modal_title[page], :color => color, :modal_btn => modal_btn}
     end
 
     def first_reserve(testline)

@@ -17,7 +17,7 @@
 		    	<% currentReserve = 0 %>
 				<% @reservations.each do |reserve| %>
 					<% if testline.id == reserve.testline_id %>
-						<%= tag = content_tag :li, "", :class => "list-item list-item-#{pos[currentReserve]}" do %>
+						<%= content_tag :li, "", :class => "list-item list-item-#{pos[currentReserve]}" do %>
 							<%= content_tag :small, :class => "badge badge-#{pos[currentReserve]}" do %>
 								<%= content_tag :i, "", :class => "fa fa-#{sym[currentReserve]}" %>
 								<%= info[currentReserve] %>

@@ -70,7 +70,6 @@ module AdminHelper
     end
 
     def admin_notice(arr, option, notice)
-    	empty = ""
     	div_class = "notice-wrapper"
 
     	tag1 = content_tag(:div, :class => div_class) do

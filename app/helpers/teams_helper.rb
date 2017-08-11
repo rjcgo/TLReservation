@@ -139,20 +139,14 @@ module TeamsHelper
 		onclick2 = "if (ask_modal(-#{testline.id})) return; else {event.stopPropagation(); event.preventDefault();};"
 		id = "-#{testline.id}"
 
-		reserve = ""
-		@reservations.each do |r|
-			if r.testline_id == testline.id && r.email == current_user.email
-				reserve = r
-				break
-			end
-		end
+		reserve = testline.reservations.find_by email: current_user.email
 
 		content_tag(:div, :class => div_class) do
 			if user_signed_in?
-				if (testline.reservations.find_by email: current_user.email).nil?
+				if reserve.nil?
 					content_tag(:a, message, :href => href, :class => a_class, :onclick => onclick)
 				else
-					link_to(link, testline, method: :delete, :class => link_class, :type => type, :onclick => onclick2, :id => id)
+					link_to(link, [reserve.testline,reserve], method: :delete, :class => link_class, :type => type, :onclick => onclick2, :id => id)
 				end
 			end
 		end
