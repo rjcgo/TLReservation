@@ -38,8 +38,10 @@ class ReservationsController < ApplicationController
             @reservation.destroy # Delete reservation
             @nextreservation = @testline.reservations.first # The next reservation
             if !@nextreservation.blank?
-                @email = @nextreservation.email # Email of user who made next reservation
-                NotificationMailer.notify_next(@email, @testline).deliver_now
+                Thread.new{
+                    @email = @nextreservation.email # Email of user who made next reservation
+                    NotificationMailer.notify_next(@email, @testline).deliver_now
+                }
                 @nextreservation.start_time = DateTime.now
                 @nextreservation.save
 

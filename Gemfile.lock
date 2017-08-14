@@ -67,6 +67,8 @@ GEM
       net-ldap (>= 0.6.0, <= 0.11)
     erubis (2.7.0)
     execjs (2.7.0)
+    font-awesome-rails (4.7.0.2)
+      railties (>= 3.2, < 5.2)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.6)
@@ -179,6 +181,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   coffee-script-source (~> 1.8.0)
   devise_ldap_authenticatable
+  font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.2.5)
@@ -193,4 +196,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.15.1
+   1.15.3

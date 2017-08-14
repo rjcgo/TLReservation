@@ -1,0 +1,34 @@
+DN: employeeNumber=62081958,ou=Internal,ou=People,o=NSN
+   dn:
+      --->employeeNumber=62081958,ou=Internal,ou=People,o=NSN
+   mail:
+      --->yves.francisco@nokia.com
+   objectclass:
+      --->nsnEDPerson
+      --->inetorgperson
+      --->organizationalPerson
+      --->person
+      --->top
+      --->dspswuser
+      --->posixAccount
+      --->shadowAccount
+   nsnsitecode:
+      --->75080401
+   gidnumber:
+      --->55555
+   uid:
+      --->yfrancis
+   loginshell:
+      --->/bin/bash
+   homedirectory:
+      --->/home/yfrancis
+   nsnprimaryemailaddress:
+      --->yves.francisco@nokia.com
+   gecos:
+      --->Francisco Yves Rupert
+   employeenumber:
+      --->62081958
+   cn:
+      --->Francisco Yves Rupert
+   uidnumber:
+      --->62081958

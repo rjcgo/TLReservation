@@ -4,8 +4,6 @@
 		<title>Test Line Reservation</title>
 		<meta name="viewport" content="width=device-width">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-			crossorigin="anonymous">
 		<%= csrf_meta_tags %>
 
 		<%= stylesheet_link_tag    'application', controller_name, media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -35,7 +33,7 @@
 							</li>
 							<li>
 								<a href="/reservations">
-									<i class="fa fa-calendar-check-o"></i>    Reservations
+									<i class="fa fa-calendar-check-o"></i> Reservations
 								</a>
 							</li>
 							<% if current_user.isAdmin? %>

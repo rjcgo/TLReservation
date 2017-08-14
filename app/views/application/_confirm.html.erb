@@ -10,7 +10,7 @@
 			<%= content_tag :p, modal_text, :class => "modal-text" %>
 		</div>
 		<div class="modal-footer">
-			<%= content_tag :button, modal_btn, :type => "button", :class => "modal-btn bg-#{color}", :onclick => "confirm_modal()" %>
+			<%= content_tag :button, modal_btn, :type => "button", :autofocus => true, :class => "modal-btn bg-#{color}", :onclick => "confirm_modal()" %>
 			<button type="button" class="modal-btn" onclick="cancel_modal()">Cancel</button>
 		</div>
 	</div>
