@@ -94,7 +94,30 @@ function cancel_modal() {
     document.getElementById("confirm-modal").style.display = "none";
 }
 
-document.onclick = function (event) {
-    if (event.target.classList.contains("modal"))
-        event.target.style.display = "none";
-}
+$(document).on('turbolinks:load', function () {
+    $(document).on("click", function () {
+        var shown = $(".show");
+        shown.removeClass("show");
+    });
+
+    $("button").on("click", function(){
+        $(this.data("dismiss"))
+    })
+
+    $(".modal-open").on("click", function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var modal = $($(this).data("target")).addClass("show");
+        modal.find('#submit').attr('href', $(this).data('href'));
+        // var content = $(this).data('content');
+        // if (content == "") {
+        //     content = "<p>No description available</p>";
+        // }
+        // modal.find('.modal-body').append(content);
+        // modal.find('.modal-img').attr('src', $(this).data('diagram'));
+    });
+
+    // $(".modal-dialog").on("click", function (e) {
+    //     e.stopPropagation();
+    // });
+});

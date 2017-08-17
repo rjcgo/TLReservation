@@ -74,4 +74,12 @@ module ApplicationHelper
 		end
 		return props
 	end
+	
+	def reserveText(testline)
+		if testline.reservations.empty?
+			return "Use Now!"
+		else
+			return "Reserve Now!"
+		end
+	end
 end

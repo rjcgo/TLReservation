@@ -8,14 +8,16 @@
             <i class="fa fa-server testline-icon text-white"></i>
             <div class="card-header-overlay">
                 <h3 class="card-title"><%= testline.name %></h3>
-                <a href="#" class="card-header-link" data-diagram="<%= testline.diagram %>"
-                    data-toggle="modal" data-target="#img-modal">Show Diagram</a><br>
-                <a href="#" class="card-header-link" data-description="<%= testline.description %>"
-                    data-toggle="modal" data-target="#desc-modal">Show Description</a>
+                <a href="#" class="card-header-link modal-open" data-diagram="<%= testline.diagram %>"
+                    data-target="#img-modal">Show Diagram</a><br>
+                <a href="#" class="card-header-link modal-open" data-content="<%= testline.description %>"
+                    data-target="#desc-modal">Show Description</a>
             </div>
-            <div class="timer">
-                <i class="fa fa-clock-o"></i> <span id="tm-<%= testline.id %>"></span>
-            </div>
+            <% if !testline.reservations.empty? %>
+                <div class="timer">
+                    <i class="fa fa-clock-o"></i> <span id="tm-<%= testline.id %>"></span>
+                </div>
+            <% end %>
         </div>
         <!-- Card body -->
         <div class="card-body">
@@ -42,17 +44,13 @@
             <% if testline.isMaintenance %>
                 <p class="card-text">This testline is under maintenance.</p>
             <% elsif !(userReservation = didReserveTestline(testline)).nil? %>
-                <%= link_to("Release", "#", method: :delete, class: "card-link text-red", 
-                    data: {href: reservations_path(userReservation), toggle: "modal", target: "#delete-modal"}) %>
-                <a href="#" class="card-link text-red" data-href="<%= testline.description %>"
-                    data-toggle="modal" data-target="#delete-modal">Release</a>
-            <% elsif testline.reservations.empty? %>
-                <a href="#" class="card-link" data-testline="<%= testline.id %>" data-team="<%= @team.id %>"
-                    data-toggle="modal" data-target="#reserve-modal">Use Now!</a>
-            <% elsif !testline.reservations.empty? %>
-                <a href="#" class="card-link" data-testline="<%= testline.id %>" data-team="<%= @team.id %>"
-                    data-toggle="modal" data-target="#reserve-modal">Reserve Now!</a>
+                <a href="javascript:void(0)" class="card-link text-red modal-open" data-target="#confirm-modal"
+                    data-href="<%= url_for([testline, userReservation]) %>"
+                    data-content="<%= userReservation.name %>">Release</a>
             <% else %>
+                <a href="javascript:void(0)" class="card-link modal-open" data-target="#reserve-modal"
+                    data-href="<%= testline_reservations_path(testline.id) %>" 
+                    data-content="<%= testline %>"><%= reserveText(testline) %></a>
             <% end %>
         </div>
     </div>

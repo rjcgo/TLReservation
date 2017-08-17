@@ -50,8 +50,9 @@
 	    </section>
 	<% end %>
 </main>
-<%#= render partial: 'description', locals: {:testline => testline} %>
-<%#= testlines_info @testlines %>
+<%= render partial: "partials/reserve_modal" %>
+<%= render partial: "partials/img_modal" %>
+<%= render partial: "partials/description_modal" %>
 <%= render partial: "partials/confirm_modal", :locals => modal_content("reservations") %>
 <script type="text/javascript">
 	var t = new Object();
