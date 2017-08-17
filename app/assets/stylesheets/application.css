@@ -845,36 +845,23 @@ main {
     display: block;
 }
 
-.modal-content {
-    width: 98%;
-    margin: 0 auto;
-    padding: 14px 20px;
-    background: #fefefe;
-    box-sizing: border-box;
-    border-radius: 0.25em;
+.modal-dialog {
     position: relative;
     top: 10%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 98%;
+    margin: 0 auto;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s
 }
 
-.modal-confirm {
-    width: 98%;
-    margin: 0 auto;
+.modal-content {
     padding: 14px 20px;
     background: #fefefe;
     box-sizing: border-box;
     border-radius: 0.25em;
-    position: relative;
-    top: 10%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s
 }
 
 
@@ -972,6 +959,9 @@ main {
     padding: 6px 16px;
     font-family: Raleway;
     text-decoration: none;
+    text-align: center;
+    box-sizing: border-box;
+    cursor: pointer;
 }
 
 
@@ -1112,8 +1102,7 @@ input[type="checkbox"]:checked+label::before {
     .card-header {
         padding: 20px 40px;
     }
-    .modal-confirm,
-    .modal-content {
+    .modal-dialog {
         width: 80%;
     }
 }
@@ -1130,8 +1119,7 @@ input[type="checkbox"]:checked+label::before {
     .card {
         flex: 1 1 48%;
     }
-    .modal-confirm,
-    .modal-content {
+    .modal-dialog {
         width: 70%;
     }
 }
@@ -1239,7 +1227,7 @@ input[type="checkbox"]:checked+label::before {
     .card-body li:first-child .card-text {
         font-size: 1.2em;
     }
-    .modal-confirm .modal-content {
+    .modal-dialog {
         width: 60%;
     }
 }
@@ -1286,11 +1274,8 @@ input[type="checkbox"]:checked+label::before {
         display: block;
         clear: both;
     }
-    .modal-content {
+    .modal-dialog {
         max-width: 1000px;
-    }
-    .modal-confirm {
-        max-width: 496px;
     }
 }
 
