@@ -1,0 +1,18 @@
+<div id="confirm-modal" class="modal">
+	<div class="modal-confirm">
+		<div class="modal-header">
+			<button type="button" class="modal-close" onclick="cancel_modal()">&times;</button>
+			<h3 class="modal-title">
+				<i class="fa <%= icon %>"></i> <%= modal_title %>
+			</h3>
+		</div>
+		<div class="modal-body">
+			<p class="modal-text"><%= modal_text %></p>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="modal-btn <%= bg_color %>" onclick="confirm_modal()" autofocus>
+				<%= btn_text %></button>
+			<button type="button" class="modal-btn" onclick="cancel_modal()">Cancel</button>
+		</div>
+	</div>
+</div>

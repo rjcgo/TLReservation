@@ -1,0 +1,21 @@
+<aside class="sidenav">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="javascript:void(0)" class="closebtn" onclick="toggleSideNav()">
+                    <i class="fa fa-times"></i></a>
+            </li>
+            <% testlines.each do |testline| %>
+            <li>
+                <a href="javascript:void(0)" class="sidenav-links"
+                     onclick="openReservation(event, 'tl-<%= testline.id %>')">
+                    <i class="fa fa-server"></i> <%= testline.name %>
+                    <span class="badge badge-sidenav badge-pill bg-blue">
+                        <%= testline.reservations.count %>
+                    </span>
+                </a>
+            </li>
+            <% end %>
+        </ul>
+    </div>
+</aside>
