@@ -1,18 +1,14 @@
 <div id="desc-modal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-			<button type="button" class="modal-close" onclick="cancel_modal()">&times;</button>
-            <h3 class="modal-title">Description</h3>
-        </div>
-        <div class="modal-body">
-            <% if testline.description.blank? %>
-                <p class="modal-text">No description available</p>
-            <% else %>
-                <%= testline.description %>
-            <% end %>
-        </div>
-        <div class="modal-footer">
-            <button class="modal-btn" onclick="deactivate_modal(\'desc-#{testline.id}\')">Close</button>
+	<div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">Description</h3>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button class="modal-btn" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>

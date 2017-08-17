@@ -34,18 +34,18 @@ class ReservationsController < ApplicationController
         end
 
         if @reservation == @testline.reservations.first
-            logger.info(@testline.name + " released by " + @reservation.email + " of team " + @reservation.team_name)
+            logger.info(@testline.name + " released by " + @reservation.user.email + " of team " + @reservation.team.name)
             @reservation.destroy # Delete reservation
             @nextreservation = @testline.reservations.first # The next reservation
             if !@nextreservation.blank?
                 Thread.new{
-                    @email = @nextreservation.email # Email of user who made next reservation
+                    @email = @nextreservation.user.email # Email of user who made next reservation
                     NotificationMailer.notify_next(@email, @testline).deliver_now
                 }
                 @nextreservation.start_time = DateTime.now
                 @nextreservation.save
 
-                logger.info(@testline.name + " used by " + @email + " of team " + @nextreservation.team_name)
+                logger.info(@testline.name + " used by " + @email + " of team " + @nextreservation.team.name)
                 logger.close()
             end
         else
