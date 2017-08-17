@@ -65,59 +65,27 @@ function secToTime(time) {
     return hr + ":" + min + ":" + sec;
 }
 
-var delete_id = 0;
-var temp_id = 0;
-
-function activate_modal(id) {
-    document.getElementById(id).style.display = "block";
-}
-
-function deactivate_modal(id) {
-    document.getElementById(id).style.display = "none";
-}
-
-function ask_modal(id) {
-    if (id == delete_id)
-        return true;
-    document.getElementById("confirm-modal").style.display = "block";
-    temp_id = id;
-    return false;
-}
-
-function confirm_modal() {
-    delete_id = temp_id;
-    document.getElementById(delete_id).click();
-}
-
-function cancel_modal() {
-    delete_id = temp_id = 0;
-    document.getElementById("confirm-modal").style.display = "none";
-}
-
 $(document).on('turbolinks:load', function () {
-    $(document).on("click", function () {
-        var shown = $(".show");
-        shown.removeClass("show");
+    $(document).click(function (e) {
+        if ($(e.target).is('.modal')) {
+            $('.modal').hide();
+        }
     });
 
-    $("button").on("click", function(){
-        $(this.data("dismiss"))
+    $("button").on("click", function () {
+        var modal = $("." + $(this).data("dismiss")).hide();
     })
 
     $(".modal-open").on("click", function (e) {
         e.stopPropagation();
         e.preventDefault();
-        var modal = $($(this).data("target")).addClass("show");
+        var modal = $($(this).data("target")).show();
         modal.find('#submit').attr('href', $(this).data('href'));
-        // var content = $(this).data('content');
-        // if (content == "") {
-        //     content = "<p>No description available</p>";
-        // }
-        // modal.find('.modal-body').append(content);
-        // modal.find('.modal-img').attr('src', $(this).data('diagram'));
+        var content = $(this).data('content');
+        if (content == "") {
+            content = "<p>No description available</p>";
+        }
+        modal.find('.modal-body').append(content);
+        modal.find('.modal-img').attr('src', $(this).data('diagram'));
     });
-
-    // $(".modal-dialog").on("click", function (e) {
-    //     e.stopPropagation();
-    // });
 });
