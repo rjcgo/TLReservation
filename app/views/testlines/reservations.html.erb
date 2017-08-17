@@ -1,55 +1,57 @@
 <main class="wrapper" id="sidenav-container">
-  <%= testline_sidenav %>
-  <section id="reservations">  
-	<header>
-		<%= render partial: "header", :locals => header("Reservations") %>
-		<%= link_to reservations_download_log_file_path, :class => "download-link", target: :_blank do %>
-			<i class="fa fa-download" aria-hidden="true"></i> Download log file
-		<% end %>
-	</header>
-	<% if @testlines.count == 0  %>
-		<%= no_testline_notice %>
-	<% else %>
-		<% pos, sym, info = reserve_init %>
-	    <% @testlines.each do |testline| %>
-	    	<%= content_tag :ul, :id => "tl-#{testline.id}", :class => "list-group", :style => reserve_active(testline.id) do %>
-	    		<%= reserve_notice testline.reservations.count %>
-		    	<% currentReserve = 0 %>
-				<% @reservations.each do |reserve| %>
-					<% if testline.id == reserve.testline_id %>
-						<%= content_tag :li, "", :class => "list-item list-item-#{pos[currentReserve]}" do %>
-							<%= content_tag :small, :class => "badge badge-#{pos[currentReserve]}" do %>
-								<%= content_tag :i, "", :class => "fa fa-#{sym[currentReserve]}" %>
-								<%= info[currentReserve] %>
-							<% end %>
-							<%= reserve_header reserve %>
-							<%= content_tag :p, reserve.description, :class => "description" %>
-			                <div class="list-item-footer">
-			                	<%= content_tag :small, "Reserved by #{reserve.email}", :class => "user" %>
-			                    <% if currentReserve == 0 %>
-									<span class="time-used">
-										<i class="fa fa-clock-o"></i>
-										<%= content_tag :a, "", :id => "tm-#{testline.id}" %>
-									</span>
+	<%= render partial: "partials/sidenav", :locals => {testlines: @testlines} %>
+  	<section id="reservations">  
+		<header>
+			<%= render partial: "header", :locals => header("Reservations") %>
+			<%= link_to reservations_download_log_file_path, :class => "download-link", target: :_blank do %>
+				<i class="fa fa-download" aria-hidden="true"></i> Download log file
+			<% end %>
+		</header>
+		<% if @testlines.count == 0 %>
+			<div class="notice-wrapper">
+				<h4>There are no test lines yet.</h4>
+			</div>
+		<% else %>
+			<% @testlines.each do |testline| %>
+				<ul id="tl-<%= testline.id %>" class="list-group">
+					<% if testline.reservations.count == 0 %>
+						<div class="notice-wrapper">
+							<h4>This test line is currently not in use.</h4>
+						</div>
+					<% else %>
+						<div class="vertical-bar"></div>
+						<% testline.reservations.each_with_index do |reserve, index| %>
+							<% orderProps = reserveOrder(index) %>
+							<li class="list-item list-item-<%= orderProps['class'] %>">
+								<small class="badge badge-<%= orderProps['class'] %>">
+									<i class="fa fa-<%= orderProps['icon'] %>"></i> <%= orderProps['text'] %></small>
+								<div class="list-item-header">
+									<h3 class="title"><%= reserve.name %></h3><small class="timestamp"><%= reserve.created_at %></small>
+									<p class="subtitle"><%= reserve.team.name %></p>
+								</div>
+								<p class="description"><%= reserve.description %></p>
+								<div class="list-item-footer">
+									<small class="user">Reserved by <%= reserve.user.email %></small>
+									<div class="time-used">
+										<i class="fa fa-clock-o"></i> <span id="tm-<%= testline.id %>"></span>
+									</div>
+								</div>
+								<% if current_user.isAdmin? || (current_user.email == reserve.user.email )%>
+									<% if reserve == testline.reservations.first %>
+										<%= button_to [reserve.testline,reserve], method: :delete, :class => "release show-delete-modal", form: {:onsubmit => "return ask_modal(-#{reserve.id});"}, :id => "-#{reserve.id}" do %><i class="fa fa-times"></i> Release <% end %>
+									<% else %>
+										<%= button_to [reserve.testline,reserve], method: :delete, :class => "release show-delete-modal", form: {:onsubmit => "return ask_modal(-#{reserve.id});"}, :id => "-#{reserve.id}" do %><i class="fa fa-times"></i> Cancel <% end %>
+									<% end %>
 								<% end %>
-			                </div>
-			                <% if current_user.isAdmin? || (current_user.email == reserve.email )%>
-			                	<% if reserve == testline.reservations.first %>
-			                		<%= button_to [reserve.testline,reserve], method: :delete, :class => "release show-delete-modal", form: {:onsubmit => "return ask_modal(-#{reserve.id});"}, :id => "-#{reserve.id}" do %><i class="fa fa-times"></i> Release <% end %>
-			                	<% else %>
-			                		<%= button_to [reserve.testline,reserve], method: :delete, :class => "release show-delete-modal", form: {:onsubmit => "return ask_modal(-#{reserve.id});"}, :id => "-#{reserve.id}" do %><i class="fa fa-times"></i> Cancel <% end %>
-			                	<% end %>
-			               	<% end %>
-				        <% end %>
-				        <% currentReserve += 1 %>
-		        	<% end %> 
-		    	<% end %>
+							</li>
+						<% end %>
+					<% end %>
+				</ul>
 			<% end %>
 		<% end %>
-	<% end %>
-  </section>
+	</section>
 </main>
-<%= render partial: "confirm", :locals => modal_content("reservations") %>
+<%= render partial: "partials/confirm_modal", :locals => modal_content("reservations") %>
 <script type="text/javascript">
 	var t = new Object();
 	var pt =  Math.floor(new Date().getTime() / 1000);

@@ -80,9 +80,7 @@ class TestlinesController < ApplicationController
   end
 
   def reservations
-    @testlines = Testline.order(:name)
-    @reservations = Reservation.all
-    @teams = Team.all
+    @testlines = Testline.order(:name).includes(:reservations)
   end
 
   private
