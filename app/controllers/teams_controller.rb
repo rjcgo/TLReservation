@@ -10,17 +10,17 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
-    @team = Team.where(id: params[:id]).first
+    @team = Team.find_by_id(params[:id])
     @teams = Team.order(:name)
-    @testlines = @team.testlines.includes(:reservations)
+    @testlines = @team.testlines.includes(reservations: [:user]).limit(4)
 
 		@available = Array.new
 		@used = Array.new
 		@inMaintenance = Array.new
 		@testlines.each do |testline|
-			if testline.reservations.count == 0 && !testline.isMaintenance?
+			if testline.reservations.length == 0 && !testline.isMaintenance?
 				@available.push(testline)
-			elsif testline.reservations.count != 0 && !testline.isMaintenance?
+			elsif testline.reservations.length != 0 && !testline.isMaintenance?
 				@used.push(testline)
 			elsif testline.isMaintenance?
 				@inMaintenance.push(testline)
