@@ -1,6 +1,6 @@
 <main class="wrapper">
 	<header class="team-header">
-		<%= content_tag :h1, @team.name %>
+		<h1><%= @team.name %></h1>
 		<div class="dropdown team-dropdown">
 			<input type="checkbox" id="dropbtn">
 			<label for="dropbtn" class="dropbtn team-dropbtn">
@@ -17,76 +17,46 @@
 			</div>
 		</div>
 	</header>
-	<% if @mytestlines.count == 0 %>
+	<% if @testlines.empty? %>
 		<div class="notice-wrapper">
 			<h2>There are no testlines available for this team.	</h2>
 		</div>
 	<% end %>
-	<% if available %>
+	<% if !@available.empty? %>
 	    <section id="available">
 	        <h2>Available</h2>
 	        <div class="card-deck">
-	        	<% @mytestlines.each do |testline| %>
-					<% if ( testline.reservations.count ==0) && !testline.isMaintenance? %>
-						<%= reserve_modal testline %>
-			            <div class="card">
-			                <div class="card-content">
-	                        	<%= card_header testline %>
-	                        	<%= card_footer testline %>
-			                </div>
-			            </div>
-			        <% end %>
-		        <% end %> 
+				<%= render partial: "partials/card", collection: @available, 
+					as: :testline, locals: {color: "bg-green", icon: "fa-check"} %>
 	        </div>
 	    </section>
 	<% end %>
-	<% if inUse %>
+	<% if !@used.empty? %>
 	    <section id="in-use">
 	        <h2>In Use</h2>
 	        <div class="card-deck">
-	        	<% @mytestlines.each do |testline| %>
-					<% if ( testline.reservations.count !=0) && !testline.isMaintenance? %>
-		        		<%= reserve_modal testline %> 
-						<%= img_modal testline %>
-			            <%= render partial: 'description', locals: {:testline => testline} %>
-			            <div class="card">
-			                <div class="card-content">
-	                        	<%= card_header testline %>
-		                    	<%= card_body testline %>
-		                   		<%= card_footer testline %>
-			                </div>
-			            </div>
-			        <% end %>
-			    <% end %>
+				<%= render partial: "partials/card", collection: @used, 
+					as: :testline, locals: {color: "bg-red", icon: "fa-times"} %>
 	        </div>
 	    </section>
 	<% end %>
-	<% if maintenance %>
+	<% if !@inMaintenance.empty? %>
 	    <section id="maintenance">
 	        <h2>Under Maintenance</h2>
 	        <div class="card-deck">
-	        	<% @mytestlines.each do |testline| %>
-					<% if testline.isMaintenance? %>
-			            <div class="card">
-			                <div class="card-content">
-	                        	<%= card_header testline %>
-			                    <div class="card-body">
-	                                <p class="card-text">This testline is under maintenance.</p>
-			                    </div>
-			                </div>
-			            </div>
-			        <% end %>
-			    <% end %>
+				<%= render partial: "partials/card", collection: @inMaintenance, 
+					as: :testline, locals: {color: "bg-yellow", icon: "fa-exclamation-triangle"} %>
 	        </div>
 	    </section>
 	<% end %>
 </main>
-<%= testlines_info @mytestlines %>
-<%= render partial: "confirm", :locals => modal_content("reservations") %>
+<%#= render partial: 'description', locals: {:testline => testline} %>
+<%#= testlines_info @testlines %>
+<%= render partial: "partials/confirm_modal", :locals => modal_content("reservations") %>
 <script type="text/javascript">
 	var t = new Object();
 	var pt =  Math.floor(new Date().getTime() / 1000);
-	<%= timer_script @mytestlines %>
+	<%= timer_script @testlines %>
 	var timers = Object.keys(t);
 	startTime();
 </script>
