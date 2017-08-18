@@ -66,8 +66,8 @@ function secToTime(time) {
 }
 
 $(document).on('turbolinks:load', function () {
-    $(document).click(function (e) {
-        if ($(e.target).is('.modal')) {
+    $(document).on('click', function (event) {
+        if (!$(event.target).closest('.modal-dialog').length) {
             $('.modal').hide();
         }
     });
@@ -79,13 +79,39 @@ $(document).on('turbolinks:load', function () {
     $(".modal-open").on("click", function (e) {
         e.stopPropagation();
         e.preventDefault();
-        var modal = $($(this).data("target")).show();
-        modal.find('#submit').attr('href', $(this).data('href'));
-        var content = $(this).data('content');
-        if (content == "") {
-            content = "<p>No description available</p>";
+
+        var target = $($(this).data("target")).show();
+        switch (target.attr("id")) {
+            case "confirm-modal":
+                target.find('#submit').attr('href', $(this).data('href'));
+                break;
+
+            case "desc-modal":
+                var content = $(this).data('content');
+                if (content == "") {
+                    content = "No description available.";
+                }
+                target.find('.modal-text').html(content);
+                break;
+
+            case "edit-modal":
+                target.find('#submit').attr('href', $(this).data('href'));
+                break;
+
+            case "img-modal":
+                target.find('.modal-img').attr('src', $(this).data('diagram'));
+                break;
+
+            case "reserve-modal":
+                target.find('#submit').attr('action', $(this).data('href'));
+                target.find('#team-id').attr('value', $(this).data('team-id'));
+                target.find('#user-id').attr('value', $(this).data('user-id'));
+                target.find('#team-name').attr('value', $(this).data('team-name'));
+                target.find('#email').attr('value', $(this).data('user-email'));
+                break;
+
+            default:
+                break;
         }
-        modal.find('.modal-body').append(content);
-        modal.find('.modal-img').attr('src', $(this).data('diagram'));
     });
 });
