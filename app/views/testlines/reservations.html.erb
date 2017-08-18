@@ -57,8 +57,9 @@
 											<% end %>
 										</div>
 										<% if current_user.isAdmin? || (current_user.email == reserve.user.email)%>
-											<button class="release modal-open" data-target="#confirm-modal"
-												data-href="<%= url_for([testline,reserve]) %>">
+											<button type="button" class="release modal-open"
+												data-href="<%= url_for([testline,reserve]) %>" 
+												data-target="#confirm-modal" data-method="delete">
 												<i class="fa fa-times"></i> Release
 											</button>
 										<% end %>
@@ -71,7 +72,7 @@
 								data-href="<%= testline_reservations_path(testline.id) %>" 
 								data-teams="<%= testline.teams.to_json %>"
 								data-user="<%= current_user.to_json %>" 
-								data-target="#reserve-modal">
+								data-target="#reserve-modal" data-method="post">
 								<%= reserveText(testline) %></a>
 						</div>
 					<% end %>

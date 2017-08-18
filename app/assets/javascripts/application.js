@@ -85,12 +85,13 @@ $(document).on('turbolinks:load', function () {
             case "confirm-modal":
                 var submit = target.find('#submit');
                 submit.attr('href', $(this).data('href'));
-                
+
                 var method = $(this).data('method');
                 if (method == "delete") {
                     submit.attr('rel', "nofollow");
                 }
                 submit.attr('data-method', method);
+                submit.focus();
                 break;
 
             case "desc-modal":
@@ -101,10 +102,6 @@ $(document).on('turbolinks:load', function () {
                 target.find('.modal-text').html(content);
                 break;
 
-            case "edit-modal":
-                target.find('#submit').attr('href', $(this).data('href'));
-                break;
-
             case "img-modal":
                 target.find('.modal-img').attr('src', $(this).data('diagram'));
                 break;
@@ -112,9 +109,11 @@ $(document).on('turbolinks:load', function () {
             case "reserve-modal":
                 var user = $(this).data('user');
                 var teams = $(this).data('teams');
-                target.find('#submit').attr('action', $(this).data('href'));
-                target.find('#user-id').attr('value', user.id);
-                target.find('#email').attr('value', user.email);
+                var submit = target.find('#submit');
+                submit.attr('action', $(this).data('href'));
+                submit.attr('method', $(this).data('method'));
+                target.find('#user-id').val(user.id);
+                target.find('#email').val(user.email);
 
                 if (!Array.isArray(teams)) {
                     var arr = new Array();
@@ -125,12 +124,32 @@ $(document).on('turbolinks:load', function () {
                 var teamsRadio = "<legend>Team Name:</legend>";
                 for (var index = 0; index < teams.length; index++) {
                     var element = teams[index];
-                    teamsRadio = teamsRadio + 
-                        "<input type='radio' name='reservation[team_id]'" + 
-                            "id='team-" + element.id + "' value='" + element.id + "' required checked>" + 
+                    teamsRadio = teamsRadio +
+                        "<input type='radio' name='reservation[team_id]'" +
+                            "id='team-" + element.id + "' value='" + element.id + "' required checked>" +
                         "<label for='team-" + element.id + "'>" + element.name + "</label>";
                 }
                 target.find('#teams-radio').html(teamsRadio);
+                target.find('#title').focus();
+                break;
+
+            case "team-modal":
+                var submit = target.find('#submit');
+                var method = $(this).data('method');
+                var team_name = $(this).data('team-name');
+
+                submit.attr('action', $(this).data('href'));
+
+                submit.find("#method").remove();
+                if (method == "put") {
+                    submit.append("<input id='method' name='_method' type='hidden' value='put' />");
+                }
+                submit.attr('method', "post");
+                if (team_name == null) {
+                    team_name = "";
+                }
+                target.find('#team-name').val(team_name);
+                target.find('#team-name').focus();
                 break;
 
             default:

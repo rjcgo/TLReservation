@@ -53,7 +53,7 @@
                 <a href="javascript:void(0)" class="card-link modal-open"
                     data-href="<%= testline_reservations_path(testline.id) %>" 
                     data-teams="<%= @team.to_json %>" data-user="<%= current_user.to_json %>" 
-                    data-target="#reserve-modal"><%= reserveText(testline) %></a>
+                    data-target="#reserve-modal" data-method="post"><%= reserveText(testline) %></a>
             <% end %>
         </div>
     </div>
