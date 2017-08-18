@@ -6,6 +6,16 @@
 	<% else %>
 		<%= render partial: "sidenav", :locals => {testlines: @testlines} %>
 		<section id="reservations">
+			<article class="tabcontent" style="display: block;">
+				<header>
+					<%= render partial: "header", :locals => header("") %>
+					<%= link_to reservations_download_log_file_path, :class => "download-link", target: :_blank do %>
+						<i class="fa fa-download"></i> Download log file
+					<% end %>
+				</header>
+				<h2 style="width: 100%; text-align: center; opacity: 0.75;">
+					<i class="fa fa-hand-o-left"></i> Pick a Testline.</h2>
+			</article>
 			<% @testlines.each do |testline| %>
 				<article id="tl-<%= testline.id %>" class="tabcontent" style="display: none;">
 					<header>

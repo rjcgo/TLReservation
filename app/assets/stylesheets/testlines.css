@@ -120,7 +120,6 @@
 
 .download-link {
     float: right;
-    width: 18px;
     height: 30px;
     line-height: 30px;
     overflow: hidden;
@@ -177,12 +176,6 @@
 
 
 /* ******************** media queries ******************** */
-
-@media screen and (min-width: 576px) {
-    .download-link {
-        width: auto;
-    }
-}
 
 @media screen and (min-width: 768px) {
     #add-testline>form::after {
