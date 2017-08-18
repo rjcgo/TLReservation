@@ -994,6 +994,10 @@ label {
     margin-bottom: 7.5px;
 }
 
+input:read-only{
+    background: #eee;
+}
+
 .form-control {
     display: block;
     width: 100%;
