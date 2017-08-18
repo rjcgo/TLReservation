@@ -51,25 +51,25 @@ module ApplicationHelper
     	return t.html_safe;
 	end
 	
-	def reserveOrder(index)
+	def reservationOrder(index)
 		props = {}
 		if index == 0
 			props = {
-				"class" => "primary",
+				"class" => "badge-primary",
 				"text" => "Current",
-				"icon" => "star"
+				"icon" => "fa-star"
 			}
 		elsif index == 1
 			props = {
-				"class" => "next",
+				"class" => "badge-next",
 				"text" => "Next in Line",
-				"icon" => "fast-forward"
+				"icon" => "fa-arrow-circle-o-right"
 			}
 		else
 			props = {
-				"class" => "pending",
+				"class" => "badge-pending",
 				"text" => "Pending",
-				"icon" => "hourglass-1"
+				"icon" => "fa-spinner fa-pulse fa-fw"
 			}
 		end
 		return props

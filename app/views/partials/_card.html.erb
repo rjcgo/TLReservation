@@ -25,9 +25,11 @@
                 <ul>
                     <% testline.reservations.each_with_index do |reservation, index| %>
                     <li>
-                        <% orderProps = reserveOrder(index) %>
+                        <% orderProps = reservationOrder(index) %>
                         <p class="card-text"><%= reservation.name %></p>
-                        <small class="badge badge-<%= orderProps['class'] %>"><%= orderProps['text'] %></small>
+                        <small class="badge <%= orderProps['class'] %>">
+                            <i class="fa <%= orderProps['icon'] %>"></i> 
+                            <%= orderProps['text'] %></small>
                         <span class="delete-overlay">
                             <i class="fa fa-calendar-check-o"></i> 
                             <%= reservation.user.email %>
@@ -44,13 +46,14 @@
             <% if testline.isMaintenance %>
                 <p class="card-text">This testline is under maintenance.</p>
             <% elsif !(userReservation = didReserveTestline(testline)).nil? %>
-                <a href="javascript:void(0)" class="card-link text-red modal-open" data-target="#confirm-modal"
-                    data-href="<%= url_for([testline, userReservation]) %>">Release</a>
+                <a href="javascript:void(0)" class="card-link text-red modal-open" 
+                    data-href="<%= url_for([testline, userReservation]) %>"
+                    data-target="#confirm-modal">Release</a>
             <% else %>
-                <a href="javascript:void(0)" class="card-link modal-open" data-target="#reserve-modal"
+                <a href="javascript:void(0)" class="card-link modal-open"
                     data-href="<%= testline_reservations_path(testline.id) %>" 
-                    data-user-id="<%= current_user.id %>" data-team-id="<%= @team.id %>"
-                    data-user-email="<%= current_user.email %>" data-team-name="<%= @team.name %>"><%= reserveText(testline) %></a>
+                    data-teams="<%= @team.to_json %>" data-user="<%= current_user.to_json %>" 
+                    data-target="#reserve-modal"><%= reserveText(testline) %></a>
             <% end %>
         </div>
     </div>

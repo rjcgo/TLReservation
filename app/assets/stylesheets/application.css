@@ -350,11 +350,11 @@ main {
 .sidenav-toggler {
     background: transparent;
     border: 1px solid #34495e;
-    border-radius: 0.25em;
+    border-radius: 0.25rem;
     padding: 2px 8px;
     margin-right: 4px;
     margin-left: 10px;
-    font-size: 1.5em;
+    font-size: 1.2em;
     cursor: pointer;
     color: #34495e;
 }
@@ -992,6 +992,7 @@ main {
 label {
     display: inline-block;
     margin-bottom: 7.5px;
+    margin-right: 30px;
 }
 
 input:read-only{
@@ -1019,10 +1020,27 @@ textarea {
     max-width: 100%;
 }
 
+fieldset{
+    padding: 0;
+    border: 0;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+legend{
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 0.5rem;
+    line-height: inherit;
+}
+
+input[type="radio"],
 input[type="checkbox"] {
     display: none;
 }
 
+input[type="radio"]+label::before,
 input[type="checkbox"]+label::before {
     font-family: "FontAwesome";
     content: "\f096";
@@ -1037,6 +1055,7 @@ input[type="checkbox"]+label::before {
     cursor: pointer;
 }
 
+input[type="radio"]:checked+label::before,
 input[type="checkbox"]:checked+label::before {
     font-family: "FontAwesome";
     content: "\f046";

@@ -120,13 +120,14 @@
 
 .download-link {
     float: right;
-    width: 28px;
+    width: 18px;
+    height: 30px;
+    line-height: 30px;
     overflow: hidden;
     white-space: nowrap;
-    font-size: 1.5em;
     margin: 20px 0;
     margin-right: 10px;
-    color: #34495e;
+    color: #0275d8;
     text-decoration: none;
 }
 

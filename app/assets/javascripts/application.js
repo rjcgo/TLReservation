@@ -28,12 +28,12 @@ function toggleSideNav() {
     }
 }
 
-function openReservation(evt, cityName) {
+function openReservation(evt, tabName) {
     var i, listgroups, sidenavlinks;
 
-    listgroups = document.getElementsByClassName("list-group");
-    for (i = 0; i < listgroups.length; i++) {
-        listgroups[i].style.display = "none";
+    testlines = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < testlines.length; i++) {
+        testlines[i].style.display = "none";
     }
 
     // Get all elements with class="tablinks" and remove the class "active"
@@ -43,7 +43,7 @@ function openReservation(evt, cityName) {
     }
 
     // Show the current tab, and add an "active" class to the link that opened the tab
-    document.getElementById(cityName).style.display = "block";
+    document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
 }
 
@@ -103,11 +103,27 @@ $(document).on('turbolinks:load', function () {
                 break;
 
             case "reserve-modal":
+                var user = $(this).data('user');
+                var teams = $(this).data('teams');
                 target.find('#submit').attr('action', $(this).data('href'));
-                target.find('#team-id').attr('value', $(this).data('team-id'));
-                target.find('#user-id').attr('value', $(this).data('user-id'));
-                target.find('#team-name').attr('value', $(this).data('team-name'));
-                target.find('#email').attr('value', $(this).data('user-email'));
+                target.find('#user-id').attr('value', user.id);
+                target.find('#email').attr('value', user.email);
+
+                if (!Array.isArray(teams)) {
+                    var arr = new Array();
+                    arr.push(teams);
+                    teams = arr;
+                }
+
+                var teamsRadio = "<legend>Team Name:</legend>";
+                for (var index = 0; index < teams.length; index++) {
+                    var element = teams[index];
+                    teamsRadio = teamsRadio + 
+                        "<input type='radio' name='reservation[team_id]'" + 
+                            "id='team-" + element.id + "' value='" + element.id + "' required checked>" + 
+                        "<label for='team-" + element.id + "'>" + element.name + "</label>";
+                }
+                target.find('#teams-radio').html(teamsRadio);
                 break;
 
             default:
