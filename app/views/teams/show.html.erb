@@ -19,35 +19,36 @@
 	</header>
 	<% if @testlines.empty? %>
 		<div class="notice-wrapper">
-			<h2>There are no testlines available for this team.	</h2>
+			<h4>There are no testlines available for this team.	</h4>
 		</div>
-	<% end %>
-	<% if !@available.empty? %>
-	    <section id="available">
-	        <h2>Available</h2>
-	        <div class="card-deck">
-				<%= render partial: "partials/card", collection: @available, 
-					as: :testline, locals: {color: "bg-green", icon: "fa-check"} %>
-	        </div>
-	    </section>
-	<% end %>
-	<% if !@used.empty? %>
-	    <section id="in-use">
-	        <h2>In Use</h2>
-	        <div class="card-deck">
-				<%= render partial: "partials/card", collection: @used, 
-					as: :testline, locals: {color: "bg-red", icon: "fa-times"} %>
-	        </div>
-	    </section>
-	<% end %>
-	<% if !@inMaintenance.empty? %>
-	    <section id="maintenance">
-	        <h2>Under Maintenance</h2>
-	        <div class="card-deck">
-				<%= render partial: "partials/card", collection: @inMaintenance, 
-					as: :testline, locals: {color: "bg-yellow", icon: "fa-exclamation-triangle"} %>
-	        </div>
-	    </section>
+	<% else %>
+		<% if !@available.empty? %>
+			<section id="available">
+				<h2>Available</h2>
+				<div class="card-deck">
+					<%= render partial: "partials/card", collection: @available, 
+						as: :testline, locals: {color: "bg-green", icon: "fa-check"} %>
+				</div>
+			</section>
+		<% end %>
+		<% if !@used.empty? %>
+			<section id="in-use">
+				<h2>In Use</h2>
+				<div class="card-deck">
+					<%= render partial: "partials/card", collection: @used, 
+						as: :testline, locals: {color: "bg-red", icon: "fa-times"} %>
+				</div>
+			</section>
+		<% end %>
+		<% if !@inMaintenance.empty? %>
+			<section id="maintenance">
+				<h2>Under Maintenance</h2>
+				<div class="card-deck">
+					<%= render partial: "partials/card", collection: @inMaintenance, 
+						as: :testline, locals: {color: "bg-yellow", icon: "fa-exclamation-triangle"} %>
+				</div>
+			</section>
+		<% end %>
 	<% end %>
 </main>
 <%= render partial: "partials/reserve_modal" %>

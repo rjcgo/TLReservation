@@ -83,7 +83,14 @@ $(document).on('turbolinks:load', function () {
         var target = $($(this).data("target")).show();
         switch (target.attr("id")) {
             case "confirm-modal":
-                target.find('#submit').attr('href', $(this).data('href'));
+                var submit = target.find('#submit');
+                submit.attr('href', $(this).data('href'));
+                
+                var method = $(this).data('method');
+                if (method == "delete") {
+                    submit.attr('rel', "nofollow");
+                }
+                submit.attr('data-method', method);
                 break;
 
             case "desc-modal":

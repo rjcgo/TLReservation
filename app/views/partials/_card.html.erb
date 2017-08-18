@@ -48,7 +48,7 @@
             <% elsif !(userReservation = didReserveTestline(testline)).nil? %>
                 <a href="javascript:void(0)" class="card-link text-red modal-open" 
                     data-href="<%= url_for([testline, userReservation]) %>"
-                    data-target="#confirm-modal">Release</a>
+                    data-target="#confirm-modal" data-method="delete">Release</a>
             <% else %>
                 <a href="javascript:void(0)" class="card-link modal-open"
                     data-href="<%= testline_reservations_path(testline.id) %>" 

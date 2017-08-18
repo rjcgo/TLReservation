@@ -106,22 +106,6 @@ module AdminHelper
 		tag.html_safe
 	end
 
-	def make_admin_btn(user)
-		button_class = "make-admin-btn"
-		type = "button"
-		form = {:onsubmit => "return ask_modal(-#{user.id});"}
-		id = "-#{user.id}"
-
-		i_class = "fa fa-lock"
-		empty = ""
-		mes = " Make Admin"
-
-    	button_to(admin_makeAdmin_path(user), method: :post, :class => button_class, :type => type, form: form, :id => id) do
-    		content_tag(:i, empty, :class => i_class) +
-    		mes
-    	end
-	end
-
 	def header(page)
 		icon = {
 			"Users" => "fa fa-user-circle",

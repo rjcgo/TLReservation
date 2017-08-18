@@ -16,14 +16,18 @@
 		                        <i class="fa fa-cogs"></i> Administrator
 		                    </small>
 		                <% else %>
-		                	<%= make_admin_btn user %>
+							<button type="button" class="make-admin-btn modal-open" 
+								data-href="<%= admin_makeAdmin_path(user) %>"
+								data-target="#confirm-modal" data-method="post">
+								<i class="fa fa-lock"></i> Make Admin
+							</button>
 		                <% end %>
 		            </li>
 		        <% end %>
 	        </ul>
 	    </section>
 	</main>
-	<%= render partial: 'confirm', locals: modal_content("users") %>
+	<%= render partial: 'partials/confirm_modal', locals: modal_content("users") %>
 <% else %>
 	<%= render 'error' %>
 <% end %>
