@@ -4,8 +4,8 @@ class ReservationsController < ApplicationController
     before_action :authenticate_user!, except: [:index]
 
     def create
-        @testline = Testline.find(params[:testline_id])
-        @reservation = @testline.reservations.create(params[:reservation].permit(:name, :released, :team_name, :description, :email))
+        @testline = Testline.find_by_id(params[:testline_id])
+        @reservation = @testline.reservations.create(params[:reservation].permit(:name, :released, :team_id, :description, :user_id))
 
         if @reservation == @testline.reservations.first
             @reservation.start_time = DateTime.now
@@ -17,13 +17,13 @@ class ReservationsController < ApplicationController
               "#{datetime}: #{msg}\n"
             end
 
-            logger.info(@testline.name + " used by " + @reservation.email + " of team " + @reservation.team_name)
+            logger.info(@testline.name + " used by " + @reservation.user.email + " of team " + @reservation.team.name)
             logger.close()
         end
         redirect_to(:back)
     end
     def destroy
-        @testline = Testline.find(params[:testline_id]) # The testline reserved
+        @testline = Testline.find_by_id(params[:testline_id]) # The testline reserved
         @reservation = @testline.reservations.find(params[:id]) # The reservation to be deleted
         
         logger = Logger.new('public/reservations.log', 'weekly')

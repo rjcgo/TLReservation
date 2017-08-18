@@ -45,12 +45,12 @@
                 <p class="card-text">This testline is under maintenance.</p>
             <% elsif !(userReservation = didReserveTestline(testline)).nil? %>
                 <a href="javascript:void(0)" class="card-link text-red modal-open" data-target="#confirm-modal"
-                    data-href="<%= url_for([testline, userReservation]) %>"
-                    data-content="<%= userReservation.name %>">Release</a>
+                    data-href="<%= url_for([testline, userReservation]) %>">Release</a>
             <% else %>
                 <a href="javascript:void(0)" class="card-link modal-open" data-target="#reserve-modal"
                     data-href="<%= testline_reservations_path(testline.id) %>" 
-                    data-content="<%= testline %>"><%= reserveText(testline) %></a>
+                    data-user-id="<%= current_user.id %>" data-team-id="<%= @team.id %>"
+                    data-user-email="<%= current_user.email %>" data-team-name="<%= @team.name %>"><%= reserveText(testline) %></a>
             <% end %>
         </div>
     </div>
