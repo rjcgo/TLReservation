@@ -10,9 +10,19 @@
                 <a href="javascript:void(0)" class="sidenav-links"
                      onclick="openReservation(event, 'tl-<%= testline.id %>')">
                     <i class="fa fa-server"></i> <%= testline.name %>
-                    <span class="badge badge-sidenav badge-pill bg-blue">
-                        <%= testline.reservations.length %>
-                    </span>
+                    <% if testline.isMaintenance %>
+                        <span class="badge badge-sidenav badge-pill bg-yellow">
+                            <i class="fa fa-exclamation"></i>
+                        </span>
+                    <% elsif testline.reservations.empty? %>
+                        <span class="badge badge-sidenav badge-pill bg-green">
+                            <i class="fa fa-check"></i>
+                        </span>
+                    <% else %>
+                        <span class="badge badge-sidenav badge-pill bg-blue">
+                            <%= testline.reservations.length %>
+                        </span>
+                    <% end %>
                 </a>
             </li>
             <% end %>
