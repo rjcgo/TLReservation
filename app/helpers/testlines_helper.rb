@@ -65,7 +65,7 @@ module TestlinesHelper
 		i_class = "fa fa-plus"
 		empty = ""
 
-		link_to(new_testline_path, :class => link_class) do
+		link_to(new_testline_path, :class => link_class, :data => {:turbolinks => "false"}) do
 			content_tag(:i, empty, :class => i_class) +
 			" New Testline"
 		end

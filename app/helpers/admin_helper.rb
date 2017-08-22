@@ -64,7 +64,7 @@ module AdminHelper
 		id = "-#{testline.id}"
 		
 		content_tag(:div, :class => div_class) do
-			content_tag(:a, a, :href => href, :class => a_class) +
+			content_tag(:a, a, :href => href, :class => a_class, :data => {:turbolinks => "false"}) +
 			link_to(link, testline, method: :delete, :class => link_class, :type => type, :onclick => onclick, :id => id)
 	    end
     end

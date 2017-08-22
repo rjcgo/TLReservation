@@ -17,7 +17,7 @@
 					<span class="bar2"></span>
 					<span class="bar3"></span>
 				</button>
-				<a href="/" class="navbar-brand">
+				<a href="/" class="navbar-brand" data-turbolinks="false">
 					<i class="fa fa-server icon-lg" id="logo"></i>
 					<h1>Test Line Reservation</h1>
 				</a>
@@ -27,18 +27,18 @@
 					<% if user_signed_in? %>
 						<ul>
 							<li>
-								<a href="/teams/">
+								<a href="/teams/" data-turbolinks="false">
 									<i class="fa fa-users"></i> Teams
 								</a>
 							</li>
 							<li>
-								<a href="/reservations">
+								<a href="/reservations" data-turbolinks="false">
 									<i class="fa fa-calendar-check-o"></i> Reservations
 								</a>
 							</li>
 							<% if current_user.isAdmin? %>
 								<li>
-									<a href="/admin">
+									<a href="/admin" data-turbolinks="false">
 										<i class="fa fa-cogs"></i> Administrator
 									</a>
 								</li>
