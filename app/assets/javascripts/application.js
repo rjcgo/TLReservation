@@ -107,13 +107,11 @@ $(document).on('turbolinks:load', function () {
                 break;
 
             case "reserve-modal":
-                var user = $(this).data('user');
                 var teams = $(this).data('teams');
                 var submit = target.find('#submit');
                 submit.attr('action', $(this).data('href'));
                 submit.attr('method', $(this).data('method'));
-                target.find('#user-id').val(user.id);
-                target.find('#email').val(user.email);
+                target.find('#email').val($(this).data('email'));
 
                 if (!Array.isArray(teams)) {
                     var arr = new Array();

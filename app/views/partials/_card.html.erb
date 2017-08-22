@@ -52,7 +52,8 @@
             <% else %>
                 <a href="javascript:void(0)" class="card-link modal-open"
                     data-href="<%= testline_reservations_path(testline.id) %>" 
-                    data-teams="<%= @team.to_json %>" data-user="<%= current_user.to_json %>" 
+                    data-teams="<%= @team.to_json(:only => [:id, :name]) %>" 
+                    data-email="<%= current_user.email %>" 
                     data-target="#reserve-modal" data-method="post"><%= reserveText(testline) %></a>
             <% end %>
         </div>

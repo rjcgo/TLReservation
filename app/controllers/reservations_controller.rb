@@ -5,7 +5,9 @@ class ReservationsController < ApplicationController
 
     def create
         @testline = Testline.find_by_id(params[:testline_id])
-        @reservation = @testline.reservations.create(params[:reservation].permit(:name, :released, :team_id, :description, :user_id))
+        @reservation = @testline.reservations.create(
+            params[:reservation].permit(:name, :released, :team_id, :description)
+                .merge(user_id: current_user.id))
 
         if @reservation == @testline.reservations.first
             @reservation.start_time = DateTime.now
