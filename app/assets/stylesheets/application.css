@@ -138,19 +138,19 @@ main {
 .badge.badge-primary {
     background: #0275d8 !important;
     color: #fff !important;
-    font-size: 0.9em;
+    font-size: 80%;
 }
 
 .badge.badge-next {
     background: #18a3fa !important;
     color: #fff !important;
-    font-size: 0.6em;
+    font-size: 60%;
 }
 
 .badge.badge-pending {
-    background: #999 !important;
+    background: #aaa !important;
     color: #fff !important;
-    font-size: 0.6em;
+    font-size: 60%;
 }
 
 
@@ -437,9 +437,9 @@ main {
 
 .card {
     flex: 0 1 90%;
-    margin: 20px;
+    margin: 20px 5%;
+    min-width: 296px;
     position: relative;
-    max-width: 496px;
 }
 
 .card-content {
@@ -570,7 +570,7 @@ main {
 .card-footer {
     background: #f9f9f9;
     text-align: center;
-    padding: 16px 12px;
+    padding: 12px;
     border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
 
@@ -612,6 +612,10 @@ main {
 
 .list-item.list-item-primary {
     border-left: 5px solid #0275d8 !important;
+}
+
+.list-item.list-item-next {
+    border-left: 5px solid #18a3fa !important;
 }
 
 .list-item.list-item-pending {
@@ -1121,6 +1125,7 @@ input[type="checkbox"]:checked+label::before {
     }
     .card {
         flex: 0 1 80%;
+        margin: 20px 10%;
     }
     .card-header {
         padding: 20px 40px;
@@ -1140,7 +1145,8 @@ input[type="checkbox"]:checked+label::before {
         justify-content: space-around;
     }
     .card {
-        flex: 1 1 48%;
+        flex: 0 1 70%;
+        margin: 20px 15%;
     }
     .modal-dialog {
         width: 70%;
@@ -1240,9 +1246,8 @@ input[type="checkbox"]:checked+label::before {
         min-width: 250px;
     }
     .card {
-        flex: 1 1 46%;
-        min-width: 300px;
-        margin: 20px 10px;
+        flex: 0 1 46%;
+        margin: 20px 2%;
     }
     .card-body li .card-text {
         font-size: 1em;
@@ -1282,9 +1287,8 @@ input[type="checkbox"]:checked+label::before {
         flex: 1 0 24%;
     }
     .card {
-        flex: 1 1 31%;
-        position: relative;
-        margin: 20px 5px;
+        flex: 0 1 31%;
+        margin: 20px 1%;
     }
     .card-header .card-header-overlay .card-title {
         font-size: 1.4em;
