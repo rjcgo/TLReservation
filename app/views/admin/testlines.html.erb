@@ -4,24 +4,20 @@
         <section id="testlines-admin">
             <header>
                 <%= render partial: 'header', :locals => header("Testlines") %>
-                <%= new_testline_link %>
+                <a class="add-btn" href="/testlines/new" data-turbolinks="false">
+                    <i class="fa fa-plus"></i> New Testline</a>
                 <%= admin_notice(@testlines, "testlines", notice) %>
             </header>
             <div class="card-deck">
-            	<% @testlines.each do |testline| %>
-    	            <div class="card">
-    	                <div class="card-content">
-                            <%= card_header testline %>
-	                        <%= card_body testline %>
-                            <%= option_testline testline %>
-    	                </div>
-    	            </div>
-    	        <% end %>   
+                <% @testlines.each do |testline| %>
+                    <%= render partial: "partials/card", locals: cardProps(testline) %>
+                <% end %>
             </div>
         </section>
     </main>
-    <%#= testlines_info @testlines %>
-    <%= render partial: 'confirm', locals: modal_content("testlines") %>
+    <%= render partial: "partials/img_modal" %>
+    <%= render partial: "partials/description_modal" %>
+    <%= render partial: "partials/confirm_modal", :locals => modal_content("testlines") %>
 <% else %>
     <%= render 'error' %>
 <% end %>

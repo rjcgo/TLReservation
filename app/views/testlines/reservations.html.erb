@@ -39,7 +39,7 @@
 								<% testline.reservations.each_with_index do |reserve, index| %>
 									<% orderProps = reservationOrder(index) %>
 									<li class="list-item list-item-<%= orderProps['class'] %>">
-										<small class="badge <%= orderProps['class'] %>">
+										<small class="badge badge-<%= orderProps['class'] %>">
 											<i class="fa <%= orderProps['icon'] %>"></i> 
 											<%= orderProps['text'] %></small>
 										<div class="list-item-header">

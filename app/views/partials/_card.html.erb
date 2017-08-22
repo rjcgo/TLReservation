@@ -27,7 +27,7 @@
                     <li>
                         <% orderProps = reservationOrder(index) %>
                         <p class="card-text"><%= reservation.name %></p>
-                        <small class="badge <%= orderProps['class'] %>">
+                        <small class="badge badge-<%= orderProps['class'] %>">
                             <i class="fa <%= orderProps['icon'] %>"></i> 
                             <%= orderProps['text'] %></small>
                         <span class="delete-overlay">
@@ -38,13 +38,19 @@
                     <% end %>
                 </ul>
             <% else %>
-                <p style="text-align: center;">There are currently no reservations for this testline.</p>
+                <p style="text-align: center; margin: 10px;">There are currently no reservations for this testline.</p>
             <% end %>
         </div>
         <!-- Card footer -->
         <div class="card-footer">
-            <% if testline.isMaintenance %>
-                <p class="card-text">This testline is under maintenance.</p>
+            <% if request.original_fullpath == "/admin/testlines" %>
+                <a href="<%= edit_testline_path(testline) %>" class="card-link"
+                    data-turbolinks="false">Edit Testline</a>
+                <a href="javascript:void(0)" class="card-link text-red modal-open" 
+                    data-href="<%= url_for(testline) %>"
+                    data-target="#confirm-modal" data-method="delete">Delete</a>
+            <% elsif testline.isMaintenance %>
+                <p style="text-align: center; margin: 10px;">This testline is under maintenance.</p>
             <% elsif !(userReservation = didReserveTestline(testline)).nil? %>
                 <a href="javascript:void(0)" class="card-link text-red modal-open" 
                     data-href="<%= url_for([testline, userReservation]) %>"

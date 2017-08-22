@@ -50,25 +50,6 @@ module AdminHelper
 		return tag.blank? ? notice_tag : tag1.html_safe
 	end
 
-	def option_testline(testline)
-		div_class = "card-footer"
-
-		a = "Edit Testline"
-		a_class = "card-link"
-		href = "/testlines/#{testline.id}/edit"
-
-		link = "Delete"
-		type = "button"
-		link_class = "card-link text-red show-delete-modal"
-		onclick = "if (ask_modal(-#{testline.id})) return; else {event.stopPropagation(); event.preventDefault();};"
-		id = "-#{testline.id}"
-		
-		content_tag(:div, :class => div_class) do
-			content_tag(:a, a, :href => href, :class => a_class) +
-			link_to(link, testline, method: :delete, :class => link_class, :type => type, :onclick => onclick, :id => id)
-	    end
-    end
-
     def admin_notice(arr, option, notice)
     	div_class = "notice-wrapper"
 

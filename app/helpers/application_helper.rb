@@ -50,24 +50,34 @@ module ApplicationHelper
     	end
     	return t.html_safe;
 	end
+
+	def cardProps(testline)
+		if testline.reservations.length == 0 && !testline.isMaintenance?
+			return {testline: testline, color: "bg-green", icon: "fa-check"}
+		elsif testline.reservations.length != 0 && !testline.isMaintenance?
+			return {testline: testline, color: "bg-red", icon: "fa-times"}
+		elsif testline.isMaintenance?
+			return {testline: testline, color: "bg-yellow", icon: "fa-exclamation-triangle"}
+		end
+	end
 	
 	def reservationOrder(index)
 		props = {}
 		if index == 0
 			props = {
-				"class" => "badge-primary",
+				"class" => "primary",
 				"text" => "Current",
 				"icon" => "fa-star"
 			}
 		elsif index == 1
 			props = {
-				"class" => "badge-next",
+				"class" => "next",
 				"text" => "Next in Line",
 				"icon" => "fa-arrow-circle-o-right"
 			}
 		else
 			props = {
-				"class" => "badge-pending",
+				"class" => "pending",
 				"text" => "Pending",
 				"icon" => "fa-spinner fa-pulse fa-fw"
 			}
