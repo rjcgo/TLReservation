@@ -79,8 +79,40 @@ class TestlinesController < ApplicationController
     end
   end
 
+  # GET /reservations
   def reservations
     @testlines = Testline.order(:name).includes(:teams, reservations: [:user, :team])
+  end
+
+  # POST /testlines/:id/teams
+  def addTeam
+    testline = Testline.find_by_id(params[:id])
+    params[:teams].each do |team|
+      testline.teams << Team.find_by_id(team)
+    end
+
+    respond_to do |format|
+      if testline.save
+        format.html { redirect_to admin_associations_path, 
+          notice: 'Access to testline was successfully granted.' }
+        format.json { render :show, status: :created, location: testline.errors }
+      else
+        format.html { redirect_to admin_associations_path, notice: parse_notice(testline.errors) }
+        format.json { render json: testline.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /testlines/:testline_id/teams/:team_id
+  def removeTeam
+    testline = Testline.find_by_id(params[:testline_id])
+    testline.teams.delete(Team.find_by_id(params[:team_id]))
+
+    testline.reservations.delete(Reservation.where(team_id: params[:team_id]))
+    respond_to do |format|
+      format.html { redirect_to admin_associations_path, notice: 'Test line was successfully deleted.' }
+      format.json { head :no_content }
+    end
   end
 
   private

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'teams/:id' => 'teams#show'
   
   post 'testlines/:id/edit' => 'testlines#edit'
+  post 'testlines/:id/teams' => 'testlines#addTeam'
+  delete 'testlines/:testline_id/teams/:team_id' => 'testlines#removeTeam'
 
   get 'login' => 'home#login'
 
@@ -23,6 +25,7 @@ Rails.application.routes.draw do
   resources :teams, except: [:index]
   resources :testlines, except: [:index] do
     resources :reservations
+    resources :teams
   end
   
   # The priority is based upon order of creation: first created -> highest priority.

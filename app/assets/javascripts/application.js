@@ -45,6 +45,9 @@ function openReservation(evt, tabName) {
     // Show the current tab, and add an "active" class to the link that opened the tab
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
+    if (!window.matchMedia("(min-width: 768px)").matches) {
+        toggleSideNav();
+    }
 }
 
 function startTime() {
@@ -64,6 +67,22 @@ function secToTime(time) {
     var hr = Math.floor(time / 3600);
     return hr + ":" + min + ":" + sec;
 }
+
+const pokelist = [
+    "team-brand poke-ball", "team-brand premier-ball", "team-brand great-ball", "team-brand ultra-ball",
+    "team-brand master-ball", "team-brand safari-ball", "team-brand level-ball", "team-brand lure-ball",
+    "team-brand moon-ball", "team-brand friend-ball", "team-brand love-ball", "team-brand heavy-ball",
+    "team-brand fast-ball", "team-brand sports-ball", "team-brand repeat-ball", "team-brand timer-ball",
+    "team-brand nest-ball", "team-brand net-ball", "team-brand dive-ball", "team-brand luxury-ball"
+]
+
+const pokelistLg = [
+    "team-brand-lg poke-ball-lg", "team-brand-lg premier-ball-lg", "team-brand-lg great-ball-lg", "team-brand-lg ultra-ball-lg",
+    "team-brand-lg master-ball-lg", "team-brand-lg safari-ball-lg", "team-brand-lg level-ball-lg", "team-brand-lg lure-ball-lg",
+    "team-brand-lg moon-ball-lg", "team-brand-lg friend-ball-lg", "team-brand-lg love-ball-lg", "team-brand-lg heavy-ball-lg",
+    "team-brand-lg fast-ball-lg", "team-brand-lg sports-ball-lg", "team-brand-lg repeat-ball-lg", "team-brand-lg timer-ball-lg",
+    "team-brand-lg nest-ball-lg", "team-brand-lg net-ball-lg", "team-brand-lg dive-ball-lg", "team-brand-lg luxury-ball-lg"
+]
 
 $(document).on('turbolinks:load', function () {
     $(document).on('click', function (event) {
@@ -106,6 +125,39 @@ $(document).on('turbolinks:load', function () {
                 target.find('.modal-img').attr('src', $(this).data('diagram'));
                 break;
 
+            case "rel-modal":
+                var teams = $(this).data('teams');
+                var submit = target.find('#submit');
+                submit.attr('action', $(this).data('href'));
+                submit.attr('method', $(this).data('method'));
+                if (!Array.isArray(teams)) {
+                    var arr = new Array();
+                    arr.push(teams);
+                    teams = arr;
+                }
+                if (teams.length < 1) {
+                    target.find('.modal-body').html(
+                        "<p style='text-align: center; margin: 10px;'>" +
+                        "All teams are already able to use this testline.</p>");
+                    target.find(".modal-footer button[type='submit']").prop('disabled', true);
+                } else {
+                    var noAccess = "<div class='outer-border-hidden'>" + 
+                    "<ul class='pokeballs-grid pokeballs-grid-sm'>";
+                    for (var index = 0; index < teams.length; index++) {
+                        var element = teams[index];
+                        noAccess = noAccess +
+                            "<li><input type='checkbox' name='teams[]'" +
+                            "id='team-" + element.id + "' value='" + element.id + "'>" +
+                            "<label for='team-" + element.id + "' class='pokeballs-item'>" +
+                            "<span class='" + pokelist[element.id % 20] + "'></span>" + element.name +
+                            "</label></li>";
+                    }
+                    noAccess = noAccess + "</ul></div>";
+                    target.find(".modal-footer button[type='submit']").prop('disabled', false);
+                    target.find('.modal-body').html(noAccess);
+                }
+                break;
+
             case "reserve-modal":
                 var teams = $(this).data('teams');
                 var submit = target.find('#submit');
@@ -124,7 +176,7 @@ $(document).on('turbolinks:load', function () {
                     var element = teams[index];
                     teamsRadio = teamsRadio +
                         "<input type='radio' name='reservation[team_id]'" +
-                            "id='team-" + element.id + "' value='" + element.id + "' required checked>" +
+                        "id='team-" + element.id + "' value='" + element.id + "' required checked>" +
                         "<label for='team-" + element.id + "'>" + element.name + "</label>";
                 }
                 target.find('#teams-radio').html(teamsRadio);

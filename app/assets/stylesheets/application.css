@@ -375,9 +375,6 @@ main {
 .outer-border-hidden {
     overflow: hidden;
     height: 100%;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
     margin: 0 auto;
 }
 
@@ -394,8 +391,15 @@ main {
     flex: 1 0 100%;
     border-bottom: 1px solid #aaa;
     text-align: center;
-    /*font-size: 1.4em;*/
     position: relative;
+}
+
+.pokeballs-grid-sm li {
+    min-width: 120px;
+}
+
+.pokeballs-grid-lg li {
+    min-width: 200px;
 }
 
 .pokeballs-grid a {
@@ -999,7 +1003,7 @@ label {
     margin-right: 30px;
 }
 
-input:read-only{
+input:read-only {
     background: #eee;
 }
 
@@ -1024,14 +1028,14 @@ textarea {
     max-width: 100%;
 }
 
-fieldset{
+fieldset {
     padding: 0;
     border: 0;
     margin: 0;
     margin-bottom: 15px;
 }
 
-legend{
+legend {
     display: block;
     width: 100%;
     padding: 0;
@@ -1121,7 +1125,6 @@ input[type="checkbox"]:checked+label::before {
     .pokeballs-grid li {
         flex: 1 0 48%;
         border-right: 1px solid #aaa;
-        /* border-left: 1px solid #aaa; */
     }
     .card {
         flex: 0 1 80%;
@@ -1239,15 +1242,10 @@ input[type="checkbox"]:checked+label::before {
     .pokeballs-grid li {
         flex: 1 0 32%;
     }
-    .pokeballs-grid-sm li {
-        min-width: 160px;
-    }
-    .pokeballs-grid-lg li {
-        min-width: 250px;
-    }
     .card {
-        flex: 0 1 46%;
-        margin: 20px 2%;
+        flex: 1 1 40%;
+        margin: 20px 5%;
+        max-width: 400px;
     }
     .card-body li .card-text {
         font-size: 1em;
@@ -1287,7 +1285,7 @@ input[type="checkbox"]:checked+label::before {
         flex: 1 0 24%;
     }
     .card {
-        flex: 0 1 31%;
+        flex: 1 1 31%;
         margin: 20px 1%;
     }
     .card-header .card-header-overlay .card-title {

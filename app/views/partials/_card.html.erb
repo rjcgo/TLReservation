@@ -21,7 +21,25 @@
         </div>
         <!-- Card body -->
         <div class="card-body">
-            <% if !testline.reservations.empty? %>
+            <% if request.original_fullpath == "/admin/associations" %>
+                <% if testline.teams.empty? %>
+                    <p style="text-align: center; margin: 10px;">No team can currently use this testline.</p>
+                <% else %>
+                    <div class="outer-border-hidden">
+                        <ul class="pokeballs-grid pokeballs-grid-sm">
+                            <% testline.teams.each do |team| %>
+                                <li>
+                                    <button type="button" class="release modal-open" 
+                                        data-href="<%= testline_team_path(testline.id, team.id) %>"
+                                        data-target="#confirm-modal" data-method="delete">
+                                        <i class="fa fa-times"></i></button>
+                                    <span class="<%= pokelist[team.id % 20] %>"></span><%= team.name %>
+                                </li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
+            <% elsif !testline.reservations.empty? %>
                 <ul>
                     <% testline.reservations.each_with_index do |reservation, index| %>
                     <li>
@@ -49,6 +67,11 @@
                 <a href="javascript:void(0)" class="card-link text-red modal-open" 
                     data-href="<%= url_for(testline) %>"
                     data-target="#confirm-modal" data-method="delete">Delete</a>
+            <% elsif request.original_fullpath == "/admin/associations" %>
+                <a href="javascript:void(0)" class="card-link modal-open" 
+                    data-teams="<%= teams_without_access(testline).to_json(:only => [:id, :name]) %>" 
+                    data-href="<%= testline_teams_path(testline.id) %>" data-target="#rel-modal" 
+                    data-method="post"><i class="fa fa-plus"></i> Add Team</a>
             <% elsif testline.isMaintenance %>
                 <p style="text-align: center; margin: 10px;">This testline is under maintenance.</p>
             <% elsif !(userReservation = didReserveTestline(testline)).nil? %>
@@ -59,8 +82,8 @@
                 <a href="javascript:void(0)" class="card-link modal-open"
                     data-href="<%= testline_reservations_path(testline.id) %>" 
                     data-teams="<%= @team.to_json(:only => [:id, :name]) %>" 
-                    data-email="<%= current_user.email %>" 
-                    data-target="#reserve-modal" data-method="post"><%= reserveText(testline) %></a>
+                    data-email="<%= current_user.email %>" data-target="#reserve-modal" 
+                    data-method="post"><%= reserveText(testline) %></a>
             <% end %>
         </div>
     </div>

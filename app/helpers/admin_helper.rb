@@ -65,27 +65,31 @@ module AdminHelper
 	end
 
 	def teams_without_access(testline)
-		balls = pokelist
-		tag = ""
-		empty = ""
-		type = "submit"
-		button_class = "pokeballs-item"
-
-		@teams.each do |team|
-			if not TeamTestline.exists?(team_id: team.id, testline_id: testline.id)
-				tag << content_tag(:li) do
-					form_for(@team_testline) do |f|
-						f.hidden_field(:team_id, :value => team.id) +
-						f.hidden_field(:testline_id, :value => testline.id) +
-						content_tag(:button, :type => type, :class => button_class) do
-							content_tag(:span, empty, :class => balls[team.id % 20]) + team.name
-						end
-					end
-				end
-			end
-		end
-		tag.html_safe
+		return @noAccess = @teams - testline.teams
 	end
+
+	# def teams_without_access(testline)
+	# 	balls = pokelist
+	# 	tag = ""
+	# 	empty = ""
+	# 	type = "submit"
+	# 	button_class = "pokeballs-item"
+
+	# 	@teams.each do |team|
+	# 		if not TeamTestline.exists?(team_id: team.id, testline_id: testline.id)
+	# 			tag << content_tag(:li) do
+	# 				form_for(@team_testline) do |f|
+	# 					f.hidden_field(:team_id, :value => team.id) +
+	# 					f.hidden_field(:testline_id, :value => testline.id) +
+	# 					content_tag(:button, :type => type, :class => button_class) do
+	# 						content_tag(:span, empty, :class => balls[team.id % 20]) + team.name
+	# 					end
+	# 				end
+	# 			end
+	# 		end
+	# 	end
+	# 	tag.html_safe
+	# end
 
 	def header(page)
 		icon = {
