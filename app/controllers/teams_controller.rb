@@ -10,7 +10,7 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
-    @team = Team.find_by_id(params[:id])
+    @team = Team.find(params[:id])
     @teams = Team.order(:name)
     @testlines = @team.testlines.includes(reservations: [:user]).limit(4)
 

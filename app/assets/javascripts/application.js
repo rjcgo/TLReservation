@@ -87,19 +87,19 @@ const pokelistLg = [
 $(document).on('turbolinks:load', function () {
     $(document).on('click', function (event) {
         if (!$(event.target).closest('.modal-dialog').length) {
-            $('.modal').hide();
+            $('.modal').removeClass("show");
         }
     });
 
     $("button").on("click", function () {
-        var modal = $("." + $(this).data("dismiss")).hide();
+        var modal = $("." + $(this).data("dismiss")).removeClass("show");
     })
 
     $(".modal-open").on("click", function (e) {
         e.stopPropagation();
         e.preventDefault();
 
-        var target = $($(this).data("target")).show();
+        var target = $($(this).data("target")).addClass("show");
         switch (target.attr("id")) {
             case "confirm-modal":
                 var submit = target.find('#submit');
@@ -141,8 +141,8 @@ $(document).on('turbolinks:load', function () {
                         "All teams are already able to use this testline.</p>");
                     target.find(".modal-footer button[type='submit']").prop('disabled', true);
                 } else {
-                    var noAccess = "<div class='outer-border-hidden'>" + 
-                    "<ul class='pokeballs-grid pokeballs-grid-sm'>";
+                    var noAccess = "<div class='outer-border-hidden'>" +
+                        "<ul class='pokeballs-grid pokeballs-grid-sm'>";
                     for (var index = 0; index < teams.length; index++) {
                         var element = teams[index];
                         noAccess = noAccess +
@@ -202,6 +202,46 @@ $(document).on('turbolinks:load', function () {
                 target.find('#team-name').focus();
                 break;
 
+            case "testline-modal":
+                var submit = target.find('#submit');
+                var method = $(this).data('method');
+                var testline = $(this).data('testline');
+                var tl_name = target.find('#tl-name');
+                var ip_address = target.find('#ip-address');
+                var port = target.find('#port');
+                var maintenance = target.find('#maintenance');
+                tl_name.val("");
+                ip_address.val("");
+                port.val("");
+                tinyMCE.activeEditor.setContent("");
+                maintenance.prop('checked', false);
+                document.getElementById("diagram").value = "";
+
+                submit.attr('action', $(this).data('href'));
+                submit.attr('enctype', "multipart/form-data");
+
+                submit.find("#method").remove();
+                if (method == "put") {
+                    submit.append("<input id='method' name='_method' type='hidden' value='put' />");
+                }
+                submit.attr('method', "post");
+                if (testline == null) {
+                    testline = {};
+                    testline.name = "";
+                    testline.ip_address = "";
+                    testline.port_number = "";
+                    testline.description = "";
+                } else {
+                    if (testline.isMaintenance) {
+                        maintenance.prop('checked', true);
+                    }
+                    tl_name.val(testline.name);
+                    ip_address.val(testline.ip_address);
+                    port.val(testline.port_number);
+                    tinyMCE.activeEditor.setContent(testline.description);
+                    document.getElementById("diagram").value = testline.diagram;
+                }
+                break;
             default:
                 break;
         }

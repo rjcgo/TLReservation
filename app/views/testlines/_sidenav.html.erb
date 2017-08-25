@@ -11,15 +11,15 @@
                      onclick="openReservation(event, 'tl-<%= testline.id %>')">
                     <i class="fa fa-server"></i> <%= testline.name %>
                     <% if testline.isMaintenance %>
-                        <span class="badge badge-sidenav badge-pill bg-yellow">
+                        <span class="badge badge-sidenav bg-yellow">
                             <i class="fa fa-exclamation"></i>
                         </span>
                     <% elsif testline.reservations.empty? %>
-                        <span class="badge badge-sidenav badge-pill bg-green">
+                        <span class="badge badge-sidenav bg-green">
                             <i class="fa fa-check"></i>
                         </span>
                     <% else %>
-                        <span class="badge badge-sidenav badge-pill bg-blue">
+                        <span class="badge badge-sidenav bg-blue">
                             <%= testline.reservations.length %>
                         </span>
                     <% end %>

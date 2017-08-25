@@ -4,10 +4,6 @@ class TestlinesController < ApplicationController
   # GET /testlines
   # GET /testlines.json
   def index
-    @testlines = Testline.all
-    @reservations = Reservation.all
-    @teams = Team.order(:name)
-    
   end
 
   # GET /testlines/1
@@ -86,9 +82,9 @@ class TestlinesController < ApplicationController
 
   # POST /testlines/:id/teams
   def addTeam
-    testline = Testline.find_by_id(params[:id])
+    testline = Testline.find(params[:id])
     params[:teams].each do |team|
-      testline.teams << Team.find_by_id(team)
+      testline.teams << Team.find(team)
     end
 
     respond_to do |format|
@@ -105,8 +101,8 @@ class TestlinesController < ApplicationController
 
   # DELETE /testlines/:testline_id/teams/:team_id
   def removeTeam
-    testline = Testline.find_by_id(params[:testline_id])
-    testline.teams.delete(Team.find_by_id(params[:team_id]))
+    testline = Testline.find(params[:testline_id])
+    testline.teams.delete(Team.find(params[:team_id]))
 
     testline.reservations.delete(Reservation.where(team_id: params[:team_id]))
     respond_to do |format|
@@ -123,6 +119,6 @@ class TestlinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def testline_params
-    params.require(:testline).permit(:name, :ip_address, :port_number, :isMaintenance, :description, :diagram, :remove_diagram)
+      params.require(:testline).permit(:name, :ip_address, :port_number, :isMaintenance, :description, :diagram, :remove_diagram)
     end
 end

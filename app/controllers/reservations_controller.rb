@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
     before_action :authenticate_user!, except: [:index]
 
     def create
-        @testline = Testline.find_by_id(params[:testline_id])
+        @testline = Testline.find(params[:testline_id])
         @reservation = @testline.reservations.create(
             params[:reservation].permit(:name, :released, :team_id, :description)
                 .merge(user_id: current_user.id))
@@ -25,7 +25,7 @@ class ReservationsController < ApplicationController
         redirect_to(:back)
     end
     def destroy
-        @testline = Testline.find_by_id(params[:testline_id]) # The testline reserved
+        @testline = Testline.find(params[:testline_id]) # The testline reserved
         @reservation = @testline.reservations.find(params[:id]) # The reservation to be deleted
         
         logger = Logger.new('public/reservations.log', 'weekly')

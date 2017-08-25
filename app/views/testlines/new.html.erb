@@ -1,5 +1,4 @@
 <% if user_signed_in? %>
-
 	<% if current_user.isAdmin? %>
 		<main class="wrapper">
 		    <section id="add-testline">
@@ -8,12 +7,8 @@
 			</section>
 		</main>
 	<% else %>
-
-		<h1>Sorry, you need to be an admin to view this page.</h1>
-		<p>Please contact the administrator if you want to be one.</p>
-
+		<%= render partial: "admin/error" %>
 	<% end %>
-
 <% else %>
-	<h1>Sorry, you need to be logged-in to view this page.</h1>
+	<%= redirect_to "/login" %>
 <% end %>

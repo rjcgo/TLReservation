@@ -4,8 +4,9 @@
         <section id="testlines-admin">
             <header>
                 <%= render partial: 'header', :locals => header("Testlines") %>
-                <a class="add-btn" href="/testlines/new" data-turbolinks="false">
-                    <i class="fa fa-plus"></i> New Testline</a>
+                <a href="javascript:void(0)" class="add-btn modal-open"
+                    data-href="<%= testlines_path %>" data-target="#testline-modal" 
+                    data-method="post"><i class="fa fa-plus"></i> New Testline</a>
                 <%= admin_notice(@testlines, "testlines", notice) %>
             </header>
             <div class="card-deck">
@@ -17,6 +18,7 @@
     </main>
     <%= render partial: "partials/img_modal" %>
     <%= render partial: "partials/description_modal" %>
+    <%= render partial: "partials/testline_modal" %>
     <%= render partial: "partials/confirm_modal", :locals => modal_content("testlines") %>
 <% else %>
     <%= render 'error' %>

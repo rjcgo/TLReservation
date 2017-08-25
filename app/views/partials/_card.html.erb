@@ -62,8 +62,10 @@
         <!-- Card footer -->
         <div class="card-footer">
             <% if request.original_fullpath == "/admin/testlines" %>
-                <a href="<%= edit_testline_path(testline) %>" class="card-link"
-                    data-turbolinks="false">Edit Testline</a>
+                <a href="javascript:void(0)" class="card-link modal-open" 
+                    data-href="<%= testline_path(testline) %>"
+                    data-testline="<%= testline.to_json %>" data-target="#testline-modal" 
+                    data-method="put">Edit Testline</a>
                 <a href="javascript:void(0)" class="card-link text-red modal-open" 
                     data-href="<%= url_for(testline) %>"
                     data-target="#confirm-modal" data-method="delete">Delete</a>
