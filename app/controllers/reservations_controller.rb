@@ -3,6 +3,13 @@ require 'logger'
 class ReservationsController < ApplicationController
     before_action :authenticate_user!, except: [:index]
 
+    # GET /reservations/new
+    def new
+        @reservation = Reservation.new
+        @testline = Testline.includes(:teams).find(params[:testline_id])
+        @teams = @testline.teams
+    end
+
     def create
         @testline = Testline.find(params[:testline_id])
         @reservation = @testline.reservations.create(
@@ -24,6 +31,7 @@ class ReservationsController < ApplicationController
         end
         redirect_to(:back)
     end
+
     def destroy
         @testline = Testline.find(params[:testline_id]) # The testline reserved
         @reservation = @testline.reservations.find(params[:id]) # The reservation to be deleted
@@ -58,11 +66,11 @@ class ReservationsController < ApplicationController
           format.json { head :no_content }
         end
     end
+
     def edit
-    
     end
+
     def update
-    
     end
 
     def download_log_file

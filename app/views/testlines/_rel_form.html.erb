@@ -1,0 +1,27 @@
+<%= form_for([@testline, @testline.teams.build]) do |f| %>
+    <% teams_without_access(@testline) %>
+    <% if @noAccess.empty? %>
+        <div class="modal-body">
+            <p style="text-align: center; margin: 10px;">
+                All teams are already able to use this testline.</p>
+        </div>
+    <% else %>
+        <div class="modal-body">
+            <div class="outer-border-hidden">
+                <ul class="pokeballs-grid pokeballs-grid-sm">
+                    <%= f.collection_check_boxes(:id, @noAccess, :id, :name) do |b| %>
+                        <li>
+                            <%= b.check_box %>
+                            <%= b.label(class: "pokeballs-item") do %>
+                                <span class="<%= ball(b.value) %>"></span><%= b.text %>
+                            <% end %>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="modal-btn" data-dismiss="modal">Submit</button>
+        </div>
+    <% end %>
+<% end %>

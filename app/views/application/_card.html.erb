@@ -29,10 +29,10 @@
                         <ul class="pokeballs-grid pokeballs-grid-sm">
                             <% testline.teams.each do |team| %>
                                 <li>
-                                    <button type="button" class="release modal-open" 
-                                        data-href="<%= testline_team_path(testline.id, team.id) %>"
-                                        data-target="#confirm-modal" data-method="delete">
-                                        <i class="fa fa-times"></i></button>
+                                    <%= link_to testline_team_path(testline, team), remote: true, :method => :delete, 
+                                        data: {confirm: "Are you sure you want to take away this team's access to this testline?"}, 
+                                        :class => 'release' do %><i class="fa fa-times"></i>
+                                    <% end %>
                                     <span class="<%= pokelist[team.id % 20] %>"></span><%= team.name %>
                                 </li>
                             <% end %>
@@ -50,7 +50,8 @@
                             <%= orderProps['text'] %></small>
                         <span class="delete-overlay">
                             <i class="fa fa-calendar-check-o"></i> 
-                            <%= reservation.user.email %>
+                            <%= reservation.user.email %> 
+                            <span class="badge"><%= reservation.team.name %></span>
                         </span>
                     </li>
                     <% end %>
@@ -62,30 +63,24 @@
         <!-- Card footer -->
         <div class="card-footer">
             <% if request.original_fullpath == "/admin/testlines" %>
-                <a href="javascript:void(0)" class="card-link modal-open" 
-                    data-href="<%= testline_path(testline) %>"
-                    data-testline="<%= testline.to_json %>" data-target="#testline-modal" 
-                    data-method="put">Edit Testline</a>
-                <a href="javascript:void(0)" class="card-link text-red modal-open" 
-                    data-href="<%= url_for(testline) %>"
-                    data-target="#confirm-modal" data-method="delete">Delete</a>
+                <%= link_to "Edit Testline", edit_testline_path(testline), remote: true, class: "card-link" %>
+                <%= link_to "Delete", testline, remote: true, :method => :delete, 
+                    data: {confirm: "Are you sure you want to delete this testline?"}, 
+                    :class => 'card-link text-red'%>
             <% elsif request.original_fullpath == "/admin/associations" %>
-                <a href="javascript:void(0)" class="card-link modal-open" 
-                    data-teams="<%= teams_without_access(testline).to_json(:only => [:id, :name]) %>" 
-                    data-href="<%= testline_teams_path(testline.id) %>" data-target="#rel-modal" 
-                    data-method="post"><i class="fa fa-plus"></i> Add Team</a>
+                <%= link_to new_testline_teams_path(testline), 
+                    remote: true, class: "card-link" do %>
+                    <i class="fa fa-plus"></i> Add Team
+                <% end %>
             <% elsif testline.isMaintenance %>
                 <p style="text-align: center; margin: 10px;">This testline is under maintenance.</p>
             <% elsif !(userReservation = didReserveTestline(testline)).nil? %>
-                <a href="javascript:void(0)" class="card-link text-red modal-open" 
-                    data-href="<%= url_for([testline, userReservation]) %>"
-                    data-target="#confirm-modal" data-method="delete">Release</a>
+                <%= link_to "Release", testline_reservation_path(testline, userReservation), 
+                    remote: true, :method => :delete, :class => 'card-link text-red',
+                    data: {confirm: "Are you sure you want to release your reservation?"}%>
             <% else %>
-                <a href="javascript:void(0)" class="card-link modal-open"
-                    data-href="<%= testline_reservations_path(testline.id) %>" 
-                    data-teams="<%= @team.to_json(:only => [:id, :name]) %>" 
-                    data-email="<%= current_user.email %>" data-target="#reserve-modal" 
-                    data-method="post"><%= reserveText(testline) %></a>
+                <%= link_to reserveText(testline), new_testline_reservation_path(testline), 
+                    remote: true, class: "card-link"%>
             <% end %>
         </div>
     </div>

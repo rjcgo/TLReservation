@@ -8,15 +8,16 @@
                 </header>
                 <div class="card-deck">
                     <% @testlines.each do |testline| %>
-                        <%= render partial: "partials/card", locals: cardProps(testline) %>
+                        <%= render partial: "card", locals: cardProps(testline) %>
                     <% end %>
                 </div>
             </section>
     </main>
-    <%= render partial: "partials/img_modal" %>
-    <%= render partial: "partials/description_modal" %>
-    <%= render partial: "partials/rel_modal" %>
-    <%= render partial: "partials/confirm_modal", :locals => modal_content("teams") %>
+    <div id="confirmationDialog" class="modal"></div>
+
+    <%= render "modal" %>
+    <%= render partial: "img_modal" %>
+    <%= render partial: "description_modal" %>
 <% else %>
     <%= render 'error' %>
 <% end %>

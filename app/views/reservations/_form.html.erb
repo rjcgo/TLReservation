@@ -1,0 +1,32 @@
+<%= form_for([@testline, @testline.reservations.build]) do |f| %>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <%= f.text_field :name, :class => "form-control", 
+                :placeholder => "Test title", :required => "required" %>
+        </div>
+
+        <fieldset>
+            <legend>Team Name:</legend>
+            <div class="radio-group">
+                <%= f.collection_radio_buttons(:team_id, @teams, 
+                    :id, :name, { checked: @teams.first.id }) %>
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+        <label for="email">Email:</label>
+            <%= f.text_field :email, :value => current_user.email, 
+                :class => "form-control", :readonly => "readonly" %>
+        </div>
+        
+        <div class="form-group">
+        <label for="description">Description:</label>
+            <%= f.text_area :description, :class => "form-control", 
+                :placeholder => "Test description", :required => "required" %>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="modal-btn" data-dismiss="modal">Submit</button>
+    </div>
+<% end %>

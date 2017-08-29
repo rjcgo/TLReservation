@@ -29,7 +29,7 @@ body {
 }
 
 body {
-    background: #bdc3c7;
+    background: #f9f9f9;
     font-family: Raleway, sans-serif;
     margin: 0;
 }
@@ -108,6 +108,22 @@ main {
 
 /* ******************** Badge ******************** */
 
+.badge {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    background: #fff;
+    border: 1px solid #eee;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25em;
+    text-transform: uppercase;
+}
+
 .badge-sidenav {
     position: absolute;
     top: 50%;
@@ -122,34 +138,23 @@ main {
     font-weight: 300;
 }
 
-.badge {
-    display: inline-block;
-    padding: .25em .4em;
-    font-size: 75%;
-    font-weight: 700;
-    line-height: 1;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: 0.25em;
-    text-transform: uppercase;
-}
-
 .badge.badge-primary {
     background: #0275d8 !important;
+    border-color: #0275d8 !important;
     color: #fff !important;
     font-size: 80%;
 }
 
 .badge.badge-next {
     background: #18a3fa !important;
+    border-color: #18a3fa !important;
     color: #fff !important;
     font-size: 60%;
 }
 
 .badge.badge-pending {
     background: #aaa !important;
+    border-color: #aaa !important;
     color: #fff !important;
     font-size: 60%;
 }
@@ -417,15 +422,38 @@ main {
     width: 100%;
     font-family: Raleway;
     font-size: 1em;
-    padding: 16px 2px;
+    padding: 16px 0;
+    margin: 0;
+}
+
+input[type="checkbox"]+label.pokeballs-item::before {
+    content: "";
+    font-size: 5em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+
+input[type="checkbox"]:checked+label.pokeballs-item::before {
+    content: "\f05d";
+}
+
+input[type="checkbox"]:checked+.pokeballs-item {
+    background: #e2e2e2;
 }
 
 .pokeballs-item:hover {
     background: #e2e2e2;
+    transition: 0.5s;
 }
 
 .pokeballs-grid a:hover {
     background: #e2e2e2;
+    transition: 0.5s;
 }
 
 
@@ -446,6 +474,7 @@ main {
     margin: 20px 5%;
     min-width: 296px;
     position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .card-content {
@@ -540,7 +569,7 @@ main {
     font-weight: 600;
 }
 
-.card-body li .badge {
+.card-body li>.badge {
     float: right;
 }
 
@@ -615,9 +644,11 @@ main {
 .list-item {
     box-sizing: border-box;
     padding: 10px;
-    background: #f1f1f1;
+    background: #fafafa;
     position: relative;
     border-left: 5px solid #ccc;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .list-item.list-item-primary {
@@ -869,12 +900,66 @@ main {
     margin: 0 auto;
     top: 0;
     opacity: 0;
-    transition: 0.5s;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 0.5s;
+    animation-name: animatebottom;
+    animation-duration: 0.5s;
+}
+
+
+/* Add Animation */
+
+@-webkit-keyframes animatetop {
+    from {
+        top: 0;
+        opacity: 0
+    }
+    to {
+        top: 10%;
+        opacity: 1
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: 0;
+        opacity: 0
+    }
+    to {
+        top: 10%;
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes animatebottom {
+    from {
+        top: 10%;
+        opacity: 1
+    }
+    to {
+        top: 0;
+        opacity: 0
+    }
+}
+
+@keyframes animatebottom {
+    from {
+        top: 10%;
+        opacity: 1
+    }
+    to {
+        top: 0;
+        opacity: 0
+    }
 }
 
 .modal.show .modal-dialog {
     top: 10%;
     opacity: 1;
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.5s;
+    animation-name: animatetop;
+    animation-duration: 0.5s;
 }
 
 .modal-content {
@@ -945,7 +1030,7 @@ main {
 .modal-footer .modal-btn {
     display: block;
     color: #000;
-    width: 80%;
+    width: 100%;
     border: 1px solid #ccc;
     border-radius: 0.25em;
     background: transparent;
@@ -982,17 +1067,28 @@ main {
     animation-duration: 0.4s;
 }
 
+#desc-modal .modal-body {
+    overflow-x: auto;
+}
+
 
 /* ******************** form control ******************** */
 
 label {
     display: inline-block;
     margin-bottom: 7.5px;
-    margin-right: 30px;
 }
 
-input:read-only {
+input:read-only,
+input:disabled,
+input:disabled+label {
     background: #eee;
+    color: #888;
+}
+
+.form-group {
+    flex: 1 98%;
+    margin: 0 1%;
 }
 
 .form-control {
@@ -1031,6 +1127,11 @@ legend {
     line-height: inherit;
 }
 
+.radio-group {
+    display: flex;
+    justify-content: space-around;
+}
+
 input[type="radio"],
 input[type="checkbox"] {
     display: none;
@@ -1039,7 +1140,6 @@ input[type="checkbox"] {
 input[type="radio"]+label::before,
 input[type="checkbox"]+label::before {
     font-family: "FontAwesome";
-    content: "\f096";
     padding-top: 1px;
     width: 16px;
     height: 16px;
@@ -1051,10 +1151,27 @@ input[type="checkbox"]+label::before {
     cursor: pointer;
 }
 
-input[type="radio"]:checked+label::before,
+input[type="checkbox"]+label::before {
+    content: "\f096";
+}
+
+input[type="radio"]+label::before {
+    content: "\f10c";
+}
+
 input[type="checkbox"]:checked+label::before {
-    font-family: "FontAwesome";
     content: "\f046";
+    color: #0275d8;
+}
+
+input[type="radio"]:checked+label::before {
+    content: "\f192";
+    color: #0275d8;
+}
+
+input[type="radio"]:checked+label,
+input[type="checkbox"]:checked+label {
+    color: #0275d8;
 }
 
 .input-group input[type="email"],
@@ -1086,6 +1203,13 @@ input[type="checkbox"]:checked+label::before {
     display: table;
     width: 100%;
     margin-top: 8px;
+}
+
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .form-submit {
@@ -1202,6 +1326,10 @@ input[type="checkbox"]:checked+label::before {
     }
     .error-overlay p {
         font-size: 1.2em;
+    }
+    .form-group {
+        flex: 1 auto;
+        margin: 0 1%;
     }
 }
 

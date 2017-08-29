@@ -1,0 +1,20 @@
+tinyMCE.execCommand('mceAddControl', false, 'testline_description');
+tinyMCE.execCommand('mceRemoveControl', false, 'testline_description');
+
+var dialog = document.getElementById('dialog');
+
+dialog.classList.add('show');
+
+dialog.getElementsByClassName('modal-dialog')[0].classList.add('modal-dialog-full');
+
+dialog.getElementsByTagName('h3')[0].innerHTML = "<i class='fa fa-penil-square-o'></i> Edit Testline";
+
+document.getElementById('dialog-content').innerHTML = '<%= j render("form") %>';
+
+document.getElementById('testline_name').focus();
+
+tinymce.remove();
+tinymce.init({
+    selector: 'textarea',
+    min_height: 300
+});

@@ -80,11 +80,18 @@ class TestlinesController < ApplicationController
     @testlines = Testline.order(:name).includes(:teams, reservations: [:user, :team])
   end
 
+  def newRel
+    @testline = Testline.includes(:teams).find(params[:id])
+    @teams = Team.order(:name)
+  end
+
   # POST /testlines/:id/teams
   def addTeam
     testline = Testline.find(params[:id])
-    params[:teams].each do |team|
-      testline.teams << Team.find(team)
+    params[:team][:id].delete("")
+    p params[:team][:id]
+    params[:team][:id].each do |t|
+      testline.teams << Team.find(t)
     end
 
     respond_to do |format|
@@ -101,10 +108,16 @@ class TestlinesController < ApplicationController
 
   # DELETE /testlines/:testline_id/teams/:team_id
   def removeTeam
+    # Delete testline association of team
     testline = Testline.find(params[:testline_id])
     testline.teams.delete(Team.find(params[:team_id]))
 
-    testline.reservations.delete(Reservation.where(team_id: params[:team_id]))
+    # Delete all reservations associated with this testline
+    reservations = Reservation.where(testline_id: params[:testline_id], team_id: params[:team_id])
+    reservations.each do |r|
+      r.delete
+    end
+
     respond_to do |format|
       format.html { redirect_to admin_associations_path, notice: 'Test line was successfully deleted.' }
       format.json { head :no_content }

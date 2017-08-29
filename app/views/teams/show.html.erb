@@ -7,7 +7,8 @@
 				<i class="fa fa-th fa-midnightblue"></i>
 				Teams
 			</label>
-			<div class="dropdown-triangle team-dropdown-triangle"></div>
+			<div class="dropdown-triangle-mb team-dropdown-triangle"></div>
+			<div class="dropdown-triangle-lb team-dropdown-triangle"></div>
 			<div class="dropdown-content team-dropdown-content">
 				<div class="outer-border-hidden">
 					<ul class="pokeballs-grid pokeballs-grid-sm">
@@ -26,7 +27,7 @@
 			<section id="available">
 				<h2>Available</h2>
 				<div class="card-deck">
-					<%= render partial: "partials/card", collection: @available, 
+					<%= render partial: "card", collection: @available, 
 						as: :testline, locals: {color: "bg-green", icon: "fa-check"} %>
 				</div>
 			</section>
@@ -35,7 +36,7 @@
 			<section id="in-use">
 				<h2>In Use</h2>
 				<div class="card-deck">
-					<%= render partial: "partials/card", collection: @used, 
+					<%= render partial: "card", collection: @used, 
 						as: :testline, locals: {color: "bg-red", icon: "fa-times"} %>
 				</div>
 			</section>
@@ -44,17 +45,18 @@
 			<section id="maintenance">
 				<h2>Under Maintenance</h2>
 				<div class="card-deck">
-					<%= render partial: "partials/card", collection: @inMaintenance, 
+					<%= render partial: "card", collection: @inMaintenance, 
 						as: :testline, locals: {color: "bg-yellow", icon: "fa-exclamation-triangle"} %>
 				</div>
 			</section>
 		<% end %>
 	<% end %>
 </main>
-<%= render partial: "partials/reserve_modal" %>
-<%= render partial: "partials/img_modal" %>
-<%= render partial: "partials/description_modal" %>
-<%= render partial: "partials/confirm_modal", :locals => modal_content("reservations") %>
+<div id="confirmationDialog" class="modal"></div>
+
+<%= render "modal" %>
+<%= render partial: "img_modal" %>
+<%= render partial: "description_modal" %>
 <script type="text/javascript">
 	var t = new Object();
 	var pt =  Math.floor(new Date().getTime() / 1000);

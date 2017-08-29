@@ -13,7 +13,7 @@
 						<i class="fa fa-download"></i> Download log file
 					<% end %>
 				</header>
-				<h2 style="width: 100%; text-align: center; opacity: 0.75;">
+				<h2 class="pick-testline">
 					<i class="fa fa-hand-o-left"></i> Pick a Testline.</h2>
 			</article>
 			<% @testlines.each do |testline| %>
@@ -35,12 +35,8 @@
 							</div>
 						<% else %>
 						<div style="text-align: center; clear: both;">
-							<a href="javascript:void(0)" class="card-link modal-open" 
-								data-href="<%= testline_reservations_path(testline.id) %>" 
-								data-teams="<%= testline.teams.to_json(:only => [:id, :name]) %>"
-								data-email="<%= current_user.email %>" 
-								data-target="#reserve-modal" data-method="post">
-								<%= reserveText(testline) %></a>
+							<%= link_to reserveText(testline), new_testline_reservation_path(testline), 
+								remote: true, class: "card-link"%>
 						</div>
 							<ul class="list-group">
 								<% testline.reservations.each_with_index do |reserve, index| %>
@@ -64,23 +60,19 @@
 											<% end %>
 										</div>
 										<% if current_user.isAdmin? || (current_user.email == reserve.user.email)%>
-											<button type="button" class="release modal-open"
-												data-href="<%= url_for([testline,reserve]) %>" 
-												data-target="#confirm-modal" data-method="delete">
-												<i class="fa fa-times"></i> Release
-											</button>
+											<%= link_to testline_reservation_path(testline, reserve), 
+												remote: true, :method => :delete, 
+												data: {confirm: "Are you sure you want to release your reservation?"}, 
+												:class => 'release' do %><i class="fa fa-times"></i> Release
+											<% end %>
 										<% end %>
 									</li>
 								<% end %>
 							</ul>
 						<% end %>
 						<div style="text-align: center; clear: both;">
-							<a href="javascript:void(0)" class="card-link modal-open" 
-								data-href="<%= testline_reservations_path(testline.id) %>" 
-								data-teams="<%= testline.teams.to_json(:only => [:id, :name]) %>"
-								data-email="<%= current_user.email %>" 
-								data-target="#reserve-modal" data-method="post">
-								<%= reserveText(testline) %></a>
+							<%= link_to reserveText(testline), new_testline_reservation_path(testline), 
+								remote: true, class: "card-link"%>
 						</div>
 					<% end %>
 				</article>
@@ -88,8 +80,9 @@
 		</section>
 	<% end %>
 </main>
-<%= render partial: "partials/reserve_modal" %>
-<%= render partial: "partials/confirm_modal", :locals => modal_content("reservations") %>
+<div id="confirmationDialog" class="modal"></div>
+
+<%= render "modal" %>
 <script type="text/javascript">
 	var t = new Object();
 	var pt =  Math.floor(new Date().getTime() / 1000);

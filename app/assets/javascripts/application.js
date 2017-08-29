@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require tinymce
+//= require_tree .
 
 function toggleMainNav() {
     var burgerNav = document.getElementById("burger-nav");
@@ -68,21 +69,11 @@ function secToTime(time) {
     return hr + ":" + min + ":" + sec;
 }
 
-const pokelist = [
-    "team-brand poke-ball", "team-brand premier-ball", "team-brand great-ball", "team-brand ultra-ball",
-    "team-brand master-ball", "team-brand safari-ball", "team-brand level-ball", "team-brand lure-ball",
-    "team-brand moon-ball", "team-brand friend-ball", "team-brand love-ball", "team-brand heavy-ball",
-    "team-brand fast-ball", "team-brand sports-ball", "team-brand repeat-ball", "team-brand timer-ball",
-    "team-brand nest-ball", "team-brand net-ball", "team-brand dive-ball", "team-brand luxury-ball"
-]
-
-const pokelistLg = [
-    "team-brand-lg poke-ball-lg", "team-brand-lg premier-ball-lg", "team-brand-lg great-ball-lg", "team-brand-lg ultra-ball-lg",
-    "team-brand-lg master-ball-lg", "team-brand-lg safari-ball-lg", "team-brand-lg level-ball-lg", "team-brand-lg lure-ball-lg",
-    "team-brand-lg moon-ball-lg", "team-brand-lg friend-ball-lg", "team-brand-lg love-ball-lg", "team-brand-lg heavy-ball-lg",
-    "team-brand-lg fast-ball-lg", "team-brand-lg sports-ball-lg", "team-brand-lg repeat-ball-lg", "team-brand-lg timer-ball-lg",
-    "team-brand-lg nest-ball-lg", "team-brand-lg net-ball-lg", "team-brand-lg dive-ball-lg", "team-brand-lg luxury-ball-lg"
-]
+function loadFile(event) {
+    var output = document.getElementById('preview');
+    var remove_diagram = document.getElementById('testline_remove_diagram').removeAttribute("disabled");
+    output.src = URL.createObjectURL(event.target.files[0]);
+};
 
 $(document).on('turbolinks:load', function () {
     $(document).on('click', function (event) {
@@ -101,18 +92,6 @@ $(document).on('turbolinks:load', function () {
 
         var target = $($(this).data("target")).addClass("show");
         switch (target.attr("id")) {
-            case "confirm-modal":
-                var submit = target.find('#submit');
-                submit.attr('href', $(this).data('href'));
-
-                var method = $(this).data('method');
-                if (method == "delete") {
-                    submit.attr('rel', "nofollow");
-                }
-                submit.attr('data-method', method);
-                submit.focus();
-                break;
-
             case "desc-modal":
                 var content = $(this).data('content');
                 if (content == "") {
@@ -125,123 +104,6 @@ $(document).on('turbolinks:load', function () {
                 target.find('.modal-img').attr('src', $(this).data('diagram'));
                 break;
 
-            case "rel-modal":
-                var teams = $(this).data('teams');
-                var submit = target.find('#submit');
-                submit.attr('action', $(this).data('href'));
-                submit.attr('method', $(this).data('method'));
-                if (!Array.isArray(teams)) {
-                    var arr = new Array();
-                    arr.push(teams);
-                    teams = arr;
-                }
-                if (teams.length < 1) {
-                    target.find('.modal-body').html(
-                        "<p style='text-align: center; margin: 10px;'>" +
-                        "All teams are already able to use this testline.</p>");
-                    target.find(".modal-footer button[type='submit']").prop('disabled', true);
-                } else {
-                    var noAccess = "<div class='outer-border-hidden'>" +
-                        "<ul class='pokeballs-grid pokeballs-grid-sm'>";
-                    for (var index = 0; index < teams.length; index++) {
-                        var element = teams[index];
-                        noAccess = noAccess +
-                            "<li><input type='checkbox' name='teams[]'" +
-                            "id='team-" + element.id + "' value='" + element.id + "'>" +
-                            "<label for='team-" + element.id + "' class='pokeballs-item'>" +
-                            "<span class='" + pokelist[element.id % 20] + "'></span>" + element.name +
-                            "</label></li>";
-                    }
-                    noAccess = noAccess + "</ul></div>";
-                    target.find(".modal-footer button[type='submit']").prop('disabled', false);
-                    target.find('.modal-body').html(noAccess);
-                }
-                break;
-
-            case "reserve-modal":
-                var teams = $(this).data('teams');
-                var submit = target.find('#submit');
-                submit.attr('action', $(this).data('href'));
-                submit.attr('method', $(this).data('method'));
-                target.find('#email').val($(this).data('email'));
-
-                if (!Array.isArray(teams)) {
-                    var arr = new Array();
-                    arr.push(teams);
-                    teams = arr;
-                }
-
-                var teamsRadio = "<legend>Team Name:</legend>";
-                for (var index = 0; index < teams.length; index++) {
-                    var element = teams[index];
-                    teamsRadio = teamsRadio +
-                        "<input type='radio' name='reservation[team_id]'" +
-                        "id='team-" + element.id + "' value='" + element.id + "' required checked>" +
-                        "<label for='team-" + element.id + "'>" + element.name + "</label>";
-                }
-                target.find('#teams-radio').html(teamsRadio);
-                target.find('#title').focus();
-                break;
-
-            case "team-modal":
-                var submit = target.find('#submit');
-                var method = $(this).data('method');
-                var team_name = $(this).data('team-name');
-
-                submit.attr('action', $(this).data('href'));
-
-                submit.find("#method").remove();
-                if (method == "put") {
-                    submit.append("<input id='method' name='_method' type='hidden' value='put' />");
-                }
-                submit.attr('method', "post");
-                if (team_name == null) {
-                    team_name = "";
-                }
-                target.find('#team-name').val(team_name);
-                target.find('#team-name').focus();
-                break;
-
-            case "testline-modal":
-                var submit = target.find('#submit');
-                var method = $(this).data('method');
-                var testline = $(this).data('testline');
-                var tl_name = target.find('#tl-name');
-                var ip_address = target.find('#ip-address');
-                var port = target.find('#port');
-                var maintenance = target.find('#maintenance');
-                tl_name.val("");
-                ip_address.val("");
-                port.val("");
-                tinyMCE.activeEditor.setContent("");
-                maintenance.prop('checked', false);
-                document.getElementById("diagram").value = "";
-
-                submit.attr('action', $(this).data('href'));
-                submit.attr('enctype', "multipart/form-data");
-
-                submit.find("#method").remove();
-                if (method == "put") {
-                    submit.append("<input id='method' name='_method' type='hidden' value='put' />");
-                }
-                submit.attr('method', "post");
-                if (testline == null) {
-                    testline = {};
-                    testline.name = "";
-                    testline.ip_address = "";
-                    testline.port_number = "";
-                    testline.description = "";
-                } else {
-                    if (testline.isMaintenance) {
-                        maintenance.prop('checked', true);
-                    }
-                    tl_name.val(testline.name);
-                    ip_address.val(testline.ip_address);
-                    port.val(testline.port_number);
-                    tinyMCE.activeEditor.setContent(testline.description);
-                    document.getElementById("diagram").value = testline.diagram;
-                }
-                break;
             default:
                 break;
         }

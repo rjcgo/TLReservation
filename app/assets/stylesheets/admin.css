@@ -3,9 +3,8 @@
 #users-admin,
 #teams-admin,
 #testlines-admin,
-#associations-admin,
-#add-testline {
-    background: #dadada;
+#associations-admin {
+    /* background: #D8E5FA; */
     min-height: 100%;
     transition: 0.5s;
     box-sizing: border-box;
@@ -14,8 +13,7 @@
 #users-admin h2,
 #teams-admin h2,
 #testlines-admin h2,
-#associations-admin h2,
-#add-testline h2 {
+#associations-admin h2 {
     display: inline-block;
     color: #34495e;
 }
@@ -49,10 +47,6 @@
 
 /* ******************** List item ******************** */
 
-.list-item:nth-last-of-type(odd) {
-    background: #fafafa;
-}
-
 .list-item .make-admin-btn {
     float: right;
     background: transparent;
@@ -84,8 +78,6 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 31px;
-    height: 31px;
     color: #fff;
     padding: 0.4em 0.8em;
     border: 0;
@@ -142,7 +134,7 @@
 #admin-panel ul {
     list-style-type: none;
     padding: 0;
-    margin: 0;
+    margin: -2px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -151,6 +143,7 @@
 #admin-panel li {
     flex: 1 1 80%;
     border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
 }
 
 #admin-panel a {
@@ -160,10 +153,11 @@
     padding: 20px;
     height: 100%;
     box-sizing: border-box;
+    transition: 0.5s;
 }
 
 #admin-panel a:hover {
-    background: #acc3d8;
+    background: #F0F3FF;
 }
 
 #admin-panel a:hover .icon-circle {
@@ -197,45 +191,54 @@
 
 /* ******************** Add Testline ******************** */
 
+#add-testline{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.diagram-panel {
+    flex-basis: 200px;
+    text-align: center;
+}
+
+.diagram-panel .thumbnail {
+    display: inline-block;
+    max-width: 180px;
+    max-height: 180px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    margin: 10px auto;
+    text-align: center;
+}
+
 .side-panel,
 .description-panel {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    flex: 1 auto;
     color: #34495e;
-}
-
-.form-group {
-    flex: 1 98%;
-    margin: 0 1%;
-}
-
-.btn-group {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
 }
 
 .modal-dialog-full {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: -100%;
+    right: -100%;
     width: 100%;
     max-width: 992px;
     height: 100%;
     border-radius: 0;
-    /* overflow: hidden; */
     animation: zoom-in-rounded 0.5s ease forwards;
 }
 
-.modal-dialog-full>.modal-content{
+.modal-dialog-full>.modal-content {
     min-height: 100%;
     border-radius: 0;
 }
 
 .modal.show .modal-dialog-full {
+    top: 0;
+    right: 0;
     animation: zoom-out-rounded 0.5s ease forwards;
 }
 
@@ -255,6 +258,7 @@
         border-radius: 0;
     }
 }
+
 @keyframes zoom-in-rounded {
     0% {
         top: 0;
@@ -285,13 +289,6 @@
 @media screen and (min-width: 576px) {
     #admin-panel li {
         flex: 1 1 46%;
-    }
-    #admin-panel li:nth-child(odd) {
-        border-right: 1px solid #000;
-    }
-    .form-group {
-        flex: 1 auto;
-        margin: 0 1%;
     }
 }
 

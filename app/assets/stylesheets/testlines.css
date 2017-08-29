@@ -1,6 +1,6 @@
 #reservations,
 #add-testline {
-    background: #dadada;
+    /* background: #D8E5FA; */
     min-height: 100%;
     transition: 0.5s;
     box-sizing: border-box;
@@ -12,6 +12,16 @@
     color: #34495e;
 }
 
+#reservations .pick-testline {
+    margin-left: 10px;
+    opacity: 0.75;
+    animation: updown 0.5s alternate infinite;
+}
+
+@keyframes updown{
+    from {margin-top: 0;}
+    to {margin-top: 4px;}
+}
 
 /* ******************** List Group ******************** */
 
@@ -103,22 +113,21 @@
     position: absolute;
     top: -12px;
     right: -9px;
-    width: 31px;
-    height: 31px;
+    width: 12px;
     overflow: hidden;
     color: #fff;
     white-space: nowrap;
-    letter-spacing: 5px;
-    padding: 0.4em 0.8em;
+    letter-spacing: 7px;
+    padding: 6px 10px;
     border: 0;
-    border-radius: 18px;
+    border-radius: 50%;
     background: #d9534f;
     transition: 0.5s;
 }
 
 .list-item .release:hover {
     background: #a94442 !important;
-    width: 100px;
+    width: 80px;
     letter-spacing: normal;
     border-radius: 0;
     /* top: 0; */

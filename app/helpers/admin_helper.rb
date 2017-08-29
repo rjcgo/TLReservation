@@ -18,7 +18,7 @@ module AdminHelper
 	end
 
 	def teams_without_access(testline)
-		return @noAccess = @teams - testline.teams
+		@noAccess = @teams - testline.teams
 	end
 
 	def header(page)
@@ -29,5 +29,9 @@ module AdminHelper
 			"Associations" => "fa fa-exchange"
 		}
 		return {:page => page, :icon => icon[page]}
+	end
+
+	def ball(id)
+		return pokelist[id % 20]
 	end
 end

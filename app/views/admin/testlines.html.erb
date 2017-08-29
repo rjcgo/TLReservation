@@ -4,22 +4,23 @@
         <section id="testlines-admin">
             <header>
                 <%= render partial: 'header', :locals => header("Testlines") %>
-                <a href="javascript:void(0)" class="add-btn modal-open"
-                    data-href="<%= testlines_path %>" data-target="#testline-modal" 
-                    data-method="post"><i class="fa fa-plus"></i> New Testline</a>
+                <%= link_to new_testline_path, remote: true, class: "add-btn" do %>
+                    <i class="fa fa-plus"></i> New Testline
+                <% end %>
                 <%= admin_notice(@testlines, "testlines", notice) %>
             </header>
             <div class="card-deck">
                 <% @testlines.each do |testline| %>
-                    <%= render partial: "partials/card", locals: cardProps(testline) %>
+                    <%= render partial: "card", locals: cardProps(testline) %>
                 <% end %>
             </div>
         </section>
     </main>
-    <%= render partial: "partials/img_modal" %>
-    <%= render partial: "partials/description_modal" %>
-    <%= render partial: "partials/testline_modal" %>
-    <%= render partial: "partials/confirm_modal", :locals => modal_content("testlines") %>
+    <div id="confirmationDialog" class="modal"></div>
+
+    <%= render "modal" %>
+    <%= render partial: "img_modal" %>
+    <%= render partial: "description_modal" %>
 <% else %>
     <%= render 'error' %>
 <% end %>
