@@ -25,12 +25,12 @@ $ ->
                     <div class="modal-footer">
                         <div class="btn-group">
                             <div class="form-group">
-                                <a class="modal-btn bg-red confirm">
-                                    <i class="fa fa-check"></i> Confirm</a>
+                                <button class="modal-btn bg-red confirm">
+                                    <i class="fa fa-check"></i> Confirm</button>
                             </div>
                             <div class="form-group">
-                                <a class="modal-btn dismiss">
-                                    <i class="fa fa-times"></i> Cancel</a>
+                                <button class="modal-btn dismiss">
+                                    <i class="fa fa-times"></i> Cancel</button>
                             </div>
                         </div>
                     </div>
@@ -40,6 +40,8 @@ $ ->
     confirmationDialog = $('#confirmationDialog');
     confirmationDialog.html($(html));
     confirmationDialog.addClass('show');
+    confirmbtn = document.getElementsByClassName('confirm');
+    confirmbtn[0].focus();
     $('#confirmationDialog .confirm').on 'click', -> $.rails.confirmed(link)
 
     $('.dismiss').on 'click', -> $(this).closest('.modal').removeClass("show");

@@ -191,7 +191,7 @@
 
 /* ******************** Add Testline ******************** */
 
-#add-testline{
+#add-testline {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -218,62 +218,6 @@
 .description-panel {
     flex: 1 auto;
     color: #34495e;
-}
-
-.modal-dialog-full {
-    position: absolute;
-    top: -100%;
-    right: -100%;
-    width: 100%;
-    max-width: 992px;
-    height: 100%;
-    border-radius: 0;
-    animation: zoom-in-rounded 0.5s ease forwards;
-}
-
-.modal-dialog-full>.modal-content {
-    min-height: 100%;
-    border-radius: 0;
-}
-
-.modal.show .modal-dialog-full {
-    top: 0;
-    right: 0;
-    animation: zoom-out-rounded 0.5s ease forwards;
-}
-
-@keyframes zoom-out-rounded {
-    0% {
-        top: -100%;
-        right: -100%;
-        opacity: 0;
-        transform: scale(0);
-        border-radius: 50%;
-    }
-    100% {
-        top: 0;
-        right: 0;
-        opacity: 1;
-        transform: scale(1);
-        border-radius: 0;
-    }
-}
-
-@keyframes zoom-in-rounded {
-    0% {
-        top: 0;
-        right: 0;
-        opacity: 1;
-        transform: scale(1);
-        border-radius: 0;
-    }
-    100% {
-        top: -100%;
-        right: -100%;
-        opacity: 0;
-        transform: scale(0);
-        border-radius: 50%;
-    }
 }
 
 

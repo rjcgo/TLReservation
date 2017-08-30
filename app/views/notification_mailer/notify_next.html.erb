@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <p>Hi <%= @email %>,</p>
-    <p>
-      The testline you are next in line for (<%= @testline.name %>) has been released. In effect, you are now its current user. Please release the testline once you are done using it. Thanks!
-    </p>
-  </body>
+</head>
+
+<body style="background: #3B4356; font-family: Segoe UI, sans-serif; font-weight: 300;">
+    <table style="color: #fff; text-align: center; line-height: 1.6em;">
+        <tr>
+            <td width="15%"></td>
+            <td width="70%">
+                <header>
+                    <h1 style="font-weight: 500;">Test Line Reservation</h1>
+                </header>
+                <main>
+                    <h4 style="font-weight: 300;">
+                        Hi <a href="" style="font-style: italic; color: #fff;"><%= @email %>,</a>
+                    </h4>
+                    <h2 style="font-weight: 500;">
+                        <span style="background: #81C781; color: #fff;">
+                            <%= @testline.name %></span> has been released.
+                    </h2>
+                    <p>
+                        The testline you are next in line for has been released. In effect, you are now its current user. Please release the testline once you are done using it. Thanks!
+                    </p>
+                    <a href="http://localhost:3000/reservations" style="background: #F18650; color: #fff; font-size: 16px;">View on Browser</a>
+                </main>
+                <footer>
+                    <hr>
+                    <p style="color: #777E8E; font-size: 14px;">
+                        This email is only for notification purposes, please do not reply to this email. Thank you for using our services.</p>
+                </footer>
+            </td>
+            <td width="15%"></td>
+        </tr>
+    </table>
+</body>
+
 </html>

@@ -37,7 +37,7 @@ body {
 .wrapper {
     width: 96%;
     max-width: 1400px;
-    padding: 0 2%;
+    /* padding: 0 2%; */
     margin: 0 auto;
 }
 
@@ -168,7 +168,7 @@ main {
     top: 0;
     background: #124191;
     padding: 10px 0;
-    z-index: 4;
+    z-index: 5;
     box-shadow: 0 3px 10px #333;
 }
 
@@ -314,7 +314,7 @@ main {
     height: 100%;
     width: 0;
     padding-top: 100px;
-    overflow: hidden;
+    overflow: auto;
     transition: 0.5s;
 }
 
@@ -402,7 +402,7 @@ main {
 }
 
 .pokeballs-grid-sm li {
-    min-width: 120px;
+    min-width: 100px;
 }
 
 .pokeballs-grid-lg li {
@@ -544,6 +544,8 @@ input[type="checkbox"]:checked+.pokeballs-item {
     flex: 1 1 auto;
     background: #f9f9f9;
     padding: 12px;
+    max-height: 300px;
+    overflow: auto;
 }
 
 .card-body ul {
@@ -875,7 +877,7 @@ input[type="checkbox"]:checked+.pokeballs-item {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 5;
+    z-index: 6;
     width: 100%;
     height: 100%;
     overflow: auto;
@@ -904,6 +906,7 @@ input[type="checkbox"]:checked+.pokeballs-item {
     -webkit-animation-duration: 0.5s;
     animation-name: animatebottom;
     animation-duration: 0.5s;
+    max-width: 596px;
 }
 
 
@@ -968,6 +971,62 @@ input[type="checkbox"]:checked+.pokeballs-item {
     box-sizing: border-box;
     border-radius: 0.25em;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.modal-dialog-full {
+    position: absolute;
+    top: -100%;
+    right: -100%;
+    width: 100% !important;
+    max-width: 992px;
+    height: 100%;
+    border-radius: 0;
+    animation: zoom-in-rounded 0.5s ease forwards;
+}
+
+.modal-dialog-full>.modal-content {
+    min-height: 100%;
+    border-radius: 0;
+}
+
+.modal.show .modal-dialog-full {
+    top: 0;
+    right: 0;
+    animation: zoom-out-rounded 0.5s ease forwards;
+}
+
+@keyframes zoom-out-rounded {
+    0% {
+        top: -100%;
+        right: -100%;
+        opacity: 0;
+        transform: scale(0);
+        border-radius: 50%;
+    }
+    100% {
+        top: 0;
+        right: 0;
+        opacity: 1;
+        transform: scale(1);
+        border-radius: 0;
+    }
+}
+
+@keyframes zoom-in-rounded {
+    0% {
+        top: 0;
+        right: 0;
+        opacity: 1;
+        transform: scale(1);
+        border-radius: 0;
+    }
+    100% {
+        top: -100%;
+        right: -100%;
+        opacity: 0;
+        transform: scale(0);
+        border-radius: 50%;
+    }
 }
 
 
@@ -1077,6 +1136,7 @@ input[type="checkbox"]:checked+.pokeballs-item {
 label {
     display: inline-block;
     margin-bottom: 7.5px;
+    cursor: pointer;
 }
 
 input:read-only,
@@ -1129,7 +1189,13 @@ legend {
 
 .radio-group {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.radio-group input[type="radio"]+label {
+    flex: 1 33%;
+    text-align: center;
 }
 
 input[type="radio"],
@@ -1282,6 +1348,73 @@ input[type="checkbox"]:checked+label {
 }
 
 
+/* ******************** Login ******************** */
+
+.login-card {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 300px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.login-card .login-icon {
+    margin-top: 30px;
+    display: block;
+    text-align: center;
+    color: #34495e;
+}
+
+.login-card .login-form {
+    padding: 30px;
+}
+
+.login-card .login-text {
+    border-top: 1px solid #e4e4e4;
+    text-align: center;
+}
+
+.login-card .login-text h2 {
+    margin: 0;
+    position: relative;
+    top: -0.75em;
+    display: inline-block;
+    padding: 0 20px;
+    color: #777;
+    background: #fff;
+}
+
+.login-card .login-form .login-button {
+    /* background: rgb(68, 68, 68); */
+    background: #34495e;
+    opacity: 0.85;
+    border: 0;
+    color: #fff;
+    margin-top: 16px;
+    padding: 10px 40px;
+    text-transform: uppercase;
+    border-radius: 100px;
+    width: 100%;
+}
+
+.login-card .login-form .login-button:hover {
+    opacity: 1;
+}
+
+.login-card .login-form .forgot-password {
+    text-align: center;
+    color: #777;
+    text-decoration: none;
+    border-bottom: 1px dashed #777;
+}
+
+.login-card .login-form .forgot-password:hover {
+    color: #333;
+}
+
+
 /* ******************** Media Queries ******************** */
 
 @media screen and (min-width: 480px) {
@@ -1406,8 +1539,7 @@ input[type="checkbox"]:checked+label {
     #sidenav-container #reservations {
         position: absolute;
         top: 0;
-        left: 2%;
-        right: 2%;
+        width: calc(100% - 250px);
         z-index: 1;
         margin-left: 250px;
     }
@@ -1423,9 +1555,9 @@ input[type="checkbox"]:checked+label {
         flex: 1 0 32%;
     }
     .card {
-        flex: 1 1 40%;
-        margin: 20px 5%;
-        max-width: 400px;
+        flex: 1 1 46%;
+        margin: 20px 2%;
+        max-width: 329px;
     }
     .card-body li .card-text {
         font-size: 1em;
@@ -1459,6 +1591,7 @@ input[type="checkbox"]:checked+label {
     #sidenav-container #testlines-admin,
     #sidenav-container #associations-admin,
     #sidenav-container #reservations {
+        width: calc(100% - 300px);
         margin-left: 300px;
     }
     .pokeballs-grid li {
@@ -1467,6 +1600,8 @@ input[type="checkbox"]:checked+label {
     .card {
         flex: 1 1 31%;
         margin: 20px 1%;
+        min-width: 337px;
+        max-width: 396px;
     }
     .card-header .card-header-overlay .card-title {
         font-size: 1.4em;
@@ -1478,9 +1613,6 @@ input[type="checkbox"]:checked+label {
         content: "";
         display: block;
         clear: both;
-    }
-    .modal-dialog {
-        max-width: 1000px;
     }
     .error-overlay h1 {
         font-size: 4em;

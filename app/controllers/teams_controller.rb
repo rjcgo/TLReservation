@@ -12,7 +12,7 @@ class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
     @teams = Team.order(:name)
-    @testlines = @team.testlines.includes(reservations: [:user]).limit(4)
+    @testlines = @team.testlines.includes(reservations: [:user, :team])
 
 		@available = Array.new
 		@used = Array.new

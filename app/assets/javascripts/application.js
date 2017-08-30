@@ -82,6 +82,12 @@ $(document).on('turbolinks:load', function () {
         }
     });
 
+    $(document).keydown(function(e) {
+        if (e.keyCode == 27) {
+            $('.modal').removeClass("show");
+        } 
+    });
+
     $("button").on("click", function () {
         var modal = $("." + $(this).data("dismiss")).removeClass("show");
     })
