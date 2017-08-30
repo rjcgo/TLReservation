@@ -29,6 +29,26 @@ function toggleSideNav() {
     }
 }
 
+function toggleFullModal(event) {
+    var modalDialog = event.target.closest('.modal-dialog');
+    var modalContent = event.target.closest('.modal-content');
+    console.log(modalDialog);
+    if (modalDialog.style.maxWidth == '100%') {
+        modalDialog.removeAttribute('style');
+        modalContent.removeAttribute('style');
+        modalDialog.style.transition = '0.5s';
+        modalContent.style.transition = '0.5s';
+    } else {
+        modalDialog.style.top = '0';
+        modalDialog.style.height = '100%';
+        modalDialog.style.width = '100%';
+        modalDialog.style.maxWidth = '100%';
+        modalDialog.style.transition = '0.5s';
+        modalContent.style.transition = '0.5s';
+        modalContent.style.height = '100%';
+    }
+}
+
 function openReservation(evt, tabName) {
     var i, listgroups, sidenavlinks;
 

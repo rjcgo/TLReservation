@@ -1047,15 +1047,22 @@ input[type="checkbox"]:checked+.pokeballs-item {
     font-size: 1.6em;
 }
 
+.modal-max,
 .modal-close {
     border: 0;
     background: transparent;
     position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 1.6em;
+    top: 10px;
     cursor: pointer;
     color: #000;
+}
+
+.modal-max{
+    right: 32px;
+}
+
+.modal-close {
+    right: 0;
 }
 
 

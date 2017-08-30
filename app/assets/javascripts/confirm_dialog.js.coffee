@@ -14,7 +14,9 @@ $ ->
             <div class="modal-dialog" style="max-width: 396px;">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="modal-close dismiss">&times;</button>
+                        <button type="button" class="modal-close dismiss">
+                            <i class="fa fa-times fa-fw"></i>
+                        </button>
                         <h3 class="modal-title">
                             <i class="fa fa-exclamation-triangle"></i> Confirm
                         </h3>
