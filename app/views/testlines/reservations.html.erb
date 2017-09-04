@@ -1,55 +1,88 @@
 <main class="wrapper" id="sidenav-container">
-  <%= testline_sidenav %>
-  <section id="reservations">  
-	<header>
-		<%= render partial: "header", :locals => header("Reservations") %>
-		<%= link_to reservations_download_log_file_path, :class => "download-link", target: :_blank do %>
-			<i class="fa fa-download" aria-hidden="true"></i> Download log file
-		<% end %>
-	</header>
-	<% if @testlines.count == 0  %>
-		<%= no_testline_notice %>
+	<% if @testlines.length == 0 %>
+		<div class="notice-wrapper">
+			<h4>There are no test lines yet.</h4>
+		</div>
 	<% else %>
-		<% pos, sym, info = reserve_init %>
-	    <% @testlines.each do |testline| %>
-	    	<%= content_tag :ul, :id => "tl-#{testline.id}", :class => "list-group", :style => reserve_active(testline.id) do %>
-	    		<%= reserve_notice testline.reservations.count %>
-		    	<% currentReserve = 0 %>
-				<% @reservations.each do |reserve| %>
-					<% if testline.id == reserve.testline_id %>
-						<%= content_tag :li, "", :class => "list-item list-item-#{pos[currentReserve]}" do %>
-							<%= content_tag :small, :class => "badge badge-#{pos[currentReserve]}" do %>
-								<%= content_tag :i, "", :class => "fa fa-#{sym[currentReserve]}" %>
-								<%= info[currentReserve] %>
-							<% end %>
-							<%= reserve_header reserve %>
-							<%= content_tag :p, reserve.description, :class => "description" %>
-			                <div class="list-item-footer">
-			                	<%= content_tag :small, "Reserved by #{reserve.email}", :class => "user" %>
-			                    <% if currentReserve == 0 %>
-									<span class="time-used">
-										<i class="fa fa-clock-o"></i>
-										<%= content_tag :a, "", :id => "tm-#{testline.id}" %>
-									</span>
+		<%= render partial: "sidenav", :locals => {testlines: @testlines} %>
+		<section id="reservations">
+			<article class="tabcontent" style="display: block;">
+				<header>
+					<%= render partial: "header", :locals => header("") %>
+					<%= link_to reservations_download_log_file_path, :class => "download-link", target: :_blank do %>
+						<i class="fa fa-download"></i> Download log file
+					<% end %>
+				</header>
+				<h2 class="pick-testline">
+					<i class="fa fa-hand-o-left"></i> Pick a Testline.</h2>
+			</article>
+			<% @testlines.each do |testline| %>
+				<article id="tl-<%= testline.id %>" class="tabcontent" style="display: none;">
+					<header>
+						<%= render partial: "header", :locals => header(testline.name) %>
+						<%= link_to reservations_download_log_file_path, :class => "download-link", target: :_blank do %>
+							<i class="fa fa-download"></i> Download log file
+						<% end %>
+					</header>
+					<% if testline.isMaintenance %>
+						<div class="notice-wrapper bg-yellow">
+							<h4>This test line is under maintenance</h4>
+						</div>
+					<% else %>
+						<% if testline.reservations.length == 0 %>
+							<div class="notice-wrapper">
+								<h4>This test line is currently not in use.</h4>
+							</div>
+						<% else %>
+						<div style="text-align: center; clear: both;">
+							<%= link_to reserveText(testline), new_testline_reservation_path(testline), 
+								remote: true, class: "card-link"%>
+						</div>
+							<ul class="list-group">
+								<% testline.reservations.each_with_index do |reserve, index| %>
+									<% orderProps = reservationOrder(index) %>
+									<li class="list-item list-item-<%= orderProps['class'] %>">
+										<small class="badge badge-<%= orderProps['class'] %>">
+											<i class="fa <%= orderProps['icon'] %>"></i> 
+											<%= orderProps['text'] %></small>
+										<div class="list-item-header">
+											<h3 class="title"><%= reserve.name %></h3>
+											<small class="timestamp"><%= reserve.created_at %></small>
+											<p class="subtitle"><%= reserve.team.name %></p>
+										</div>
+										<p class="description"><%= reserve.description %></p>
+										<div class="list-item-footer">
+											<small class="user">Reserved by <%= reserve.user.email %></small>
+											<% if index == 0 %>
+												<div class="time-used">
+													<i class="fa fa-clock-o"></i> <span id="tm-<%= testline.id %>"></span>
+												</div>
+											<% end %>
+										</div>
+										<% if current_user.isAdmin? || (current_user.email == reserve.user.email)%>
+											<%= link_to testline_reservation_path(testline, reserve), 
+												remote: true, :method => :delete, 
+												data: {confirm: "Are you sure you want to release your reservation?"}, 
+												:class => 'release' do %><i class="fa fa-times"></i> Release
+											<% end %>
+										<% end %>
+									</li>
 								<% end %>
-			                </div>
-			                <% if current_user.isAdmin? || (current_user.email == reserve.email )%>
-			                	<% if reserve == testline.reservations.first %>
-			                		<%= button_to [reserve.testline,reserve], method: :delete, :class => "release show-delete-modal", form: {:onsubmit => "return ask_modal(-#{reserve.id});"}, :id => "-#{reserve.id}" do %><i class="fa fa-times"></i> Release <% end %>
-			                	<% else %>
-			                		<%= button_to [reserve.testline,reserve], method: :delete, :class => "release show-delete-modal", form: {:onsubmit => "return ask_modal(-#{reserve.id});"}, :id => "-#{reserve.id}" do %><i class="fa fa-times"></i> Cancel <% end %>
-			                	<% end %>
-			               	<% end %>
-				        <% end %>
-				        <% currentReserve += 1 %>
-		        	<% end %> 
-		    	<% end %>
+							</ul>
+						<% end %>
+						<div style="text-align: center; margin: 20px 0;">
+							<%= link_to reserveText(testline), new_testline_reservation_path(testline), 
+								remote: true, class: "card-link"%>
+						</div>
+					<% end %>
+				</article>
 			<% end %>
-		<% end %>
+		</section>
 	<% end %>
-  </section>
 </main>
-<%= render partial: "confirm", :locals => modal_content("reservations") %>
+<div id="confirmationDialog" class="modal"></div>
+
+<%= render "modal" %>
 <script type="text/javascript">
 	var t = new Object();
 	var pt =  Math.floor(new Date().getTime() / 1000);

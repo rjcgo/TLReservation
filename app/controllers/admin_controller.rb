@@ -12,10 +12,8 @@ class AdminController < ApplicationController
   end
 
   def associations
-  	@team_testlines = TeamTestline.all
     @teams = Team.order(:name)
-    @testlines = Testline.order(:name)
-    @team_testline = TeamTestline.new
+    @testlines = Testline.order(:name).includes(:teams)
   end
 
   def testlines

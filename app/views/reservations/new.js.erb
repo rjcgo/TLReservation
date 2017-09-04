@@ -1,0 +1,9 @@
+var dialog = document.getElementById('dialog');
+
+dialog.classList.add('show');
+
+dialog.getElementsByTagName('h3')[0].innerHTML = "<i class='fa fa-calendar-check-o'></i> Reserve";
+
+document.getElementById('dialog-content').innerHTML = '<%= j render("form") %>';
+
+document.getElementById('reservation_name').focus();

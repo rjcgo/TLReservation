@@ -1,3 +1,39 @@
-<script type="text/javascript">
-    window.location.href="/login"
-</script>
+<% if user_signed_in? %>
+    <script>
+        window.location.href = '/';
+    </script>
+<% else %>
+    <main>
+        <div class="login-card">
+            <i class="fa fa-5x fa-user-circle login-icon"></i>
+            <div class="login-form">
+                <div class="login-text">
+                    <h2>Log in</h2>
+                </div>
+                <!-- insert alerts here -->
+                <% if alert %>
+                    <p class="text-red"><%= alert %></p>
+                <% elsif notice %>
+                    <p class="text-red"><%= notice %></p>
+                <% end %>
+                <!-- end -->
+                <!-- login form -->
+                <%= form_for("user", :url => user_session_path) do |f| %>
+                    <div class="input-group">
+                        <span class="input-addon">
+                            <i class="fa fa-envelope-o fa-fw"></i>
+                        </span>
+                        <%= f.email_field :email, :class => alert ? "has-error" : "", :placeholder => "Email" %>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-addon">
+                            <i class="fa fa-key fa-fw"></i>
+                        </span>
+                        <%= f.password_field :password, :class => alert ? "has-error" : "", :placeholder => "Password" %>
+                    </div>
+                    <%= f.submit 'Sign in', :class => "login-button" %>
+                <% end %>
+            </div>
+        </div>
+    </main>
+<% end %>

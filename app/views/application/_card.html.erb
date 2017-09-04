@@ -1,0 +1,87 @@
+<div class="card">
+    <div class="card-content">
+        <!-- Card header -->
+        <div class="card-header bg-blue">
+            <div class="status-circle <%= color %>">
+                <i class="fa <%= icon %> fa-white"></i>
+            </div>
+            <i class="fa fa-server testline-icon text-white"></i>
+            <div class="card-header-overlay">
+                <h3 class="card-title"><%= testline.name %></h3>
+                <a href="#" class="card-header-link modal-open" data-diagram="<%= testline.diagram %>"
+                    data-target="#img-modal">Show Diagram</a><br>
+                <a href="#" class="card-header-link modal-open" data-content="<%= testline.description %>"
+                    data-target="#desc-modal">Show Description</a>
+            </div>
+            <% if !testline.reservations.empty? %>
+                <div class="timer">
+                    <i class="fa fa-clock-o"></i> <span id="tm-<%= testline.id %>"></span>
+                </div>
+            <% end %>
+        </div>
+        <!-- Card body -->
+        <div class="card-body">
+            <% if request.original_fullpath == "/admin/associations" %>
+                <% if testline.teams.empty? %>
+                    <p style="text-align: center; margin: 10px;">No team can currently use this testline.</p>
+                <% else %>
+                    <div class="outer-border-hidden">
+                        <ul class="pokeballs-grid pokeballs-grid-sm">
+                            <% testline.teams.each do |team| %>
+                                <li>
+                                    <%= link_to testline_team_path(testline, team), remote: true, :method => :delete, 
+                                        data: {confirm: "Are you sure you want to take away this team's access to this testline?"}, 
+                                        :class => 'release' do %><i class="fa fa-times"></i>
+                                    <% end %>
+                                    <span class="<%= pokelist[team.id % 20] %>"></span><%= team.name %>
+                                </li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
+            <% elsif !testline.reservations.empty? %>
+                <ul>
+                    <% testline.reservations.each_with_index do |reservation, index| %>
+                    <li>
+                        <% orderProps = reservationOrder(index) %>
+                        <p class="card-text"><%= reservation.name %></p>
+                        <small class="badge badge-<%= orderProps['class'] %>">
+                            <i class="fa <%= orderProps['icon'] %>"></i> 
+                            <%= orderProps['text'] %></small>
+                        <span class="delete-overlay">
+                            <i class="fa fa-calendar-check-o"></i> 
+                            <%= reservation.user.email %> 
+                            <span class="badge"><%= reservation.team.name %></span>
+                        </span>
+                    </li>
+                    <% end %>
+                </ul>
+            <% else %>
+                <p style="text-align: center; margin: 10px;">There are currently no reservations for this testline.</p>
+            <% end %>
+        </div>
+        <!-- Card footer -->
+        <div class="card-footer">
+            <% if request.original_fullpath == "/admin/testlines" %>
+                <%= link_to "Edit Testline", edit_testline_path(testline), remote: true, class: "card-link" %>
+                <%= link_to "Delete", testline, remote: true, :method => :delete, 
+                    data: {confirm: "Are you sure you want to delete this testline?"}, 
+                    :class => 'card-link text-red'%>
+            <% elsif request.original_fullpath == "/admin/associations" %>
+                <%= link_to new_testline_teams_path(testline), 
+                    remote: true, class: "card-link" do %>
+                    <i class="fa fa-plus"></i> Add Team
+                <% end %>
+            <% elsif testline.isMaintenance %>
+                <p style="text-align: center; margin: 10px;">This testline is under maintenance.</p>
+            <% elsif !(userReservation = didReserveTestline(testline)).nil? %>
+                <%= link_to "Release", testline_reservation_path(testline, userReservation), 
+                    remote: true, :method => :delete, :class => 'card-link text-red',
+                    data: {confirm: "Are you sure you want to release your reservation?"}%>
+            <% else %>
+                <%= link_to reserveText(testline), new_testline_reservation_path(testline), 
+                    remote: true, class: "card-link"%>
+            <% end %>
+        </div>
+    </div>
+</div>

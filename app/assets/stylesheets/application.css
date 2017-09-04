@@ -16,7 +16,7 @@
 
 .timer {
     position: absolute;
-    bottom: 0;
+    bottom: 20px;
     right: 40px;
 }
 
@@ -29,7 +29,7 @@ body {
 }
 
 body {
-    background: #bdc3c7;
+    background: #f9f9f9;
     font-family: Raleway, sans-serif;
     margin: 0;
 }
@@ -37,7 +37,7 @@ body {
 .wrapper {
     width: 96%;
     max-width: 1400px;
-    padding: 0 2%;
+    /* padding: 0 2%; */
     margin: 0 auto;
 }
 
@@ -108,20 +108,15 @@ main {
 
 /* ******************** Badge ******************** */
 
-.badge-sidenav {
-    position: absolute;
-    top: 50%;
-    right: 1em;
-    transform: translateY(-50%);
-}
-
 .badge {
     display: inline-block;
     padding: .25em .4em;
     font-size: 75%;
     font-weight: 700;
     line-height: 1;
-    color: #fff;
+    color: #000;
+    background: #fff;
+    border: 1px solid #eee;
     text-align: center;
     white-space: nowrap;
     vertical-align: baseline;
@@ -129,28 +124,39 @@ main {
     text-transform: uppercase;
 }
 
-.badge.badge-pill {
-    border-radius: 10rem;
-    padding-left: 0.6em;
-    padding-right: 0.6em;
+.badge-sidenav {
+    position: absolute;
+    top: 50%;
+    right: 1em;
+    transform: translateY(-50%);
+    border-radius: 2px;
+    width: 18px;
+    height: 18px;
+    padding: 2px 6px;
+    line-height: 18px;
+    font-size: 0.96rem;
+    font-weight: 300;
 }
 
 .badge.badge-primary {
     background: #0275d8 !important;
+    border-color: #0275d8 !important;
     color: #fff !important;
-    font-size: 0.9em;
+    font-size: 80%;
 }
 
 .badge.badge-next {
     background: #18a3fa !important;
+    border-color: #18a3fa !important;
     color: #fff !important;
-    font-size: 0.6em;
+    font-size: 60%;
 }
 
 .badge.badge-pending {
-    background: #999 !important;
+    background: #aaa !important;
+    border-color: #aaa !important;
     color: #fff !important;
-    font-size: 0.6em;
+    font-size: 60%;
 }
 
 
@@ -160,9 +166,9 @@ main {
     width: 100%;
     position: fixed;
     top: 0;
-    background: #34495e;
+    background: #124191;
     padding: 10px 0;
-    z-index: 4;
+    z-index: 5;
     box-shadow: 0 3px 10px #333;
 }
 
@@ -273,6 +279,7 @@ main {
 
 .navbar-nav a:hover {
     background: #42A5F5;
+    transition: 0.5s;
 }
 
 
@@ -307,7 +314,7 @@ main {
     height: 100%;
     width: 0;
     padding-top: 100px;
-    overflow: hidden;
+    overflow: auto;
     transition: 0.5s;
 }
 
@@ -350,11 +357,11 @@ main {
 .sidenav-toggler {
     background: transparent;
     border: 1px solid #34495e;
-    border-radius: 0.25em;
+    border-radius: 0.25rem;
     padding: 2px 8px;
     margin-right: 4px;
     margin-left: 10px;
-    font-size: 1.5em;
+    font-size: 1.2em;
     cursor: pointer;
     color: #34495e;
 }
@@ -375,9 +382,6 @@ main {
 .outer-border-hidden {
     overflow: hidden;
     height: 100%;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
     margin: 0 auto;
 }
 
@@ -394,8 +398,15 @@ main {
     flex: 1 0 100%;
     border-bottom: 1px solid #aaa;
     text-align: center;
-    /*font-size: 1.4em;*/
     position: relative;
+}
+
+.pokeballs-grid-sm li {
+    min-width: 100px;
+}
+
+.pokeballs-grid-lg li {
+    min-width: 200px;
 }
 
 .pokeballs-grid a {
@@ -411,15 +422,38 @@ main {
     width: 100%;
     font-family: Raleway;
     font-size: 1em;
-    padding: 16px 2px;
+    padding: 16px 0;
+    margin: 0;
+}
+
+input[type="checkbox"]+label.pokeballs-item::before {
+    content: "";
+    font-size: 5em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+
+input[type="checkbox"]:checked+label.pokeballs-item::before {
+    content: "\f05d";
+}
+
+input[type="checkbox"]:checked+.pokeballs-item {
+    background: #e2e2e2;
 }
 
 .pokeballs-item:hover {
     background: #e2e2e2;
+    transition: 0.5s;
 }
 
 .pokeballs-grid a:hover {
     background: #e2e2e2;
+    transition: 0.5s;
 }
 
 
@@ -437,9 +471,10 @@ main {
 
 .card {
     flex: 0 1 90%;
-    margin: 20px;
+    margin: 20px 5%;
+    min-width: 296px;
     position: relative;
-    max-width: 496px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .card-content {
@@ -509,6 +544,8 @@ main {
     flex: 1 1 auto;
     background: #f9f9f9;
     padding: 12px;
+    max-height: 300px;
+    overflow: auto;
 }
 
 .card-body ul {
@@ -534,7 +571,7 @@ main {
     font-weight: 600;
 }
 
-.card-body li .badge {
+.card-body li>.badge {
     float: right;
 }
 
@@ -570,7 +607,7 @@ main {
 .card-footer {
     background: #f9f9f9;
     text-align: center;
-    padding: 16px 12px;
+    padding: 12px;
     border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
 
@@ -606,12 +643,22 @@ main {
 
 /* ******************** List item ******************** */
 
-.list-item:nth-last-of-type(odd) {
-    background: #eee;
+.list-item {
+    box-sizing: border-box;
+    padding: 10px;
+    background: #fafafa;
+    position: relative;
+    border-left: 5px solid #ccc;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .list-item.list-item-primary {
     border-left: 5px solid #0275d8 !important;
+}
+
+.list-item.list-item-next {
+    border-left: 5px solid #18a3fa !important;
 }
 
 .list-item.list-item-pending {
@@ -827,11 +874,10 @@ main {
 /* ******************** modal ******************** */
 
 .modal {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 5;
+    z-index: 6;
     width: 100%;
     height: 100%;
     overflow: auto;
@@ -839,42 +885,28 @@ main {
     /* Fallback color */
     background-color: rgba(0, 0, 0, 0.6);
     /* Black w/ opacity */
+    transform-origin: 0 0;
+    transform: scale(0);
+    transition-duration: 0s;
+    transition-delay: 0.5s;
 }
 
 .modal.show {
-    display: block;
+    transform: scale(1);
+    transition-delay: 0s;
 }
 
-.modal-content {
+.modal-dialog {
+    position: relative;
     width: 98%;
     margin: 0 auto;
-    padding: 14px 20px;
-    background: #fefefe;
-    box-sizing: border-box;
-    border-radius: 0.25em;
-    position: relative;
-    top: 10%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s
-}
-
-.modal-confirm {
-    width: 98%;
-    margin: 0 auto;
-    padding: 14px 20px;
-    background: #fefefe;
-    box-sizing: border-box;
-    border-radius: 0.25em;
-    position: relative;
-    top: 10%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s
+    top: 0;
+    opacity: 0;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 0.5s;
+    animation-name: animatebottom;
+    animation-duration: 0.5s;
+    max-width: 596px;
 }
 
 
@@ -902,6 +934,101 @@ main {
     }
 }
 
+@-webkit-keyframes animatebottom {
+    from {
+        top: 10%;
+        opacity: 1
+    }
+    to {
+        top: 0;
+        opacity: 0
+    }
+}
+
+@keyframes animatebottom {
+    from {
+        top: 10%;
+        opacity: 1
+    }
+    to {
+        top: 0;
+        opacity: 0
+    }
+}
+
+.modal.show .modal-dialog {
+    top: 10%;
+    opacity: 1;
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.5s;
+    animation-name: animatetop;
+    animation-duration: 0.5s;
+}
+
+.modal-content {
+    padding: 14px 20px;
+    background: #fefefe;
+    box-sizing: border-box;
+    border-radius: 0.25em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.modal-dialog-full {
+    position: absolute;
+    top: -100%;
+    right: -100%;
+    width: 100% !important;
+    max-width: 992px;
+    height: 100%;
+    border-radius: 0;
+    animation: zoom-in-rounded 0.5s ease forwards;
+}
+
+.modal-dialog-full>.modal-content {
+    min-height: 100%;
+    border-radius: 0;
+}
+
+.modal.show .modal-dialog-full {
+    top: 0;
+    right: 0;
+    animation: zoom-out-rounded 0.5s ease forwards;
+}
+
+@keyframes zoom-out-rounded {
+    0% {
+        top: -100%;
+        right: -100%;
+        opacity: 0;
+        transform: scale(0);
+        border-radius: 50%;
+    }
+    100% {
+        top: 0;
+        right: 0;
+        opacity: 1;
+        transform: scale(1);
+        border-radius: 0;
+    }
+}
+
+@keyframes zoom-in-rounded {
+    0% {
+        top: 0;
+        right: 0;
+        opacity: 1;
+        transform: scale(1);
+        border-radius: 0;
+    }
+    100% {
+        top: -100%;
+        right: -100%;
+        opacity: 0;
+        transform: scale(0);
+        border-radius: 50%;
+    }
+}
+
 
 /* ******************** modal header ******************** */
 
@@ -920,15 +1047,22 @@ main {
     font-size: 1.6em;
 }
 
+.modal-max,
 .modal-close {
     border: 0;
     background: transparent;
     position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 1.6em;
+    top: 10px;
     cursor: pointer;
     color: #000;
+}
+
+.modal-max{
+    right: 32px;
+}
+
+.modal-close {
+    right: 0;
 }
 
 
@@ -962,7 +1096,7 @@ main {
 .modal-footer .modal-btn {
     display: block;
     color: #000;
-    width: 80%;
+    width: 100%;
     border: 1px solid #ccc;
     border-radius: 0.25em;
     background: transparent;
@@ -972,6 +1106,9 @@ main {
     padding: 6px 16px;
     font-family: Raleway;
     text-decoration: none;
+    text-align: center;
+    box-sizing: border-box;
+    cursor: pointer;
 }
 
 
@@ -996,12 +1133,29 @@ main {
     animation-duration: 0.4s;
 }
 
+#desc-modal .modal-body {
+    overflow-x: auto;
+}
+
 
 /* ******************** form control ******************** */
 
 label {
     display: inline-block;
     margin-bottom: 7.5px;
+    cursor: pointer;
+}
+
+input:read-only,
+input:disabled,
+input:disabled+label {
+    background: #eee;
+    color: #888;
+}
+
+.form-group {
+    flex: 1 98%;
+    margin: 0 1%;
 }
 
 .form-control {
@@ -1025,13 +1179,40 @@ textarea {
     max-width: 100%;
 }
 
+fieldset {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+legend {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 0.5rem;
+    line-height: inherit;
+}
+
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.radio-group input[type="radio"]+label {
+    flex: 1 33%;
+    text-align: center;
+}
+
+input[type="radio"],
 input[type="checkbox"] {
     display: none;
 }
 
+input[type="radio"]+label::before,
 input[type="checkbox"]+label::before {
     font-family: "FontAwesome";
-    content: "\f096";
     padding-top: 1px;
     width: 16px;
     height: 16px;
@@ -1043,9 +1224,27 @@ input[type="checkbox"]+label::before {
     cursor: pointer;
 }
 
+input[type="checkbox"]+label::before {
+    content: "\f096";
+}
+
+input[type="radio"]+label::before {
+    content: "\f10c";
+}
+
 input[type="checkbox"]:checked+label::before {
-    font-family: "FontAwesome";
     content: "\f046";
+    color: #0275d8;
+}
+
+input[type="radio"]:checked+label::before {
+    content: "\f192";
+    color: #0275d8;
+}
+
+input[type="radio"]:checked+label,
+input[type="checkbox"]:checked+label {
+    color: #0275d8;
 }
 
 .input-group input[type="email"],
@@ -1079,6 +1278,13 @@ input[type="checkbox"]:checked+label::before {
     margin-top: 8px;
 }
 
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
 .form-submit {
     padding: 6px 14px;
     background: transparent;
@@ -1097,6 +1303,124 @@ input[type="checkbox"]:checked+label::before {
     transition: 0.3s;
 }
 
+.error {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    background: #CB91C1;
+}
+
+.error-overlay {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    color: #E8DDC8;
+}
+
+.error-overlay>.wrapper {
+    position: relative;
+}
+
+.error img {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+    width: 50%;
+    height: 50%;
+}
+
+.error-content {
+    position: relative;
+    z-index: 1;
+}
+
+.error-overlay h1 {
+    padding: 0 20px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 300;
+    line-height: 1.6em;
+}
+
+.error-overlay h4,
+.error-overlay p {
+    width: 50%;
+    padding-left: 10%;
+    margin-bottom: 10%;
+    font-weight: 300;
+    line-height: 1.6em;
+}
+
+
+/* ******************** Login ******************** */
+
+.login-card {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 300px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.login-card .login-icon {
+    margin-top: 30px;
+    display: block;
+    text-align: center;
+    color: #34495e;
+}
+
+.login-card .login-form {
+    padding: 30px;
+}
+
+.login-card .login-text {
+    border-top: 1px solid #e4e4e4;
+    text-align: center;
+}
+
+.login-card .login-text h2 {
+    margin: 0;
+    position: relative;
+    top: -0.75em;
+    display: inline-block;
+    padding: 0 20px;
+    color: #777;
+    background: #fff;
+}
+
+.login-card .login-form .login-button {
+    /* background: rgb(68, 68, 68); */
+    background: #34495e;
+    opacity: 0.85;
+    border: 0;
+    color: #fff;
+    margin-top: 16px;
+    padding: 10px 40px;
+    text-transform: uppercase;
+    border-radius: 100px;
+    width: 100%;
+}
+
+.login-card .login-form .login-button:hover {
+    opacity: 1;
+}
+
+.login-card .login-form .forgot-password {
+    text-align: center;
+    color: #777;
+    text-decoration: none;
+    border-bottom: 1px dashed #777;
+}
+
+.login-card .login-form .forgot-password:hover {
+    color: #333;
+}
+
 
 /* ******************** Media Queries ******************** */
 
@@ -1104,16 +1428,15 @@ input[type="checkbox"]:checked+label::before {
     .pokeballs-grid li {
         flex: 1 0 48%;
         border-right: 1px solid #aaa;
-        /* border-left: 1px solid #aaa; */
     }
     .card {
         flex: 0 1 80%;
+        margin: 20px 10%;
     }
     .card-header {
         padding: 20px 40px;
     }
-    .modal-confirm,
-    .modal-content {
+    .modal-dialog {
         width: 80%;
     }
 }
@@ -1128,11 +1451,25 @@ input[type="checkbox"]:checked+label::before {
         justify-content: space-around;
     }
     .card {
-        flex: 1 1 48%;
+        flex: 0 1 70%;
+        margin: 20px 15%;
     }
-    .modal-confirm,
-    .modal-content {
+    .modal-dialog {
         width: 70%;
+    }
+    .error-overlay h4,
+    .error-overlay p {
+        width: 40%;
+    }
+    .error-overlay h4 {
+        font-size: 1.6em;
+    }
+    .error-overlay p {
+        font-size: 1.2em;
+    }
+    .form-group {
+        flex: 1 auto;
+        margin: 0 1%;
     }
 }
 
@@ -1181,6 +1518,9 @@ input[type="checkbox"]:checked+label::before {
         display: block;
         clear: both;
     }
+    .sidenav-toggler {
+        display: none;
+    }
     .sidenav>.wrapper {
         padding: 0 2%;
         width: 96%;
@@ -1206,8 +1546,7 @@ input[type="checkbox"]:checked+label::before {
     #sidenav-container #reservations {
         position: absolute;
         top: 0;
-        left: 2%;
-        right: 2%;
+        width: calc(100% - 250px);
         z-index: 1;
         margin-left: 250px;
     }
@@ -1222,16 +1561,10 @@ input[type="checkbox"]:checked+label::before {
     .pokeballs-grid li {
         flex: 1 0 32%;
     }
-    .pokeballs-grid-sm li {
-        min-width: 160px;
-    }
-    .pokeballs-grid-lg li {
-        min-width: 250px;
-    }
     .card {
         flex: 1 1 46%;
-        min-width: 300px;
-        margin: 20px 10px;
+        margin: 20px 2%;
+        max-width: 329px;
     }
     .card-body li .card-text {
         font-size: 1em;
@@ -1239,7 +1572,7 @@ input[type="checkbox"]:checked+label::before {
     .card-body li:first-child .card-text {
         font-size: 1.2em;
     }
-    .modal-confirm .modal-content {
+    .modal-dialog {
         width: 60%;
     }
 }
@@ -1265,6 +1598,7 @@ input[type="checkbox"]:checked+label::before {
     #sidenav-container #testlines-admin,
     #sidenav-container #associations-admin,
     #sidenav-container #reservations {
+        width: calc(100% - 300px);
         margin-left: 300px;
     }
     .pokeballs-grid li {
@@ -1272,8 +1606,9 @@ input[type="checkbox"]:checked+label::before {
     }
     .card {
         flex: 1 1 31%;
-        position: relative;
-        margin: 20px 5px;
+        margin: 20px 1%;
+        min-width: 337px;
+        max-width: 396px;
     }
     .card-header .card-header-overlay .card-title {
         font-size: 1.4em;
@@ -1286,11 +1621,14 @@ input[type="checkbox"]:checked+label::before {
         display: block;
         clear: both;
     }
-    .modal-content {
-        max-width: 1000px;
+    .error-overlay h1 {
+        font-size: 4em;
     }
-    .modal-confirm {
-        max-width: 496px;
+    .error-overlay h4 {
+        font-size: 2em;
+    }
+    .error-overlay p {
+        font-size: 1.6em;
     }
 }
 

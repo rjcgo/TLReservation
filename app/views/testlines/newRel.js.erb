@@ -1,0 +1,7 @@
+var dialog = document.getElementById('dialog');
+
+dialog.classList.add('show');
+
+dialog.getElementsByTagName('h3')[0].innerHTML = "<i class='fa fa-exchange'></i> Pick a Team";
+
+document.getElementById('dialog-content').innerHTML = '<%= j render("rel_form") %>';

@@ -6,19 +6,26 @@ class TeamsController < ApplicationController
   def index
     @teams = Team.order(:name)
   end
-
+  
   # GET /teams/1
   # GET /teams/1.json
   def show
-    @team = Team.where(id: params[:id]).first
+    @team = Team.find(params[:id])
     @teams = Team.order(:name)
-    @reservations = Reservation.all
-    @associations = TeamTestline.where(team_id: params[:id])
- 
-    @mytestlines = Array.new
-    @associations.each do |a|
-      @mytestlines << Testline.where(id: a.testline_id).first
-    end
+    @testlines = @team.testlines.includes(reservations: [:user, :team])
+
+		@available = Array.new
+		@used = Array.new
+		@inMaintenance = Array.new
+		@testlines.each do |testline|
+			if testline.reservations.length == 0 && !testline.isMaintenance?
+				@available.push(testline)
+			elsif testline.reservations.length != 0 && !testline.isMaintenance?
+				@used.push(testline)
+			elsif testline.isMaintenance?
+				@inMaintenance.push(testline)
+			end
+		end
   end
 
   # GET /teams/new

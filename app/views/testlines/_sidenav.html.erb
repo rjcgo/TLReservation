@@ -1,0 +1,31 @@
+<aside class="sidenav">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="javascript:void(0)" class="closebtn" onclick="toggleSideNav()">
+                    <i class="fa fa-times"></i></a>
+            </li>
+            <% testlines.each do |testline| %>
+            <li>
+                <a href="javascript:void(0)" class="sidenav-links"
+                     onclick="openReservation(event, 'tl-<%= testline.id %>')">
+                    <i class="fa fa-server"></i> <%= testline.name %>
+                    <% if testline.isMaintenance %>
+                        <span class="badge badge-sidenav bg-yellow">
+                            <i class="fa fa-exclamation"></i>
+                        </span>
+                    <% elsif testline.reservations.empty? %>
+                        <span class="badge badge-sidenav bg-green">
+                            <i class="fa fa-check"></i>
+                        </span>
+                    <% else %>
+                        <span class="badge badge-sidenav bg-blue">
+                            <%= testline.reservations.length %>
+                        </span>
+                    <% end %>
+                </a>
+            </li>
+            <% end %>
+        </ul>
+    </div>
+</aside>

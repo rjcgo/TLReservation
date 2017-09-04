@@ -7,7 +7,7 @@
 			</header>
 	        <ul class="list-group">
 	        	<% @users.each do |user| %>
-		            <li class="list-item list-item-primary">
+		            <li class="list-item <%= user.isAdmin? ? "list-item-primary" : "" %>">
 		                <h3 class="title">
 		                    <i class="fa fa-user"></i> <%= user.email %>
 		                </h3>
@@ -16,14 +16,19 @@
 		                        <i class="fa fa-cogs"></i> Administrator
 		                    </small>
 		                <% else %>
-		                	<%= make_admin_btn user %>
+							<%= link_to admin_makeAdmin_path(user), remote: true, :method => :put, 
+								data: {confirm: "Are you sure you want to make this user an admin?<br>" + 
+									"<mark> (note: you cannot undo this action.) </mark>"}, 
+								:class => 'make-admin-btn' do %>
+								<i class="fa fa-lock"></i> Make Admin
+							<% end %>
 		                <% end %>
 		            </li>
 		        <% end %>
 	        </ul>
 	    </section>
 	</main>
-	<%= render partial: 'confirm', locals: modal_content("users") %>
+    <div id="confirmationDialog" class="modal"></div>
 <% else %>
 	<%= render 'error' %>
 <% end %>

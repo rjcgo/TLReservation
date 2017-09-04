@@ -1,0 +1,9 @@
+var dialog = document.getElementById('dialog');
+
+dialog.classList.add('show');
+
+dialog.getElementsByTagName('h3')[0].innerHTML = "<i class='fa fa-group'></i> Name Your Team";
+
+document.getElementById('dialog-content').innerHTML = '<%= j render("form") %>';
+
+document.getElementById('team_name').focus();

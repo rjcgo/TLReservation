@@ -4,10 +4,6 @@ class TestlinesController < ApplicationController
   # GET /testlines
   # GET /testlines.json
   def index
-    @testlines = Testline.all
-    @reservations = Reservation.all
-    @teams = Team.order(:name)
-    
   end
 
   # GET /testlines/1
@@ -79,10 +75,53 @@ class TestlinesController < ApplicationController
     end
   end
 
+  # GET /reservations
   def reservations
-    @testlines = Testline.order(:name)
-    @reservations = Reservation.all
-    @teams = Team.all
+    @testlines = Testline.order(:name).includes(:teams, reservations: [:user, :team])
+  end
+
+  def newRel
+    @testline = Testline.includes(:teams).find(params[:id])
+    @teams = Team.order(:name)
+  end
+
+  # POST /testlines/:id/teams
+  def addTeam
+    testline = Testline.find(params[:id])
+    params[:team][:id].delete("")
+    p params[:team][:id]
+    params[:team][:id].each do |t|
+      testline.teams << Team.find(t)
+    end
+
+    respond_to do |format|
+      if testline.save
+        format.html { redirect_to admin_associations_path, 
+          notice: 'Access to testline was successfully granted.' }
+        format.json { render :show, status: :created, location: testline.errors }
+      else
+        format.html { redirect_to admin_associations_path, notice: parse_notice(testline.errors) }
+        format.json { render json: testline.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /testlines/:testline_id/teams/:team_id
+  def removeTeam
+    # Delete testline association of team
+    testline = Testline.find(params[:testline_id])
+    testline.teams.delete(Team.find(params[:team_id]))
+
+    # Delete all reservations associated with this testline
+    reservations = Reservation.where(testline_id: params[:testline_id], team_id: params[:team_id])
+    reservations.each do |r|
+      r.delete
+    end
+
+    respond_to do |format|
+      format.html { redirect_to admin_associations_path, notice: 'Test line was successfully deleted.' }
+      format.json { head :no_content }
+    end
   end
 
   private
@@ -93,6 +132,6 @@ class TestlinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def testline_params
-    params.require(:testline).permit(:name, :ip_address, :port_number, :isMaintenance, :description, :diagram, :remove_diagram)
+      params.require(:testline).permit(:name, :ip_address, :port_number, :isMaintenance, :description, :diagram, :remove_diagram)
     end
 end

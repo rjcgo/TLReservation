@@ -17,17 +17,17 @@
 					<span class="bar2"></span>
 					<span class="bar3"></span>
 				</button>
-				<a href="/" class="navbar-brand" data-turbolinks="false">
+				<a href="/" data-turbolinks="false" class="navbar-brand">
 					<i class="fa fa-server icon-lg" id="logo"></i>
 					<h1>Test Line Reservation</h1>
 				</a>
-				<% if request.original_fullpath != "/login" %>
+				<% if request.original_fullpath != "/users/sign_in" %>
 				<div class="navbar-nav">
 					<h2>Main Navigation</h2>
 					<% if user_signed_in? %>
 						<ul>
 							<li>
-								<a href="/teams/" data-turbolinks="false">
+								<a href="/teams" data-turbolinks="false">
 									<i class="fa fa-users"></i> Teams
 								</a>
 							</li>
@@ -50,11 +50,15 @@
 					<% else %>
 						<%= form_for("user", :url => user_session_path) do |f| %>
 							<div class="input-group">
-								<span class="fa fa-user input-addon"></span>
+								<span class="input-addon">
+									<i class="fa fa-envelope-o fa-fw"></i>
+								</span>
 								<%= f.email_field :email, :placeholder => "Email" %>
 							</div>
 							<div class="input-group">
-								<span class="fa fa-key input-addon"></span>
+								<span class="input-addon">
+									<i class="fa fa-key fa-fw"></i>
+								</span>
 								<%= f.password_field :password, :placeholder => "Password" %>
 							</div>
 							<%= f.submit 'Sign in', :class => "form-submit" %>

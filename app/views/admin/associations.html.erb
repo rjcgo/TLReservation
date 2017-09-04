@@ -1,55 +1,23 @@
 <% if user_signed_in? && current_user.isAdmin? %>
-  <main class="wrapper" id="sidenav-container">
-    <%= render partial: 'sidenav', :locals => {:sect => "associations"} %>
-    <section id="associations-admin">
-      <header>
-        <%= render partial: 'header', :locals => header("Associations") %>
-        <%= admin_notice(@team_testlines, "associations", notice) %>
-      </header>
-      <div class="card-deck">
-        <% @testlines.each do |testline| %>
-          <div class="card">
-            <div class="card-content">
-              <div class="card-header bg-blue">
-                <div class="status-circle bg-green">
-                  <i class="fa fa-check fa-white"></i>
+    <main class="wrapper" id="sidenav-container">
+        <%= render partial: 'sidenav', :locals => {:sect => "associations"} %>
+            <section id="associations-admin">
+                <header>
+                    <%= render partial: 'header', :locals => header("Associations") %>
+                    <%= admin_notice(@testlines, "associations", notice) %>
+                </header>
+                <div class="card-deck">
+                    <% @testlines.each do |testline| %>
+                        <%= render partial: "card", locals: cardProps(testline) %>
+                    <% end %>
                 </div>
-                <i class="fa fa-server testline-icon text-white"></i>
-                <div class="card-header-overlay">
-                	<%= content_tag :h3, testline.name %>
-                  <%= button_add_association testline.id %>
-                </div>
-              </div>
-            	<div class="card-body">
-              	<%= show_associations_teams testline %>
-              </div>
-            </div>
-          </div>
-          <%= content_tag :div, :class => "modal", :id => testline.id do %>
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title">Pick a Team</h4>
-                <%= content_tag :button, '&times;'.html_safe, :class => "modal-close", :onclick => "deactivate_modal(#{testline.id})", :type => "button" %>
-              </div>
-              <div class="modal-body" >
-								<div class="outer-border-hidden">
-									<ul class="pokeballs-grid pokeballs-grid-sm">
-										<%= t = teams_without_access testline %>
-									</ul>
-								</div>
-                <div>
-               	  <% if t.blank? %>
-                    <p class="card-text">All teams are already able to use this testline.</p>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </section>
-  </main>
-  <%= render partial: 'confirm', locals: modal_content("associations") %>
+            </section>
+    </main>
+    <div id="confirmationDialog" class="modal"></div>
+
+    <%= render "modal" %>
+    <%= render partial: "img_modal" %>
+    <%= render partial: "description_modal" %>
 <% else %>
-  <%= render 'error' %>
+    <%= render 'error' %>
 <% end %>

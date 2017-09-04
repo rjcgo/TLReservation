@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require tinymce
+//= require_tree .
 
 function toggleMainNav() {
     var burgerNav = document.getElementById("burger-nav");
@@ -28,12 +29,32 @@ function toggleSideNav() {
     }
 }
 
-function openReservation(evt, cityName) {
+function toggleFullModal(event) {
+    var modalDialog = event.target.closest('.modal-dialog');
+    var modalContent = event.target.closest('.modal-content');
+    console.log(modalDialog);
+    if (modalDialog.style.maxWidth == '100%') {
+        modalDialog.removeAttribute('style');
+        modalContent.removeAttribute('style');
+        modalDialog.style.transition = '0.5s';
+        modalContent.style.transition = '0.5s';
+    } else {
+        modalDialog.style.top = '0';
+        modalDialog.style.height = '100%';
+        modalDialog.style.width = '100%';
+        modalDialog.style.maxWidth = '100%';
+        modalDialog.style.transition = '0.5s';
+        modalContent.style.transition = '0.5s';
+        modalContent.style.height = '100%';
+    }
+}
+
+function openReservation(evt, tabName) {
     var i, listgroups, sidenavlinks;
 
-    listgroups = document.getElementsByClassName("list-group");
-    for (i = 0; i < listgroups.length; i++) {
-        listgroups[i].style.display = "none";
+    testlines = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < testlines.length; i++) {
+        testlines[i].style.display = "none";
     }
 
     // Get all elements with class="tablinks" and remove the class "active"
@@ -43,58 +64,74 @@ function openReservation(evt, cityName) {
     }
 
     // Show the current tab, and add an "active" class to the link that opened the tab
-    document.getElementById(cityName).style.display = "block";
+    document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
+    if (!window.matchMedia("(min-width: 768px)").matches) {
+        toggleSideNav();
+    }
 }
 
 function startTime() {
-  for (let i = 0; i < timers.length; i++) {
-      var myDate = secToTime(Math.floor((new Date().getTime()) / 1000) + t[timers[i]] - pt);
-    document.getElementById(timers[i]).innerHTML = myDate;
-  }
+    for (let i = 0; i < timers.length; i++) {
+        var myDate = secToTime(Math.floor((new Date().getTime()) / 1000) + t[timers[i]] - pt);
+        document.getElementById(timers[i]).innerHTML = myDate;
+    }
 
-  setTimeout(startTime, 1000);
+    setTimeout(startTime, 1000);
 }
 
 function secToTime(time) {
-  var sec = time % 60;
-  sec = (sec < 10) ? "0" + sec : sec.toString();
-  var min = Math.floor(time/60) % 60;
-  min = (min < 10) ? "0" + min : min.toString();
-  var hr = Math.floor(time/3600);
-  return hr + ":" + min + ":" + sec;
+    var sec = time % 60;
+    sec = (sec < 10) ? "0" + sec : sec.toString();
+    var min = Math.floor(time / 60) % 60;
+    min = (min < 10) ? "0" + min : min.toString();
+    var hr = Math.floor(time / 3600);
+    return hr + ":" + min + ":" + sec;
 }
 
-var delete_id = 0;
-var temp_id = 0;
+function loadFile(event) {
+    var output = document.getElementById('preview');
+    var remove_diagram = document.getElementById('testline_remove_diagram').removeAttribute("disabled");
+    output.src = URL.createObjectURL(event.target.files[0]);
+};
 
-function activate_modal(id) {
-  document.getElementById(id).style.display = "block";
-}
+$(document).on('turbolinks:load', function () {
+    $(document).on('click', function (event) {
+        if (!$(event.target).closest('.modal-dialog').length) {
+            $('.modal').removeClass("show");
+        }
+    });
 
-function deactivate_modal(id) {
-  document.getElementById(id).style.display = "none";
-}
+    $(document).keydown(function(e) {
+        if (e.keyCode == 27) {
+            $('.modal').removeClass("show");
+        } 
+    });
 
-function ask_modal(id) {
-  if (id == delete_id)
-    return true;
-  document.getElementById("confirm-modal").style.display = "block";
-  temp_id = id;
-  return false;
-}
+    $("button").on("click", function () {
+        var modal = $("." + $(this).data("dismiss")).removeClass("show");
+    })
 
-function confirm_modal() {
-    delete_id = temp_id;
-    document.getElementById(delete_id).click();
-}
+    $(".modal-open").on("click", function (e) {
+        e.stopPropagation();
+        e.preventDefault();
 
-function cancel_modal() {
-  delete_id = temp_id = 0;
-  document.getElementById("confirm-modal").style.display = "none";
-}
+        var target = $($(this).data("target")).addClass("show");
+        switch (target.attr("id")) {
+            case "desc-modal":
+                var content = $(this).data('content');
+                if (content == "") {
+                    content = "No description available.";
+                }
+                target.find('.modal-text').html(content);
+                break;
 
-document.onclick = function(event) {
-  if (event.target.classList.contains("modal"))
-    event.target.style.display = "none";
-}
+            case "img-modal":
+                target.find('.modal-img').attr('src', $(this).data('diagram'));
+                break;
+
+            default:
+                break;
+        }
+    });
+});
