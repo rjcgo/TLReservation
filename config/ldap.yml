@@ -40,11 +40,9 @@ test:
   # <<: *AUTHORIZATIONS
 
 production:
-  host: localhost
-  port: 636
-  attribute: cn
-  base: ou=people,dc=test,dc=com
-  admin_user: cn=admin,dc=test,dc=com
-  admin_password: admin_password
-  ssl: start_tls
+  host: 'ed-p-gl.emea.nsn-net.net'
+  port: 389
+  attribute: mail
+  base: o=nsn
+  ssl: false
   # <<: *AUTHORIZATIONS
