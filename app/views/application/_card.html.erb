@@ -72,6 +72,8 @@
                     remote: true, class: "card-link" do %>
                     <i class="fa fa-plus"></i> Add Team
                 <% end %>
+            <% elsif testline.teams.empty? %>
+                <p style="text-align: center; margin: 10px;">No team can currently use this testline.</p>
             <% elsif testline.isMaintenance %>
                 <p style="text-align: center; margin: 10px;">This testline is under maintenance.</p>
             <% elsif !(userReservation = didReserveTestline(testline)).nil? %>

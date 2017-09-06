@@ -71,9 +71,8 @@ function openReservation(evt, tabName) {
     }
 }
 
-/*
 function startTime() {
-    for (let i = 0; i < timers.length; i++) {
+    for (var i = 0; i < timers.length; i++) {
         var myDate = secToTime(Math.floor((new Date().getTime()) / 1000) + t[timers[i]] - pt);
         document.getElementById(timers[i]).innerHTML = myDate;
     }
@@ -89,7 +88,6 @@ function secToTime(time) {
     var hr = Math.floor(time / 3600);
     return hr + ":" + min + ":" + sec;
 }
-*/
 
 function loadFile(event) {
     var output = document.getElementById('preview');
