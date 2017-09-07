@@ -17,11 +17,13 @@
         <div id="add-testline">
             <div class="diagram-panel">
                 <% if @testline.diagram? %>
-                    <%= image_tag(@testline.diagram_url, :id => "preview", :class => "thumbnail") %>
+                    <%= image_tag(@testline.diagram_url, :id => "preview", 
+                        :class => "thumbnail", :onclick => "enlargeImage()") %>
                     <%= f.check_box :remove_diagram %>
                     <%= f.label :remove_diagram, "Remove this uploaded image?" %>
                 <% else %>
-                    <%= image_tag("insert-photo.png", :id => "preview", :class => "thumbnail") %>
+                    <%= image_tag("insert-photo.png", :id => "preview", 
+                        :class => "thumbnail", :onclick => "enlargeImage()") %>
                     <%= f.check_box :remove_diagram, :disabled => "disabled" %>
                     <%= f.label :remove_diagram, "Remove this uploaded image?" %>
                 <% end %>
@@ -31,16 +33,6 @@
                     <label for="testline_name">Testline Name:</label>
                     <%= f.text_field :name, :placeholder => "Name", :required => "required",
                         :class => "form-control" %>
-                </div>
-                <div class="form-group">
-                    <label for="testline_ip_address">IP Address:</label>
-                    <%= f.text_field :ip_address, :placeholder => "127.0.0.1", 
-                        :required => "required", :class => "form-control" %>
-                </div>
-                <div class="form-group">
-                    <label for="testline_port_number">Port:</label>
-                    <%= f.text_field :port_number, :placeholder => "8080", 
-                        :required => "required", :class => "form-control" %>
                 </div>
                 <div class="form-group">
                     <label for="diagram">Diagram:</label>

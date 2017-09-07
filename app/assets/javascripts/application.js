@@ -95,10 +95,71 @@ function loadFile(event) {
     output.src = URL.createObjectURL(event.target.files[0]);
 };
 
+function addRecipient() {
+    var email = document.getElementById("reservation_recipient");
+    var error_msg = document.getElementById("email-error");
+    var recipient_list = document.getElementById("recipient-list");
+    // validate email
+    if (!email.value) {
+        email.classList.add("has-error");
+        error_msg.textContent = "Must not be blank.";
+    } else if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
+        var t = document.createTextNode(email.value);
+
+        // create elements
+        var chip = document.createElement("li");
+        var chip_icon = document.createElement("i");
+        var chip_label = document.createElement("span");
+        var chip_input = document.createElement("input");
+        var chip_close = document.createElement("i");
+
+        // add class
+        chip.className = "chip";
+        chip_icon.className = "fa fa-user-circle fa-fw chip-icon";
+        chip_close.className = "fa fa-times-circle chip-close";
+
+        // add attr
+        chip_input.type = "hidden";
+        chip_input.value = email.value;
+        chip_input.name = "recipient[email]";
+
+        // add event
+        chip_close.onclick = function (e) {
+            e.cancelBubble = true;
+            recipient_list.removeChild(this.parentElement);
+        }
+
+        // append to document
+        chip_label.appendChild(chip_input);
+        chip_label.appendChild(t);
+
+        chip.appendChild(chip_icon);
+        chip.appendChild(chip_label);
+        chip.appendChild(chip_close);
+        recipient_list.appendChild(chip);
+
+        email.classList.remove("has-error");
+        error_msg.textContent = "";
+        email.value = "";
+    } else {
+        email.classList.add("has-error");
+        error_msg.textContent = "Email must be valid.";
+    }
+}
+
+function enlargeImage() {
+    var preview = document.getElementById("preview").src;
+    var imgModal = document.getElementById("img-modal");
+    var img = imgModal.getElementsByClassName("modal-img");
+
+    img[0].setAttribute('src', preview);
+    imgModal.classList.add("show");
+}
+
 $(document).on('turbolinks:load', function () {
     $(document).on('click', function (event) {
         if (!$(event.target).closest('.modal-dialog').length) {
-            $('.modal').removeClass("show");
+            $(event.target).closest('.modal').removeClass("show");
         }
     });
 
@@ -109,7 +170,7 @@ $(document).on('turbolinks:load', function () {
     });
 
     $("button").on("click", function () {
-        var modal = $("." + $(this).data("dismiss")).removeClass("show");
+        var modal = $(event.target).closest("." + $(this).data("dismiss")).removeClass("show");
     })
 
     $(".modal-open").on("click", function (e) {

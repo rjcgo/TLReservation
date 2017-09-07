@@ -212,11 +212,16 @@
     padding: 0.25rem;
     margin: 10px auto;
     text-align: center;
+    box-sizing: border-box;
 }
 
-.side-panel,
-.description-panel {
+.side-panel {
     flex: 1 auto;
+    color: #34495e;
+}
+
+.description-panel {
+    flex: 1 100%;
     color: #34495e;
 }
 
