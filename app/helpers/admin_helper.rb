@@ -30,8 +30,4 @@ module AdminHelper
 		}
 		return {:page => page, :icon => icon[page]}
 	end
-
-	def ball(id)
-		return pokelist[id % 20]
-	end
 end

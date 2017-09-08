@@ -11,8 +11,15 @@
 			<div class="dropdown-triangle-lb team-dropdown-triangle"></div>
 			<div class="dropdown-content team-dropdown-content">
 				<div class="outer-border-hidden">
-					<ul class="pokeballs-grid pokeballs-grid-sm">
-						<%= drop_down_teams pokelist %>
+					<ul class="letters-grid letters-grid-sm">
+                        <% @teams.each do |team| %>
+                            <li>
+                                <%= link_to team_path(team) do %>
+                                    <span class="<%= letterPicker(team.name, "sm") %>"></span>
+                                    <%= team.name %>
+                                <% end %>
+                            </li>
+                        <% end %>
 					</ul>
 				</div>
 			</div>

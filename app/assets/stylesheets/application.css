@@ -377,7 +377,7 @@ main {
 }
 
 
-/* ******************** pokeballs grid ******************** */
+/* ******************** letters grid ******************** */
 
 .outer-border-hidden {
     overflow: hidden;
@@ -385,7 +385,7 @@ main {
     margin: 0 auto;
 }
 
-.pokeballs-grid {
+.letters-grid {
     list-style-type: none;
     padding: 0;
     display: flex;
@@ -394,29 +394,29 @@ main {
     margin: -2px !important;
 }
 
-.pokeballs-grid li {
+.letters-grid li {
     flex: 1 0 100%;
     border-bottom: 1px solid #aaa;
     text-align: center;
     position: relative;
 }
 
-.pokeballs-grid-sm li {
+.letters-grid-sm li {
     min-width: 100px;
 }
 
-.pokeballs-grid-lg li {
+.letters-grid-lg li {
     min-width: 200px;
 }
 
-.pokeballs-grid a {
+.letters-grid a {
     display: block;
     color: #000;
     text-decoration: none;
     padding: 16px 2px;
 }
 
-.pokeballs-item {
+.letters-item {
     background: transparent;
     border: 0;
     width: 100%;
@@ -426,7 +426,7 @@ main {
     margin: 0;
 }
 
-input[type="checkbox"]+label.pokeballs-item::before {
+input[type="checkbox"]+label.letters-item::before {
     content: "";
     font-size: 5em;
     position: absolute;
@@ -438,20 +438,20 @@ input[type="checkbox"]+label.pokeballs-item::before {
     margin: 0;
 }
 
-input[type="checkbox"]:checked+label.pokeballs-item::before {
+input[type="checkbox"]:checked+label.letters-item::before {
     content: "\f05d";
 }
 
-input[type="checkbox"]:checked+.pokeballs-item {
+input[type="checkbox"]:checked+.letters-item {
     background: #e2e2e2;
 }
 
-.pokeballs-item:hover {
+.letters-item:hover {
     background: #e2e2e2;
     transition: 0.5s;
 }
 
-.pokeballs-grid a:hover {
+.letters-grid a:hover {
     background: #e2e2e2;
     transition: 0.5s;
 }
@@ -682,192 +682,287 @@ input[type="checkbox"]:checked+.pokeballs-item {
 }
 
 
+/* ******************** Chip List ******************** */
+
+.chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* ******************** Chip ******************** */
+
+.chip {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 28px;
+    background: #e0e0e0;
+    border: 1px solid #e0e0e0;
+    font-size: 14px;
+}
+
+.chip-icon,
+.chip-close {
+    font-size: 24px;
+    color: rgba(0, 0, 0, .54);
+}
+
+.chip-icon {
+    margin-right: 4px;
+}
+
+.chip-close {
+    margin-left: 2px;
+    opacity: 0.54;
+}
+
+.chip-close:hover {
+    opacity: 1;
+}
+
+
 /* ******************** Team-brand-sm ******************** */
 
-.team-brand {
-    background: url(pokeballs.png) no-repeat center;
-    background-size: 250px 200px;
+.team-brand-sm {
+    background: url(letters.png) no-repeat center;
+    background-size: 650px 100px;
     display: block;
     margin: 5px auto;
-    width: 48px;
+    width: 50px;
     height: 50px;
 }
 
 
-/* ******************** Poke-balls-sm ******************** */
+/* ******************** letters-sm ******************** */
 
-.team-brand.poke-ball {
+.team-brand-sm.letter-a {
     background-position: 0 0 !important;
 }
 
-.team-brand.premier-ball {
+.team-brand-sm.letter-b {
     background-position: -50px 0 !important;
 }
 
-.team-brand.great-ball {
-    background-position: -98px 0 !important;
+.team-brand-sm.letter-c {
+    background-position: -100px 0 !important;
 }
 
-.team-brand.ultra-ball {
-    background-position: -148px 0 !important;
+.team-brand-sm.letter-d {
+    background-position: -150px 0 !important;
 }
 
-.team-brand.master-ball {
-    background-position: -198px 0 !important;
+.team-brand-sm.letter-e {
+    background-position: -200px 0 !important;
 }
 
-.team-brand.safari-ball {
-    background-position: 0 -50px !important;
+.team-brand-sm.letter-f {
+    background-position: -250px 0 !important;
 }
 
-.team-brand.level-ball {
-    background-position: -50px -50px !important;
+.team-brand-sm.letter-g {
+    background-position: -300px 0 !important;
 }
 
-.team-brand.lure-ball {
-    background-position: -100px -50px !important;
+.team-brand-sm.letter-h {
+    background-position: -350px 0 !important;
 }
 
-.team-brand.moon-ball {
-    background-position: -150px -50px !important;
+.team-brand-sm.letter-i {
+    background-position: -400px 0 !important;
 }
 
-.team-brand.friend-ball {
-    background-position: -200px -50px !important;
+.team-brand-sm.letter-j {
+    background-position: -450px 0 !important;
 }
 
-.team-brand.love-ball {
-    background-position: 0 -100px !important;
+.team-brand-sm.letter-k {
+    background-position: -500px 0 !important;
 }
 
-.team-brand.heavy-ball {
-    background-position: -50px -100px !important;
+.team-brand-sm.letter-l {
+    background-position: -550px 0 !important;
 }
 
-.team-brand.fast-ball {
-    background-position: -100px -100px !important;
+.team-brand-sm.letter-m {
+    background-position: -600px 0 !important;
 }
 
-.team-brand.sports-ball {
-    background-position: -150px -100px !important;
+.team-brand-sm.letter-n {
+    background-position: 0 -50px !important
 }
 
-.team-brand.repeat-ball {
-    background-position: -200px -100px !important;
+.team-brand-sm.letter-o {
+    background-position: -50px -50px !important
 }
 
-.team-brand.timer-ball {
-    background-position: 0 -148px !important;
+.team-brand-sm.letter-p {
+    background-position: -100px -50px !important
 }
 
-.team-brand.nest-ball {
-    background-position: -50px -150px !important;
+.team-brand-sm.letter-q {
+    background-position: -150px -50px !important
 }
 
-.team-brand.net-ball {
-    background-position: -100px -150px !important;
+.team-brand-sm.letter-r {
+    background-position: -200px -50px !important
 }
 
-.team-brand.dive-ball {
-    background-position: -150px -150px !important;
+.team-brand-sm.letter-s {
+    background-position: -250px -50px !important
 }
 
-.team-brand.luxury-ball {
-    background-position: -200px -150px !important;
+.team-brand-sm.letter-t {
+    background-position: -300px -50px !important
+}
+
+.team-brand-sm.letter-u {
+    background-position: -350px -50px !important
+}
+
+.team-brand-sm.letter-v {
+    background-position: -400px -50px !important
+}
+
+.team-brand-sm.letter-w {
+    background-position: -450px -50px !important
+}
+
+.team-brand-sm.letter-x {
+    background-position: -500px -50px !important
+}
+
+.team-brand-sm.letter-y {
+    background-position: -550px -50px !important
+}
+
+.team-brand-sm.letter-z {
+    background-position: -600px -50px !important
 }
 
 
 /* ******************** Team-brand-lg ******************** */
 
 .team-brand-lg {
-    background: url(pokeballs.png) no-repeat;
+    background: url(letters.png) no-repeat;
     display: block;
     margin: 5px auto;
-    width: 144px;
+    width: 150px;
     height: 150px;
 }
 
 
-/* ******************** Poke-balls-lg ******************** */
+/* ******************** letters-lg ******************** */
 
-.team-brand-lg.poke-ball-lg {
-    background-position: -2px -4px !important;
+.team-brand-lg.letter-a {
+    background-position: 0 0 !important;
 }
 
-.team-brand-lg.premier-ball-lg {
-    background-position: -150px -4px !important;
+.team-brand-lg.letter-b {
+    background-position: -150px 0 !important;
 }
 
-.team-brand-lg.great-ball-lg {
-    background-position: -296px -4px !important;
+.team-brand-lg.letter-c {
+    background-position: -300px 0 !important;
 }
 
-.team-brand-lg.ultra-ball-lg {
-    background-position: -442px -4px !important;
+.team-brand-lg.letter-d {
+    background-position: -450px 0 !important;
 }
 
-.team-brand-lg.master-ball-lg {
-    background-position: -590px -4px !important;
+.team-brand-lg.letter-e {
+    background-position: -600px 0 !important;
 }
 
-.team-brand-lg.safari-ball-lg {
-    background-position: -4px -154px !important;
+.team-brand-lg.letter-f {
+    background-position: -750px 0 !important;
 }
 
-.team-brand-lg.level-ball-lg {
-    background-position: -154px -154px !important;
+.team-brand-lg.letter-g {
+    background-position: -900px 0 !important;
 }
 
-.team-brand-lg.lure-ball-lg {
-    background-position: -300px -154px !important;
+.team-brand-lg.letter-h {
+    background-position: -1050px 0 !important;
 }
 
-.team-brand-lg.moon-ball-lg {
-    background-position: -446px -154px !important;
+.team-brand-lg.letter-i {
+    background-position: -1200px 0 !important;
 }
 
-.team-brand-lg.friend-ball-lg {
-    background-position: -596px -154px !important;
+.team-brand-lg.letter-j {
+    background-position: -1350px 0 !important;
 }
 
-.team-brand-lg.love-ball-lg {
-    background-position: -4px -300px !important;
+.team-brand-lg.letter-k {
+    background-position: -1500px 0 !important;
 }
 
-.team-brand-lg.heavy-ball-lg {
-    background-position: -150px -300px !important;
+.team-brand-lg.letter-l {
+    background-position: -1650px 0 !important;
 }
 
-.team-brand-lg.fast-ball-lg {
-    background-position: -300px -300px !important;
+.team-brand-lg.letter-m {
+    background-position: -1800px 0 !important;
 }
 
-.team-brand-lg.sports-ball-lg {
-    background-position: -446px -300px !important;
+.team-brand-lg.letter-n {
+    background-position: 0 -150px !important
 }
 
-.team-brand-lg.repeat-ball-lg {
-    background-position: -596px -300px !important;
+.team-brand-lg.letter-o {
+    background-position: -150px -150px !important
 }
 
-.team-brand-lg.timer-ball-lg {
-    background-position: -6px -446px !important;
+.team-brand-lg.letter-p {
+    background-position: -300px -150px !important
 }
 
-.team-brand-lg.nest-ball-lg {
-    background-position: -155px -446px !important;
+.team-brand-lg.letter-q {
+    background-position: -450px -150px !important
 }
 
-.team-brand-lg.net-ball-lg {
-    background-position: -305px -446px !important;
+.team-brand-lg.letter-r {
+    background-position: -600px -150px !important
 }
 
-.team-brand-lg.dive-ball-lg {
-    background-position: -450px -446px !important;
+.team-brand-lg.letter-s {
+    background-position: -750px -150px !important
 }
 
-.team-brand-lg.luxury-ball-lg {
-    background-position: -596px -446px !important;
+.team-brand-lg.letter-t {
+    background-position: -900px -150px !important
+}
+
+.team-brand-lg.letter-u {
+    background-position: -1050px -150px !important
+}
+
+.team-brand-lg.letter-v {
+    background-position: -1200px -150px !important
+}
+
+.team-brand-lg.letter-w {
+    background-position: -1350px -150px !important
+}
+
+.team-brand-lg.letter-x {
+    background-position: -1500px -150px !important
+}
+
+.team-brand-lg.letter-y {
+    background-position: -1650px -150px !important
+}
+
+.team-brand-lg.letter-z {
+    background-position: -1800px -150px !important
 }
 
 
@@ -1425,7 +1520,7 @@ input[type="checkbox"]:checked+label {
 /* ******************** Media Queries ******************** */
 
 @media screen and (min-width: 480px) {
-    .pokeballs-grid li {
+    .letters-grid li {
         flex: 1 0 48%;
         border-right: 1px solid #aaa;
     }
@@ -1558,7 +1653,7 @@ input[type="checkbox"]:checked+label {
         margin-left: 0;
         z-index: 1;
     }
-    .pokeballs-grid li {
+    .letters-grid li {
         flex: 1 0 32%;
     }
     .card {
@@ -1601,7 +1696,7 @@ input[type="checkbox"]:checked+label {
         width: calc(100% - 300px);
         margin-left: 300px;
     }
-    .pokeballs-grid li {
+    .letters-grid li {
         flex: 1 0 24%;
     }
     .card {

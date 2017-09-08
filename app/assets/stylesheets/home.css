@@ -1,60 +1,65 @@
 /* ******************** Home / Welcome ******************** */
 
-#choose,
-#reserve,
-#queue,
-#release {
+section {
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    overflow: hidden;
+}
+
+section>.wrapper {
+    height: 100%;
     position: relative;
-    background-position: 74% top !important;
-    background-size: cover !important;
-}
-
-#choose,
-#queue {
-    background-position: 75% top !important;
-}
-
-#reserve,
-#release {
-    background-position: 25% top !important;
-    text-align: right;
-}
-
-#reserve p,
-#release p {
-    float: right;
 }
 
 #choose {
-    background: url(banner-1.png) no-repeat;
+    background-color: #81C781;
 }
 
 #reserve {
-    background: url(banner-2-flip.png) no-repeat;
+    background-color: #AB4C37;
 }
 
 #queue {
-    background: url(banner-3.png) no-repeat;
+    background-color: #53648F;
 }
 
 #release {
-    background: url(banner-4-flip.png) no-repeat;
+    background-color: #BF6564;
 }
 
-#choose img,
-#reserve img,
-#queue img,
-#release img {
-    width: 100%;
-    height: 100%;
+#priority {
+    background-color: #00BF9A;
 }
 
 .banner-overlay {
     position: absolute;
     top: 10%;
     width: 100%;
+}
+
+section:nth-child(even) .banner-overlay {
+    text-align: right;
+}
+
+section:nth-child(even) .banner-overlay p {
+    float: right;
+}
+
+section img {
+    display: block;
+    position: absolute;
+    height: 100%;
+    opacity: 0.14;
+    margin-left: -300px;
+    margin-right: -300px;
+}
+
+section:nth-child(odd) img {
+    right: 0;
+}
+
+section:nth-child(even) img {
+    left: 0;
 }
 
 .banner-overlay .display-1 {
@@ -65,7 +70,7 @@
 }
 
 .banner-overlay .overlay-text {
-    font-size: 1.6em;
+    font-size: 21px;
     line-height: 1.6em;
     width: 75%;
     color: #e9e9e9;

@@ -1,5 +1,10 @@
 module ApplicationHelper
 
+	def letterPicker(team_name, size)
+		first_letter = team_name[0,1].downcase
+		return "team-brand-" + size + " letter-" + first_letter
+	end
+
     def first_reserve(testline)
     	testline.reservations.each do |reserve|
     		if testline.id == reserve.testline_id
@@ -61,5 +66,16 @@ module ApplicationHelper
 		else
 			return "Reserve Now!"
 		end
+	end
+	
+	def didReserveTestline(testline)
+		userReservation = nil
+		testline.reservations.each do |r|
+			if r.user.email == current_user.email
+				userReservation = r
+				break
+			end
+		end
+		return userReservation
 	end
 end

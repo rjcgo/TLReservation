@@ -11,15 +11,14 @@
                 </header>
 
                 <div class="outer-border-hidden">
-                    <ul class="pokeballs-grid pokeballs-grid-lg">
-                        <% balls = pokelist_lg %>
+                    <ul class="letters-grid letters-grid-lg">
                         <% @teams.each do |team| %>
                             <li>
                                 <%= link_to team, remote: true, :method => :delete, 
 							    	data: {confirm: "Are you sure you want to delete this team?"}, 
                                     :class => 'release' do %><i class="fa fa-times"></i>
                                 <% end %>
-                                <span class="<%= balls[team.id % 20] %>"></span>
+                                <span class="<%= letterPicker(team.name, "lg") %>"></span>
                                 <%= team.name %>
                                 <%= link_to "Rename", edit_team_path(team), remote: true, 
                                     class: "rename edit-link" %>

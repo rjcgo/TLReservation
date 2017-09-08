@@ -26,14 +26,14 @@
                     <p style="text-align: center; margin: 10px;">No team can currently use this testline.</p>
                 <% else %>
                     <div class="outer-border-hidden">
-                        <ul class="pokeballs-grid pokeballs-grid-sm">
+                        <ul class="letters-grid letters-grid-sm">
                             <% testline.teams.each do |team| %>
                                 <li>
                                     <%= link_to testline_team_path(testline, team), remote: true, :method => :delete, 
                                         data: {confirm: "Are you sure you want to take away this team's access to this testline?"}, 
                                         :class => 'release' do %><i class="fa fa-times"></i>
                                     <% end %>
-                                    <span class="<%= pokelist[team.id % 20] %>"></span><%= team.name %>
+                                    <span class="<%= letterPicker(team.name, "sm") %>"></span><%= team.name %>
                                 </li>
                             <% end %>
                         </ul>

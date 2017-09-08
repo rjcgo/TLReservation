@@ -8,12 +8,12 @@
     <% else %>
         <div class="modal-body">
             <div class="outer-border-hidden">
-                <ul class="pokeballs-grid pokeballs-grid-sm">
+                <ul class="letters-grid letters-grid-sm">
                     <%= f.collection_check_boxes(:id, @noAccess, :id, :name) do |b| %>
                         <li>
                             <%= b.check_box %>
-                            <%= b.label(class: "pokeballs-item") do %>
-                                <span class="<%= ball(b.value) %>"></span><%= b.text %>
+                            <%= b.label(class: "letters-item") do %>
+                                <span class="<%= letterPicker(b.text, "sm") %>"></span><%= b.text %>
                             <% end %>
                         </li>
                     <% end %>

@@ -72,9 +72,9 @@
 }
 
 
-/* ******************** pokeballs grid ******************** */
+/* ******************** letters grid ******************** */
 
-.pokeballs-grid li .release {
+.letters-grid li .release {
     position: absolute;
     top: 0;
     right: 0;
@@ -85,7 +85,7 @@
     transition: 0.5s;
 }
 
-.pokeballs-grid li .rename {
+.letters-grid li .rename {
     display: block;
     color: #0275d8;
     text-decoration: none;
@@ -97,7 +97,7 @@
     padding: 10px 2px;
 }
 
-.pokeballs-grid li .rename:hover {
+.letters-grid li .rename:hover {
     border-bottom: 1px solid #0275d8;
     background: transparent;
 }
