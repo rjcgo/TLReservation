@@ -121,7 +121,7 @@ function addRecipient() {
         // add attr
         chip_input.type = "hidden";
         chip_input.value = email.value;
-        chip_input.name = "recipient[email]";
+        chip_input.name = "recipient[email][]";
 
         // add event
         chip_close.onclick = function (e) {

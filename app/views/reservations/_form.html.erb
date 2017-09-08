@@ -15,9 +15,21 @@
         </fieldset>
 
         <div class="form-group">
-        <label for="reservation_email">Email:</label>
-            <%= f.text_field :email, :value => current_user.email, 
-                :class => "form-control", :readonly => "readonly" %>
+            <label for="reservation_recipient">Email:</label>
+            <small>Who you want to notify after releasing your reservation. (optional)</small>
+            <div class="input-group">
+                <input type="email" id="reservation_recipient" placeholder="recipient@nokia.com">
+                <button type="button" class="input-addon bg-green" onclick="addRecipient()">
+                    <i class="fa fa-plus fa-fw"></i> Add
+                </button>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <small id="email-error" class="text-red"></small>
+            </div>
+
+            <ul id="recipient-list" class="chip-list">
+                <input type="hidden" name="recipient[email][]">
+            </ul>
         </div>
         
         <div class="form-group">

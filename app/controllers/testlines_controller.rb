@@ -89,7 +89,6 @@ class TestlinesController < ApplicationController
   def addTeam
     testline = Testline.find(params[:id])
     params[:team][:id].delete("")
-    p params[:team][:id]
     params[:team][:id].each do |t|
       testline.teams << Team.find(t)
     end

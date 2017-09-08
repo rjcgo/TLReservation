@@ -16,6 +16,14 @@ class ReservationsController < ApplicationController
             params[:reservation].permit(:name, :released, :team_id, :description)
                 .merge(user_id: current_user.id))
 
+        params[:recipient][:email].delete("")
+        if !params[:recipient][:email].empty?
+            params[:recipient][:email].each do |recipient_email|
+                @reservation.recipients.build(email: recipient_email)
+            end
+            @reservation.save
+        end
+
         if @reservation == @testline.reservations.first
             @reservation.start_time = DateTime.now
             @reservation.save
@@ -45,6 +53,12 @@ class ReservationsController < ApplicationController
 
         if @reservation == @testline.reservations.first
             logger.info(@testline.name + " released by " + @reservation.user.email + " of team " + @reservation.team.name)
+            @recipients = @reservation.recipients
+            @recipients.each do |recipient|
+                Thread.new{
+                    NotificationMailer.notify_next(recipient.email, @testline).deliver_now
+                }
+            end
             @reservation.destroy # Delete reservation
             @nextreservation = @testline.reservations.first # The next reservation
             if !@nextreservation.blank?

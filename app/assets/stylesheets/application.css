@@ -248,6 +248,7 @@ main {
     height: 0;
     overflow: hidden;
     transition: 0.5s;
+    margin-top: 5px;
 }
 
 .navbar-nav.open {
@@ -263,10 +264,6 @@ main {
     list-style-type: none;
     padding: 0;
     margin: 0;
-}
-
-.navbar-nav li {
-    margin-top: 6px;
 }
 
 .navbar-nav a {
@@ -1235,6 +1232,11 @@ input[type="checkbox"]:checked+.letters-item {
 
 /* ******************** form control ******************** */
 
+input,
+button{
+    font-family: inherit;
+}
+
 label {
     display: inline-block;
     margin-bottom: 7.5px;
@@ -1344,33 +1346,40 @@ input[type="checkbox"]:checked+label {
 
 .input-group input[type="email"],
 .input-group input[type="password"] {
-    display: table-cell;
-    padding: 6px 8px;
-    border-top-right-radius: 0.25em;
-    border-bottom-right-radius: 0.25em;
+    flex: 1 auto;
+    margin: 0;
+    padding: 8px 14px;
     border: 1px solid #c2c2c2;
-    font-size: 14px;
-    width: 100%;
+    font-size: 1em;
     line-height: 1.6em;
     box-sizing: border-box;
 }
 
 .input-group .input-addon {
-    display: table-cell;
     background: #eee;
     border: 1px solid #ccc;
-    line-height: 1.4em;
-    padding: 4px 14px;
+    line-height: 1.6em;
+    padding: 8px 14px;
     box-sizing: border-box;
-    border-top-left-radius: 0.25em;
-    border-bottom-left-radius: 0.25em;
-    width: 1%;
 }
 
 .input-group {
-    display: table;
+    display: flex;
     width: 100%;
-    margin-top: 8px;
+}
+
+.input-group *:first-child{
+    border-top-left-radius: 0.25em;
+    border-bottom-left-radius: 0.25em;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.input-group *:last-child{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
 }
 
 .btn-group {
@@ -1381,14 +1390,13 @@ input[type="checkbox"]:checked+label {
 }
 
 .form-submit {
-    padding: 6px 14px;
+    padding: 8px 14px;
     background: transparent;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.6em;
     border: 1px solid #fff;
     color: #fff;
     border-radius: 0.25em;
-    margin-top: 8px;
 }
 
 .form-submit:hover {
@@ -1580,7 +1588,8 @@ input[type="checkbox"]:checked+label {
     .navbar-nav.open {
         float: none;
         display: block;
-        margin: 0 auto;
+        margin-left: auto;
+        margin-right: auto;
         width: -webkit-fit-content;
         width: -moz-fit-content;
         width: fit-content;
