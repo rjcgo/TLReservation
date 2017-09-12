@@ -324,7 +324,7 @@ main {
     width: 100%;
 }
 
-.sidenav .sidenav-links {
+.sidenav .sidenav-link {
     color: #fff;
     text-decoration: none;
     padding: 1em;
@@ -333,12 +333,38 @@ main {
     position: relative;
 }
 
-.sidenav .sidenav-links.active {
+.sidenav .sidenav-link.active {
     background: #1E202C;
 }
 
-.sidenav .sidenav-links:hover {
+.sidenav .sidenav-link:hover {
     background: #252734;
+}
+
+.sidenav .sidenav-submenu {
+    border: 1px solid #252732;
+    background: #252732;
+    padding-left: 40px;
+    transition: 0.5s;
+}
+
+.sidenav .sidenav-sublink {
+    display: block;
+    margin: 12px 0;
+    color: #cecece;
+    font-size: 14px;
+    line-height: 1.6em;
+    text-decoration: none;
+    list-style-type: circle;
+}
+
+.sidenav .sidenav-sublink::before {
+    content: "-";
+    margin-right: 5px;
+}
+
+.sidenav .sidenav-sublink:hover {
+    color: #fff;
 }
 
 .sidenav .closebtn {
@@ -356,8 +382,6 @@ main {
     border: 1px solid #34495e;
     border-radius: 0.25rem;
     padding: 2px 8px;
-    margin-right: 4px;
-    margin-left: 10px;
     font-size: 1.2em;
     cursor: pointer;
     color: #34495e;
@@ -662,8 +686,14 @@ input[type="checkbox"]:checked+.letters-item {
     border-left: 5px solid #aaa !important;
 }
 
+.list-item .list-item-header,
+.list-item .list-item-footer{
+    display: flex;
+    align-items: center;
+}
+
 .list-item .title {
-    float: left;
+    flex: 1 auto;
     color: #111;
     font-size: 1.2em;
     line-height: 1.6em;
@@ -671,11 +701,11 @@ input[type="checkbox"]:checked+.letters-item {
 }
 
 .list-item .subtitle {
-    clear: both;
-    float: left;
     margin: 0;
     color: #333;
     font-style: italic;
+    font-size: 15px;
+    font-weight: normal;
 }
 
 
@@ -725,6 +755,123 @@ input[type="checkbox"]:checked+.letters-item {
     opacity: 1;
 }
 
+/* ******************** Team-brand-xs ******************** */
+
+.team-brand-xs {
+    background: url(letters.png) no-repeat center;
+    background-size: 325px 50px;
+    display: block;
+    margin: 5px auto;
+    width: 25px;
+    height: 25px;
+}
+
+
+/* ******************** letters-xs ******************** */
+
+.team-brand-xs.letter-a {
+    background-position: 0 0 !important;
+}
+
+.team-brand-xs.letter-b {
+    background-position: -25px 0 !important;
+}
+
+.team-brand-xs.letter-c {
+    background-position: -50px 0 !important;
+}
+
+.team-brand-xs.letter-d {
+    background-position: -75px 0 !important;
+}
+
+.team-brand-xs.letter-e {
+    background-position: -100px 0 !important;
+}
+
+.team-brand-xs.letter-f {
+    background-position: -125px 0 !important;
+}
+
+.team-brand-xs.letter-g {
+    background-position: -150px 0 !important;
+}
+
+.team-brand-xs.letter-h {
+    background-position: -175px 0 !important;
+}
+
+.team-brand-xs.letter-i {
+    background-position: -200px 0 !important;
+}
+
+.team-brand-xs.letter-j {
+    background-position: -225px 0 !important;
+}
+
+.team-brand-xs.letter-k {
+    background-position: -250px 0 !important;
+}
+
+.team-brand-xs.letter-l {
+    background-position: -275px 0 !important;
+}
+
+.team-brand-xs.letter-m {
+    background-position: -300px 0 !important;
+}
+
+.team-brand-xs.letter-n {
+    background-position: 0 -25px !important
+}
+
+.team-brand-xs.letter-o {
+    background-position: -25px -25px !important
+}
+
+.team-brand-xs.letter-p {
+    background-position: -50px -25px !important
+}
+
+.team-brand-xs.letter-q {
+    background-position: -75px -25px !important
+}
+
+.team-brand-xs.letter-r {
+    background-position: -100px -25px !important
+}
+
+.team-brand-xs.letter-s {
+    background-position: -125px -25px !important
+}
+
+.team-brand-xs.letter-t {
+    background-position: -150px -25px !important
+}
+
+.team-brand-xs.letter-u {
+    background-position: -175px -25px !important
+}
+
+.team-brand-xs.letter-v {
+    background-position: -200px -25px !important
+}
+
+.team-brand-xs.letter-w {
+    background-position: -225px -25px !important
+}
+
+.team-brand-xs.letter-x {
+    background-position: -250px -25px !important
+}
+
+.team-brand-xs.letter-y {
+    background-position: -275px -25px !important
+}
+
+.team-brand-xs.letter-z {
+    background-position: -300px -25px !important
+}
 
 /* ******************** Team-brand-sm ******************** */
 
@@ -1050,6 +1197,7 @@ input[type="checkbox"]:checked+.letters-item {
 
 .modal.show .modal-dialog {
     top: 10%;
+    margin-bottom: 10%;
     opacity: 1;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.5s;
@@ -1084,6 +1232,7 @@ input[type="checkbox"]:checked+.letters-item {
 .modal.show .modal-dialog-full {
     top: 0;
     right: 0;
+    margin-bottom: 0;
     animation: zoom-out-rounded 0.5s ease forwards;
 }
 
@@ -1149,7 +1298,7 @@ input[type="checkbox"]:checked+.letters-item {
     color: #000;
 }
 
-.modal-max{
+.modal-max {
     right: 32px;
 }
 
@@ -1233,7 +1382,7 @@ input[type="checkbox"]:checked+.letters-item {
 /* ******************** form control ******************** */
 
 input,
-button{
+button {
     font-family: inherit;
 }
 
@@ -1294,12 +1443,10 @@ legend {
 .radio-group {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
 }
 
 .radio-group input[type="radio"]+label {
-    flex: 1 33%;
-    text-align: center;
+    flex: 0 33%;
 }
 
 input[type="radio"],
@@ -1368,14 +1515,14 @@ input[type="checkbox"]:checked+label {
     width: 100%;
 }
 
-.input-group *:first-child{
+.input-group *:first-child {
     border-top-left-radius: 0.25em;
     border-bottom-left-radius: 0.25em;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
 
-.input-group *:last-child{
+.input-group *:last-child {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border-top-right-radius: 0.25em;

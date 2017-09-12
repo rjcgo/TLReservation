@@ -13,15 +13,24 @@
 }
 
 #reservations .pick-testline {
-    margin-left: 10px;
     opacity: 0.75;
-    animation: updown 0.5s alternate infinite;
+    animation: updown 0.6s ease-in-out alternate infinite;
 }
 
-@keyframes updown{
-    from {margin-top: 0;}
-    to {margin-top: 4px;}
+#reservations header,
+#reservations .tabcontent {
+    padding: 0 20px;
 }
+
+@keyframes updown {
+    from {
+        margin-top: 0px;
+    }
+    to {
+        margin-top: 10px;
+    }
+}
+
 
 /* ******************** List Group ******************** */
 
@@ -78,35 +87,23 @@
     font-size: 0.96em;
 }
 
-.list-item .timestamp {
-    float: right;
-    margin-top: 10px;
-}
-
 .list-item .description {
     color: #555;
     font-size: 14px;
     line-height: 1.6em;
+    margin: 20px;
 }
 
 .list-item .user {
-    float: left;
-}
-
-.list-item .time-used {
-    float: right;
-    font-size: 1.2em;
+    flex: 1 auto;
 }
 
 .list-item .user::before {
     content: '\2014 \00A0';
 }
 
-.list-item .list-item-header::after,
-.list-item .list-item-footer::after {
-    content: "";
-    display: block;
-    clear: both;
+.list-item .time-used {
+    font-size: 1.2em;
 }
 
 .list-item .release {
@@ -130,7 +127,6 @@
     width: 80px;
     letter-spacing: normal;
     border-radius: 0;
-    /* top: 0; */
     right: 0;
 }
 
@@ -142,7 +138,6 @@
     overflow: hidden;
     white-space: nowrap;
     margin: 20px 0;
-    margin-right: 10px;
     color: #0275d8;
     text-decoration: none;
 }

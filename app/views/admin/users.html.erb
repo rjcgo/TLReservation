@@ -8,27 +8,49 @@
 	        <ul class="list-group">
 	        	<% @users.each do |user| %>
 		            <li class="list-item <%= user.isAdmin? ? "list-item-primary" : "" %>">
-		                <h3 class="title">
-		                    <i class="fa fa-user"></i> <%= user.email %>
-		                </h3>
-		                <% if user.isAdmin? %>
-			                <small class="subtitle">
-		                        <i class="fa fa-cogs"></i> Administrator
-		                    </small>
-		                <% else %>
-							<%= link_to admin_makeAdmin_path(user), remote: true, :method => :put, 
-								data: {confirm: "Are you sure you want to make this user an admin?<br>" + 
-									"<mark> (note: you cannot undo this action.) </mark>"}, 
-								:class => 'make-admin-btn' do %>
-								<i class="fa fa-lock"></i> Make Admin
+						<div class="list-item-header">
+							<div class="list-item-avatar">
+								<% if user.team.nil? %>
+									<div class="assign-team">
+										<%= link_to "Assign Team", edit_assigned_team_path(user), 
+											remote: true %>
+									</div>
+								<% else %>
+									<span class="<%= letterPicker(user.team.name, "xs") %>"></span>
+									<%= user.team.name %>
+									<div class="avatar-overlay">
+										<div class="assign-team">
+											<%= link_to "Assign Team", edit_assigned_team_path(user), 
+												remote: true %>
+										</div>
+									</div>
+								<% end %>
+							</div>
+							<h3 class="title">
+								<i class="fa fa-user"></i> <%= user.email %><br>
+								<% if user.isAdmin? %>
+									<small class="subtitle">
+										<i class="fa fa-cogs"></i> Administrator
+									</small>
+								<% end %>
+							</h3>
+							<% if !user.isAdmin? %>
+								<%= link_to make_admin_path(user), remote: true, :method => :put, 
+									data: {confirm: "Are you sure you want to make this user an admin?<br>" + 
+										"<mark> (note: you cannot undo this action.) </mark>"}, 
+									:class => 'make-admin-btn' do %>
+									<i class="fa fa-lock"></i> Make Admin
+								<% end %>
 							<% end %>
-		                <% end %>
+						</div>
 		            </li>
 		        <% end %>
 	        </ul>
 	    </section>
 	</main>
     <div id="confirmationDialog" class="modal"></div>
+
+    <%= render "modal" %>
 <% else %>
 	<%= render 'error' %>
 <% end %>

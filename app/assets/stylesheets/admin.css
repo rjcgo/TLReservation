@@ -47,12 +47,56 @@
 
 /* ******************** List item ******************** */
 
+.list-item .list-item-avatar {
+    position: relative;
+    overflow: hidden;
+    width: 75px;
+    height: 54px;
+    text-align: center;
+}
+
+.list-item-avatar .avatar-overlay {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.list-item-avatar:hover .avatar-overlay {
+    opacity: 1;
+}
+
+.list-item .assign-team {
+    width: 75px;
+    text-align: center;
+}
+
+.list-item .assign-team a {
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    padding: 10% 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    font-size: 13px;
+    color: #888;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.list-item .assign-team a:hover {
+    background: #eee;
+}
+
 .list-item .make-admin-btn {
     float: right;
     background: transparent;
     color: #34495e;
     text-decoration: none;
     border: 1px solid #34495e;
+    margin-left: 10px;
     padding: 6px 14px;
     border-radius: 0.25em;
     transition: 0.3s;
@@ -65,14 +109,13 @@
     color: #fff;
 }
 
-.list-item::after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
 
 /* ******************** letters grid ******************** */
+
+.letters-grid li {
+    position: relative;
+    overflow: hidden;
+}
 
 .letters-grid li .release {
     position: absolute;
@@ -85,21 +128,63 @@
     transition: 0.5s;
 }
 
-.letters-grid li .rename {
-    display: block;
+.letters-grid li .team-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.letters-grid li .team-link {
     color: #0275d8;
     text-decoration: none;
-    margin: 10px auto;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
     font-size: 16px;
     padding: 10px 2px;
 }
 
-.letters-grid li .rename:hover {
+.letters-grid li .team-link:hover {
     border-bottom: 1px solid #0275d8;
     background: transparent;
+}
+
+.letters-grid li .team-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -100%;
+    background: #fff;
+    transition: 0.5s;
+}
+
+.letters-grid li .team-overlay ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: calc(100% - 50px);
+}
+
+.letters-grid li .team-overlay li {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    border: 0;
+    font-size: 14px;
+}
+
+.letters-grid li .team-overlay .team-overlay-close {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    color: #0275d8;
+}
+
+.letters-grid li .team-overlay .team-overlay-close:hover{
+    background: transparent;
+    border-bottom: 1px solid #0275d8;
 }
 
 

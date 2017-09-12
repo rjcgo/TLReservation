@@ -1,0 +1,14 @@
+<div class="modal-body">
+    <div class="outer-border-hidden">
+        <ul class="letters-grid letters-grid-sm">
+            <% @teams.each do |team| %>
+                <li>
+                    <%= link_to admin_assign_team_path(@user, :team_id => team), method: :put do %>
+                        <span class="<%= letterPicker(team.name, "sm") %>"></span>
+                        <%= team.name %>
+                    <% end %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+</div>

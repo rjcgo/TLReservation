@@ -26,16 +26,19 @@
 					<h2>Main Navigation</h2>
 					<% if user_signed_in? %>
 						<ul>
-							<li>
-								<a href="/teams" data-turbolinks="false">
-									<i class="fa fa-users"></i> Teams
-								</a>
-							</li>
-							<li>
-								<a href="/reservations" data-turbolinks="false">
-									<i class="fa fa-calendar-check-o"></i> Reservations
-								</a>
-							</li>
+							<% if current_user.team.nil? %>
+								<li>
+									<a href="/teams" data-turbolinks="false">
+										<i class="fa fa-users"></i> Teams
+									</a>
+								</li>
+							<% else %>
+								<li>
+									<a href="/reservations" data-turbolinks="false">
+										<i class="fa fa-calendar-check-o"></i> Reservations
+									</a>
+								</li>
+							<% end %>
 							<% if current_user.isAdmin? %>
 								<li>
 									<a href="/admin" data-turbolinks="false">

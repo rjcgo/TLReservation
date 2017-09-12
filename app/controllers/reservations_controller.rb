@@ -13,8 +13,8 @@ class ReservationsController < ApplicationController
     def create
         @testline = Testline.find(params[:testline_id])
         @reservation = @testline.reservations.create(
-            params[:reservation].permit(:name, :released, :team_id, :description)
-                .merge(user_id: current_user.id))
+            params[:reservation].permit(:name, :released, :description)
+                .merge(user_id: current_user.id, team_id: current_user.team.id))
 
         params[:recipient][:email].delete("")
         if !params[:recipient][:email].empty?
@@ -56,16 +56,19 @@ class ReservationsController < ApplicationController
             @reservation.destroy # Delete reservation
             @nextreservation = @testline.reservations.first # The next reservation
             if !@nextreservation.blank?
-                @recipients = @nextreservation.recipients
-                @recipients.each do |recipient|
+                # mails the recipients of the next team in line for the testline
+                @nextreservation.recipients.each do |recipient|
                     Thread.new{
                         NotificationMailer.notify_next(recipient.email, @testline).deliver_now
                     }
                 end
-                Thread.new{
-                    @email = @nextreservation.user.email # Email of user who made next reservation
-                    NotificationMailer.notify_next(@email, @testline).deliver_now
-                }
+                # mails the team members of the next team in line for the testline
+                @nextreservation.team.users.each do |team_members|
+                    Thread.new{
+                        NotificationMailer.notify_next(team_members.email, @testline).deliver_now
+                    }
+                end
+                # starts the time of the next reservation
                 @nextreservation.start_time = DateTime.now
                 @nextreservation.save
 

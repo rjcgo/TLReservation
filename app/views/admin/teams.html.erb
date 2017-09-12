@@ -12,7 +12,7 @@
 
                 <div class="outer-border-hidden">
                     <ul class="letters-grid letters-grid-lg">
-                        <% @teams.each do |team| %>
+                        <% @teams.each_with_index do |team, index| %>
                             <li>
                                 <%= link_to team, remote: true, :method => :delete, 
 							    	data: {confirm: "Are you sure you want to delete this team?"}, 
@@ -20,8 +20,30 @@
                                 <% end %>
                                 <span class="<%= letterPicker(team.name, "lg") %>"></span>
                                 <%= team.name %>
-                                <%= link_to "Rename", edit_team_path(team), remote: true, 
-                                    class: "rename edit-link" %>
+                                <div class="team-nav">
+                                    <%= link_to "Rename", edit_team_path(team), remote: true, 
+                                        class: "team-link" %>
+                                    <a href="javascript:void(0)" class="team-link"
+                                        onclick="toggleTeamOverlay('team-overlay-<%= index %>')">View Members</a>
+                                </div>
+                                <div class="team-overlay" id="team-overlay-<%= index %>">
+                                    <% if team.users.empty? %>
+                                        <p>There are currently no members for this team</p>
+                                    <% else %>
+                                        <ul>
+                                            <% team.users.each do |member| %>
+                                                <li>
+                                                    <%= member.email %>
+                                                    <% if member.isAdmin? %>
+                                                        <small class="member-role">Admin</small>
+                                                    <% end %>
+                                                </li>
+                                            <% end %>
+                                        </ul>
+                                    <% end %>
+                                    <a href="javascript:void(0)" class="team-overlay-close"
+                                        onclick="toggleTeamOverlay('team-overlay-<%= index %>')">Close</a>
+                                </div>
                             </li>
                         <% end %>
                     </ul>

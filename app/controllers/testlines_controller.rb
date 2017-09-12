@@ -77,7 +77,11 @@ class TestlinesController < ApplicationController
 
   # GET /reservations
   def reservations
-    @testlines = Testline.order(:name).includes(:teams, reservations: [:user, :team])
+    if !current_user.team.nil?
+      @testlines = current_user.team.testlines.includes(reservations: [:user, :team])
+    else
+      redirect_to teams_path
+    end
   end
 
   def newRel

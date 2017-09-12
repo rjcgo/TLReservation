@@ -1,11 +1,11 @@
-<%= form_for([@testline, @testline.teams.build]) do |f| %>
-    <% teams_without_access(@testline) %>
-    <% if @noAccess.empty? %>
-        <div class="modal-body">
-            <p style="text-align: center; margin: 10px;">
-                All teams are already able to use this testline.</p>
-        </div>
-    <% else %>
+<% teams_without_access(@testline) %>
+<% if @noAccess.empty? %>
+    <div class="modal-body">
+        <p style="text-align: center; margin: 10px;">
+            All teams are already able to use this testline.</p>
+    </div>
+<% else %>
+    <%= form_for([@testline, @testline.teams.build]) do |f| %>
         <div class="modal-body">
             <div class="outer-border-hidden">
                 <ul class="letters-grid letters-grid-sm">

@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
   
+  root 'home#index'
+  
+  get 'login' => 'home#login'
+  put 'assign_team' => 'user#assign_team', :as => 'assign_team'
+
   get 'admin' => 'admin#home'
   get 'admin/teams'
   get 'admin/associations'
   get 'admin/testlines'
   get 'admin/users'
+
+  get 'admin/users/:id/assign_team/edit' => 'admin#edit_assigned_team', :as => 'edit_assigned_team'
+  put 'admin/users/:id/assign_team' => 'admin#update_assigned_team', :as => 'admin_assign_team'
+  patch 'admin/users/:id/make_admin' => 'admin#make_admin', :as => 'make_admin'
 
   get 'reservations' => 'testlines#reservations'
   get 'reservations/download_log_file' => 'reservations#download_log_file'
@@ -12,12 +21,6 @@ Rails.application.routes.draw do
   get 'testlines/:id/teams/new' => 'testlines#newRel', :as => 'new_testline_teams'
   post 'testlines/:id/teams' => 'testlines#addTeam', :as => 'testline_teams'
   delete 'testlines/:testline_id/teams/:team_id' => 'testlines#removeTeam'
-
-
-  get 'login' => 'home#login'
-
-  root 'home#index'
-  put 'admin/makeAdmin'
 
   resources :team_testlines, except: [:index]
   devise_for :users

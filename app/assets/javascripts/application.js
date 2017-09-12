@@ -40,6 +40,7 @@ function toggleFullModal(event) {
         modalContent.style.transition = '0.5s';
     } else {
         modalDialog.style.top = '0';
+        modalDialog.style.marginBottom = '0';
         modalDialog.style.height = '100%';
         modalDialog.style.width = '100%';
         modalDialog.style.maxWidth = '100%';
@@ -49,22 +50,28 @@ function toggleFullModal(event) {
     }
 }
 
-function openReservation(evt, tabName) {
+function openReservation(evt, tabName, tabMenu) {
     var i, listgroups, sidenavlinks;
 
-    testlines = document.getElementsByClassName("tabcontent");
+    var testlines = document.getElementsByClassName("tabcontent");
     for (i = 0; i < testlines.length; i++) {
         testlines[i].style.display = "none";
     }
 
-    // Get all elements with class="tablinks" and remove the class "active"
-    sidenavlinks = document.getElementsByClassName("sidenav-links");
+    var submenus = document.getElementsByClassName("sidenav-submenu");
+    for (var j = 0; j < submenus.length; j++) {
+        submenus[j].style.display = "none";
+    }
+
+    // Get all elements with class="sidenav-links" and remove the class "active"
+    sidenavlinks = document.getElementsByClassName("sidenav-link");
     for (i = 0; i < sidenavlinks.length; i++) {
         sidenavlinks[i].className = sidenavlinks[i].className.replace(" active", "");
     }
 
     // Show the current tab, and add an "active" class to the link that opened the tab
     document.getElementById(tabName).style.display = "block";
+    document.getElementById(tabMenu).style.display = "block";
     evt.currentTarget.className += " active";
     if (!window.matchMedia("(min-width: 768px)").matches) {
         toggleSideNav();
@@ -99,51 +106,64 @@ function addRecipient() {
     var email = document.getElementById("reservation_recipient");
     var error_msg = document.getElementById("email-error");
     var recipient_list = document.getElementById("recipient-list");
-    // validate email
+
+    // check if blank
     if (!email.value) {
         email.classList.add("has-error");
         error_msg.textContent = "Must not be blank.";
-    } else if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
-        var t = document.createTextNode(email.value);
-
-        // create elements
-        var chip = document.createElement("li");
-        var chip_icon = document.createElement("i");
-        var chip_label = document.createElement("span");
-        var chip_input = document.createElement("input");
-        var chip_close = document.createElement("i");
-
-        // add class
-        chip.className = "chip";
-        chip_icon.className = "fa fa-user-circle fa-fw chip-icon";
-        chip_close.className = "fa fa-times-circle chip-close";
-
-        // add attr
-        chip_input.type = "hidden";
-        chip_input.value = email.value;
-        chip_input.name = "recipient[email][]";
-
-        // add event
-        chip_close.onclick = function (e) {
-            e.cancelBubble = true;
-            recipient_list.removeChild(this.parentElement);
-        }
-
-        // append to document
-        chip_label.appendChild(chip_input);
-        chip_label.appendChild(t);
-
-        chip.appendChild(chip_icon);
-        chip.appendChild(chip_label);
-        chip.appendChild(chip_close);
-        recipient_list.appendChild(chip);
-
-        email.classList.remove("has-error");
-        error_msg.textContent = "";
-        email.value = "";
     } else {
-        email.classList.add("has-error");
-        error_msg.textContent = "Email must be valid.";
+        email.value = email.value.replace(/[^\w@._\s]/g, "");
+        console.log(email.value);
+        var email_list = email.value.split(" ");
+        
+        for (var i = 0; i < email_list.length; i++) {
+            var single_email = email_list[i];
+            console.log(single_email);
+
+            // validate email
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(single_email)) {
+                var t = document.createTextNode(single_email);
+        
+                // create elements
+                var chip = document.createElement("li");
+                var chip_icon = document.createElement("i");
+                var chip_label = document.createElement("span");
+                var chip_input = document.createElement("input");
+                var chip_close = document.createElement("i");
+        
+                // add class
+                chip.className = "chip";
+                chip_icon.className = "fa fa-user-circle fa-fw chip-icon";
+                chip_close.className = "fa fa-times-circle chip-close";
+        
+                // add attr
+                chip_input.type = "hidden";
+                chip_input.value = single_email;
+                chip_input.name = "recipient[email][]";
+        
+                // add event
+                chip_close.onclick = function (e) {
+                    e.cancelBubble = true;
+                    recipient_list.removeChild(this.parentElement);
+                }
+        
+                // append to document
+                chip_label.appendChild(chip_input);
+                chip_label.appendChild(t);
+        
+                chip.appendChild(chip_icon);
+                chip.appendChild(chip_label);
+                chip.appendChild(chip_close);
+                recipient_list.appendChild(chip);
+        
+                email.classList.remove("has-error");
+                error_msg.textContent = "";
+                email.value = "";
+            } else {
+                email.classList.add("has-error");
+                error_msg.textContent = "Email must be valid.";
+            }
+        }
     }
 }
 
@@ -154,6 +174,15 @@ function enlargeImage() {
 
     img[0].setAttribute('src', preview);
     imgModal.classList.add("show");
+}
+
+function toggleTeamOverlay(overlay_id) {
+    var overlay = document.getElementById(overlay_id);
+    if (overlay.style.top == '0px') {
+        overlay.style.top = '';
+    } else {
+        overlay.style.top = '0';
+    }
 }
 
 $(document).on('turbolinks:load', function () {
