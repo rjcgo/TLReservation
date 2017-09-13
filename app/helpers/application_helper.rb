@@ -18,9 +18,11 @@ module ApplicationHelper
     	t = ""
     	testlines.each do |testline|
     		reserve = first_reserve testline
-    		if !reserve.nil?
-    			cur_int = Time.now.minus_with_coercion(reserve.start_time).to_i
-				t << "t[\"tm-#{testline.id}\"] = #{cur_int};"
+			if !reserve.nil?
+				if !reserve.start_time.nil?
+					cur_int = Time.now.minus_with_coercion(reserve.start_time).to_i
+					t << "t[\"tm-#{testline.id}\"] = #{cur_int};"
+				end
 			end
     	end
     	return t.html_safe;

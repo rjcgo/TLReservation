@@ -6,7 +6,7 @@ class ReservationsController < ApplicationController
     # GET /reservations/new
     def new
         @reservation = Reservation.new
-        @testline = Testline.includes(:teams).find(params[:testline_id])
+        @testline = Testline.find(params[:testline_id])
         @teams = @testline.teams
     end
 
@@ -56,23 +56,22 @@ class ReservationsController < ApplicationController
             @reservation.destroy # Delete reservation
             @nextreservation = @testline.reservations.first # The next reservation
             if !@nextreservation.blank?
-                # mails the recipients of the next team in line for the testline
-                @nextreservation.recipients.each do |recipient|
-                    Thread.new{
-                        NotificationMailer.notify_next(recipient.email, @testline).deliver_now
-                    }
-                end
-                # mails the team members of the next team in line for the testline
-                @nextreservation.team.users.each do |team_members|
-                    Thread.new{
-                        NotificationMailer.notify_next(team_members.email, @testline).deliver_now
-                    }
-                end
+                p @nextreservation.recipients
+                Thread.new{
+                    # mails the recipients of the next team in line for the testline
+                    @nextreservation.recipients.each do |recipient|
+                        NotificationMailer.notify_next(recipient.email, @testline).deliver_later
+                    end
+                    # mails the team members of the next team in line for the testline
+                    @nextreservation.team.users.each do |team_member|
+                        NotificationMailer.notify_next(team_member.email, @testline).deliver_later
+                    end
+                }
                 # starts the time of the next reservation
                 @nextreservation.start_time = DateTime.now
                 @nextreservation.save
 
-                logger.info(@testline.name + " used by " + @email + " of team " + @nextreservation.team.name)
+                logger.info(@testline.name + " used by " + @nextreservation.user.email + " of team " + @nextreservation.team.name)
                 logger.close()
             end
         else
