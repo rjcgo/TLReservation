@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get 'admin/users/:id/assign_team/edit' => 'admin#edit_assigned_team', :as => 'edit_assigned_team'
   put 'admin/users/:id/assign_team' => 'admin#update_assigned_team', :as => 'admin_assign_team'
-  patch 'admin/users/:id/make_admin' => 'admin#make_admin', :as => 'make_admin'
+  put 'admin/users/:id/make_admin' => 'admin#make_admin', :as => 'make_admin'
 
   get 'reservations' => 'testlines#reservations'
   get 'reservations/download_log_file' => 'reservations#download_log_file'

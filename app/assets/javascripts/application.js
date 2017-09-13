@@ -46,7 +46,7 @@ function toggleFullModal(event) {
         modalDialog.style.maxWidth = '100%';
         modalDialog.style.transition = '0.5s';
         modalContent.style.transition = '0.5s';
-        modalContent.style.height = '100%';
+        modalContent.style.minHeight = '100%';
     }
 }
 

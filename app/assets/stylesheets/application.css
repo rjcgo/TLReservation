@@ -1361,6 +1361,13 @@ input[type="checkbox"]:checked+.letters-item {
     padding: 4px 16px;
 }
 
+.img-dialog {
+    max-width: max-content;
+    max-width: -moz-max-content;
+    max-width: -webkit-max-content;
+    width: 90% !important;
+}
+
 .modal img {
     max-width: 100%;
     display: block;
