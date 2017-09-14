@@ -45,5 +45,3 @@ $ ->
     confirmbtn = document.getElementsByClassName('confirm');
     confirmbtn[0].focus();
     $('#confirmationDialog .confirm').on 'click', -> $.rails.confirmed(link)
-
-    $('.dismiss').on 'click', -> $(this).closest('.modal').removeClass("show");

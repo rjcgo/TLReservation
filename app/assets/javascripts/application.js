@@ -32,7 +32,6 @@ function toggleSideNav() {
 function toggleFullModal(event) {
     var modalDialog = event.target.closest('.modal-dialog');
     var modalContent = event.target.closest('.modal-content');
-    console.log(modalDialog);
     if (modalDialog.style.maxWidth == '100%') {
         modalDialog.removeAttribute('style');
         modalContent.removeAttribute('style');
@@ -186,9 +185,10 @@ function toggleTeamOverlay(overlay_id) {
 }
 
 $(document).on('turbolinks:load', function () {
-    $(document).on('click', function (event) {
-        if (!$(event.target).closest('.modal-dialog').length) {
-            $(event.target).closest('.modal').removeClass("show");
+    $(document).on('click', function (e) {
+        var target = $(e.target);
+        if (target.closest('.dismiss').length || !target.closest('.modal-dialog').length) {
+            target.closest('.modal').removeClass("show");
         }
     });
 
@@ -197,10 +197,6 @@ $(document).on('turbolinks:load', function () {
             $('.modal').removeClass("show");
         } 
     });
-
-    $("button").on("click", function () {
-        var modal = $(event.target).closest("." + $(this).data("dismiss")).removeClass("show");
-    })
 
     $(".modal-open").on("click", function (e) {
         e.stopPropagation();
