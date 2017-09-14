@@ -184,6 +184,30 @@ function toggleTeamOverlay(overlay_id) {
     }
 }
 
+var tabs = document.querySelector('.tabs');
+var panels = document.querySelectorAll('.panel');
+
+tabs.addEventListener('click', function (e) {
+    if (e.target.tagName == "LI") {
+        Array.from(tabs.children).forEach(function (child) {
+            if (child == e.target) {
+                child.classList.add('active');
+            } else {
+                child.classList.remove('active');
+            }
+        });
+        e.target.classList.add('active');
+        var targetPanel = document.querySelector(e.target.dataset.target);
+        panels.forEach(function (panel) {
+            if (panel == targetPanel) {
+                panel.classList.add('active');
+            } else {
+                panel.classList.remove('active');
+            }
+        });
+    }
+});
+
 $(document).on('turbolinks:load', function () {
     $(document).on('click', function (e) {
         var target = $(e.target);

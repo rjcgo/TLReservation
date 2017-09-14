@@ -47,6 +47,11 @@
 								</li>
 							<% end %>
 							<li>
+								<a href="/help" data-turbolinks="false">
+									<i class="fa fa-question-circle"></i> Help
+								</a>
+							</li>
+							<li>
 								<%= link_to '<i class="fa fa-sign-out"></i> Logout'.html_safe, destroy_user_session_path, method: :delete %>	
 							</li>
 						</ul>

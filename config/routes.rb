@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   root 'home#index'
+  get 'help' => 'home#help'
   
   put 'assign_team' => 'user#assign_team', :as => 'assign_team'
 

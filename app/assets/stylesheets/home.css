@@ -77,6 +77,78 @@ section:nth-child(even) img {
 }
 
 
+/* ******************** Help ******************** */
+
+#main-banner {
+    position: relative;
+    max-height: 250px;
+    overflow: hidden;
+}
+
+#main-banner img {
+    width: 100%;
+    margin-bottom: -10px;
+}
+
+#main-banner .banner-overlay {
+    text-align: right;
+}
+
+#main-banner .banner-overlay h1 {
+    color: #fff;
+}
+
+#tabbed-content {
+    min-height: calc(100% - 250px);
+    background: #fafafa;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+.tabs {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.tabs li {
+    flex: 1 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    background: #e9e9e9;
+    transition: 0.5s;
+    border-color: #e9e9e9;
+    border-width: 3px;
+    border-left-style: solid;
+    cursor: pointer;
+}
+
+.tabs li:hover {
+    background: #ccc;
+    border-color: #ccc;
+}
+
+.tabs li.active {
+    background: #ccc;
+    border-color: #53648F;
+}
+
+.panel {
+    display: none;
+    padding: 20px;
+    transition: 0.5s;
+}
+
+.panel.active {
+    display: block;
+}
+
+
 /* ******************** Media Queries ******************** */
 
 @media screen and (min-width: 480px) {
@@ -85,5 +157,22 @@ section:nth-child(even) img {
     }
     .banner-overlay .display-1 {
         font-size: 4em;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .tabs li {
+        flex: 1 50%;
+        border-left-style: none;
+        border-bottom-style: solid;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .tabs li {
+        flex: 1 auto;
+    }
+    #main-banner .banner-overlay h1 {
+        font-size: 3em;
     }
 }
