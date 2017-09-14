@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   
   root 'home#index'
   
-  get 'login' => 'home#login'
   put 'assign_team' => 'user#assign_team', :as => 'assign_team'
 
   get 'admin' => 'admin#home'
@@ -18,16 +17,14 @@ Rails.application.routes.draw do
   get 'reservations' => 'testlines#reservations'
   get 'reservations/download_log_file' => 'reservations#download_log_file'
 
-  get 'testlines/:id/teams/new' => 'testlines#newRel', :as => 'new_testline_teams'
-  post 'testlines/:id/teams' => 'testlines#addTeam', :as => 'testline_teams'
-  delete 'testlines/:testline_id/teams/:team_id' => 'testlines#removeTeam'
+  get 'testlines/:testline_id/teams/new' => 'testlines#newRel', :as => 'new_testline_teams'
+  post 'testlines/:testline_id/teams' => 'testlines#addTeam', :as => 'testline_teams'
+  delete 'testlines/:testline_id/teams/:team_id' => 'testlines#removeTeam', :as => 'testline_team'
 
-  resources :team_testlines, except: [:index]
   devise_for :users
-  resources :teams
-  resources :testlines, except: [:index] do
-    resources :reservations
-    resources :teams
+  resources :teams, except: [:show]
+  resources :testlines, except: [:index, :show] do
+    resources :reservations, only: [:new, :create, :destroy]
   end
   
   # The priority is based upon order of creation: first created -> highest priority.

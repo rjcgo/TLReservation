@@ -58,7 +58,9 @@
 												</div>
 											<% end %>
 										</div>
-										<% if current_user.isAdmin? || (current_user.team == reserve.team)%>
+										<% if current_user.isAdmin? || 
+											(current_user.email == reserve.user.email) || 
+											(current_user.team == reserve.team)%>
 											<%= link_to testline_reservation_path(testline, reserve), 
 												remote: true, :method => :delete, 
 												data: {confirm: "Are you sure you want to release your reservation?"}, 

@@ -1,17 +1,17 @@
 <% if user_signed_in? && current_user.isAdmin? %>
     <main class="wrapper" id="sidenav-container">
         <%= render partial: 'sidenav', :locals => {:sect => "associations"} %>
-            <section id="associations-admin">
-                <header>
-                    <%= render partial: 'header', :locals => header("Associations") %>
-                    <%= admin_notice(@testlines, "associations", notice) %>
-                </header>
-                <div class="card-deck">
-                    <% @testlines.each do |testline| %>
-                        <%= render partial: "card", locals: cardProps(testline) %>
-                    <% end %>
-                </div>
-            </section>
+        <section id="associations-admin">
+            <header>
+                <%= render partial: 'header', :locals => header("Associations") %>
+                <%= admin_notice(@testlines, "associations", notice) %>
+            </header>
+            <div class="card-deck">
+                <% @testlines.each do |testline| %>
+                    <%= render partial: "card", locals: cardProps(testline) %>
+                <% end %>
+            </div>
+        </section>
     </main>
     <div id="confirmationDialog" class="modal"></div>
 

@@ -85,13 +85,13 @@ class TestlinesController < ApplicationController
   end
 
   def newRel
-    @testline = Testline.includes(:teams).find(params[:id])
+    @testline = Testline.includes(:teams).find(params[:testline_id])
     @teams = Team.order(:name)
   end
 
   # POST /testlines/:id/teams
   def addTeam
-    testline = Testline.find(params[:id])
+    testline = Testline.find(params[:testline_id])
     params[:team][:id].delete("")
     params[:team][:id].each do |t|
       testline.teams << Team.find(t)

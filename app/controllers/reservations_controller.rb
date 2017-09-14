@@ -58,13 +58,13 @@ class ReservationsController < ApplicationController
             if !@nextreservation.blank?
                 p @nextreservation.recipients
                 Thread.new{
-                    # mails the recipients of the next team in line for the testline
-                    @nextreservation.recipients.each do |recipient|
-                        NotificationMailer.notify_next(recipient.email, @testline).deliver_later
-                    end
                     # mails the team members of the next team in line for the testline
                     @nextreservation.team.users.each do |team_member|
                         NotificationMailer.notify_next(team_member.email, @testline).deliver_later
+                    end
+                    # mails the recipients of the next team in line for the testline
+                    @nextreservation.recipients.each do |recipient|
+                        NotificationMailer.notify_next(recipient.email, @testline).deliver_later
                     end
                 }
                 # starts the time of the next reservation
