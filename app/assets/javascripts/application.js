@@ -52,7 +52,7 @@ function toggleFullModal(event) {
 function openReservation(evt, tabName, tabMenu) {
     var i, listgroups, sidenavlinks;
 
-    var testlines = document.getElementsByClassName("tabcontent");
+    var testlines = document.getElementsByClassName("panel");
     for (i = 0; i < testlines.length; i++) {
         testlines[i].style.display = "none";
     }
@@ -184,28 +184,29 @@ function toggleTeamOverlay(overlay_id) {
     }
 }
 
-var tabs = document.querySelector('.tabs');
-var panels = document.querySelectorAll('.panel');
-
-tabs.addEventListener('click', function (e) {
-    if (e.target.tagName == "LI") {
-        Array.from(tabs.children).forEach(function (child) {
-            if (child == e.target) {
-                child.classList.add('active');
-            } else {
-                child.classList.remove('active');
-            }
-        });
-        e.target.classList.add('active');
-        var targetPanel = document.querySelector(e.target.dataset.target);
-        panels.forEach(function (panel) {
-            if (panel == targetPanel) {
-                panel.classList.add('active');
-            } else {
-                panel.classList.remove('active');
-            }
-        });
-    }
+document.addEventListener('DOMContentLoaded', function () {
+    var tabs = document.getElementById('tabs');
+    var panels = document.querySelectorAll('.panel');
+    
+    tabs.addEventListener('click', function (e) {
+        if (e.target.className == 'tab-link') {
+            tabs.querySelectorAll('.tab-link').forEach(function (tabLink) {
+                if (tabLink == e.target) {
+                    tabLink.classList.add('active');
+                } else {
+                    tabLink.classList.remove('active');
+                }
+            });
+            var targetPanel = document.querySelector(e.target.dataset.target);
+            panels.forEach(function (panel) {
+                if (panel == targetPanel) {
+                    panel.classList.add('active');
+                } else {
+                    panel.classList.remove('active');
+                }
+            });
+        }
+    });
 });
 
 $(document).on('turbolinks:load', function () {

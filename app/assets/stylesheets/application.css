@@ -324,28 +324,34 @@ main {
     width: 100%;
 }
 
-.sidenav .sidenav-link {
+.sidenav .tab-link {
     color: #fff;
     text-decoration: none;
     padding: 1em;
     display: block;
     white-space: nowrap;
     position: relative;
+    cursor: pointer;
 }
 
-.sidenav .sidenav-link.active {
+.sidenav .tab-link.active {
     background: #1E202C;
 }
 
-.sidenav .sidenav-link:hover {
+.sidenav .tab-link:hover {
     background: #252734;
 }
 
 .sidenav .sidenav-submenu {
+    display: none;
     border: 1px solid #252732;
     background: #252732;
     padding-left: 40px;
     transition: 0.5s;
+}
+
+.sidenav .tab-link.active~.sidenav-submenu {
+    display: block;
 }
 
 .sidenav .sidenav-sublink {
@@ -377,6 +383,9 @@ main {
     color: #fff;
 }
 
+
+/* ******************** sidenav toggler ******************** */
+
 .sidenav-toggler {
     background: transparent;
     border: 1px solid #34495e;
@@ -395,6 +404,17 @@ main {
 #sidenav-container .sidenav-toggler .show-left,
 #sidenav-container.toggle .sidenav-toggler .show-right {
     display: inline;
+}
+
+.panel {
+    display: none;
+    padding: 20px;
+    transition: 0.5s;
+    line-height: 1.6em;
+}
+
+.panel.active {
+    display: block;
 }
 
 
@@ -686,7 +706,7 @@ input[type="checkbox"]:checked+.letters-item {
 }
 
 .list-item .list-item-header,
-.list-item .list-item-footer{
+.list-item .list-item-footer {
     display: flex;
     align-items: center;
 }
@@ -753,6 +773,7 @@ input[type="checkbox"]:checked+.letters-item {
 .chip-close:hover {
     opacity: 1;
 }
+
 
 /* ******************** Team-brand-xs ******************** */
 
@@ -871,6 +892,7 @@ input[type="checkbox"]:checked+.letters-item {
 .team-brand-xs.letter-z {
     background-position: -300px -25px !important
 }
+
 
 /* ******************** Team-brand-sm ******************** */
 

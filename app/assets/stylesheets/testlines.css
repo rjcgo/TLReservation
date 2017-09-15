@@ -17,8 +17,7 @@
     animation: updown 0.6s ease-in-out alternate infinite;
 }
 
-#reservations header,
-#reservations .tabcontent {
+#reservations header {
     padding: 0 20px;
 }
 
@@ -114,8 +113,8 @@
     overflow: hidden;
     color: #fff;
     white-space: nowrap;
-    letter-spacing: 7px;
-    padding: 6px 10px;
+    letter-spacing: 8px;
+    padding: 4px 10px;
     border: 0;
     border-radius: 50%;
     background: #d9534f;

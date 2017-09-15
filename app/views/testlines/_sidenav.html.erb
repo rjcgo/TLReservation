@@ -1,14 +1,11 @@
 <aside class="sidenav">
     <div class="wrapper">
-        <ul>
-            <li>
-                <a href="javascript:void(0)" class="closebtn" onclick="toggleSideNav()">
-                    <i class="fa fa-times"></i></a>
-            </li>
+        <ul id="tabs">
+            <a href="javascript:void(0)" class="closebtn" onclick="toggleSideNav()">
+                <i class="fa fa-times"></i></a>
             <% testlines.each do |testline| %>
                 <li>
-                    <a href="javascript:void(0)" class="sidenav-link"
-                        onclick="openReservation(event, 'tl-<%= testline.id %>', 'menu-<%= testline.id %>')">
+                    <div class="tab-link" data-target="#tl-<%= testline.id %>">
                         <i class="fa fa-server"></i> <%= testline.name %>
                         <% if testline.isMaintenance %>
                             <span class="badge badge-sidenav bg-yellow">
@@ -23,11 +20,13 @@
                                 <%= testline.reservations.length %>
                             </span>
                         <% end %>
-                    </a>
-                    <div class="sidenav-submenu" id="menu-<%= testline.id %>" style="display: none;">
-                        <a href="#" class="sidenav-sublink modal-open" data-diagram="<%= testline.diagram %>"
+                    </div>
+                    <div class="sidenav-submenu">
+                        <a href="#" class="sidenav-sublink modal-open" 
+                            data-diagram="<%= testline.diagram %>"
                             data-target="#img-modal">Show Diagram</a>
-                        <a href="#" class="sidenav-sublink modal-open" data-content="<%= testline.description %>"
+                        <a href="#" class="sidenav-sublink modal-open" 
+                            data-content="<%= testline.description %>"
                             data-target="#desc-modal">Show Description</a>
                     </div>
                 </li>

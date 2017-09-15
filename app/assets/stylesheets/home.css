@@ -79,30 +79,21 @@ section:nth-child(even) img {
 
 /* ******************** Help ******************** */
 
-#main-banner {
-    position: relative;
-    max-height: 250px;
-    overflow: hidden;
-}
-
-#main-banner img {
-    width: 100%;
-    margin-bottom: -10px;
-}
-
-#main-banner .banner-overlay {
-    text-align: right;
-}
-
-#main-banner .banner-overlay h1 {
-    color: #fff;
-}
-
 #tabbed-content {
     min-height: calc(100% - 250px);
     background: #fafafa;
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
+}
+
+#tabbed-content h1 {
+    color: #fff;
+    background: #8698C0;
+    padding: 40px 20px;
+    margin: 0;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 300;
 }
 
 .tabs {
@@ -136,16 +127,6 @@ section:nth-child(even) img {
 .tabs li.active {
     background: #ccc;
     border-color: #53648F;
-}
-
-.panel {
-    display: none;
-    padding: 20px;
-    transition: 0.5s;
-}
-
-.panel.active {
-    display: block;
 }
 
 

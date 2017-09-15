@@ -15,11 +15,11 @@
 						<% end %>
 					<% end %>
 				</header>
-				<article class="tabcontent" style="display: block;">
+				<article class="panel active">
 					<h2 class="pick-testline"><i class="fa fa-hand-o-left"></i> Pick a Testline.</h2>
 				</article>
 				<% @testlines.each do |testline| %>
-					<article id="tl-<%= testline.id %>" class="tabcontent" style="display: none;">
+					<article id="tl-<%= testline.id %>" class="panel">
 						<% if testline.teams.empty? %>
 							<p style="text-align: center; margin: 10px;">No team can currently use this testline.</p>
 						<% elsif testline.isMaintenance %>
